@@ -1,0 +1,81 @@
+{{#liquid-unless (is-empty projection) }}
+  {{#layout/md-card
+    collapsible=true
+    title="Reference System Projection Parameters"
+    data-spy=(if projection "Projection Parameters" false)
+    required=required
+    collapsed=false
+    shadow=true
+    btnAction=(fn (mut projection) null)
+    btnText="Delete"
+    btnIcon="times"
+    btnClass="danger"
+    profilePath=(concat profilePath ".referenceSystemParameterSet")
+  }}
+    {{object/md-srs/parameter/projection
+      model=projection
+      profilePath=(concat profilePath ".referenceSystemParameterSet.projection")
+    }}
+  {{/layout/md-card}}
+{{else}}
+  {{#if allEmpty}}
+    {{control/md-button
+      class="btn btn-md btn-success"
+      text="Add Projection Parameters"
+      icon="plus"
+      click=(fn (mut projection) (hash))
+    }}
+  {{/if}}
+{{/liquid-unless}}
+
+{{#unless (is-empty geodetic)}}
+  {{#layout/md-card
+    collapsible=true
+    title="Reference System Geodetic Parameters"
+    data-spy="Geodetic Parameters"
+    required=required
+    collapsed=false
+    shadow=true
+    profilePath=(concat profilePath ".referenceSystemParameterSet")
+  }}
+    {{object/md-srs/parameter/geodetic
+      model=geodetic
+      profilePath=(concat profilePath ".referenceSystemParameterSet.geodetic")
+    }}
+  {{/layout/md-card}}
+{{else}}
+  {{#if allEmpty}}
+    {{control/md-button
+      class="btn btn-lg btn-success"
+      text="Add Geodetic Parameters"
+      icon="plus"
+    }}
+  {{/if}}
+{{/unless}}
+
+{{#unless (is-empty vertical)}}
+  {{#layout/md-card
+    collapsible=true
+    title="Reference System Vertical Datum Parameters"
+    data-spy="Vertical Datum Parameters"
+    required=required
+    collapsed=false
+    shadow=true
+    profilePath=(concat profilePath ".referenceSystemParameterSet")
+  }}
+  {{object/md-srs/parameter/vertical
+    model=vertical
+    profilePath=(concat profilePath ".referenceSystemParameterSet.verticalDatum")
+  }}
+  {{/layout/md-card}}
+
+{{else}}
+  {{#if allEmpty}}
+    {{control/md-button
+      class="btn btn-lg btn-success"
+      text="Add Vertical Datum Parameters"
+      icon="plus"
+    }}
+  {{/if}}
+{{/unless}}
+{{yield}}

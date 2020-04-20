@@ -1,7 +1,7 @@
 {{input/md-codelist
   create=true
   label="Reference System Type"
-  data-spy="Reference System Type"
+  data-spy="System Type"
   tooltip=true
   icon=false
   disabled=false
@@ -16,35 +16,62 @@
 }}
 
 {{#if refSystem}}
-
-{{#layout/md-card
-  collapsible=true
-  title="Reference System Identifier"
-  required=(v-get this "isInvalid")
-  collapsed=false
-  shadow=false
-  profilePath=(concat profilePath ".referenceSystemIdentifier")
-}}
-  {{!-- <label  class={{concat "text-info" (if (v-get this "isInvalid") "
-  required")}}>Reference System Identifier</label> --}}
-
-  {{object/md-identifier
-    model=model.referenceSystemIdentifier
+  {{#layout/md-card
+    collapsible=true
+    title="Reference System Identifier"
+    data-spy="Identifier"
+    required=(v-get this "isInvalid")
+    collapsed=false
+    shadow=true
     profilePath=(concat profilePath ".referenceSystemIdentifier")
-    data-spy=false
   }}
-{{/layout/md-card}}
+    {{!-- <label  class={{concat "text-info" (if (v-get this "isInvalid") "
+    required")}}>Reference System Identifier</label> --}}
+
+    {{object/md-identifier
+      model=model.referenceSystemIdentifier
+      profilePath=(concat profilePath ".referenceSystemIdentifier")
+      collapsible=true
+    }}
+  {{/layout/md-card}}
 {{/if}}
 
-{{input/md-textarea
-  label="Reference System WKT"
-  data-spy="Reference System WKT"
-  showValidations=true
-  valuePath="wkt"
-  model=this
-  placeholder="Well Known Text (WKT) for spatial reference system."
-  profilePath=(concat profilePath ".referenceSystemWKT")
-  class=(if (v-get this "isInvalid") "required")
-}}
+{{#liquid-unless wktIsNone}}
+  {{#layout/md-card
+    collapsible=true
+    title="Reference System Well Known Text(WKT)"
+    data-spy="WKT"
+    required=(v-get this "isInvalid")
+    block=true
+    collapsed=false
+    shadow=true
+    profilePath=(concat profilePath ".referenceSystemWKT")
+  }}
+    {{input/md-textarea
+      inputClass="form-control md-card-form-control"
+      showValidations=true
+      valuePath="wkt"
+      model=this
+      rows=3
+      placeholder="Well Known Text (WKT) for spatial reference system."
+      class=(if (v-get this "isInvalid") " required")
+    }}
+  {{/layout/md-card}}
+{{else}}
+  {{control/md-button
+    class="btn btn-lg btn-success"
+    text="Add Well Known Text(WKT)"
+    icon="plus"
+    click=(fn (mut wkt) "")
+  }}
+{{/liquid-unless}}
+
+{{#if paramSet}}
+  {{object/md-srs/parameter
+    model=paramSet
+    required=(v-get this "isInvalid")
+    profilePath=(concat profilePath ".referenceSystemParameterSet")
+  }}
+{{/if}}
 
 {{yield}}

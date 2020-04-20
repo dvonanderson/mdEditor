@@ -1,0 +1,159 @@
+{{!-- <label  class={{concat "text-info" (if (v-get this "isInvalid") "
+required")}}>Projection Identifier</label> --}}
+
+{{#layout/md-card
+  shadow=false
+  plain=true
+  title="Projection Identifier"
+  data-spy=(if model "Projection Identifier")
+  required=true
+  profilePath=(concat profilePath ".projectionIdentifier")
+  class="md-embedded"
+}}
+  {{input/md-input
+    value=model.projectionIdentifier.name
+    placeholder="Enter a descriptive name for the projection."
+    label="Name"
+    profilePath=(concat profilePath ".projectionIdentifier.name")
+  }}
+
+  {{object/md-identifier
+    model=model.projectionIdentifier
+    profilePath=(concat profilePath ".projectionIdentifier")
+    collapsible=true
+  }}
+{{/layout/md-card}}
+
+{{#layout/md-card
+  shadow=false
+  plain=true
+  title="Grid Identifier"
+  data-spy=(if model "Grid Identifier")
+  profilePath=(concat profilePath ".gridIdentifier")
+  class="md-embedded"
+}}
+  {{input/md-input
+    value=model.gridIdentifier.name
+    placeholder="Enter a descriptive name for the grid system."
+    label="Name"
+    profilePath=(concat profilePath ".gridIdentifier.name")
+  }}
+
+  {{object/md-identifier
+    model=model.gridIdentifier
+    profilePath=(concat profilePath ".gridIdentifier")
+    collapsible=true
+  }}
+{{/layout/md-card}}
+
+{{#layout/md-card
+  shadow=false
+  plain=true
+  collapsible=true
+  title="Local Coordinate System"
+  data-spy=(if model "Local Coordinate System")
+  profilePath=(concat profilePath ".local")
+  class="md-embedded"
+  content="model.local"
+}}
+  {{input/md-textarea
+    model=this
+    valuePath="localDescription"
+    class="required"
+    placeholder="Enter a description of the local reference system."
+    label="Description"
+    profilePath=(concat profilePath ".local.description")
+  }}
+  {{input/md-textarea
+    model=this
+    valuePath="localGeoreference"
+    class="required"
+    infotip=true
+    placeholder="A description of the information provided to register the local system to the Earth (e.g. control points, satellite ephemeral data, inertial navigation data)."
+    label="Georeference"
+    profilePath=(concat profilePath ".local.georeference")
+  }}
+  {{input/md-boolean
+    label="Fixed To Earth?"
+    text="True if the z-axis of the coordinate system coincides with a plumb line through the origin that locally is aligned with the surface of the Earth."
+    value=model.local.fixedToEarth
+    profilePath=(concat profilePath ".local.fixedToEarth")
+  }}
+{{/layout/md-card}}
+
+<div class="md-flex-col-575">
+  {{#each params as |param|}}
+    {{input/md-input
+      model=model
+      valuePath=param.property
+      label=param.label
+      infotip=true
+      data-spy=(if model param.label)
+      type=param.type
+      class="md-embedded col-lg-6 col-xxxl-4"
+      placeholder=param.description
+      profilePath=(concat profilePath ".gridIdentifier." param.property)
+    }}
+  {{/each}}
+</div>
+
+{{#layout/md-card
+  shadow=false
+  plain=true
+  title="Oblique Line Point"
+  data-spy=(if model "Oblique Line Point")
+  profilePath=(concat profilePath ".obliqueLinePoint")
+  class="md-embedded"
+  flex=false
+}}
+  <div class="form-group-inline">
+    <label class="text-info required align-self-center">Oblique Line Point 1</label>
+    {{input/md-input
+      model=model
+      valuePath="obliqueLinePoint.firstObject.obliqueLineLatitude"
+      label="Latitude 1"
+      infotip=true
+      type="number"
+      class="required flex-grow"
+      placeholder="The latitude of a point defining the oblique line."
+      profilePath=(concat profilePath ".obliqueLinePoint.obliqueLineLatitude")
+    }}
+
+    {{input/md-input
+      model=model
+      valuePath="obliqueLinePoint.firstObject.obliqueLineLongitude"
+      label="Longitude 1"
+      infotip=true
+      type="number"
+      class="required flex-grow"
+      placeholder="The longitude of a point defining the oblique line."
+      profilePath=(concat profilePath ".obliqueLinePoint.obliqueLineLongitude")
+    }}
+  </div>
+  <div class="form-group-inline d-flex">
+    <label class="text-info required">Oblique Line Point 2</label>
+    {{input/md-input
+      model=model
+      valuePath="obliqueLinePoint.lastObject.obliqueLineLatitude"
+      label="Latitude 2"
+      infotip=true
+      type="number"
+      class="required flex-grow"
+      placeholder="The latitude of a point defining the oblique line."
+      profilePath=(concat profilePath ".obliqueLinePoint.obliqueLineLatitude")
+    }}
+
+    {{input/md-input
+      model=model
+      valuePath="obliqueLinePoint.lastObject.obliqueLineLongitude"
+      label="Longitude 2"
+      infotip=true
+      type="number"
+      class="required flex-grow"
+      placeholder="The longitude of a point defining the oblique line."
+      profilePath=(concat profilePath ".obliqueLinePoint.obliqueLineLongitude")
+    }}
+  </div>
+{{/layout/md-card}}
+
+{{yield}}

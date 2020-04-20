@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { alias } from '@ember/object/computed';
+import { alias, none } from '@ember/object/computed';
 import { once } from '@ember/runloop';
 import { set, getWithDefault, get, computed } from '@ember/object';
 import { isEmpty } from 'mdeditor/utils/md-object'
@@ -21,7 +21,7 @@ const Validations = buildValidations({
   'refSystemId': validator('inline', OPTS),
   'wkt': validator('inline', OPTS),
   'paramSet': validator('inline', OPTS)
-},{
+}, {
   dependentKeys: ['model.notEmpty'],
 });
 
@@ -62,18 +62,20 @@ export default Component.extend(Validations, {
   refSystemId: alias('model.referenceSystemIdentifier.identifier'),
   refType: alias('model.referenceSystemType'),
   wkt: alias('model.referenceSystemWKT'),
+  wktIsNone: none('wkt'),
   paramSet: alias('model.referenceSystemParameterSet'),
-  hasTypes: computed('refSystem', 'refType', 'wkt', 'paramsSet',
-    function () {
-      let types = {
-        refType: isPresent(this.refType),
-        refSystem: !isEmpty(this.refSystem),
-        wkt: isPresent(this.wkt),
-        params: !isEmpty(this.params)
-      }
-      return types;
-    }),
-  notEmpty: computed('refSystem','refSystemId', 'refType', 'wkt', 'paramsSet',
+  // hasTypes: computed('refSystem', 'refType', 'wkt', 'paramsSet',
+  //   function () {
+  //     let types = {
+  //       refType: isPresent(this.refType),
+  //       refSystem: !isEmpty(this.refSystem),
+  //       wkt: isPresent(this.wkt),
+  //       params: !isEmpty(this.params)
+  //     }
+  //     return types;
+  //   }),
+  notEmpty: computed('refSystem', 'refSystemId', 'refType', 'wkt',
+    'paramsSet',
     function () {
       return isPresent(this.refType) ||
         !isEmpty(this.refSystem) ||
