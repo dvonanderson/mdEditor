@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const VERSION = '1593189094345|0.4614403120371309';
+  const VERSION = '1593189359821|0.4042959367894001';
   self.CACHE_BUSTER = VERSION;
   self.addEventListener('install', function installEventListenerCallback(event) {
     return self.skipWaiting();
@@ -10,7 +10,7 @@
     return self.clients.claim();
   });
 
-  const FILES = ['assets/auto-import-fastboot.js', 'assets/images/layers-2x.png', 'assets/images/layers.png', 'assets/images/marker-icon-2x.png', 'assets/images/marker-icon.png', 'assets/images/marker-shadow.png', 'assets/images/spritesheet-2x.png', 'assets/images/spritesheet.png', 'assets/images/spritesheet.svg', 'assets/mdeditor.css', 'assets/mdeditor.js', 'assets/mdeditor.map', 'assets/test-support.css', 'assets/test-support.js', 'assets/test-support.map', 'assets/tests.js', 'assets/tests.map', 'assets/vendor.css', 'assets/vendor.js', 'assets/vendor.map', 'assets/workers/worker_papaparse.js', 'assets/workers/worker_papaparse.map', 'fonts/fontawesome-webfont.eot', 'fonts/fontawesome-webfont.svg', 'fonts/fontawesome-webfont.ttf', 'fonts/fontawesome-webfont.woff', 'fonts/fontawesome-webfont.woff2', 'fonts/FontAwesome.otf', 'fonts/mdeditor.eot', 'fonts/mdeditor.svg', 'fonts/mdeditor.ttf', 'fonts/mdeditor.woff', 'favicon-128.png', 'favicon-16x16.png', 'favicon-196x196.png', 'favicon-32x32.png', 'favicon-96x96.png', 'favicon.ico', 'apple-touch-icon-144x144.png', 'apple-touch-icon-152x152.png', 'mstile-144x144.png'];
+  const FILES = ['assets/auto-import-fastboot.js', 'assets/images/layers-2x.png', 'assets/images/layers.png', 'assets/images/marker-icon-2x.png', 'assets/images/marker-icon.png', 'assets/images/marker-shadow.png', 'assets/images/spritesheet-2x.png', 'assets/images/spritesheet.png', 'assets/images/spritesheet.svg', 'assets/mdeditor.css', 'assets/mdeditor.css.map', 'assets/mdeditor.js', 'assets/mdeditor.map', 'assets/test-support.css', 'assets/test-support.js', 'assets/test-support.map', 'assets/tests.js', 'assets/tests.map', 'assets/vendor.css', 'assets/vendor.js', 'assets/vendor.map', 'assets/workers/worker_papaparse.js', 'assets/workers/worker_papaparse.map', 'fonts/fontawesome-webfont.eot', 'fonts/fontawesome-webfont.svg', 'fonts/fontawesome-webfont.ttf', 'fonts/fontawesome-webfont.woff', 'fonts/fontawesome-webfont.woff2', 'fonts/FontAwesome.otf', 'fonts/mdeditor.eot', 'fonts/mdeditor.svg', 'fonts/mdeditor.ttf', 'fonts/mdeditor.woff', 'favicon-128.png', 'favicon-16x16.png', 'favicon-196x196.png', 'favicon-32x32.png', 'favicon-96x96.png', 'favicon.ico', 'apple-touch-icon-144x144.png', 'apple-touch-icon-152x152.png', 'mstile-144x144.png'];
   const VERSION$1 = '1';
   const REQUEST_MODE = 'cors';
 
@@ -158,12 +158,12 @@
     event.waitUntil(cleanupCaches(CACHE_KEY_PREFIX$1, CACHE_NAME$1));
   });
 
-  const ENVIRONMENT = 'staging';
+  const ENVIRONMENT = 'development';
   const VERSION$3 = '1';
   const INDEX_HTML_PATH = 'index.html';
   const INDEX_EXCLUDE_SCOPE = [];
   const INDEX_INCLUDE_SCOPE = [];
-  self.INDEX_FILE_HASH = 'a1032e93c01699f1280b18213ec641d7';
+  self.INDEX_FILE_HASH = 'a7dd88611bb67689074b36dcf4ff9eec';
 
   const CACHE_KEY_PREFIX$2 = 'esw-index';
   const CACHE_NAME$2 = `${CACHE_KEY_PREFIX$2}-${VERSION$3}`;
