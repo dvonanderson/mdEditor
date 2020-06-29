@@ -7442,6 +7442,15 @@ input[disabled] + .md-input-error {
   opacity: 0.9;
 }
 
+.md-infotip {
+  color: #29abe0;
+  transition: color 0.25s ease;
+}
+.md-infotip:hover {
+  color: #1b8dbb;
+  cursor: help;
+}
+
 .md-tooltip {
   text-shadow: none;
 }
@@ -7636,14 +7645,6 @@ body.slider {
 
 .display-table {
   display: table;
-}
-
-.d-flex {
-  display: flex;
-}
-
-.flex-grow {
-  flex-grow: 1;
 }
 
 #md-wrapper {
@@ -9447,6 +9448,12 @@ label .x-toggle-form.x-toggle-btn::after {
   background-color: transparent;
 }
 
+.md-card-form-control {
+  border-color: #eeeeee;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
 .dashboard {
   padding: 20px;
 }
@@ -9705,6 +9712,10 @@ label .x-toggle-form.x-toggle-btn::after {
   border-color: #fff !important;
 }
 
+.border-transparent {
+  border-color: transparent;
+}
+
 .rounded-sm {
   border-radius: 0.2rem !important;
 }
@@ -9747,6 +9758,82 @@ label .x-toggle-form.x-toggle-btn::after {
 
 .rounded-0 {
   border-radius: 0 !important;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.align-self-center {
+  align-self: center;
+}
+
+@media (min-width: 1200px) {
+  .md-flex-col-575 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 775px;
+  }
+}
+@media (min-width: 1920px) {
+  .md-flex-col-575 {
+    height: 550px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .md-flex-col-475 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 675px;
+  }
+}
+@media (min-width: 1920px) {
+  .md-flex-col-475 {
+    height: 450px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .md-flex-col-375 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 575px;
+  }
+}
+@media (min-width: 1920px) {
+  .md-flex-col-375 {
+    height: 350px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .md-flex-col-275 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 375px;
+  }
+}
+@media (min-width: 1920px) {
+  .md-flex-col-275 {
+    height: 250px;
+  }
 }
 
 .ember-modal-dialog {
@@ -9806,8 +9893,8 @@ label .x-toggle-form.x-toggle-btn::after {
   background-color: rgba(128, 128, 128, 0.77);
 }
 
-.CodeMirror,
 .CodeMirror-scroll {
+  height: auto;
   max-height: 300px;
   min-height: 80px;
 }
@@ -9821,7 +9908,6 @@ label .x-toggle-form.x-toggle-btn::after {
   z-index: 10001;
 }
 
-.CodeMirror-fullscreen.CodeMirror,
 .CodeMirror-fullscreen .CodeMirror-scroll {
   max-height: none;
 }

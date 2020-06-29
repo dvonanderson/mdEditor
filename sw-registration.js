@@ -5,8 +5,8 @@
   let ERROR_HANDLERS = [];
 
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/mdEditorsw.js', {
-      scope: '/mdEditor'
+    navigator.serviceWorker.register('/sw.js', {
+      scope: '/'
     }).then(function (reg) {
       let current = Promise.resolve();
 

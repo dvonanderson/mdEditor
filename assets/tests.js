@@ -2061,6 +2061,23 @@ define("mdeditor/tests/integration/components/tree-view-test", ["@ember/test-hel
     });
   });
 });
+define("mdeditor/tests/integration/helpers/object-is-empty-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
+  "use strict";
+
+  (0, _qunit.module)('Integration | Helper | object-is-empty', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks); // Replace this with your real tests.
+
+    (0, _qunit.test)('it renders', async function (assert) {
+      this.set('inputValue', '1234');
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "GSagCU8j",
+        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object-is-empty\",[[24,[\"inputValue\"]]],null],false]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), '1234');
+    });
+  });
+});
 define("mdeditor/tests/integration/helpers/present-test", ["@ember/test-helpers", "qunit", "ember-qunit"], function (_testHelpers, _qunit, _emberQunit) {
   "use strict";
 
@@ -2617,6 +2634,30 @@ define("mdeditor/tests/integration/pods/components/control/md-indicator/related/
         contentString: `Related Indicator Test\nThe attribute attribute1 has an associated domain: codeName0.\nGo to Domain`
       });
       await (0, _testHelpers.click)('.btn');
+    });
+  });
+});
+define("mdeditor/tests/integration/pods/components/control/md-infotip/component-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
+  "use strict";
+
+  (0, _qunit.module)('Integration | Component | control/md-infotip', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      // Set any properties with this.set('myProperty', 'value');
+      // Handle any actions with this.set('myAction', function(val) { ... });
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "ZykxUW8s",
+        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"control/md-infotip\"],false]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), ''); // Template block usage:
+
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "ltvhuIeV",
+        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"control/md-infotip\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), 'template block text');
     });
   });
 });
@@ -6682,6 +6723,126 @@ define("mdeditor/tests/integration/pods/components/object/md-profile/preview/com
     });
   });
 });
+define("mdeditor/tests/integration/pods/components/object/md-raster/attrgroup/attribute/component-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
+  "use strict";
+
+  (0, _qunit.module)('Integration | Component | object/md-raster/attrgroup/attribute', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      // Set any properties with this.set('myProperty', 'value');
+      // Handle any actions with this.set('myAction', function(val) { ... });
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "IDv6pbet",
+        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"object/md-raster/attrgroup/attribute\"],false]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), ''); // Template block usage:
+
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "1VbSBwx7",
+        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-raster/attrgroup/attribute\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), 'template block text');
+    });
+  });
+});
+define("mdeditor/tests/integration/pods/components/object/md-raster/attrgroup/component-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
+  "use strict";
+
+  (0, _qunit.module)('Integration | Component | object/md-raster/attrgroup', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      // Set any properties with this.set('myProperty', 'value');
+      // Handle any actions with this.set('myAction', function(val) { ... });
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "JRuxaajN",
+        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"object/md-raster/attrgroup\"],false]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), ''); // Template block usage:
+
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "xqZbePcg",
+        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-raster/attrgroup\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), 'template block text');
+    });
+  });
+});
+define("mdeditor/tests/integration/pods/components/object/md-raster/component-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
+  "use strict";
+
+  (0, _qunit.module)('Integration | Component | object/md-raster', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      // Set any properties with this.set('myProperty', 'value');
+      // Handle any actions with this.set('myAction', function(val) { ... });
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "3eVNlDsX",
+        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"object/md-raster\"],false]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), ''); // Template block usage:
+
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "fUd9q2ab",
+        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-raster\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), 'template block text');
+    });
+  });
+});
+define("mdeditor/tests/integration/pods/components/object/md-raster/image-desc/component-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
+  "use strict";
+
+  (0, _qunit.module)('Integration | Component | object/md-raster/image-desc', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      // Set any properties with this.set('myProperty', 'value');
+      // Handle any actions with this.set('myAction', function(val) { ... });
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "TCsGadEE",
+        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"object/md-raster/image-desc\"],false]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), ''); // Template block usage:
+
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "e4M59WH7",
+        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-raster/image-desc\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), 'template block text');
+    });
+  });
+});
+define("mdeditor/tests/integration/pods/components/object/md-raster/preview/component-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
+  "use strict";
+
+  (0, _qunit.module)('Integration | Component | object/md-raster/preview', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      // Set any properties with this.set('myProperty', 'value');
+      // Handle any actions with this.set('myAction', function(val) { ... });
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "7sRRh385",
+        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"object/md-raster/preview\"],false]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), ''); // Template block usage:
+
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "rE/G45xX",
+        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-raster/preview\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), 'template block text');
+    });
+  });
+});
 define("mdeditor/tests/integration/pods/components/object/md-repository-array/component-test", ["@ember/test-helpers", "qunit", "ember-qunit"], function (_testHelpers, _qunit, _emberQunit) {
   "use strict";
 
@@ -7633,6 +7794,10 @@ define("mdeditor/tests/lint/app.lint-test", [], function () {
     assert.expect(1);
     assert.ok(true, 'helpers/mod.js should pass ESLint\n\n');
   });
+  QUnit.test('helpers/object-is-empty.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'helpers/object-is-empty.js should pass ESLint\n\n');
+  });
   QUnit.test('helpers/present.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'helpers/present.js should pass ESLint\n\n');
@@ -7768,6 +7933,10 @@ define("mdeditor/tests/lint/app.lint-test", [], function () {
   QUnit.test('pods/components/control/md-indicator/related/component.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'pods/components/control/md-indicator/related/component.js should pass ESLint\n\n');
+  });
+  QUnit.test('pods/components/control/md-infotip/component.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'pods/components/control/md-infotip/component.js should pass ESLint\n\n');
   });
   QUnit.test('pods/components/control/md-itis/component.js', function (assert) {
     assert.expect(1);
@@ -8220,6 +8389,30 @@ define("mdeditor/tests/lint/app.lint-test", [], function () {
   QUnit.test('pods/components/object/md-profile/preview/component.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'pods/components/object/md-profile/preview/component.js should pass ESLint\n\n');
+  });
+  QUnit.test('pods/components/object/md-raster/attrgroup/attribute/component.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'pods/components/object/md-raster/attrgroup/attribute/component.js should pass ESLint\n\n');
+  });
+  QUnit.test('pods/components/object/md-raster/attrgroup/attribute/preview/component.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'pods/components/object/md-raster/attrgroup/attribute/preview/component.js should pass ESLint\n\n');
+  });
+  QUnit.test('pods/components/object/md-raster/attrgroup/component.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'pods/components/object/md-raster/attrgroup/component.js should pass ESLint\n\n');
+  });
+  QUnit.test('pods/components/object/md-raster/component.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'pods/components/object/md-raster/component.js should pass ESLint\n\n');
+  });
+  QUnit.test('pods/components/object/md-raster/image-desc/component.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'pods/components/object/md-raster/image-desc/component.js should pass ESLint\n\n');
+  });
+  QUnit.test('pods/components/object/md-raster/preview/component.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'pods/components/object/md-raster/preview/component.js should pass ESLint\n\n');
   });
   QUnit.test('pods/components/object/md-repository-array/component.js', function (assert) {
     assert.expect(1);
@@ -8729,6 +8922,18 @@ define("mdeditor/tests/lint/app.lint-test", [], function () {
     assert.expect(1);
     assert.ok(true, 'pods/record/show/edit/spatial/index/route.js should pass ESLint\n\n');
   });
+  QUnit.test('pods/record/show/edit/spatial/raster/attribute/route.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'pods/record/show/edit/spatial/raster/attribute/route.js should pass ESLint\n\n');
+  });
+  QUnit.test('pods/record/show/edit/spatial/raster/index/route.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'pods/record/show/edit/spatial/raster/index/route.js should pass ESLint\n\n');
+  });
+  QUnit.test('pods/record/show/edit/spatial/raster/route.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'pods/record/show/edit/spatial/raster/route.js should pass ESLint\n\n');
+  });
   QUnit.test('pods/record/show/edit/spatial/route.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'pods/record/show/edit/spatial/route.js should pass ESLint\n\n');
@@ -8921,6 +9126,10 @@ define("mdeditor/tests/lint/app.lint-test", [], function () {
     assert.expect(1);
     assert.ok(true, 'utils/md-interpolate.js should pass ESLint\n\n');
   });
+  QUnit.test('utils/md-object.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'utils/md-object.js should pass ESLint\n\n');
+  });
   QUnit.test('validators/array-required.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'validators/array-required.js should pass ESLint\n\n');
@@ -8985,6 +9194,10 @@ define("mdeditor/tests/lint/templates.template.lint-test", [], function () {
   QUnit.test('mdeditor/pods/components/control/md-indicator/template.hbs', function (assert) {
     assert.expect(1);
     assert.ok(true, 'mdeditor/pods/components/control/md-indicator/template.hbs should pass TemplateLint.\n\n');
+  });
+  QUnit.test('mdeditor/pods/components/control/md-infotip/template.hbs', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'mdeditor/pods/components/control/md-infotip/template.hbs should pass TemplateLint.\n\n');
   });
   QUnit.test('mdeditor/pods/components/control/md-itis/template.hbs', function (assert) {
     assert.expect(1);
@@ -9401,6 +9614,30 @@ define("mdeditor/tests/lint/templates.template.lint-test", [], function () {
   QUnit.test('mdeditor/pods/components/object/md-profile/template.hbs', function (assert) {
     assert.expect(1);
     assert.ok(true, 'mdeditor/pods/components/object/md-profile/template.hbs should pass TemplateLint.\n\n');
+  });
+  QUnit.test('mdeditor/pods/components/object/md-raster/attrgroup/attribute/preview/template.hbs', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'mdeditor/pods/components/object/md-raster/attrgroup/attribute/preview/template.hbs should pass TemplateLint.\n\n');
+  });
+  QUnit.test('mdeditor/pods/components/object/md-raster/attrgroup/attribute/template.hbs', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'mdeditor/pods/components/object/md-raster/attrgroup/attribute/template.hbs should pass TemplateLint.\n\n');
+  });
+  QUnit.test('mdeditor/pods/components/object/md-raster/attrgroup/template.hbs', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'mdeditor/pods/components/object/md-raster/attrgroup/template.hbs should pass TemplateLint.\n\n');
+  });
+  QUnit.test('mdeditor/pods/components/object/md-raster/image-desc/template.hbs', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'mdeditor/pods/components/object/md-raster/image-desc/template.hbs should pass TemplateLint.\n\n');
+  });
+  QUnit.test('mdeditor/pods/components/object/md-raster/preview/template.hbs', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'mdeditor/pods/components/object/md-raster/preview/template.hbs should pass TemplateLint.\n\n');
+  });
+  QUnit.test('mdeditor/pods/components/object/md-raster/template.hbs', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'mdeditor/pods/components/object/md-raster/template.hbs should pass TemplateLint.\n\n');
   });
   QUnit.test('mdeditor/pods/components/object/md-repository-array/template.hbs', function (assert) {
     assert.expect(1);
@@ -9890,6 +10127,18 @@ define("mdeditor/tests/lint/templates.template.lint-test", [], function () {
     assert.expect(1);
     assert.ok(true, 'mdeditor/pods/record/show/edit/spatial/index/template.hbs should pass TemplateLint.\n\n');
   });
+  QUnit.test('mdeditor/pods/record/show/edit/spatial/raster/attribute/template.hbs', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'mdeditor/pods/record/show/edit/spatial/raster/attribute/template.hbs should pass TemplateLint.\n\n');
+  });
+  QUnit.test('mdeditor/pods/record/show/edit/spatial/raster/index/template.hbs', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'mdeditor/pods/record/show/edit/spatial/raster/index/template.hbs should pass TemplateLint.\n\n');
+  });
+  QUnit.test('mdeditor/pods/record/show/edit/spatial/raster/template.hbs', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'mdeditor/pods/record/show/edit/spatial/raster/template.hbs should pass TemplateLint.\n\n');
+  });
   QUnit.test('mdeditor/pods/record/show/edit/spatial/template.hbs', function (assert) {
     assert.expect(1);
     assert.ok(true, 'mdeditor/pods/record/show/edit/spatial/template.hbs should pass TemplateLint.\n\n');
@@ -10155,6 +10404,10 @@ define("mdeditor/tests/lint/tests.lint-test", [], function () {
     assert.expect(1);
     assert.ok(true, 'integration/components/tree-view-test.js should pass ESLint\n\n');
   });
+  QUnit.test('integration/helpers/object-is-empty-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/helpers/object-is-empty-test.js should pass ESLint\n\n');
+  });
   QUnit.test('integration/helpers/present-test.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'integration/helpers/present-test.js should pass ESLint\n\n');
@@ -10218,6 +10471,10 @@ define("mdeditor/tests/lint/tests.lint-test", [], function () {
   QUnit.test('integration/pods/components/control/md-indicator/related/component-test.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'integration/pods/components/control/md-indicator/related/component-test.js should pass ESLint\n\n');
+  });
+  QUnit.test('integration/pods/components/control/md-infotip/component-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/pods/components/control/md-infotip/component-test.js should pass ESLint\n\n');
   });
   QUnit.test('integration/pods/components/control/md-itis/component-test.js', function (assert) {
     assert.expect(1);
@@ -10658,6 +10915,26 @@ define("mdeditor/tests/lint/tests.lint-test", [], function () {
   QUnit.test('integration/pods/components/object/md-profile/preview/component-test.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'integration/pods/components/object/md-profile/preview/component-test.js should pass ESLint\n\n');
+  });
+  QUnit.test('integration/pods/components/object/md-raster/attrgroup/attribute/component-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/pods/components/object/md-raster/attrgroup/attribute/component-test.js should pass ESLint\n\n');
+  });
+  QUnit.test('integration/pods/components/object/md-raster/attrgroup/component-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/pods/components/object/md-raster/attrgroup/component-test.js should pass ESLint\n\n');
+  });
+  QUnit.test('integration/pods/components/object/md-raster/component-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/pods/components/object/md-raster/component-test.js should pass ESLint\n\n');
+  });
+  QUnit.test('integration/pods/components/object/md-raster/image-desc/component-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/pods/components/object/md-raster/image-desc/component-test.js should pass ESLint\n\n');
+  });
+  QUnit.test('integration/pods/components/object/md-raster/preview/component-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/pods/components/object/md-raster/preview/component-test.js should pass ESLint\n\n');
   });
   QUnit.test('integration/pods/components/object/md-repository-array/component-test.js', function (assert) {
     assert.expect(1);
@@ -11219,6 +11496,10 @@ define("mdeditor/tests/lint/tests.lint-test", [], function () {
     assert.expect(1);
     assert.ok(true, 'unit/pods/record/show/edit/spatial/index/route-test.js should pass ESLint\n\n');
   });
+  QUnit.test('unit/pods/record/show/edit/spatial/raster/attribute/route-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/pods/record/show/edit/spatial/raster/attribute/route-test.js should pass ESLint\n\n');
+  });
   QUnit.test('unit/pods/record/show/edit/spatial/route-test.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'unit/pods/record/show/edit/spatial/route-test.js should pass ESLint\n\n');
@@ -11258,6 +11539,10 @@ define("mdeditor/tests/lint/tests.lint-test", [], function () {
   QUnit.test('unit/pods/record/show/route-test.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'unit/pods/record/show/route-test.js should pass ESLint\n\n');
+  });
+  QUnit.test('unit/pods/record/show/spatial/raster/attribute/route-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/pods/record/show/spatial/raster/attribute/route-test.js should pass ESLint\n\n');
   });
   QUnit.test('unit/pods/record/show/translate/route-test.js', function (assert) {
     assert.expect(1);
@@ -11402,6 +11687,10 @@ define("mdeditor/tests/lint/tests.lint-test", [], function () {
   QUnit.test('unit/utils/md-interpolate-test.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'unit/utils/md-interpolate-test.js should pass ESLint\n\n');
+  });
+  QUnit.test('unit/utils/md-object-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/utils/md-object-test.js should pass ESLint\n\n');
   });
   QUnit.test('unit/utils/sb-tree-node-test.js', function (assert) {
     assert.expect(1);
@@ -12867,6 +13156,17 @@ define("mdeditor/tests/unit/pods/record/show/edit/spatial/index/route-test", ["q
     });
   });
 });
+define("mdeditor/tests/unit/pods/record/show/edit/spatial/raster/attribute/route-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
+  "use strict";
+
+  (0, _qunit.module)('Unit | Route | record/show/edit/spatial/raster/attribute', function (hooks) {
+    (0, _emberQunit.setupTest)(hooks);
+    (0, _qunit.test)('it exists', function (assert) {
+      let route = this.owner.lookup('route:record/show/edit/spatial/raster/attribute');
+      assert.ok(route);
+    });
+  });
+});
 define("mdeditor/tests/unit/pods/record/show/edit/spatial/route-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
   "use strict";
 
@@ -12973,6 +13273,17 @@ define("mdeditor/tests/unit/pods/record/show/route-test", ["qunit", "ember-qunit
     (0, _emberQunit.setupTest)(hooks);
     (0, _qunit.test)('it exists', function (assert) {
       var route = this.owner.lookup('route:record/show');
+      assert.ok(route);
+    });
+  });
+});
+define("mdeditor/tests/unit/pods/record/show/spatial/raster/attribute/route-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
+  "use strict";
+
+  (0, _qunit.module)('Unit | Route | record/show/spatial/raster/attribute', function (hooks) {
+    (0, _emberQunit.setupTest)(hooks);
+    (0, _qunit.test)('it exists', function (assert) {
+      let route = this.owner.lookup('route:record/show/spatial/raster/attribute');
       assert.ok(route);
     });
   });
@@ -13206,7 +13517,32 @@ define("mdeditor/tests/unit/services/cleaner-test", ["qunit", "ember-qunit"], fu
 
     (0, _qunit.test)('it exists', function (assert) {
       let service = this.owner.lookup('service:cleaner');
+      const obj = {
+        test: [[], {}, '', null, undefined],
+        foo: 'bar',
+        bar: null,
+        biz: {},
+        baz: {
+          foo: [undefined]
+        },
+        jim: [{
+          jam: ''
+        }],
+        hey: {
+          ya: ['', 'keep', true, false],
+          zoo: []
+        }
+      };
       assert.ok(service);
+      assert.equal(JSON.stringify(service.clean(obj, {
+        preserveArrays: true,
+        preserveRootOnly: false
+      })), '{"test":[[]],"foo":"bar","baz":{"foo":[]},"jim":[],"hey":{"ya":["keep",true,false],"zoo":[]}}', 'preserveArrays: true, preserveRootOnly: false');
+      assert.equal(JSON.stringify(service.clean(obj)), '{"test":[],"foo":"bar","jim":[],"hey":{"ya":["keep",true,false]}}', 'preserveArrays: true, preserveRootOnly: true');
+      assert.equal(JSON.stringify(service.clean(obj, {
+        preserveArrays: false,
+        preserveRootOnly: true
+      })), '{"foo":"bar","hey":{"ya":["keep",true,false]}}', 'preserveArrays: false, preserveRootOnly: true');
     });
   });
 });
@@ -13464,6 +13800,33 @@ define("mdeditor/tests/unit/utils/md-interpolate-test", ["mdeditor/utils/md-inte
       assert.equal(result, 'The attribute <em>foo</em> has an associated domain: <strong>bar</strong>.');
       let result2 = (0, _mdInterpolate.parseArgs)(note);
       assert.deepEqual(result2, ['value1', 'value2']);
+    });
+  });
+});
+define("mdeditor/tests/unit/utils/md-object-test", ["mdeditor/utils/md-object", "qunit"], function (_mdObject, _qunit) {
+  "use strict";
+
+  (0, _qunit.module)('Unit | Utility | md-object', function () {
+    // Replace this with your real tests.
+    (0, _qunit.test)('it works', function (assert) {
+      assert.equal(_mdObject.default.isEmpty({}), true);
+      assert.equal(_mdObject.default.isEmpty({
+        foo: ''
+      }), true);
+      assert.equal(_mdObject.default.isEmpty({
+        foo: []
+      }), true);
+      assert.equal(_mdObject.default.isEmpty({
+        foo: 'bar'
+      }), false);
+      assert.equal(_mdObject.default.isEmpty({
+        foo: {
+          bar: {}
+        }
+      }), true);
+      assert.equal(_mdObject.default.isEmpty({
+        foo: false
+      }), false);
     });
   });
 });
