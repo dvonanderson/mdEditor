@@ -7442,15 +7442,6 @@ input[disabled] + .md-input-error {
   opacity: 0.9;
 }
 
-.md-infotip {
-  color: #29abe0;
-  transition: color 0.25s ease;
-}
-.md-infotip:hover {
-  color: #1b8dbb;
-  cursor: help;
-}
-
 .md-tooltip {
   text-shadow: none;
 }
@@ -7645,6 +7636,14 @@ body.slider {
 
 .display-table {
   display: table;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-grow {
+  flex-grow: 1;
 }
 
 #md-wrapper {
@@ -9448,12 +9447,6 @@ label .x-toggle-form.x-toggle-btn::after {
   background-color: transparent;
 }
 
-.md-card-form-control {
-  border-color: #eeeeee;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-
 .dashboard {
   padding: 20px;
 }
@@ -9712,10 +9705,6 @@ label .x-toggle-form.x-toggle-btn::after {
   border-color: #fff !important;
 }
 
-.border-transparent {
-  border-color: transparent;
-}
-
 .rounded-sm {
   border-radius: 0.2rem !important;
 }
@@ -9758,82 +9747,6 @@ label .x-toggle-form.x-toggle-btn::after {
 
 .rounded-0 {
   border-radius: 0 !important;
-}
-
-.d-flex {
-  display: flex;
-}
-
-.flex-grow {
-  flex-grow: 1;
-}
-
-.flex-column {
-  flex-direction: column;
-}
-
-.flex-wrap {
-  flex-wrap: wrap;
-}
-
-.align-self-center {
-  align-self: center;
-}
-
-@media (min-width: 1200px) {
-  .md-flex-col-575 {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 775px;
-  }
-}
-@media (min-width: 1920px) {
-  .md-flex-col-575 {
-    height: 550px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .md-flex-col-475 {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 675px;
-  }
-}
-@media (min-width: 1920px) {
-  .md-flex-col-475 {
-    height: 450px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .md-flex-col-375 {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 575px;
-  }
-}
-@media (min-width: 1920px) {
-  .md-flex-col-375 {
-    height: 350px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .md-flex-col-275 {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 375px;
-  }
-}
-@media (min-width: 1920px) {
-  .md-flex-col-275 {
-    height: 250px;
-  }
 }
 
 .ember-modal-dialog {
@@ -9893,8 +9806,8 @@ label .x-toggle-form.x-toggle-btn::after {
   background-color: rgba(128, 128, 128, 0.77);
 }
 
+.CodeMirror,
 .CodeMirror-scroll {
-  height: auto;
   max-height: 300px;
   min-height: 80px;
 }
@@ -9908,12 +9821,13 @@ label .x-toggle-form.x-toggle-btn::after {
   z-index: 10001;
 }
 
+.CodeMirror-fullscreen.CodeMirror,
 .CodeMirror-fullscreen .CodeMirror-scroll {
   max-height: none;
 }
 
 /**
- * easymde v2.9.1-277.0
+ * easymde v2.13.0
  * Copyright Jeroen Akkerman
  * @link https://github.com/ionaru/easy-markdown-editor
  * @license MIT
@@ -10167,9 +10081,9 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
 
 .CodeMirror-scroll {
   overflow: scroll !important;
-  margin-bottom: -30px;
-  margin-right: -30px;
-  padding-bottom: 30px;
+  margin-bottom: -50px;
+  margin-right: -50px;
+  padding-bottom: 50px;
   height: 100%;
   outline: 0;
   position: relative;
@@ -10177,13 +10091,14 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
 
 .CodeMirror-sizer {
   position: relative;
-  border-right: 30px solid transparent;
+  border-right: 50px solid transparent;
 }
 
 .CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar {
   position: absolute;
   z-index: 6;
   display: none;
+  outline: 0;
 }
 
 .CodeMirror-vscrollbar {
@@ -10223,7 +10138,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   height: 100%;
   display: inline-block;
   vertical-align: top;
-  margin-bottom: -30px;
+  margin-bottom: -50px;
 }
 
 .CodeMirror-gutter-wrapper {
@@ -10387,7 +10302,17 @@ span.CodeMirror-selectedtext {
   background: 0 0;
 }
 
-.CodeMirror {
+.EasyMDEContainer {
+  display: block;
+}
+
+.EasyMDEContainer.sided--no-fullscreen {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.EasyMDEContainer .CodeMirror {
   box-sizing: border-box;
   height: auto;
   border: 1px solid #ddd;
@@ -10395,15 +10320,15 @@ span.CodeMirror-selectedtext {
   border-bottom-right-radius: 4px;
   padding: 10px;
   font: inherit;
-  z-index: 1;
+  z-index: 0;
   word-wrap: break-word;
 }
 
-.CodeMirror-scroll {
+.EasyMDEContainer .CodeMirror-scroll {
   cursor: text;
 }
 
-.CodeMirror-fullscreen {
+.EasyMDEContainer .CodeMirror-fullscreen {
   background: #fff;
   position: fixed !important;
   top: 50px;
@@ -10416,15 +10341,22 @@ span.CodeMirror-selectedtext {
   border-bottom-right-radius: 0 !important;
 }
 
-.CodeMirror-sided {
+.EasyMDEContainer .CodeMirror-sided {
   width: 50% !important;
 }
 
-.CodeMirror-placeholder {
+.EasyMDEContainer .CodeMirror-sided.sided--no-fullscreen {
+  border-right: none !important;
+  border-bottom-right-radius: 0;
+  position: relative;
+  flex: 1 1 auto;
+}
+
+.EasyMDEContainer .CodeMirror-placeholder {
   opacity: 0.5;
 }
 
-.CodeMirror-focused .CodeMirror-selected {
+.EasyMDEContainer .CodeMirror-focused .CodeMirror-selected {
   background: #d9d9d9;
 }
 
@@ -10475,12 +10407,12 @@ span.CodeMirror-selectedtext {
 .editor-toolbar.fullscreen::before {
   width: 20px;
   height: 50px;
-  background: -moz-linear-gradient(left, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 100%);
-  background: -webkit-gradient(linear, left top, right top, color-stop(0, rgba(255, 255, 255, 1)), color-stop(100%, rgba(255, 255, 255, 0)));
-  background: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 100%);
-  background: -o-linear-gradient(left, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 100%);
-  background: -ms-linear-gradient(left, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 100%);
-  background: linear-gradient(to right, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 100%);
+  background: -moz-linear-gradient(left, #fff 0, rgba(255, 255, 255, 0) 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0, #fff), color-stop(100%, rgba(255, 255, 255, 0)));
+  background: -webkit-linear-gradient(left, #fff 0, rgba(255, 255, 255, 0) 100%);
+  background: -o-linear-gradient(left, #fff 0, rgba(255, 255, 255, 0) 100%);
+  background: -ms-linear-gradient(left, #fff 0, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(to right, #fff 0, rgba(255, 255, 255, 0) 100%);
   position: fixed;
   top: 0;
   left: 0;
@@ -10491,17 +10423,21 @@ span.CodeMirror-selectedtext {
 .editor-toolbar.fullscreen::after {
   width: 20px;
   height: 50px;
-  background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 100%);
-  background: -webkit-gradient(linear, left top, right top, color-stop(0, rgba(255, 255, 255, 0)), color-stop(100%, rgba(255, 255, 255, 1)));
-  background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 100%);
-  background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 100%);
-  background: -ms-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 100%);
-  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 100%);
+  background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0, #fff 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0, rgba(255, 255, 255, 0)), color-stop(100%, #fff));
+  background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0, #fff 100%);
+  background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0, #fff 100%);
+  background: -ms-linear-gradient(left, rgba(255, 255, 255, 0) 0, #fff 100%);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0, #fff 100%);
   position: fixed;
   top: 0;
   right: 0;
   margin: 0;
   padding: 0;
+}
+
+.editor-toolbar.sided--no-fullscreen {
+  width: 100%;
 }
 
 .editor-toolbar .easymde-dropdown, .editor-toolbar button {
@@ -10581,6 +10517,10 @@ span.CodeMirror-selectedtext {
   text-align: right;
 }
 
+.editor-statusbar.sided--no-fullscreen {
+  width: 100%;
+}
+
 .editor-statusbar span {
   display: inline-block;
   min-width: 4em;
@@ -10627,6 +10567,12 @@ span.CodeMirror-selectedtext {
 
 .editor-preview-active-side {
   display: block;
+}
+
+.editor-preview-active-side.sided--no-fullscreen {
+  flex: 1 1 auto;
+  height: auto;
+  position: static;
 }
 
 .editor-preview-active {
@@ -10725,6 +10671,19 @@ span.CodeMirror-selectedtext {
 
 .easymde-dropdown:active .easymde-dropdown-content, .easymde-dropdown:focus .easymde-dropdown-content {
   display: block;
+}
+
+span[data-img-src]::before {
+  content: "";
+  background-image: var(--bg-image);
+  display: block;
+  max-height: 100%;
+  max-width: 100%;
+  background-size: contain;
+  height: 0;
+  padding-top: var(--height);
+  width: var(--width);
+  background-repeat: no-repeat;
 }
 
 .CodeMirror .cm-spell-error:not(.cm-url):not(.cm-comment):not(.cm-tag):not(.cm-word) {

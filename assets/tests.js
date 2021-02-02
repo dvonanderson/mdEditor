@@ -58,11 +58,11 @@ define("mdeditor/tests/acceptance/pods/contact/new-test", ["qunit", "@ember/test
     (0, _qunit.test)('test new contact initial page conditions', async function (assert) {
       assert.expect(5);
       await (0, _testHelpers.visit)('/contact/new');
-      assert.ok((0, _testHelpers.find)('.x-toggle-component.toggle-off'));
+      assert.dom('.x-toggle-component.toggle-off').exists();
       assert.equal((0, _testHelpers.findAll)('.md-input-input input')[0].value.length, 36);
       assert.equal((0, _testHelpers.findAll)('.md-input-input input')[1].value, '');
       assert.equal((0, _testHelpers.findAll)('.md-input-input input')[2].value, '');
-      assert.equal((0, _testHelpers.find)('button.md-form-save').disabled, true); //change route to prevent error during teardown
+      assert.dom('button.md-form-save').isDisabled(); //change route to prevent error during teardown
 
       await (0, _testHelpers.visit)('/');
     });
@@ -72,7 +72,7 @@ define("mdeditor/tests/acceptance/pods/contact/new-test", ["qunit", "@ember/test
       await (0, _testHelpers.fillIn)((0, _testHelpers.findAll)('.md-input-input input')[1], 'Individual Name');
       await (0, _testHelpers.fillIn)((0, _testHelpers.findAll)('.md-input-input input')[2], '');
       assert.equal((0, _testHelpers.findAll)('.md-input-input input')[1].value, 'Individual Name');
-      assert.equal((0, _testHelpers.find)('button.md-form-save').disabled, false); //change route to prevent error during teardown
+      assert.dom('button.md-form-save').isNotDisabled(); //change route to prevent error during teardown
 
       await (0, _testHelpers.visit)('/');
     });
@@ -81,10 +81,10 @@ define("mdeditor/tests/acceptance/pods/contact/new-test", ["qunit", "@ember/test
       await (0, _testHelpers.visit)('/contact/new');
       await (0, _testHelpers.click)('.x-toggle-btn');
       await (0, _testHelpers.fillIn)((0, _testHelpers.findAll)('.md-input-input input')[1], 'Organization Name');
-      assert.ok((0, _testHelpers.find)('.x-toggle-component.toggle-on'));
+      assert.dom('.x-toggle-component.toggle-on').exists();
       assert.equal((0, _testHelpers.findAll)('.md-input-input input')[0].value.length, 36);
       assert.equal((0, _testHelpers.findAll)('.md-input-input input')[1].value, "Organization Name");
-      assert.equal((0, _testHelpers.find)('button.md-form-save').disabled, false); //change route to prevent error during teardown
+      assert.dom('button.md-form-save').isNotDisabled(); //change route to prevent error during teardown
 
       await (0, _testHelpers.visit)('/');
     });
@@ -93,7 +93,7 @@ define("mdeditor/tests/acceptance/pods/contact/new-test", ["qunit", "@ember/test
       await (0, _testHelpers.visit)('/contact/new');
       await (0, _testHelpers.fillIn)((0, _testHelpers.findAll)('.md-input-input input')[0], '');
       await (0, _testHelpers.fillIn)((0, _testHelpers.findAll)('.md-input-input input')[1], 'Individual Name');
-      assert.equal((0, _testHelpers.find)('button.md-form-save').disabled, true); //change route to prevent error during teardown
+      assert.dom('button.md-form-save').isDisabled(); //change route to prevent error during teardown
 
       await (0, _testHelpers.visit)('/');
     });
@@ -155,10 +155,12 @@ define("mdeditor/tests/acceptance/pods/dictionary/new-test", ["qunit", "@ember/t
     (0, _qunit.test)('test new dictionary initial page conditions', async function (assert) {
       assert.expect(4);
       await (0, _testHelpers.visit)('/dictionary/new');
-      assert.equal((0, _testHelpers.find)('.md-input-input input').value, '');
+      assert.dom('.md-input-input input').hasValue('');
       assert.equal((0, _testHelpers.find)('.md-select').innerText, '');
-      assert.equal((0, _testHelpers.find)('button.md-form-save').disabled, true);
-      assert.equal((0, _testHelpers.findAll)('.md-error.ember-tooltip-target').length, 2); //change route to prevent error during teardown
+      assert.dom('button.md-form-save').isDisabled();
+      assert.dom('.md-error.ember-tooltip-target').exists({
+        count: 2
+      }); //change route to prevent error during teardown
 
       await (0, _testHelpers.visit)('/');
     });
@@ -167,10 +169,10 @@ define("mdeditor/tests/acceptance/pods/dictionary/new-test", ["qunit", "@ember/t
       await (0, _testHelpers.visit)('/dictionary/new');
       await (0, _testHelpers.fillIn)('.md-input-input input', 'Dictionary Name');
       await (0, _testSupport.selectChoose)('div.md-select', 'aggregate');
-      assert.equal((0, _testHelpers.find)('.md-input-input input').value, 'Dictionary Name');
+      assert.dom('.md-input-input input').hasValue('Dictionary Name');
       assert.equal((0, _testHelpers.find)('div.md-select .select-value').innerText, 'aggregate');
-      assert.equal((0, _testHelpers.find)('button.md-form-save').disabled, false);
-      assert.equal((0, _testHelpers.findAll)('.md-error.ember-tooltip-target').length, 0); //change route to prevent error during teardown
+      assert.dom('button.md-form-save').isNotDisabled();
+      assert.dom('.md-error.ember-tooltip-target').doesNotExist(); //change route to prevent error during teardown
 
       await (0, _testHelpers.visit)('/');
     });
@@ -178,8 +180,10 @@ define("mdeditor/tests/acceptance/pods/dictionary/new-test", ["qunit", "@ember/t
       assert.expect(2);
       await (0, _testHelpers.visit)('/dictionary/new');
       await (0, _testSupport.selectChoose)('div.md-select', 'aggregate');
-      assert.equal((0, _testHelpers.find)('button.md-form-save').disabled, true);
-      assert.equal((0, _testHelpers.findAll)('.md-error.ember-tooltip-target').length, 1); //change route to prevent error during teardown
+      assert.dom('button.md-form-save').isDisabled();
+      assert.dom('.md-error.ember-tooltip-target').exists({
+        count: 1
+      }); //change route to prevent error during teardown
 
       await (0, _testHelpers.visit)('/');
     });
@@ -187,8 +191,10 @@ define("mdeditor/tests/acceptance/pods/dictionary/new-test", ["qunit", "@ember/t
       assert.expect(2);
       await (0, _testHelpers.visit)('/dictionary/new');
       await (0, _testHelpers.fillIn)('.md-input-input input', 'Dictionary Name');
-      assert.equal((0, _testHelpers.find)('button.md-form-save').disabled, true);
-      assert.equal((0, _testHelpers.findAll)('.md-error.ember-tooltip-target').length, 1); //change route to prevent error during teardown
+      assert.dom('button.md-form-save').isDisabled();
+      assert.dom('.md-error.ember-tooltip-target').exists({
+        count: 1
+      }); //change route to prevent error during teardown
 
       await (0, _testHelpers.visit)('/');
     });
@@ -230,7 +236,7 @@ define("mdeditor/tests/acceptance/pods/record/new-test", ["qunit", "@ember/test-
       await (0, _testHelpers.visit)('/record/new');
       assert.equal((0, _testHelpers.findAll)('.md-input-input input')[0].value, '');
       assert.equal((0, _testHelpers.find)('.md-select').innerText.trim(), 'Choose type of resource');
-      assert.equal((0, _testHelpers.find)('button.md-form-save').disabled, true); //change route to prevent error during teardown
+      assert.dom('button.md-form-save').isDisabled(); //change route to prevent error during teardown
 
       await (0, _testHelpers.visit)('/');
     });
@@ -241,7 +247,7 @@ define("mdeditor/tests/acceptance/pods/record/new-test", ["qunit", "@ember/test-
       await (0, _testSupport.selectChoose)('.md-select', 'attribute');
       assert.equal((0, _testHelpers.findAll)('.md-input-input input')[0].value, 'Record Title');
       assert.equal((0, _testHelpers.find)('div.md-select .select-value').innerText, 'attribute');
-      assert.equal((0, _testHelpers.find)('button.md-form-save').disabled, false); //change route to prevent error during teardown
+      assert.dom('button.md-form-save').isNotDisabled(); //change route to prevent error during teardown
 
       await (0, _testHelpers.visit)('/');
     });
@@ -249,7 +255,7 @@ define("mdeditor/tests/acceptance/pods/record/new-test", ["qunit", "@ember/test-
       assert.expect(1);
       await (0, _testHelpers.visit)('/record/new');
       await (0, _testSupport.selectChoose)('.md-select', 'attribute');
-      assert.equal((0, _testHelpers.find)('button.md-form-save').disabled, true); //change route to prevent error during teardown
+      assert.dom('button.md-form-save').isDisabled(); //change route to prevent error during teardown
 
       await (0, _testHelpers.visit)('/');
     });
@@ -257,8 +263,10 @@ define("mdeditor/tests/acceptance/pods/record/new-test", ["qunit", "@ember/test-
       assert.expect(2);
       await (0, _testHelpers.visit)('/record/new');
       await (0, _testHelpers.fillIn)((0, _testHelpers.findAll)('.md-input-input input')[1], 'Record Title');
-      assert.equal((0, _testHelpers.find)('button.md-form-save').disabled, true);
-      assert.equal((0, _testHelpers.findAll)('.md-error').length, 1); //change route to prevent error during teardown
+      assert.dom('button.md-form-save').isDisabled();
+      assert.dom('.md-error').exists({
+        count: 1
+      }); //change route to prevent error during teardown
 
       await (0, _testHelpers.visit)('/');
     });
@@ -1079,60 +1087,18 @@ define("mdeditor/tests/helpers/create-taxonomy", ["exports"], function (_exports
     return taxonomies;
   }
 });
-define("mdeditor/tests/helpers/data-transfer", ["exports"], function (_exports) {
+define("mdeditor/tests/helpers/data-transfer", ["exports", "ember-drag-drop/test-support/helpers/data-transfer"], function (_exports, _dataTransfer) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = void 0;
-  var c = Ember.Object.extend({
-    getData: function () {
-      return this.get('payload');
-    },
-    setData: function (dataType, payload) {
-      this.set("data", {
-        dataType: dataType,
-        payload: payload
-      });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _dataTransfer.default;
     }
   });
-  c.reopenClass({
-    makeMockEvent: function (payload) {
-      var transfer = this.create({
-        payload: payload
-      });
-      var res = {
-        dataTransfer: transfer
-      };
-
-      res.preventDefault = function () {
-        console.log('prevent default');
-      };
-
-      res.stopPropagation = function () {
-        console.log('stop propagation');
-      };
-
-      return res;
-    },
-    createDomEvent: function (type) {
-      var event = document.createEvent("CustomEvent");
-      event.initCustomEvent(type, true, true, null);
-      event.dataTransfer = {
-        data: {},
-        setData: function (type, val) {
-          this.data[type] = val;
-        },
-        getData: function (type) {
-          return this.data[type];
-        }
-      };
-      return event;
-    }
-  });
-  var _default = c;
-  _exports.default = _default;
 });
 define("mdeditor/tests/helpers/destroy-app", ["exports"], function (_exports) {
   "use strict";
@@ -1155,64 +1121,30 @@ define("mdeditor/tests/helpers/destroy-app", ["exports"], function (_exports) {
     }
   }
 });
-define("mdeditor/tests/helpers/drag-drop", ["exports", "@ember/test-helpers", "mdeditor/tests/helpers/mock-event"], function (_exports, _testHelpers, _mockEvent) {
+define("mdeditor/tests/helpers/drag-drop", ["exports", "ember-drag-drop/test-support/helpers/drag-drop"], function (_exports, _dragDrop) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.drag = drag;
-
-  async function dragOver(dropSelector, moves) {
-    moves = moves || [[{
-      clientX: 1,
-      clientY: 1
-    }, dropSelector]];
-
-    for (const move of moves) {
-      const position = move[0] || false;
-      const selector = move[1] || false;
-      const event = new _mockEvent.default(position);
-      await (0, _testHelpers.triggerEvent)(selector || dropSelector, 'dragover', event);
+  var _exportNames = {};
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _dragDrop.default;
     }
-  }
-
-  async function drop(dragSelector, dragEvent, options) {
-    let {
-      drop: dropSelector,
-      dropEndOptions,
-      dragOverMoves
-    } = options;
-    let dropElement = await (0, _testHelpers.find)(dropSelector);
-
-    if (!dropElement) {
-      throw `There are no drop targets by the given selector: '${dropSelector}'`;
-    }
-
-    await dragOver(dropSelector, dragOverMoves);
-
-    if (options.beforeDrop) {
-      await options.beforeDrop.call();
-    }
-
-    let event = new _mockEvent.default().useDataTransferData(dragEvent);
-    await (0, _testHelpers.triggerEvent)(dropSelector, 'drop', event);
-    return await (0, _testHelpers.triggerEvent)(dragSelector, 'dragend', dropEndOptions);
-  }
-
-  async function drag(dragSelector, options = {}) {
-    let dragEvent = new _mockEvent.default(options.dragStartOptions);
-    await (0, _testHelpers.triggerEvent)(dragSelector, 'mouseover');
-    await (0, _testHelpers.triggerEvent)(dragSelector, 'dragstart', dragEvent);
-
-    if (options.afterDrag) {
-      await options.afterDrag.call();
-    }
-
-    if (options.drop) {
-      await drop(dragSelector, dragEvent, options);
-    }
-  }
+  });
+  Object.keys(_dragDrop).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+    if (key in _exports && _exports[key] === _dragDrop[key]) return;
+    Object.defineProperty(_exports, key, {
+      enumerable: true,
+      get: function () {
+        return _dragDrop[key];
+      }
+    });
+  });
 });
 define("mdeditor/tests/helpers/ember-cli-file-picker", ["exports"], function (_exports) {
   "use strict";
@@ -1263,7 +1195,7 @@ define("mdeditor/tests/helpers/ember-drag-drop", ["exports", "mdeditor/tests/hel
     let dropTarget = document.querySelector(dropCssPath);
 
     if (dropTarget.length === 0) {
-      throw `There are no drop targets by the given selector: '${dropCssPath}'`;
+      throw new Error(`There are no drop targets by the given selector: '${dropCssPath}'`);
     }
 
     Ember.run(() => {
@@ -1355,67 +1287,30 @@ define("mdeditor/tests/helpers/flash-message", ["ember-cli-flash/flash/object"],
 
   });
 });
-define("mdeditor/tests/helpers/mock-event", ["exports"], function (_exports) {
+define("mdeditor/tests/helpers/mock-event", ["exports", "ember-drag-drop/test-support/helpers/mock-event"], function (_exports, _mockEvent) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.createDomEvent = createDomEvent;
-  _exports.default = void 0;
-
-  class DataTransfer {
-    constructor() {
-      this.data = {};
+  var _exportNames = {};
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _mockEvent.default;
     }
-
-    setData(type, value) {
-      this.data[type] = value;
-      return this;
-    }
-
-    getData(type = "Text") {
-      return this.data[type];
-    }
-
-    setDragImage() {}
-
-  }
-
-  class MockEvent {
-    constructor(options = {}) {
-      this.dataTransfer = new DataTransfer();
-      this.dataTransfer.setData('Text', options.dataTransferData);
-      this.setProperties(options);
-    }
-
-    useDataTransferData(otherEvent) {
-      this.dataTransfer.setData('Text', otherEvent.dataTransfer.getData());
-      return this;
-    }
-
-    setProperties(props) {
-      for (let prop in props) {
-        this[prop] = props[prop];
+  });
+  Object.keys(_mockEvent).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+    if (key in _exports && _exports[key] === _mockEvent[key]) return;
+    Object.defineProperty(_exports, key, {
+      enumerable: true,
+      get: function () {
+        return _mockEvent[key];
       }
-
-      return this;
-    }
-
-    preventDefault() {}
-
-    stopPropagation() {}
-
-  }
-
-  _exports.default = MockEvent;
-
-  function createDomEvent(type) {
-    let event = document.createEvent("CustomEvent");
-    event.initCustomEvent(type, true, true, null);
-    event.dataTransfer = new DataTransfer();
-    return event;
-  }
+    });
+  });
 });
 define("mdeditor/tests/helpers/modal-asserts", ["exports", "jquery", "qunit"], function (_exports, _jquery, _qunit) {
   "use strict";
@@ -1510,16 +1405,28 @@ define("mdeditor/tests/integration/components/feature-form-test", ["@ember/test-
           description: 'foobar'
         }
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "zqCRS9hC",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"feature-form\",null,[[\"model\"],[[24,[\"model\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{feature-form model=model}}
+      */
+      {
+        "id": "axo9oJLQ",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"feature-form\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.ember-view').textContent.replace(/[ \n]+/g, '|').trim(), '|Feature|ID|Name|Description|Other|Properties|read-only|Name|Value|None|found.|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "von06tDY",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"feature-form\",null,[[\"model\"],[[24,[\"model\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#feature-form model=model}}
+              template block text
+            {{/feature-form}}
+          
+      */
+      {
+        "id": "GSum4Rv2",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"feature-form\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.ember-view').textContent.replace(/[ \n]+/g, '|').trim(), '|Feature|ID|Name|Description|Other|Properties|read-only|Name|Value|None|found.|template|block|text|');
@@ -1536,9 +1443,28 @@ define("mdeditor/tests/integration/components/feature-group-test", ["@ember/test
       // Handle any actions with this.on('myAction', function(val) { ... });
       this.set('layers', (0, _createMapLayer.default)(2)); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "mSlXIeXa",
-        "block": "{\"symbols\":[\"l\"],\"statements\":[[0,\"\\n\"],[4,\"leaflet-draw\",null,[[\"lat\",\"lng\",\"zoom\"],[0,0,2]],{\"statements\":[[4,\"layer-group\",null,[[\"name\",\"baselayer\",\"default\"],[\"Terrain\",true,true]],{\"statements\":[[0,\"          \"],[1,[28,\"tile-layer\",null,[[\"url\",\"attribution\"],[\"http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png\",[24,[\"mapAttribution\"]]]]],false],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"\\n\"],[4,\"feature-group\",null,[[\"name\",\"default\"],[\"Extents\",true]],{\"statements\":[[4,\"each\",[[24,[\"layers\"]]],null,{\"statements\":[[0,\"            \"],[1,[28,\"geojson-layer\",null,[[\"geoJSON\",\"draw\"],[[23,1,[]],true]]],false],[0,\"\\n\"]],\"parameters\":[1]},null]],\"parameters\":[]},null],[0,\"\\n        \"],[1,[22,\"layer-control\"],false],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#leaflet-draw lat=0 lng=0 zoom=2}}
+              {{!-- Specify child layer components here --}}
+              {{#layer-group name="Terrain" baselayer=true default=true}}
+                {{tile-layer url="http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png" attribution=mapAttribution}}
+              {{/layer-group}}
+      
+              {{#feature-group name="Extents" default=true}}
+                {{#each layers as |l|}}
+                  {{geojson-layer geoJSON=l draw=true}}
+                {{/each}}
+              {{/feature-group}}
+      
+              {{layer-control}}
+            {{/leaflet-draw}}
+          
+      */
+      {
+        "id": "h09n+A9t",
+        "block": "{\"symbols\":[\"l\"],\"statements\":[[2,\"\\n\"],[6,[37,9],null,[[\"lat\",\"lng\",\"zoom\"],[0,0,2]],[[\"default\"],[{\"statements\":[[6,[37,6],null,[[\"name\",\"baselayer\",\"default\"],[\"Terrain\",true,true]],[[\"default\"],[{\"statements\":[[2,\"          \"],[1,[30,[36,5],null,[[\"url\",\"attribution\"],[\"http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png\",[35,4]]]]],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"\\n\"],[6,[37,7],null,[[\"name\",\"default\"],[\"Extents\",true]],[[\"default\"],[{\"statements\":[[6,[37,3],[[30,[36,2],[[30,[36,2],[[35,1]],null]],null]],null,[[\"default\"],[{\"statements\":[[2,\"            \"],[1,[30,[36,0],null,[[\"geoJSON\",\"draw\"],[[32,1],true]]]],[2,\"\\n\"]],\"parameters\":[1]}]]]],\"parameters\":[]}]]],[2,\"\\n        \"],[1,[34,8]],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"geojson-layer\",\"layers\",\"-track-array\",\"each\",\"mapAttribution\",\"tile-layer\",\"layer-group\",\"feature-group\",\"layer-control\",\"leaflet-draw\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.leaflet-container').innerText.trim().replace(/\n/g, '|'), '+|−|Draw a polyline|Draw a polygon|Draw a rectangle|Draw a marker|3000 km|2000 mi|Leaflet');
@@ -1566,9 +1492,21 @@ define("mdeditor/tests/integration/components/feature-table-test", ["@ember/test
 
       this.set('data', (0, _createMapLayer.default)(2));
       assert.expect(4);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "+59K97qw",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"feature-table\",null,[[\"data\",\"columnComponents\"],[[24,[\"data\",\"features\"]],[28,\"hash\",null,[[\"leaflet-table-row-actions\"],[[28,\"component\",[\"leaflet-table-row-actions\"],[[\"showForm\",\"zoomTo\",\"deleteFeature\"],[[24,[\"showForm\"]],[24,[\"zoomTo\"]],[24,[\"deleteFeature\"]]]]]]]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{feature-table
+            data=data.features
+            columnComponents=(hash
+              leaflet-table-row-actions=(component "leaflet-table-row-actions"
+              showForm=showForm
+              zoomTo=zoomTo
+              deleteFeature=deleteFeature
+            ))
+          }}
+      */
+      {
+        "id": "FjpGw4XW",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,6],null,[[\"data\",\"columnComponents\"],[[35,5,[\"features\"]],[30,[36,4],null,[[\"leaflet-table-row-actions\"],[[30,[36,3],[\"leaflet-table-row-actions\"],[[\"showForm\",\"zoomTo\",\"deleteFeature\"],[[35,2],[35,1],[35,0]]]]]]]]]]]],\"hasEval\":false,\"upvars\":[\"deleteFeature\",\"zoomTo\",\"showForm\",\"component\",\"hash\",\"data\",\"feature-table\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.feature-table').textContent.replace(/[\s, \t]/g, '\n').trim().replace(/[ +\n]+/g, '|'), 'Search:|Columns|Show|All|Hide|All|Restore|Defaults|ID|Name|Description|ID|Name|Description|ID|Name|Description|1|Feature|1|2|Feature|2|Show|1|-|2|of|2|Clear|all|filters|Rows:|10|25|50|500|Page:|1');
@@ -1588,9 +1526,28 @@ define("mdeditor/tests/integration/components/geojson-layer-test", ["@ember/test
       // Handle any actions with this.on('myAction', function(val) { ... });
       this.set('layers', (0, _createMapLayer.default)(2)); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "V09y6BZy",
-        "block": "{\"symbols\":[\"l\"],\"statements\":[[0,\"\\n\"],[4,\"leaflet-draw\",null,[[\"lat\",\"lng\",\"zoom\"],[0,0,2]],{\"statements\":[[4,\"layer-group\",null,[[\"name\",\"baselayer\",\"default\"],[\"Terrain\",true,true]],{\"statements\":[[0,\"          \"],[1,[28,\"tile-layer\",null,[[\"url\",\"attribution\"],[\"http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png\",[24,[\"mapAttribution\"]]]]],false],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"\\n\"],[4,\"feature-group\",null,[[\"name\",\"default\"],[\"Extents\",true]],{\"statements\":[[4,\"each\",[[24,[\"layers\"]]],null,{\"statements\":[[0,\"            \"],[1,[28,\"geojson-layer\",null,[[\"geoJSON\",\"draw\",\"editLayers\"],[[23,1,[]],true,[24,[\"layers\"]]]]],false],[0,\"\\n\"]],\"parameters\":[1]},null]],\"parameters\":[]},null],[0,\"\\n        \"],[1,[22,\"layer-control\"],false],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#leaflet-draw lat=0 lng=0 zoom=2}}
+              {{!-- Specify child layer components here --}}
+              {{#layer-group name="Terrain" baselayer=true default=true}}
+                {{tile-layer url="http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png" attribution=mapAttribution}}
+              {{/layer-group}}
+      
+              {{#feature-group name="Extents" default=true}}
+                {{#each layers as |l|}}
+                  {{geojson-layer geoJSON=l draw=true editLayers=layers}}
+                {{/each}}
+              {{/feature-group}}
+      
+              {{layer-control}}
+            {{/leaflet-draw}}
+          
+      */
+      {
+        "id": "coCU0Pd4",
+        "block": "{\"symbols\":[\"l\"],\"statements\":[[2,\"\\n\"],[6,[37,9],null,[[\"lat\",\"lng\",\"zoom\"],[0,0,2]],[[\"default\"],[{\"statements\":[[6,[37,6],null,[[\"name\",\"baselayer\",\"default\"],[\"Terrain\",true,true]],[[\"default\"],[{\"statements\":[[2,\"          \"],[1,[30,[36,5],null,[[\"url\",\"attribution\"],[\"http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png\",[35,4]]]]],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"\\n\"],[6,[37,7],null,[[\"name\",\"default\"],[\"Extents\",true]],[[\"default\"],[{\"statements\":[[6,[37,3],[[30,[36,2],[[30,[36,2],[[35,0]],null]],null]],null,[[\"default\"],[{\"statements\":[[2,\"            \"],[1,[30,[36,1],null,[[\"geoJSON\",\"draw\",\"editLayers\"],[[32,1],true,[35,0]]]]],[2,\"\\n\"]],\"parameters\":[1]}]]]],\"parameters\":[]}]]],[2,\"\\n        \"],[1,[34,8]],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"layers\",\"geojson-layer\",\"-track-array\",\"each\",\"mapAttribution\",\"tile-layer\",\"layer-group\",\"feature-group\",\"layer-control\",\"leaflet-draw\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.leaflet-container').innerText.trim().replace(/\n/g, '|'), '+|−|Draw a polyline|Draw a polygon|Draw a rectangle|Draw a marker|3000 km|2000 mi|Leaflet');
@@ -1607,9 +1564,22 @@ define("mdeditor/tests/integration/components/leaflet-draw-test", ["@ember/test-
       // Handle any actions with this.on('myAction', function(val) { ... });
       this.set('layers', (0, _createMapLayer.default)(2)); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "RlgiTreF",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"leaflet-draw\",null,[[\"lat\",\"lng\",\"zoom\"],[0,0,2]],{\"statements\":[[4,\"layer-group\",null,[[\"name\",\"baselayer\",\"default\"],[\"Terrain\",true,true]],{\"statements\":[[0,\"          \"],[1,[28,\"tile-layer\",null,[[\"url\",\"attribution\"],[\"http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png\",[24,[\"mapAttribution\"]]]]],false],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"\\n        \"],[1,[22,\"layer-control\"],false],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#leaflet-draw lat=0 lng=0 zoom=2}}
+              {{!-- Specify child layer components here --}}
+              {{#layer-group name="Terrain" baselayer=true default=true}}
+                {{tile-layer url="http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png" attribution=mapAttribution}}
+              {{/layer-group}}
+      
+              {{layer-control}}
+            {{/leaflet-draw}}
+          
+      */
+      {
+        "id": "KWvsyNAa",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,4],null,[[\"lat\",\"lng\",\"zoom\"],[0,0,2]],[[\"default\"],[{\"statements\":[[6,[37,2],null,[[\"name\",\"baselayer\",\"default\"],[\"Terrain\",true,true]],[[\"default\"],[{\"statements\":[[2,\"          \"],[1,[30,[36,1],null,[[\"url\",\"attribution\"],[\"http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png\",[35,0]]]]],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"\\n        \"],[1,[34,3]],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"mapAttribution\",\"tile-layer\",\"layer-group\",\"layer-control\",\"leaflet-draw\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.leaflet-container').innerText.trim().replace(/\n/g, '|'), '+|−|Draw a polyline|Draw a polygon|Draw a rectangle|Draw a marker|3000 km|2000 mi|Leaflet');
@@ -1630,12 +1600,22 @@ define("mdeditor/tests/integration/components/leaflet-table-row-actions-test", [
 
       this.deleteFeature = function () {};
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "wm33aNOw",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"leaflet-table-row-actions\",null,[[\"zoomTo\",\"showForm\",\"deleteFeature\"],[[24,[\"zoomTo\"]],[24,[\"showForm\"]],[24,[\"deleteFeature\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{leaflet-table-row-actions
+            zoomTo=zoomTo
+            showForm=showForm
+            deleteFeature=deleteFeature
+          }}
+      */
+      {
+        "id": "tb7O7Uuy",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,3],null,[[\"zoomTo\",\"showForm\",\"deleteFeature\"],[[35,2],[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"deleteFeature\",\"showForm\",\"zoomTo\",\"leaflet-table-row-actions\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.findAll)('button').length, 3);
+      assert.dom('button').exists({
+        count: 3
+      });
     });
   });
 });
@@ -1647,12 +1627,18 @@ define("mdeditor/tests/integration/components/leaflet-table-row-test", ["@ember/
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "P92N9X7U",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"leaflet-table-row\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{leaflet-table-row}}
+      */
+      {
+        "id": "KbmpM+Fp",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"leaflet-table-row\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.findAll)('tr').length, 1);
+      assert.dom('tr').exists({
+        count: 1
+      });
     });
   });
 });
@@ -1665,9 +1651,14 @@ define("mdeditor/tests/integration/components/leaflet-table-test", ["@ember/test
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
       this.set('layers', (0, _createMapLayer.default)(2));
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "tWrXLNFF",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"leaflet-table\",null,[[\"layers\",\"resizeDebouncedEventsEnabled\"],[[24,[\"layers\",\"features\"]],true]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{leaflet-table layers=layers.features
+            resizeDebouncedEventsEnabled=true}}
+      */
+      {
+        "id": "U73mcPbv",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"layers\",\"resizeDebouncedEventsEnabled\"],[[35,0,[\"features\"]],true]]]]],\"hasEval\":false,\"upvars\":[\"layers\",\"leaflet-table\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.feature-table').textContent.replace(/[\s\t]/g, '\n').trim().replace(/[ \n]+/g, '|'), 'ID|Name|Description|ID|Name|Description|1|Feature|1|2|Feature|2|Show|1|-|2|of|2|Clear|all|filters|Rows:|10|25|50|500|Page:|1');
@@ -1700,12 +1691,18 @@ define("mdeditor/tests/integration/components/sb-publisher-test", ["@ember/test-
         }
       }));
       this.set('records', (0, _createRecord.default)(3));
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "q4nF2V5F",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"sb-publisher\",null,[[\"config\",\"settings\",\"records\"],[[24,[\"config\"]],[24,[\"settings\"]],[24,[\"records\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{sb-publisher config=config settings=settings records=records}}
+      */
+      {
+        "id": "KN/a1uRU",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,3],null,[[\"config\",\"settings\",\"records\"],[[35,2],[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"records\",\"settings\",\"config\",\"sb-publisher\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.findAll)('.tree-leaf').length, 4);
+      assert.dom('.tree-leaf').exists({
+        count: 4
+      });
     });
   });
 });
@@ -1717,12 +1714,18 @@ define("mdeditor/tests/integration/components/sb-settings-test", ["@ember/test-h
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "X4SFMJyq",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"sb-settings\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{sb-settings}}
+      */
+      {
+        "id": "MNqa/APK",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"sb-settings\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.findAll)('input').length, 1);
+      assert.dom('input').exists({
+        count: 1
+      });
     });
   });
 });
@@ -1752,9 +1755,13 @@ define("mdeditor/tests/integration/components/sb-tree-label-test", ["@ember/test
         type: 'application',
         uuid: '4ebb8fe5-f88f-49a4-9964-ff5395e234b8'
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "37dk+wnz",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"sb-tree-label\",null,[[\"model\"],[[24,[\"model\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{sb-tree-label model=model}}
+      */
+      {
+        "id": "gxBfNF8r",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"sb-tree-label\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.tree-cell').innerText.trim(), 'Data Management Strategy : test Parent Id: None --');
@@ -1807,9 +1814,13 @@ define("mdeditor/tests/integration/components/sb-tree-test", ["@ember/test-helpe
         type: 'application',
         uuid: '4ebb8fe5-f88f-49a4-9964-ff5395e234b8'
       }]);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "NDA/Pok4",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"sb-tree\",null,[[\"model\",\"labelComponent\"],[[24,[\"model\"]],\"sb-tree-label\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{sb-tree model=model labelComponent="sb-tree-label"}}
+      */
+      {
+        "id": "KggtoQtm",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"labelComponent\"],[[35,0],\"sb-tree-label\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"sb-tree\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.tree-trunk').innerText.replace(/[\s\t]/g, '\n').trim().replace(/[ \n]+/g, '|'), 'Data|Management|Strategy|:|test|?|Child|1|:|test1|Parent|Id:|None|--|?');
@@ -1852,17 +1863,40 @@ define("mdeditor/tests/integration/components/tree-branch-test", ["@ember/test-h
       this.set('select', function () {
         assert.ok(true, 'called select');
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "OJKnbKHR",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n      \"],[1,[28,\"tree-branch\",null,[[\"model\",\"select\",\"selected\",\"nodeDepth\",\"path\"],[[24,[\"model\"]],[24,[\"select\"]],[24,[\"selected\"]],3,[24,[\"path\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{tree-branch model=model
+                select=select
+                selected=selected
+                nodeDepth=3
+                path=path
+            }}
+      */
+      {
+        "id": "eAw3JjkA",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n      \"],[1,[30,[36,4],null,[[\"model\",\"select\",\"selected\",\"nodeDepth\",\"path\"],[[35,3],[35,2],[35,1],3,[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"path\",\"selected\",\"select\",\"model\",\"tree-branch\"]}",
         "meta": {}
       }));
       assert.expect(3);
       assert.equal((0, _testHelpers.find)('.tree-branch').innerText.trim(), 'foo1label'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "S915ZCbU",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"tree-branch\",null,[[\"model\",\"select\",\"selected\",\"nodeDepth\",\"path\"],[[24,[\"model\"]],[24,[\"select\"]],[24,[\"selected\"]],3,[24,[\"path\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#tree-branch model=model
+              select=select
+              selected=selected
+              nodeDepth=3
+              path=path
+            }}
+              template block text
+            {{/tree-branch}}
+          
+      */
+      {
+        "id": "Ifzz7czP",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,4],null,[[\"model\",\"select\",\"selected\",\"nodeDepth\",\"path\"],[[35,3],[35,2],[35,1],3,[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"path\",\"selected\",\"select\",\"model\",\"tree-branch\"]}",
         "meta": {}
       }));
       await (0, _testHelpers.click)('.tree-leaf .toggle-icon');
@@ -1890,16 +1924,28 @@ define("mdeditor/tests/integration/components/tree-label-test", ["@ember/test-he
         uuid: 'foo1'
       }); // Handle any actions with this.on('myAction', function(val) { ... });
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "fkICw9HE",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"tree-label\",null,[[\"model\"],[[24,[\"model\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{tree-label model=model}}
+      */
+      {
+        "id": "DKW/F/8i",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"tree-label\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.tree-label-text').innerText.trim(), 'foo1label'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "udnZOytJ",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"tree-label\",null,[[\"model\"],[[24,[\"model\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#tree-label model=model}}
+              template block text
+            {{/tree-label}}
+          
+      */
+      {
+        "id": "Rsk6LM4w",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"tree-label\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.tree-label-text').innerText.trim(), 'foo1label');
@@ -1941,21 +1987,43 @@ define("mdeditor/tests/integration/components/tree-leaf-test", ["@ember/test-hel
       this.set('select', function () {
         assert.ok(true, 'called select');
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "quSG1G17",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"tree-leaf\",null,[[\"model\",\"inTree\",\"select\",\"selected\",\"nodeDepth\",\"nodePath\"],[[24,[\"model\"]],true,[24,[\"select\"]],[24,[\"selected\"]],3,[24,[\"nodePath\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{tree-leaf model=model
+            inTree=true
+            select=select
+            selected=selected
+            nodeDepth=3
+            nodePath=nodePath
+          }}
+      */
+      {
+        "id": "bns0zg2f",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,4],null,[[\"model\",\"inTree\",\"select\",\"selected\",\"nodeDepth\",\"nodePath\"],[[35,3],true,[35,2],[35,1],3,[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"nodePath\",\"selected\",\"select\",\"model\",\"tree-leaf\"]}",
         "meta": {}
       }));
       await (0, _testHelpers.click)('.toggle-icon');
       assert.equal((0, _testHelpers.find)('.tree-leaf').innerText.trim(), 'foo1label'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "wcFrt4pB",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"tree-leaf\",null,[[\"model\",\"inTree\",\"select\",\"selected\"],[[24,[\"model\"]],false,[24,[\"select\"]],[24,[\"selected\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#tree-leaf model=model
+              inTree=false
+              select=select
+              selected=selected
+            }}
+              template block text
+            {{/tree-leaf}}
+          
+      */
+      {
+        "id": "cc1XJvU5",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,3],null,[[\"model\",\"inTree\",\"select\",\"selected\"],[[35,2],false,[35,1],[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"selected\",\"select\",\"model\",\"tree-leaf\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.tree-leaf').innerText.trim(), 'foo1label');
-      assert.equal((0, _testHelpers.findAll)('.tree-indent').length, 0, 'not in tree');
+      assert.dom('.tree-indent').doesNotExist('not in tree');
     });
   });
 });
@@ -1990,18 +2058,41 @@ define("mdeditor/tests/integration/components/tree-search-test", ["@ember/test-h
         assert.ok(true, 'called select');
       });
       this.set('searchString', 'foo');
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "uGb817V1",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n      \"],[1,[28,\"tree-search\",null,[[\"model\",\"selected\",\"select\",\"searchString\",\"exactMatch\"],[[24,[\"model\"]],[24,[\"selected\"]],[24,[\"select\"]],[24,[\"searchString\"]],[24,[\"exactMatch\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{tree-search
+              model=model
+              selected=selected
+              select=select
+              searchString=searchString
+              exactMatch=exactMatch
+            }}
+      */
+      {
+        "id": "mGVn+CPi",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n      \"],[1,[30,[36,5],null,[[\"model\",\"selected\",\"select\",\"searchString\",\"exactMatch\"],[[35,4],[35,3],[35,2],[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"exactMatch\",\"searchString\",\"select\",\"selected\",\"model\",\"tree-search\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.tree-search').innerText.replace(/[ \n]+/g, '|'), 'Search|Tree:|Exact|Match|3|matches|found.|barfoo1label|foo1label|foo2label', 'search OK');
       this.set('exactMatch', true);
       assert.equal((0, _testHelpers.find)('.tree-search').innerText.replace(/[ \n]+/g, '|'), 'Search|Tree:|Exact|Match|2|matches|found.|foo1label|foo2label', 'exact match'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "1QAiNJP7",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"tree-search\",null,[[\"model\",\"selected\",\"select\"],[[24,[\"model\"]],[24,[\"selected\"]],[24,[\"select\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#tree-search
+              model=model
+              selected=selected
+              select=select
+            }}
+              template block text
+            {{/tree-search}}
+          
+      */
+      {
+        "id": "glxnrfT5",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,3],null,[[\"model\",\"selected\",\"select\"],[[35,2],[35,1],[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"select\",\"selected\",\"model\",\"tree-search\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.tree-search').innerText.replace(/[ \n]+/g, '|'), 'Search|Tree:|Exact|Match|template|block|text', 'block');
@@ -2039,42 +2130,43 @@ define("mdeditor/tests/integration/components/tree-view-test", ["@ember/test-hel
       }); // Handle any actions with this.on('myAction', function(val) { ... });
 
       assert.expect(7);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "UwSxCJQ6",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"tree-view\",null,[[\"model\",\"selected\"],[[24,[\"model\"]],[24,[\"selected\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{tree-view model=model selected=selected}}
+      */
+      {
+        "id": "Rckdh0yQ",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"model\",\"selected\"],[[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"selected\",\"model\",\"tree-view\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.tree-trunk').innerText.replace(/[\s\n]+/g, '|'), '|bar1label|foo1label');
-      assert.ok((0, _testHelpers.find)('.tree-leaf').classList.contains('tree-highlight'), 'selected leaf highlighted');
-      assert.equal((0, _testHelpers.findAll)('.tree-leaf .expand-icon').length, 1, 'node expand icon rendered');
+      assert.dom('.tree-leaf').hasClass('tree-highlight', 'selected leaf highlighted');
+      assert.dom('.tree-leaf .expand-icon').exists({
+        count: 1
+      }, 'node expand icon rendered');
       await (0, _testHelpers.click)((0, _testHelpers.find)('.expand-icon'));
-      assert.equal((0, _testHelpers.findAll)('.tree-leaf').length, 3, 'node expanded'); // Template block usage:
+      assert.dom('.tree-leaf').exists({
+        count: 3
+      }, 'node expanded'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "OHjnoj3O",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"tree-view\",null,[[\"model\",\"select\"],[[24,[\"model\"]],[24,[\"select\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#tree-view model=model select=select}}
+              template block text
+            {{/tree-view}}
+          
+      */
+      {
+        "id": "tD9QrX9X",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,2],null,[[\"model\",\"select\"],[[35,1],[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"select\",\"model\",\"tree-view\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.tree-trunk').innerText.replace(/[\s\n]+/g, '|'), '|bar1label|foo1label|foo2label');
       await (0, _testHelpers.click)((0, _testHelpers.findAll)('.tree-leaf')[1]);
-      assert.equal((0, _testHelpers.findAll)('.tree-leaf.tree-highlight').length, 2, 'node selected');
-    });
-  });
-});
-define("mdeditor/tests/integration/helpers/object-is-empty-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
-  "use strict";
-
-  (0, _qunit.module)('Integration | Helper | object-is-empty', function (hooks) {
-    (0, _emberQunit.setupRenderingTest)(hooks); // Replace this with your real tests.
-
-    (0, _qunit.test)('it renders', async function (assert) {
-      this.set('inputValue', '1234');
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "GSagCU8j",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object-is-empty\",[[24,[\"inputValue\"]]],null],false]],\"hasEval\":false}",
-        "meta": {}
-      }));
-      assert.equal(this.element.textContent.trim(), '1234');
+      assert.dom('.tree-leaf.tree-highlight').exists({
+        count: 2
+      }, 'node selected');
     });
   });
 });
@@ -2086,12 +2178,16 @@ define("mdeditor/tests/integration/helpers/present-test", ["@ember/test-helpers"
 
     (0, _qunit.test)('it renders', async function (assert) {
       this.set('inputValue', '1234');
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "wL4s7BkC",
-        "block": "{\"symbols\":[],\"statements\":[[7,\"section\",true],[8],[1,[28,\"present\",[[24,[\"inputValue\"]]],null],false],[9]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        <section>{{present inputValue}}</section>
+      */
+      {
+        "id": "OL2BH1DQ",
+        "block": "{\"symbols\":[],\"statements\":[[10,\"section\"],[12],[1,[30,[36,1],[[35,0]],null]],[13]],\"hasEval\":false,\"upvars\":[\"inputValue\",\"present\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('section').textContent.trim(), 'true');
+      assert.dom('section').hasText('true');
     });
   });
 });
@@ -2105,12 +2201,16 @@ define("mdeditor/tests/integration/helpers/word-limit-test", ["@ember/test-helpe
       this.set('inputValue', `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum, neque
       nec sagittis maximus, lacus lectus placerat libero, finibus varius arcu enim
       eget ante. Duis.`);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "Xr1JHQPo",
-        "block": "{\"symbols\":[],\"statements\":[[7,\"section\",true],[8],[1,[28,\"word-limit\",[[24,[\"inputValue\"]]],[[\"limit\",\"wordLength\"],[20,10]]],false],[9]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        <section>{{word-limit inputValue limit=20 wordLength=10}}</section>
+      */
+      {
+        "id": "/o4FWcrT",
+        "block": "{\"symbols\":[],\"statements\":[[10,\"section\"],[12],[1,[30,[36,1],[[35,0]],[[\"limit\",\"wordLength\"],[20,10]]]],[13]],\"hasEval\":false,\"upvars\":[\"inputValue\",\"word-limit\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('section').textContent.trim(), `Lorem ipsum dolor sit amet,  consectetu... adipiscing...elit. Etiam rutrum, neque nec sagittis maximus, lacus lectus placerat libero, finibus varius ...`);
+      assert.dom('section').hasText(`Lorem ipsum dolor sit amet,  consectetu... adipiscing...elit. Etiam rutrum, neque nec sagittis maximus, lacus lectus placerat libero, finibus varius ...`);
     });
   });
 });
@@ -2122,9 +2222,17 @@ define("mdeditor/tests/integration/pods/components/control/md-alert-table/compon
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.set('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "db5ZT1dX",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-alert-table\",null,[[\"title\",\"required\",\"tipMessage\"],[\"Foos\",true,\"Biz is baz.\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-alert-table
+            title="Foos"
+            required=true
+            tipMessage="Biz is baz."
+          }}
+      */
+      {
+        "id": "KuSRJ3SK",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"title\",\"required\",\"tipMessage\"],[\"Foos\",true,\"Biz is baz.\"]]]]],\"hasEval\":false,\"upvars\":[\"control/md-alert-table\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), 'No|Foos|found.|Add|Foo|');
@@ -2134,9 +2242,17 @@ define("mdeditor/tests/integration/pods/components/control/md-alert-table/compon
       });
       assert.dom('.md-alert-table.alert-danger').exists(); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "QiwhbZXM",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"control/md-alert-table\",null,[[\"title\"],[\"Bars\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#control/md-alert-table title="Bars"}}
+              template block text
+            {{/control/md-alert-table}}
+          
+      */
+      {
+        "id": "deyHWvPN",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"title\"],[\"Bars\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-alert-table\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|No|Bars|found.|Add|Bar|template|block|text|');
@@ -2151,16 +2267,28 @@ define("mdeditor/tests/integration/pods/components/control/md-button-confirm/com
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "tqvrE4qs",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"control/md-button-confirm\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-button-confirm}}
+      */
+      {
+        "id": "vqyLJr0w",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"control/md-button-confirm\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('button').innerText.trim(), ''); // Template block usage:" + EOL +
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "RGc0SS/2",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"control/md-button-confirm\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#control/md-button-confirm}}
+              template block text
+            {{/control/md-button-confirm}}
+          
+      */
+      {
+        "id": "Nqy3o4dA",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-button-confirm\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('button').innerText.trim(), 'template block text');
@@ -2169,9 +2297,18 @@ define("mdeditor/tests/integration/pods/components/control/md-button-confirm/com
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
       // Template block usage:" + EOL +
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "FyQue1/5",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n      \"],[7,\"a\",true],[10,\"href\",\"#\"],[8],[0,\"Test\"],[9],[0,\"\\n\"],[4,\"control/md-button-confirm\",null,null,{\"statements\":[[0,\"        Test\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            <a href="#">Test</a>
+            {{#control/md-button-confirm}}
+              Test
+            {{/control/md-button-confirm}}
+          
+      */
+      {
+        "id": "SXnqJKu1",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n      \"],[10,\"a\"],[14,6,\"#\"],[12],[2,\"Test\"],[13],[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        Test\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-button-confirm\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('button').innerText.trim(), 'Test', 'renders button');
@@ -2187,9 +2324,17 @@ define("mdeditor/tests/integration/pods/components/control/md-button-confirm/com
         assert.ok(type, `${type} called`);
       }); // Template block usage:" + EOL +
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "cwKh8wcL",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"control/md-button-confirm\",null,[[\"onConfirm\"],[[28,\"action\",[[23,0,[]],[24,[\"externalAction\"]],\"onConfirm\"],null]]],{\"statements\":[[0,\"        Test\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#control/md-button-confirm onConfirm=(action externalAction "onConfirm")}}
+              Test
+            {{/control/md-button-confirm}}
+          
+      */
+      {
+        "id": "8WdiqB0S",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,2],null,[[\"onConfirm\"],[[30,[36,1],[[32,0],[35,0],\"onConfirm\"],null]]],[[\"default\"],[{\"statements\":[[2,\"        Test\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"externalAction\",\"action\",\"control/md-button-confirm\"]}",
         "meta": {}
       }));
       await (0, _testHelpers.click)('button');
@@ -2206,16 +2351,28 @@ define("mdeditor/tests/integration/pods/components/control/md-button-modal/compo
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "ZSKm2QLB",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"control/md-button-modal\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-button-modal}}
+      */
+      {
+        "id": "co3jhzPw",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"control/md-button-modal\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-button-modal').innerText.trim(), ''); // Template block usage:" + EOL +
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "F6rZnLP/",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"control/md-button-modal\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#control/md-button-modal}}
+              template block text
+            {{/control/md-button-modal}}
+          
+      */
+      {
+        "id": "4CFZa0yj",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-button-modal\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-button-modal').innerText.trim(), 'template block text', 'block');
@@ -2228,18 +2385,39 @@ define("mdeditor/tests/integration/pods/components/control/md-button-modal/compo
       this.set('externalAction', type => {
         assert.ok(type, `${type} called`);
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "7TD1VSEX",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n      \"],[7,\"div\",true],[10,\"id\",\"test-div\"],[8],[9],[0,\"\\n      \"],[4,\"control/md-button-modal\",null,[[\"message\",\"onConfirm\",\"onCancel\"],[\"Hello\",[28,\"action\",[[23,0,[]],[24,[\"externalAction\"]],\"confirm\"],null],[28,\"action\",[[23,0,[]],[24,[\"externalAction\"]],\"cancel\"],null]]],{\"statements\":[[0,\" Test\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            <div id='test-div'></div>
+            {{#control/md-button-modal
+                message="Hello" onConfirm=(action externalAction "confirm")
+                onCancel=(action externalAction "cancel")}} Test
+            {{/control/md-button-modal}}
+          
+      */
+      {
+        "id": "GyekW9N+",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n      \"],[10,\"div\"],[14,1,\"test-div\"],[12],[13],[2,\"\\n      \"],[6,[37,2],null,[[\"message\",\"onConfirm\",\"onCancel\"],[\"Hello\",[30,[36,1],[[32,0],[35,0],\"confirm\"],null],[30,[36,1],[[32,0],[35,0],\"cancel\"],null]]],[[\"default\"],[{\"statements\":[[2,\" Test\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"externalAction\",\"action\",\"control/md-button-modal\"]}",
         "meta": {}
       })); // click the button
 
       await (0, _testHelpers.click)('.md-button-modal');
       assert.isPresentOnce('.md-modal-overlay');
       await (0, _testHelpers.clearRender)();
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "A8QcUo7q",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n      \"],[7,\"div\",true],[10,\"id\",\"test-div\"],[8],[9],[0,\"\\n      \"],[4,\"control/md-button-modal\",null,[[\"renderInPlace\",\"message\",\"onConfirm\",\"onCancel\"],[true,\"Hello\",[28,\"action\",[[23,0,[]],[24,[\"externalAction\"]],\"confirm\"],null],[28,\"action\",[[23,0,[]],[24,[\"externalAction\"]],\"cancel\"],null]]],{\"statements\":[[0,\" Test\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            <div id='test-div'></div>
+            {{#control/md-button-modal
+              renderInPlace=true
+              message="Hello" onConfirm=(action externalAction "confirm")
+              onCancel=(action externalAction "cancel")}} Test
+            {{/control/md-button-modal}}
+          
+      */
+      {
+        "id": "uFVo2FHw",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n      \"],[10,\"div\"],[14,1,\"test-div\"],[12],[13],[2,\"\\n      \"],[6,[37,2],null,[[\"renderInPlace\",\"message\",\"onConfirm\",\"onCancel\"],[true,\"Hello\",[30,[36,1],[[32,0],[35,0],\"confirm\"],null],[30,[36,1],[[32,0],[35,0],\"cancel\"],null]]],[[\"default\"],[{\"statements\":[[2,\" Test\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"externalAction\",\"action\",\"control/md-button-modal\"]}",
         "meta": {}
       })); // click the button
 
@@ -2269,20 +2447,32 @@ define("mdeditor/tests/integration/pods/components/control/md-button/component-t
       this.set('myAction', function (val) {
         assert.ok(val, 'Click action');
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "ZC0cOZ/H",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-button\",null,[[\"text\",\"click\"],[\"Click me\",[28,\"action\",[[23,0,[]],[24,[\"myAction\"]],true],null]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-button text="Click me" click=(action myAction true)}}
+      */
+      {
+        "id": "pwcakXNu",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"text\",\"click\"],[\"Click me\",[30,[36,1],[[32,0],[35,0],true],null]]]]]],\"hasEval\":false,\"upvars\":[\"myAction\",\"action\",\"control/md-button\"]}",
         "meta": {}
       }));
-      assert.equal(this.element.textContent.trim(), 'Click me');
+      assert.dom(this.element).hasText('Click me');
       (0, _testHelpers.click)('.md-button'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "03k2SbUy",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"control/md-button\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#control/md-button}}
+              template block text
+            {{/control/md-button}}
+          
+      */
+      {
+        "id": "SEsCy4S9",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-button\"]}",
         "meta": {}
       }));
-      assert.equal(this.element.textContent.trim(), 'template block text');
+      assert.dom(this.element).hasText('template block text');
     });
   });
 });
@@ -2297,19 +2487,31 @@ define("mdeditor/tests/integration/pods/components/control/md-contact-link/compo
       store.createRecord('contact', (0, _createContact.default)(1)[0]); // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "pxFJU6dO",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-contact-link\",null,[[\"contacts\",\"contactId\"],[[24,[\"contacts\"]],0]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-contact-link contacts=contacts contactId=0}}
+      */
+      {
+        "id": "+1yGk/JO",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"contacts\",\"contactId\"],[[35,0],0]]]]],\"hasEval\":false,\"upvars\":[\"contacts\",\"control/md-contact-link\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('a').innerText.trim(), 'Contact0', 'renders link'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "qHXG9RZE",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"control/md-contact-link\",null,[[\"contacts\",\"contactId\",\"block\"],[[24,[\"contacts\"]],0,true]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#control/md-contact-link contacts=contacts contactId=0 block=true}}
+              template block text
+            {{/control/md-contact-link}}
+          
+      */
+      {
+        "id": "V1+BLCAc",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"contacts\",\"contactId\",\"block\"],[[35,0],0,true]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"contacts\",\"control/md-contact-link\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('a').textContent.trim(), 'template block text', 'renders as block');
+      assert.dom('a').hasText('template block text', 'renders as block');
     });
   });
 });
@@ -2323,19 +2525,32 @@ define("mdeditor/tests/integration/pods/components/control/md-contact-title/comp
       // Handle any actions with this.on('myAction', function(val) { ... });
       var store = this.owner.lookup('service:store');
       store.createRecord('contact', (0, _createContact.default)(1)[0]);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "bk26CxWD",
-        "block": "{\"symbols\":[],\"statements\":[[7,\"span\",true],[8],[1,[28,\"control/md-contact-title\",null,[[\"contactId\"],[0]]],false],[9]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        <span>{{control/md-contact-title contactId=0}}</span>
+      */
+      {
+        "id": "LpqqepmU",
+        "block": "{\"symbols\":[],\"statements\":[[10,\"span\"],[12],[1,[30,[36,0],null,[[\"contactId\"],[0]]]],[13]],\"hasEval\":false,\"upvars\":[\"control/md-contact-title\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('span').textContent.trim(), 'Contact0'); // Template block usage:
+      assert.dom('span').hasText('Contact0'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "jMQvLy2k",
-        "block": "{\"symbols\":[\"c\"],\"statements\":[[7,\"div\",true],[10,\"class\",\"test1\"],[8],[0,\"\\n\"],[4,\"control/md-contact-title\",null,[[\"contactId\"],[0]],{\"statements\":[[0,\"        template block text \"],[1,[23,1,[\"title\"]],false],[0,\"\\n\"]],\"parameters\":[1]},null],[0,\"      \"],[9],[0,\"\\n    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        <div class="test1">
+            {{#control/md-contact-title contactId=0 as |c|}}
+              template block text {{c.title}}
+            {{/control/md-contact-title}}
+            </div>
+          
+      */
+      {
+        "id": "K9XzQ57C",
+        "block": "{\"symbols\":[\"c\"],\"statements\":[[10,\"div\"],[14,0,\"test1\"],[12],[2,\"\\n\"],[6,[37,0],null,[[\"contactId\"],[0]],[[\"default\"],[{\"statements\":[[2,\"        template block text \"],[1,[32,1,[\"title\"]]],[2,\"\\n\"]],\"parameters\":[1]}]]],[2,\"      \"],[13],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"control/md-contact-title\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('.test1').textContent.trim(), 'template block text Contact0');
+      assert.dom('.test1').hasText('template block text Contact0');
     });
   });
 });
@@ -2348,21 +2563,33 @@ define("mdeditor/tests/integration/pods/components/control/md-crud-buttons/compo
       assert.expect(3); // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "y/mjSNGw",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-crud-buttons\",null,[[\"allowCopy\",\"allowDelete\"],[true,true]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-crud-buttons allowCopy=true allowDelete=true}}
+      */
+      {
+        "id": "fBnFcHmd",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"allowCopy\",\"allowDelete\"],[true,true]]]]],\"hasEval\":false,\"upvars\":[\"control/md-crud-buttons\"]}",
         "meta": {}
       }));
       await (0, _testHelpers.triggerEvent)('.md-crud-buttons', 'mouseenter');
       assert.equal((0, _testHelpers.find)('.md-crud-buttons').textContent.replace(/[ \n]+/g, '|'), '|Copy|Delete|'); // Template block usage:" + EOL +
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "ADZvkhqU",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"control/md-crud-buttons\",null,[[\"doSave\",\"allowCopy\"],[true,true]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#control/md-crud-buttons doSave=true allowCopy=true}}
+              template block text
+            {{/control/md-crud-buttons}}
+          
+      */
+      {
+        "id": "Xd8+3zHP",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"doSave\",\"allowCopy\"],[true,true]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-crud-buttons\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-crud-buttons').textContent.replace(/[ \n]+/g, '|'), '|Save|Cancel|Copy|template|block|text|', 'block, doSave');
-      assert.equal((0, _testHelpers.find)('.md-crud-buttons .btn-success').disabled, true, 'save disabled');
+      assert.dom('.md-crud-buttons .btn-success').isDisabled('save disabled');
     });
     (0, _qunit.test)('should trigger external action', async function (assert) {
       assert.expect(4); // test double for the external action
@@ -2375,9 +2602,15 @@ define("mdeditor/tests/integration/pods/components/control/md-crud-buttons/compo
         hasDirtyHash: true,
         canRevert: true
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "s88SE2b/",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-crud-buttons\",null,[[\"model\",\"doSave\",\"doCancel\",\"doCopy\",\"doDelete\",\"allowCopy\",\"allowDelete\"],[[24,[\"model\"]],[28,\"action\",[[23,0,[]],[24,[\"externalAction\"]],\"doSave\"],null],[28,\"action\",[[23,0,[]],[24,[\"externalAction\"]],\"doCancel\"],null],[28,\"action\",[[23,0,[]],[24,[\"externalAction\"]],\"doCopy\"],null],[28,\"action\",[[23,0,[]],[24,[\"externalAction\"]],\"doDelete\"],null],true,true]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-crud-buttons model=model doSave=(action externalAction
+        'doSave') doCancel=(action externalAction 'doCancel') doCopy=(action
+        externalAction 'doCopy') doDelete=(action externalAction 'doDelete') allowCopy=true allowDelete=true}}
+      */
+      {
+        "id": "Z9iR+VWB",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,3],null,[[\"model\",\"doSave\",\"doCancel\",\"doCopy\",\"doDelete\",\"allowCopy\",\"allowDelete\"],[[35,2],[30,[36,1],[[32,0],[35,0],\"doSave\"],null],[30,[36,1],[[32,0],[35,0],\"doCancel\"],null],[30,[36,1],[[32,0],[35,0],\"doCopy\"],null],[30,[36,1],[[32,0],[35,0],\"doDelete\"],null],true,true]]]]],\"hasEval\":false,\"upvars\":[\"externalAction\",\"action\",\"model\",\"control/md-crud-buttons\"]}",
         "meta": {}
       })); // click the buttons
 
@@ -2398,22 +2631,38 @@ define("mdeditor/tests/integration/pods/components/control/md-definition/compone
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "K/9FE+vQ",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-definition\",null,[[\"title\",\"text\"],[\"foobar\",\"bizbaz\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-definition title="foobar" text="bizbaz"}}
+      */
+      {
+        "id": "xkG7D5jx",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"title\",\"text\"],[\"foobar\",\"bizbaz\"]]]]],\"hasEval\":false,\"upvars\":[\"control/md-definition\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.ember-view').textContent.replace(/[ \n]+/g, '|').trim(), 'foobar|bizbaz|');
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "/bfdiis0",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-definition\",null,[[\"title\"],[\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-definition title="foobar"}}
+      */
+      {
+        "id": "pgwVkw2E",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"title\"],[\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"control/md-definition\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.ember-view').textContent.replace(/[ \n]+/g, '|').trim(), 'foobar|Not|Defined|', 'no text'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "86A/wYHV",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"control/md-definition\",null,[[\"title\"],[\"foobar\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#control/md-definition title="foobar"}}
+              template block text
+            {{/control/md-definition}}
+          
+      */
+      {
+        "id": "NDd2xLhU",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"title\"],[\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-definition\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.ember-view').textContent.replace(/[ \n]+/g, '|').trim(), '|foobar|template|block|text|');
@@ -2442,15 +2691,19 @@ define("mdeditor/tests/integration/pods/components/control/md-edit-table/compone
         propertyName: 'type',
         title: 'Type'
       }]);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "clR+HHnt",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-edit-table\",null,[[\"data\",\"dataColumns\",\"rowBodyComponent\"],[[24,[\"data\"]],[24,[\"columns\"]],\"object/md-schema\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-edit-table data=data dataColumns=columns rowBodyComponent="object/md-schema"}}
+      */
+      {
+        "id": "13KX0aa6",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"data\",\"dataColumns\",\"rowBodyComponent\"],[[35,1],[35,0],\"object/md-schema\"]]]]],\"hasEval\":false,\"upvars\":[\"columns\",\"data\",\"control/md-edit-table\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[ \s\n]+/g, '|').trim(), '|Search:|Columns|Show|All|Hide|All|Restore|Defaults|Title|Type|Title|Type|Title|Type|foo|bar|Edit|Delete|biz|baz|Edit|Delete|Show|1|-|2|of|2|Clear|all|filters|Rows:|10|25|50|500|Page:|1|');
       await (0, _testHelpers.click)('.md-row-buttons .btn-success');
       assert.dom('.md-schema').exists('expanded row');
-      assert.equal((0, _testHelpers.find)('.md-schema input').value, 'foo', 'render row contents');
+      assert.dom('.md-schema input').hasValue('foo', 'render row contents');
     });
   });
 });
@@ -2475,17 +2728,29 @@ define("mdeditor/tests/integration/pods/components/control/md-errors/component-t
         title: 'Test2',
         errors: []
       }]);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "PqxTYhO9",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-errors\",null,[[\"errors\"],[[24,[\"errors\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-errors errors=errors}}
+      */
+      {
+        "id": "keVMS5Sb",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"errors\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"errors\",\"control/md-errors\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-error-list').textContent.replace(/[ \n]+/g, '|').trim(), '|Test|0|message1|/foo/biz|1|message2|Test2|');
-      assert.ok((0, _testHelpers.findAll)('.md-error-list .label')[1].classList.contains('label-danger'), 'class applied'); // Template block usage:
+      assert.dom((0, _testHelpers.findAll)('.md-error-list .label')[1]).hasClass('label-danger', 'class applied'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "gwY/Irt/",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"control/md-errors\",null,[[\"errors\"],[[24,[\"errors\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#control/md-errors  errors=errors}}
+              template block text
+            {{/control/md-errors}}
+          
+      */
+      {
+        "id": "W5QWEchW",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"errors\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"errors\",\"control/md-errors\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-error-list').textContent.replace(/[ \n]+/g, '|').trim(), '|Test|0|message1|/foo/biz|1|message2|Test2|template|block|text|', 'block');
@@ -2500,9 +2765,13 @@ define("mdeditor/tests/integration/pods/components/control/md-fiscalyear/compone
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "9P55wWdL",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-fiscalyear\",null,[[\"context\"],[[23,0,[]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-fiscalyear context=this}}
+      */
+      {
+        "id": "0cGcq+rD",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"context\"],[[32,0]]]]]],\"hasEval\":false,\"upvars\":[\"control/md-fiscalyear\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-select.md-fiscalyear').innerText.replace(/[\n]+/g, '|').trim(), 'Pick Fiscal Year|Pick a Fiscal Year');
@@ -2519,9 +2788,27 @@ define("mdeditor/tests/integration/pods/components/control/md-fiscalyear/compone
       }); // Handle any actions with this.on('myAction', function(val) { ... });
 
       var year = new Date().getFullYear();
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "M3yGHXNh",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n      \"],[1,[28,\"input/md-datetime\",null,[[\"class\",\"valuePath\",\"model\",\"label\",\"placeholder\"],[\"start\",\"start\",[23,0,[]],\"Start Date\",\"Enter start dateTime\"]]],false],[0,\"\\n      \"],[1,[28,\"input/md-datetime\",null,[[\"class\",\"valuePath\",\"model\",\"label\"],[\"end\",\"end\",[23,0,[]],\"End Date\"]]],false],[0,\"\\n      \"],[1,[28,\"control/md-fiscalyear\",null,[[\"context\",\"settings\"],[[23,0,[]],[24,[\"settings\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{input/md-datetime
+              class="start"
+              valuePath="start"
+              model=this
+              label="Start Date"
+              placeholder="Enter start dateTime"
+            }}
+            {{input/md-datetime
+              class="end"
+              valuePath="end"
+              model=this
+              label="End Date"
+            }}
+            {{control/md-fiscalyear context=this settings=settings}}
+      */
+      {
+        "id": "QOTwSp+m",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n      \"],[1,[30,[36,0],null,[[\"class\",\"valuePath\",\"model\",\"label\",\"placeholder\"],[\"start\",\"start\",[32,0],\"Start Date\",\"Enter start dateTime\"]]]],[2,\"\\n      \"],[1,[30,[36,0],null,[[\"class\",\"valuePath\",\"model\",\"label\"],[\"end\",\"end\",[32,0],\"End Date\"]]]],[2,\"\\n      \"],[1,[30,[36,2],null,[[\"context\",\"settings\"],[[32,0],[35,1]]]]]],\"hasEval\":false,\"upvars\":[\"input/md-datetime\",\"settings\",\"control/md-fiscalyear\"]}",
         "meta": {}
       }));
       await (0, _helpers.clickTrigger)('.md-fiscalyear');
@@ -2529,7 +2816,7 @@ define("mdeditor/tests/integration/pods/components/control/md-fiscalyear/compone
       assert.equal(this.end, (0, _moment.default)(year, 'YYYY').month(this.settings.data.fiscalStartMonth + 10).endOf('month').toISOString(), 'end set');
       assert.equal(this.start, (0, _moment.default)(year, 'YYYY').month(this.settings.data.fiscalStartMonth - 1).startOf('month').toISOString(), 'start set');
       this.set('settings.data.fiscalStartMonth', null);
-      assert.equal((0, _testHelpers.find)('.md-fiscalyear .ember-power-select-trigger').getAttribute('aria-disabled'), 'true', 'disabled if fiscalStartMonth empty');
+      assert.dom('.md-fiscalyear .ember-power-select-trigger').hasAttribute('aria-disabled', 'true', 'disabled if fiscalStartMonth empty');
     });
   });
 });
@@ -2543,15 +2830,23 @@ define("mdeditor/tests/integration/pods/components/control/md-import-csv/compone
 
       this.set('progress', 0); // Handle any actions with this.on('myAction', function(val) { ... });
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "niQlXi6v",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"control/md-import-csv\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-import-csv}}
+      */
+      {
+        "id": "2hxUG3xN",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"control/md-import-csv\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('.md-import-picker').textContent.trim(), 'Click or Drop a CSV here.');
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "aLxICkyw",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-import-csv\",null,[[\"isProcessing\",\"progress\"],[true,[24,[\"progress\"]]]]],false]],\"hasEval\":false}",
+      assert.dom('.md-import-picker').hasText('Click or Drop a CSV here.');
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-import-csv isProcessing=true progress=progress}}
+      */
+      {
+        "id": "dv0SLLhV",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"isProcessing\",\"progress\"],[true,[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"progress\",\"control/md-import-csv\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.ember-view').textContent.replace(/[ \n]+/g, '|').trim(), '|Processing...|Stop|0%|Complete|', 'renders progressbar');
@@ -2576,9 +2871,19 @@ define("mdeditor/tests/integration/pods/components/control/md-indicator/componen
         foo: 'This',
         bar: 'warning'
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "Dl4Oe9ox",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-indicator\",null,[[\"icon\",\"title\",\"note\",\"values\",\"type\"],[\"sticky-note\",\"Hello\",\"${foo} is a ${bar}\",[24,[\"values\"]],\"danger\"]]],false],[0,\"\\n      \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-indicator
+            icon="sticky-note"
+            title="Hello"
+            note="${foo} is a ${bar}"
+            values=values
+            type="danger"}}
+            
+      */
+      {
+        "id": "dL6hIQtT",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"icon\",\"title\",\"note\",\"values\",\"type\"],[\"sticky-note\",\"Hello\",\"${foo} is a ${bar}\",[35,0],\"danger\"]]]],[2,\"\\n      \"]],\"hasEval\":false,\"upvars\":[\"values\",\"control/md-indicator\"]}",
         "meta": {}
       }));
       assert.dom('.md-indicator').isVisible({
@@ -2620,9 +2925,28 @@ define("mdeditor/tests/integration/pods/components/control/md-indicator/related/
       });
       this.set('dictionary', (0, _createDictionary.createDictionary)(1)[0].json.dataDictionary);
       this.set('model', this.dictionary.entity[0].attribute[0]);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "a1Hq5omP",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-indicator/related\",null,[[\"model\",\"route\",\"icon\",\"note\",\"route\",\"values\",\"parent\",\"relatedId\",\"path\",\"title\",\"linkText\",\"type\",\"popperContainer\",\"routeIdPaths\"],[[24,[\"model\"]],true,\"cog\",\"The attribute ${foo} has an associated domain: ${bar}.\",\"dictionary.show.edit.entity\",[24,[\"values\"]],[24,[\"dictionary\"]],\"domainId\",\"domain\",\"Related Indicator Test\",\"Go to Domain\",\"warning\",\"#ember-testing\",[28,\"array\",[\"values.foo\"],null]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-indicator/related
+            model=model
+            route=true
+            icon="cog"
+            note="The attribute ${foo} has an associated domain: ${bar}."
+            route="dictionary.show.edit.entity"
+            values=values
+            parent=dictionary
+            relatedId="domainId"
+            path="domain"
+            title="Related Indicator Test"
+            linkText="Go to Domain"
+            type="warning"
+            popperContainer="#ember-testing"
+            routeIdPaths=(array "values.foo")
+          }}
+      */
+      {
+        "id": "+8y7Vuxm",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,4],null,[[\"model\",\"route\",\"icon\",\"note\",\"route\",\"values\",\"parent\",\"relatedId\",\"path\",\"title\",\"linkText\",\"type\",\"popperContainer\",\"routeIdPaths\"],[[35,3],true,\"cog\",\"The attribute ${foo} has an associated domain: ${bar}.\",\"dictionary.show.edit.entity\",[35,2],[35,1],\"domainId\",\"domain\",\"Related Indicator Test\",\"Go to Domain\",\"warning\",\"#ember-testing\",[30,[36,0],[\"values.foo\"],null]]]]]],\"hasEval\":false,\"upvars\":[\"array\",\"dictionary\",\"values\",\"model\",\"control/md-indicator/related\"]}",
         "meta": {}
       }));
       assert.dom('.md-indicator-related .md-indicator').isVisible({
@@ -2634,30 +2958,6 @@ define("mdeditor/tests/integration/pods/components/control/md-indicator/related/
         contentString: `Related Indicator Test\nThe attribute attribute1 has an associated domain: codeName0.\nGo to Domain`
       });
       await (0, _testHelpers.click)('.btn');
-    });
-  });
-});
-define("mdeditor/tests/integration/pods/components/control/md-infotip/component-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
-  "use strict";
-
-  (0, _qunit.module)('Integration | Component | control/md-infotip', function (hooks) {
-    (0, _emberQunit.setupRenderingTest)(hooks);
-    (0, _qunit.test)('it renders', async function (assert) {
-      // Set any properties with this.set('myProperty', 'value');
-      // Handle any actions with this.set('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "ZykxUW8s",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"control/md-infotip\"],false]],\"hasEval\":false}",
-        "meta": {}
-      }));
-      assert.equal(this.element.textContent.trim(), ''); // Template block usage:
-
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "ltvhuIeV",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"control/md-infotip\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
-        "meta": {}
-      }));
-      assert.equal(this.element.textContent.trim(), 'template block text');
     });
   });
 });
@@ -2709,23 +3009,31 @@ define("mdeditor/tests/integration/pods/components/control/md-itis/component-tes
         "status": "valid"
       })]); // Handle any actions with this.on('myAction', function(val) { ... });
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "e6jUvnI0",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-itis\",null,[[\"taxonomy\"],[[24,[\"taxonomy\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-itis taxonomy=taxonomy}}
+      */
+      {
+        "id": "q5AY9bE8",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"taxonomy\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"taxonomy\",\"control/md-itis\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-itis').textContent.replace(/[ \n]+/g, '|').trim(), '|Search|Value|Kingdom|(optional)|Select|a|kingdom.|Search|'); // await fillIn('.md-input-input input.ember-text-field', 'shark');
       // await click('button[type=submit]');
       // await settled();
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "+9DGhqWP",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-itis\",null,[[\"taxonomy\",\"searchResult\",\"found\"],[[24,[\"taxonomy\"]],[24,[\"taxa\"]],true]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-itis taxonomy=taxonomy searchResult=taxa found=true}}
+      */
+      {
+        "id": "WsJN0mDc",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"taxonomy\",\"searchResult\",\"found\"],[[35,1],[35,0],true]]]]],\"hasEval\":false,\"upvars\":[\"taxa\",\"taxonomy\",\"control/md-itis\"]}",
         "meta": {}
       }));
-      assert.ok((0, _testHelpers.find)('.md-itis-taxalist'), 'renders search result');
+      assert.dom('.md-itis-taxalist').exists('renders search result');
       await (0, _testHelpers.click)('.md-itis-taxalist .list-group-item .btn-success');
-      assert.ok((0, _testHelpers.find)('.md-itis-selectedlist .list-group-item'), 'renders selected item');
+      assert.dom('.md-itis-selectedlist .list-group-item').exists('renders selected item');
     });
   });
 });
@@ -2740,19 +3048,31 @@ define("mdeditor/tests/integration/pods/components/control/md-json-button/compon
       this.set('json', {
         foo: 'bar'
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "FdHCZTIy",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"control/md-json-button\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-json-button}}
+      */
+      {
+        "id": "AC1r9M2m",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"control/md-json-button\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('button').textContent.trim(), 'Preview JSON'); // Template block usage:
+      assert.dom('button').hasText('Preview JSON'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "hEVqRZ6K",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"control/md-json-button\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#control/md-json-button}}
+              template block text
+            {{/control/md-json-button}}
+          
+      */
+      {
+        "id": "Iv6sA0B/",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-json-button\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('button').textContent.trim(), 'template block text');
+      assert.dom('button').hasText('template block text');
     });
     (0, _qunit.test)('render json modal', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
@@ -2760,13 +3080,17 @@ define("mdeditor/tests/integration/pods/components/control/md-json-button/compon
       this.set('json', {
         foo: 'bar'
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "+2fTwcpF",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-json-button\",null,[[\"json\",\"preview\"],[[24,[\"json\"]],true]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-json-button json=json preview=true}}
+      */
+      {
+        "id": "PRsH8m9/",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"json\",\"preview\"],[[35,0],true]]]]],\"hasEval\":false,\"upvars\":[\"json\",\"control/md-json-button\"]}",
         "meta": {}
       }));
       await (0, _testHelpers.click)('button.btn');
-      assert.equal(document.querySelector('.md-jsmodal-container').textContent.trim(), '{"foo": "bar"}');
+      assert.dom(document.querySelector('.md-jsmodal-container')).hasText('{"foo": "bar"}');
     });
     (0, _qunit.test)('render json slider', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
@@ -2774,9 +3098,20 @@ define("mdeditor/tests/integration/pods/components/control/md-json-button/compon
       this.set('json', {
         foo: 'bar'
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "u5Xr56f1",
-        "block": "{\"symbols\":[\"slider\"],\"statements\":[[1,[28,\"control/md-json-button\",null,[[\"json\",\"title\"],[[24,[\"json\"]],\"foobar\"]]],false],[0,\"\\n      \"],[7,\"div\",true],[10,\"class\",\"slider\"],[8],[0,\"\\n\"],[4,\"from-elsewhere\",null,[[\"name\"],[\"md-slider-json\"]],{\"statements\":[[0,\"          \"],[7,\"h3\",true],[10,\"class\",\"text-info\"],[8],[1,[23,1,[\"title\"]],false],[9],[0,\"\\n          \"],[7,\"hr\",true],[8],[9],[0,\"\\n          \"],[1,[28,\"component\",[[23,1,[\"body\"]]],null],false],[0,\"\\n\"]],\"parameters\":[1]},null],[0,\"      \"],[9]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-json-button json=json title="foobar"}}
+            <div class="slider">
+              {{#from-elsewhere name="md-slider-json" as |slider|}}
+                <h3 class="text-info">{{slider.title}}</h3>
+                <hr>
+                {{component slider.body}}
+              {{/from-elsewhere}}
+            </div>
+      */
+      {
+        "id": "nFj0IQQS",
+        "block": "{\"symbols\":[\"slider\"],\"statements\":[[1,[30,[36,2],null,[[\"json\",\"title\"],[[35,1],\"foobar\"]]]],[2,\"\\n      \"],[10,\"div\"],[14,0,\"slider\"],[12],[2,\"\\n\"],[6,[37,3],null,[[\"name\"],[\"md-slider-json\"]],[[\"default\"],[{\"statements\":[[2,\"          \"],[10,\"h3\"],[14,0,\"text-info\"],[12],[1,[32,1,[\"title\"]]],[13],[2,\"\\n          \"],[10,\"hr\"],[12],[13],[2,\"\\n          \"],[1,[30,[36,0],[[32,1,[\"body\"]]],null]],[2,\"\\n\"]],\"parameters\":[1]}]]],[2,\"      \"],[13]],\"hasEval\":false,\"upvars\":[\"component\",\"json\",\"control/md-json-button\",\"from-elsewhere\"]}",
         "meta": {}
       }));
       await (0, _testHelpers.click)('button.btn');
@@ -2795,9 +3130,13 @@ define("mdeditor/tests/integration/pods/components/control/md-json-viewer/compon
       this.set('json', {
         foo: 'bar'
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "TcOCWF/H",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-json-viewer\",null,[[\"json\"],[[24,[\"json\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-json-viewer json=json}}
+      */
+      {
+        "id": "tSgX0ZYb",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"json\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"json\",\"control/md-json-viewer\"]}",
         "meta": {}
       }));
       assert.equal((0, _jquery.default)('.md-jsmodal-container').text().trim(), '{"foo": "bar"}');
@@ -2808,12 +3147,16 @@ define("mdeditor/tests/integration/pods/components/control/md-json-viewer/compon
       this.set('json', {
         foo: 'bar'
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "EQYsgPf9",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-json-viewer\",null,[[\"json\",\"modal\"],[[24,[\"json\"]],false]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-json-viewer json=json modal=false}}
+      */
+      {
+        "id": "ePFDCj9z",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"json\",\"modal\"],[[35,0],false]]]]],\"hasEval\":false,\"upvars\":[\"json\",\"control/md-json-viewer\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('.md-json-viewer').textContent.trim(), '{"foo": "bar"}');
+      assert.dom('.md-json-viewer').hasText('{"foo": "bar"}');
     });
   });
 });
@@ -2826,21 +3169,33 @@ define("mdeditor/tests/integration/pods/components/control/md-modal/component-te
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "FpI1xn8b",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-modal\",null,[[\"isShowing\",\"message\"],[true,\"The message.\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-modal isShowing=true message="The message."}}
+      */
+      {
+        "id": "/RTDHqMI",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"isShowing\",\"message\"],[true,\"The message.\"]]]]],\"hasEval\":false,\"upvars\":[\"control/md-modal\"]}",
         "meta": {}
       }));
       assert.ok(document.querySelector('.md-modal-container'));
-      assert.equal(document.querySelector('.md-modal-container').textContent.trim(), 'The message.'); // Template block usage:
+      assert.dom(document.querySelector('.md-modal-container')).hasText('The message.'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "f3JPqgHv",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"control/md-modal\",null,[[\"isShowing\"],[true]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#control/md-modal isShowing=true}}
+              template block text
+            {{/control/md-modal}}
+          
+      */
+      {
+        "id": "d8k1wKkE",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"isShowing\"],[true]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-modal\"]}",
         "meta": {}
       }));
       assert.isPresentOnce('.md-modal-overlay');
-      assert.equal(document.querySelector('.md-modal-container').textContent.trim(), 'template block text');
+      assert.dom(document.querySelector('.md-modal-container')).hasText('template block text');
     });
     (0, _qunit.test)('shows modal and performs actions', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
@@ -2850,9 +3205,31 @@ define("mdeditor/tests/integration/pods/components/control/md-modal/component-te
       this.set('externalAction', type => {
         assert.ok(type, `${type} called`);
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "cAuB96kn",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n        \"],[1,[28,\"control/md-button\",null,[[\"class\",\"icon\",\"text\",\"click\"],[\"btn btn-danger\",\"times\",\"Test\",[28,\"action\",[[23,0,[]],[28,\"mut\",[[24,[\"showModal\"]]],null],true],null]]]],false],[0,\"\\n        \"],[1,[28,\"control/md-modal\",null,[[\"message\",\"confirm\",\"showCancel\",\"cancelType\",\"showConfirm\",\"confirmLabel\",\"confirmType\",\"isShowing\",\"renderInPlace\"],[\"The modal message.\",[28,\"action\",[[23,0,[]],[24,[\"externalAction\"]],\"confirm\"],null],true,\"primary\",true,\"Confirm\",\"danger\",[24,[\"showModal\"]],true]]],false],[0,\"\\n      \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+              {{control/md-button
+                class="btn btn-danger"
+                icon="times"
+                text="Test"
+                click=(action (mut showModal) true)
+              }}
+              {{control/md-modal
+                message="The modal message."
+                confirm=(action externalAction "confirm")
+                showCancel=true
+                cancelType="primary"
+                showConfirm=true
+                confirmLabel="Confirm"
+                confirmType="danger"
+                isShowing=showModal
+                renderInPlace=true
+              }}
+            
+      */
+      {
+        "id": "fPSNHYkn",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n        \"],[1,[30,[36,3],null,[[\"class\",\"icon\",\"text\",\"click\"],[\"btn btn-danger\",\"times\",\"Test\",[30,[36,2],[[32,0],[30,[36,1],[[35,0]],null],true],null]]]]],[2,\"\\n        \"],[1,[30,[36,5],null,[[\"message\",\"confirm\",\"showCancel\",\"cancelType\",\"showConfirm\",\"confirmLabel\",\"confirmType\",\"isShowing\",\"renderInPlace\"],[\"The modal message.\",[30,[36,2],[[32,0],[35,4],\"confirm\"],null],true,\"primary\",true,\"Confirm\",\"danger\",[35,0],true]]]],[2,\"\\n      \"]],\"hasEval\":false,\"upvars\":[\"showModal\",\"mut\",\"action\",\"control/md-button\",\"externalAction\",\"control/md-modal\"]}",
         "meta": {}
       }));
       await (0, _testHelpers.click)('.md-button');
@@ -2883,18 +3260,28 @@ define("mdeditor/tests/integration/pods/components/control/md-record-table/butto
         hasSchemaErrors: true
       }); // Handle any actions with this.on('myAction', function(val) { ... });
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "9HtadClo",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-record-table/buttons\",null,[[\"record\"],[[24,[\"model\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-record-table/buttons record=model}}
+      */
+      {
+        "id": "yHrBH/dk",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"record\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"control/md-record-table/buttons\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-dashboard-buttons').textContent.replace(/[ \n]+/g, '|').trim(), '|Show|Edit|Delete|Preview|JSON|');
       assert.dom('.md-status-icon .btn-danger').isVisible();
       assert.dom('.md-status-icon .btn-warning').isVisible(); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "EZ0t44CS",
-        "block": "{\"symbols\":[],\"statements\":[[4,\"control/md-record-table/buttons\",null,null,{\"statements\":[[0,\"          template block text\\n\"]],\"parameters\":[]},null]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{#control/md-record-table/buttons}}
+                template block text
+              {{/control/md-record-table/buttons}}
+      */
+      {
+        "id": "a6ef80Qi",
+        "block": "{\"symbols\":[],\"statements\":[[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"          template block text\\n\"]],\"parameters\":[]}]]]],\"hasEval\":false,\"upvars\":[\"control/md-record-table/buttons\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-dashboard-buttons').textContent.replace(/[ \n]+/g, '|').trim(), '|Show|Edit|Delete|Preview|JSON|template|block|text|', 'block');
@@ -2921,12 +3308,16 @@ define("mdeditor/tests/integration/pods/components/control/md-record-table/butto
         }
       }); // Handle any actions with this.on('myAction', function(val) { ... });
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "MGlm/+qB",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-record-table/buttons/custom\",null,[[\"column\",\"record\"],[[24,[\"column\"]],[24,[\"rec\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-record-table/buttons/custom column=column record=rec}}
+      */
+      {
+        "id": "YhnbWCF0",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"column\",\"record\"],[[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"rec\",\"column\",\"control/md-record-table/buttons/custom\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('button.btn-warning').textContent.trim(), 'foobar');
+      assert.dom('button.btn-warning').hasText('foobar');
       (0, _testHelpers.click)('button.btn-warning');
     });
   });
@@ -2945,12 +3336,16 @@ define("mdeditor/tests/integration/pods/components/control/md-record-table/butto
       this.set('deleteSelected', function (selectedItems) {
         assert.equal(selectedItems, items, 'fires action');
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "JUHx4BI6",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-record-table/buttons/filter\",null,[[\"deleteSelected\",\"selectedItems\"],[[24,[\"deleteSelected\"]],[24,[\"selectedItems\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-record-table/buttons/filter deleteSelected=deleteSelected selectedItems=selectedItems}}
+      */
+      {
+        "id": "Ct89GsC4",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"deleteSelected\",\"selectedItems\"],[[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"selectedItems\",\"deleteSelected\",\"control/md-record-table/buttons/filter\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('button.btn-danger').textContent.trim(), 'Delete Selected');
+      assert.dom('button.btn-danger').hasText('Delete Selected');
       (0, _testHelpers.doubleClick)('button.btn-danger');
     });
   });
@@ -2963,12 +3358,16 @@ define("mdeditor/tests/integration/pods/components/control/md-record-table/butto
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "CIQW3h35",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"control/md-record-table/buttons/show\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-record-table/buttons/show}}
+      */
+      {
+        "id": "NzxKsf5a",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"control/md-record-table/buttons/show\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('.btn-info').textContent.trim(), 'Show');
+      assert.dom('.btn-info').hasText('Show');
     });
   });
 });
@@ -2994,19 +3393,31 @@ define("mdeditor/tests/integration/pods/components/control/md-record-table/compo
         title: 'Type'
       }]); // Handle any actions with this.on('myAction', function(val) { ... });
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "OuB9O86R",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-record-table\",null,[[\"dataColumns\",\"data\"],[[24,[\"columns\"]],[24,[\"data\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-record-table dataColumns=columns data=data}}
+      */
+      {
+        "id": "NRTaunNK",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"dataColumns\",\"data\"],[[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"data\",\"columns\",\"control/md-record-table\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-record-table').textContent.replace(/[ \n\t\s]+/g, '|').trim(), '|Search:|Columns|Show|All|Hide|All|Restore|Defaults|Title|Type|Actions|Title|Type|Actions|Title|Type|foo|bar|Show|biz|baz|Show|Show|1|-|2|of|2|Clear|all|filters|Rows:|10|25|50|500|Page:|1|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "KOiBYcL2",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"control/md-record-table\",null,[[\"dataColumns\",\"data\"],[[24,[\"columns\"]],[24,[\"data\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#control/md-record-table dataColumns=columns data=data}}
+              template block text
+            {{/control/md-record-table}}
+          
+      */
+      {
+        "id": "mZ9HrsaD",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,2],null,[[\"dataColumns\",\"data\"],[[35,1],[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"data\",\"columns\",\"control/md-record-table\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('.md-record-table').textContent.trim(), 'template block text');
+      assert.dom('.md-record-table').hasText('template block text');
     });
   });
 });
@@ -3024,20 +3435,32 @@ define("mdeditor/tests/integration/pods/components/control/md-repo-link/componen
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "F+AIyKwT",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"control/md-repo-link\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-repo-link}}
+      */
+      {
+        "id": "A1w5Bcpn",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"control/md-repo-link\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('a').textContent.trim(), version);
-      assert.equal((0, _testHelpers.find)('a').getAttribute('href'), `${repository}/tree/${version.substring(version.indexOf('+') + 1)}`, 'link ok'); // Template block usage:
+      assert.dom('a').hasText(version);
+      assert.dom('a').hasAttribute('href', `${repository}/tree/${version.substring(version.indexOf('+') + 1)}`, 'link ok'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "J/VwpCTq",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"control/md-repo-link\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#control/md-repo-link}}
+              template block text
+            {{/control/md-repo-link}}
+          
+      */
+      {
+        "id": "jzqehUw9",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-repo-link\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('a').textContent.trim(), 'template block text', 'block ok');
+      assert.dom('a').hasText('template block text', 'block ok');
     });
   });
 });
@@ -3049,19 +3472,31 @@ define("mdeditor/tests/integration/pods/components/control/md-scroll-into-view/c
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.set('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "vrCTc9ZH",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"control/md-scroll-into-view\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-scroll-into-view}}
+      */
+      {
+        "id": "O0lWm2Dy",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"control/md-scroll-into-view\"]}",
         "meta": {}
       }));
-      assert.equal(this.element.textContent.trim(), ''); // Template block usage:
+      assert.dom(this.element).hasText(''); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "7z4D/Vlt",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"control/md-scroll-into-view\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#control/md-scroll-into-view}}
+              template block text
+            {{/control/md-scroll-into-view}}
+          
+      */
+      {
+        "id": "Hckq5UXN",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-scroll-into-view\"]}",
         "meta": {}
       }));
-      assert.equal(this.element.textContent.trim(), 'template block text');
+      assert.dom(this.element).hasText('template block text');
     });
   });
 });
@@ -3079,20 +3514,34 @@ define("mdeditor/tests/integration/pods/components/control/md-scroll-spy/compone
       // });
       // Handle any actions with this.on('myAction', function(val) { ... });
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "7Fz0P+T0",
-        "block": "{\"symbols\":[],\"statements\":[[7,\"div\",true],[10,\"data-spy\",\"Foo\"],[10,\"id\",\"foo1\"],[8],[0,\"Foo\"],[9],[0,\"\\n      \"],[7,\"div\",true],[10,\"data-spy\",\"Bar\"],[10,\"id\",\"bar1\"],[8],[0,\"Bar\"],[9],[0,\"\\n      \"],[1,[28,\"control/md-scroll-spy\",null,[[\"setScrollTo\"],[[24,[\"setScrollTo\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        <div data-spy="Foo" id="foo1">Foo</div>
+            <div data-spy="Bar" id="bar1">Bar</div>
+            {{control/md-scroll-spy setScrollTo=setScrollTo}}
+      */
+      {
+        "id": "hMIum6tl",
+        "block": "{\"symbols\":[],\"statements\":[[10,\"div\"],[14,\"data-spy\",\"Foo\"],[14,1,\"foo1\"],[12],[2,\"Foo\"],[13],[2,\"\\n      \"],[10,\"div\"],[14,\"data-spy\",\"Bar\"],[14,1,\"bar1\"],[12],[2,\"Bar\"],[13],[2,\"\\n      \"],[1,[30,[36,1],null,[[\"setScrollTo\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"setScrollTo\",\"control/md-scroll-spy\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('ul').textContent.replace(/[ \n\t\s]+/g, '|').trim(), '|Foo|Bar|');
       await (0, _testHelpers.click)('ul a'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "7eHiwVrX",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"control/md-scroll-spy\",null,[[\"setScrollTo\"],[[24,[\"setScrollTo\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#control/md-scroll-spy setScrollTo=setScrollTo}}
+              template block text
+            {{/control/md-scroll-spy}}
+          
+      */
+      {
+        "id": "SrVymBuX",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"setScrollTo\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"setScrollTo\",\"control/md-scroll-spy\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('ul').textContent.trim(), 'template block text');
+      assert.dom('ul').hasText('template block text');
     });
   });
 });
@@ -3121,17 +3570,29 @@ define("mdeditor/tests/integration/pods/components/control/md-select-table/compo
       this.set('select', function (selected) {
         assert.equal(selected[0].title, 'foo', 'calls action');
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "Fy+rfgpM",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-select-table\",null,[[\"columns\",\"data\",\"select\"],[[24,[\"columns\"]],[24,[\"data\"]],[24,[\"select\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-select-table columns=columns data=data select=select}}
+      */
+      {
+        "id": "KZMNRPlY",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,3],null,[[\"columns\",\"data\",\"select\"],[[35,2],[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"select\",\"data\",\"columns\",\"control/md-select-table\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-select-table').textContent.replace(/[ \n\t\s]+/g, '|').trim(), '|Search:|Columns|Show|All|Hide|All|Restore|Defaults|Title|Type|Title|Type|Title|Type|foo|bar|biz|baz|Show|1|-|2|of|2|Clear|all|filters|Rows:|10|25|50|500|Page:|1|');
       (0, _testHelpers.click)('.md-select-table tbody tr'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "LI4m+FX9",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"control/md-select-table\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#control/md-select-table}}
+              template block text
+            {{/control/md-select-table}}
+          
+      */
+      {
+        "id": "YIwmBaw9",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-select-table\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-select-table').textContent.replace(/[ \n\t\s]+/g, '|').trim(), '|template|block|text|', 'block ok');
@@ -3146,20 +3607,32 @@ define("mdeditor/tests/integration/pods/components/control/md-spinner/component-
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "vOezijb2",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-spinner\",null,[[\"text\",\"size\"],[\"foobar\",\"5\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-spinner text="foobar" size="5"}}
+      */
+      {
+        "id": "IIVqJxjV",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"text\",\"size\"],[\"foobar\",\"5\"]]]]],\"hasEval\":false,\"upvars\":[\"control/md-spinner\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('.md-spinner').textContent.trim(), 'foobar');
-      assert.ok((0, _testHelpers.find)('.md-spinner .md-spinner-text').classList.contains('size-5'), 'adds class'); // Template block usage:
+      assert.dom('.md-spinner').hasText('foobar');
+      assert.dom('.md-spinner .md-spinner-text').hasClass('size-5', 'adds class'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "NJovIzPH",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"control/md-spinner\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#control/md-spinner}}
+              template block text
+            {{/control/md-spinner}}
+          
+      */
+      {
+        "id": "difjAsmy",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-spinner\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('.md-spinner').textContent.trim(), 'template block text', 'block ok');
+      assert.dom('.md-spinner').hasText('template block text', 'block ok');
     });
   });
 });
@@ -3181,15 +3654,20 @@ define("mdeditor/tests/integration/pods/components/control/md-spotlight/componen
         assert.equal(this.foo, 'bar', 'calls close action');
       };
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "Rf1nF6/x",
-        "block": "{\"symbols\":[],\"statements\":[[7,\"div\",true],[10,\"id\",\"foo\"],[8],[0,\"foobar\"],[9],[0,\"\\n      \"],[1,[22,\"control/md-spotlight\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        <div id="foo">foobar</div>
+            {{control/md-spotlight}}
+      */
+      {
+        "id": "vRmkyBxI",
+        "block": "{\"symbols\":[],\"statements\":[[10,\"div\"],[14,1,\"foo\"],[12],[2,\"foobar\"],[13],[2,\"\\n      \"],[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"control/md-spotlight\"]}",
         "meta": {}
       }));
       spotlight.setTarget('foo', close, scope);
       assert.ok(document.querySelector('.md-modal-overlay'), 'render overlay');
-      assert.equal((0, _testHelpers.find)('#foo').textContent.trim(), 'foobar', 'render target');
-      assert.ok((0, _testHelpers.find)('#foo').classList.contains('md-spotlight-target'), 'adds class');
+      assert.dom('#foo').hasText('foobar', 'render target');
+      assert.dom('#foo').hasClass('md-spotlight-target', 'adds class');
       spotlight.setTarget('foo');
     });
   });
@@ -3206,9 +3684,13 @@ define("mdeditor/tests/integration/pods/components/control/md-status/component-t
         hasSchemaErrors: false
       }); // Handle any actions with this.on('myAction', function(val) { ... });
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "iGtHxXTA",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/md-status\",null,[[\"model\"],[[24,[\"model\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-status model=model}}
+      */
+      {
+        "id": "PmpXCTqi",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"control/md-status\"]}",
         "meta": {}
       }));
       assert.dom('.md-status-icon .md-error').isVisible();
@@ -3216,9 +3698,17 @@ define("mdeditor/tests/integration/pods/components/control/md-status/component-t
       this.set('model.hasSchemaErrors', true);
       assert.dom('.md-status-icon .md-error').isNotVisible(); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "w9tnfYpE",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"control/md-status\",null,[[\"model\"],[[24,[\"model\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#control/md-status model=model}}
+              template block text
+            {{/control/md-status}}
+          
+      */
+      {
+        "id": "TpwoLiCQ",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"control/md-status\"]}",
         "meta": {}
       }));
       assert.dom('.md-status-icon .md-warning').isVisible();
@@ -3233,16 +3723,28 @@ define("mdeditor/tests/integration/pods/components/control/subbar-citation/compo
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "Gj4Ac28l",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/subbar-citation\",null,[[\"text\"],[\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/subbar-citation text="foobar"}}
+      */
+      {
+        "id": "zJ4LrSQ6",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"text\"],[\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"control/subbar-citation\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.btn-group-vertical').textContent.replace(/[ \n\t\s]+/g, '|').trim(), '|Select|a|Record|foobar|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "dySsOj+Q",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"control/subbar-citation\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#control/subbar-citation}}
+              template block text
+            {{/control/subbar-citation}}
+          
+      */
+      {
+        "id": "Tqdf+O2c",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/subbar-citation\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.btn-group-vertical').textContent.replace(/[ \n\t\s]+/g, '|').trim(), '|Select|a|Record|template|block|text|');
@@ -3267,17 +3769,29 @@ define("mdeditor/tests/integration/pods/components/control/subbar-importcsv/comp
       });
       this.set('foo', Target.create({})); // Handle any actions with this.on('myAction', function(val) { ... });
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "1O8Bx8k+",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/subbar-importcsv\",null,[[\"class\",\"actionContext\"],[\"importcsv\",[24,[\"foo\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/subbar-importcsv class="importcsv" actionContext=foo}}
+      */
+      {
+        "id": "hMihdqyQ",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"class\",\"actionContext\"],[\"importcsv\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"foo\",\"control/subbar-importcsv\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.importcsv').textContent.replace(/[ \n]+/g, '|').trim(), '|Do|Import|Cancel|Import|');
       (0, _testHelpers.click)('.importcsv .btn-info'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "mNt7Tqm/",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"control/subbar-importcsv\",null,[[\"class\"],[\"importcsv\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#control/subbar-importcsv class="importcsv"}}
+              template block text
+            {{/control/subbar-importcsv}}
+          
+      */
+      {
+        "id": "ktesIorx",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"class\"],[\"importcsv\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/subbar-importcsv\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.importcsv').textContent.replace(/[ \n]+/g, '|').trim(), '|Do|Import|Cancel|Import|template|block|text|', 'block');
@@ -3296,20 +3810,32 @@ define("mdeditor/tests/integration/pods/components/control/subbar-link/component
         assert.ok(true, 'called action');
       }); // Handle any actions with this.on('myAction', function(val) { ... });
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "f0MKUM+9",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/subbar-link\",null,[[\"text\",\"click\"],[\"foo\",[24,[\"test\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/subbar-link  text="foo" click=test}}
+      */
+      {
+        "id": "WSv22BG7",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"text\",\"click\"],[\"foo\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"test\",\"control/subbar-link\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('button').textContent.trim(), 'foo');
+      assert.dom('button').hasText('foo');
       await (0, _testHelpers.click)('button'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "tbPLHl7U",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"control/subbar-link\",null,[[\"text\",\"click\"],[\"foo\",[24,[\"test\"]]]],{\"statements\":[[0,\"        \"],[7,\"section\",true],[8],[0,\"template block text\"],[9],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#control/subbar-link text="foo" click=test}}
+              <section>template block text</section>
+            {{/control/subbar-link}}
+          
+      */
+      {
+        "id": "RIbR2g6O",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"text\",\"click\"],[\"foo\",[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        \"],[10,\"section\"],[12],[2,\"template block text\"],[13],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"test\",\"control/subbar-link\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('section').textContent.trim(), 'template block text');
+      assert.dom('section').hasText('template block text');
     });
   });
 });
@@ -3321,16 +3847,28 @@ define("mdeditor/tests/integration/pods/components/control/subbar-spatial/compon
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "7a5bmZfv",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/subbar-spatial\",null,[[\"class\"],[\"testme\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/subbar-spatial class="testme"}}
+      */
+      {
+        "id": "Ut9nkk44",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"class\"],[\"testme\"]]]]],\"hasEval\":false,\"upvars\":[\"control/subbar-spatial\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.testme').textContent.replace(/[ \n]+/g, '|').trim(), '|Zoom|All|Import|Features|Export|Features|Delete|All|Back|to|List|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "Y4IOqNAM",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"control/subbar-spatial\",null,[[\"class\"],[\"testme\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#control/subbar-spatial class="testme"}}
+              template block text
+            {{/control/subbar-spatial}}
+          
+      */
+      {
+        "id": "6yMbWtS1",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"class\"],[\"testme\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/subbar-spatial\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.testme').textContent.replace(/[ \n]+/g, '|').trim(), '|Zoom|All|Import|Features|Export|Features|Delete|All|Back|to|List|template|block|text|');
@@ -3356,9 +3894,19 @@ define("mdeditor/tests/integration/pods/components/control/subbar-spatial/compon
           assert.ok(true, 'called toList');
         }
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "1jkyIYKV",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"control/subbar-spatial\",null,[[\"zoomAll\",\"uploadData\",\"exportGeoJSON\",\"deleteAllFeatures\",\"toList\"],[[24,[\"test1\"]],[24,[\"test2\"]],[24,[\"test3\"]],[24,[\"test4\"]],[24,[\"test5\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/subbar-spatial
+            zoomAll=test1
+            uploadData=test2
+            exportGeoJSON=test3
+            deleteAllFeatures=test4
+            toList=test5
+          }}
+      */
+      {
+        "id": "iyWW7I59",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,5],null,[[\"zoomAll\",\"uploadData\",\"exportGeoJSON\",\"deleteAllFeatures\",\"toList\"],[[35,4],[35,3],[35,2],[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"test5\",\"test4\",\"test3\",\"test2\",\"test1\",\"control/subbar-spatial\"]}",
         "meta": {}
       }));
       (0, _testHelpers.findAll)('button').forEach(async btn => await (0, _testHelpers.click)(btn));
@@ -3374,16 +3922,28 @@ define("mdeditor/tests/integration/pods/components/ember-tooltip/component-test"
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.set('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "3vKsVbDd",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"ember-tooltip\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{ember-tooltip}}
+      */
+      {
+        "id": "h4ORIMuG",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"ember-tooltip\"]}",
         "meta": {}
       }));
-      assert.equal(this.element.textContent.trim(), ''); // Template block usage:
+      assert.dom(this.element).hasText(''); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "6nHpSXF3",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"ember-tooltip\",null,[[\"isShown\"],[\"true\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#ember-tooltip isShown="true"}}
+              template block text
+            {{/ember-tooltip}}
+          
+      */
+      {
+        "id": "e4hXBXzi",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"isShown\"],[\"true\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"ember-tooltip\"]}",
         "meta": {}
       }));
       (0, _testSupport.assertTooltipContent)(assert, {
@@ -3400,20 +3960,32 @@ define("mdeditor/tests/integration/pods/components/input/md-boolean/component-te
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "gjlo6MFi",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"input/md-boolean\",null,[[\"value\",\"text\",\"label\"],[false,\"Foo Bar\",\"Baz\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{input/md-boolean value=false text="Foo Bar" label="Baz" }}
+      */
+      {
+        "id": "akrJXcXS",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"value\",\"text\",\"label\"],[false,\"Foo Bar\",\"Baz\"]]]]],\"hasEval\":false,\"upvars\":[\"input/md-boolean\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.form-group').textContent.replace(/[ \n]+/g, '|'), '|Baz|Foo|Bar|'); // Template block usage:" + EOL +
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "X0tl7Ihh",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"input/md-boolean\",null,[[\"value\",\"text\",\"label\"],[true,\"Foo Bar\",\"Baz\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#input/md-boolean value=true text="Foo Bar" label="Baz"}}
+              template block text
+            {{/input/md-boolean}}
+          
+      */
+      {
+        "id": "z+ZIJx+G",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"value\",\"text\",\"label\"],[true,\"Foo Bar\",\"Baz\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"input/md-boolean\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.form-group').textContent.replace(/[ \n]+/g, '|'), '|Baz|Foo|Bar|template|block|text|');
-      assert.ok((0, _testHelpers.find)('input').checked);
+      assert.dom('input').isChecked();
     });
   });
 });
@@ -3450,9 +4022,20 @@ define("mdeditor/tests/integration/pods/components/input/md-codelist-multi/compo
       // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
       this.set('fooVal', ['foo', 'bar']); // Template block usage:" + EOL +
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "NcoGivXD",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"input/md-codelist-multi\",null,[[\"mdCodeName\",\"value\"],[\"foobar\",[24,[\"fooVal\"]]]],{\"statements\":[[0,\"        \"],[7,\"p\",true],[8],[0,\"template block text\"],[9],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#input/md-codelist-multi
+              mdCodeName="foobar"
+              value=fooVal
+            }}
+              <p>template block text</p>
+            {{/input/md-codelist-multi}}
+          
+      */
+      {
+        "id": "tqhhvoha",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"mdCodeName\",\"value\"],[\"foobar\",[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        \"],[10,\"p\"],[12],[2,\"template block text\"],[13],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"fooVal\",\"input/md-codelist-multi\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-select').textContent.replace(/[ \n]+/g, '|'), '|×|bar|×|foo|', 'renders block with array value');
@@ -3463,12 +4046,20 @@ define("mdeditor/tests/integration/pods/components/input/md-codelist-multi/compo
       this.set('value', ['foo']);
 
       this.actions.update = actual => {
-        assert.equal(actual, this.get('value'), 'submitted value is passed to external action');
+        assert.equal(actual, this.value, 'submitted value is passed to external action');
       };
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "j5kBZ74s",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"input/md-codelist-multi\",null,[[\"create\",\"value\",\"mdCodeName\",\"change\"],[false,[24,[\"value\"]],\"foobar\",[28,\"action\",[[23,0,[]],\"update\",[24,[\"value\"]]],null]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{input/md-codelist-multi
+            create=false
+            value=value
+            mdCodeName="foobar"
+            change=(action "update" value)}}
+      */
+      {
+        "id": "gY9n7xz7",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"create\",\"value\",\"mdCodeName\",\"change\"],[false,[35,0],\"foobar\",[30,[36,1],[[32,0],\"update\",[35,0]],null]]]]]],\"hasEval\":false,\"upvars\":[\"value\",\"action\",\"input/md-codelist-multi\"]}",
         "meta": {}
       }));
       await (0, _helpers.clickTrigger)();
@@ -3480,12 +4071,20 @@ define("mdeditor/tests/integration/pods/components/input/md-codelist-multi/compo
       this.set('value', ['foo']);
 
       this.actions.update = actual => {
-        assert.equal(actual, this.get('value'), 'submitted value is passed to external action');
+        assert.equal(actual, this.value, 'submitted value is passed to external action');
       };
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "WC3IpKJw",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"input/md-codelist-multi\",null,[[\"create\",\"value\",\"mdCodeName\",\"change\"],[true,[24,[\"value\"]],\"foobar\",[28,\"action\",[[23,0,[]],\"update\",[24,[\"value\"]]],null]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{input/md-codelist-multi
+            create=true
+            value=value
+            mdCodeName="foobar"
+            change=(action "update" value)}}
+      */
+      {
+        "id": "LRiSNcK3",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"create\",\"value\",\"mdCodeName\",\"change\"],[true,[35,0],\"foobar\",[30,[36,1],[[32,0],\"update\",[35,0]],null]]]]]],\"hasEval\":false,\"upvars\":[\"value\",\"action\",\"input/md-codelist-multi\"]}",
         "meta": {}
       }));
       await (0, _helpers.clickTrigger)();
@@ -3527,9 +4126,14 @@ define("mdeditor/tests/integration/pods/components/input/md-codelist/component-t
       assert.expect(1); // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "EVnEW5ZO",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"input/md-codelist\",null,[[\"value\",\"mdCodeName\"],[\"foo\",\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{input/md-codelist
+            value='foo' mdCodeName="foobar"}}
+      */
+      {
+        "id": "m3Z167J1",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"value\",\"mdCodeName\"],[\"foo\",\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"input/md-codelist\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-select').textContent.replace(/[ \n]+/g, '|'), '|foo|×|');
@@ -3539,12 +4143,18 @@ define("mdeditor/tests/integration/pods/components/input/md-codelist/component-t
       this.set('value', ['foo']);
 
       this.actions.update = actual => {
-        assert.equal(actual, this.get('value'), 'submitted value is passed to external action');
+        assert.equal(actual, this.value, 'submitted value is passed to external action');
       };
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "OAhxYgBp",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"input/md-codelist\",null,[[\"value\",\"mdCodeName\",\"change\"],[[24,[\"value\"]],\"foobar\",[28,\"action\",[[23,0,[]],\"update\",[24,[\"value\"]]],null]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{input/md-codelist
+            value=value mdCodeName="foobar"
+            change=(action "update" value)}}
+      */
+      {
+        "id": "6/3Q7KGc",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"value\",\"mdCodeName\",\"change\"],[[35,0],\"foobar\",[30,[36,1],[[32,0],\"update\",[35,0]],null]]]]]],\"hasEval\":false,\"upvars\":[\"value\",\"action\",\"input/md-codelist\"]}",
         "meta": {}
       }));
       await (0, _testSupport.selectChoose)('.md-select', 'bar'); // return settled().then(() => {
@@ -3556,12 +4166,20 @@ define("mdeditor/tests/integration/pods/components/input/md-codelist/component-t
       this.set('value', ['foo']);
 
       this.actions.update = actual => {
-        assert.equal(actual, this.get('value'), 'submitted value is passed to external action');
+        assert.equal(actual, this.value, 'submitted value is passed to external action');
       };
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "nTirPUs4",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"input/md-codelist\",null,[[\"create\",\"value\",\"mdCodeName\",\"change\"],[true,[24,[\"value\"]],\"foobar\",[28,\"action\",[[23,0,[]],\"update\",[24,[\"value\"]]],null]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{input/md-codelist
+            create=true
+            value=value
+            mdCodeName="foobar"
+            change=(action "update" value)}}
+      */
+      {
+        "id": "c0iYf9Ez",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"create\",\"value\",\"mdCodeName\",\"change\"],[true,[35,0],\"foobar\",[30,[36,1],[[32,0],\"update\",[35,0]],null]]]]]],\"hasEval\":false,\"upvars\":[\"value\",\"action\",\"input/md-codelist\"]}",
         "meta": {}
       }));
       await (0, _helpers.clickTrigger)();
@@ -3582,18 +4200,30 @@ define("mdeditor/tests/integration/pods/components/input/md-date-range/component
       this.set('start', new Date('2016-01-01'));
       this.set('end', new Date('2017-01-01')); // Handle any actions with this.on('myAction', function(val) { ... });
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "Rb8NRDgI",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"input/md-date-range\",null,[[\"class\",\"startDateTime\",\"endDateTime\",\"profilePath\"],[\"testme\",[24,[\"start\"]],[24,[\"end\"]],\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{input/md-date-range class="testme" startDateTime=start endDateTime=end profilePath="foobar"}}
+      */
+      {
+        "id": "Pf98gLUS",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"class\",\"startDateTime\",\"endDateTime\",\"profilePath\"],[\"testme\",[35,1],[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"end\",\"start\",\"input/md-date-range\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.testme').textContent.replace(/[ \n]+/g, '|').trim(), 'Dates|Start|Date|End|Date|Pick|Fiscal|Year|Pick|a|Fiscal|Year|');
       assert.equal(new Date((0, _testHelpers.findAll)('.date input')[0].value).toISOString(), this.start.toISOString(), 'set start');
       assert.equal(new Date((0, _testHelpers.findAll)('.date input')[1].value).toISOString(), this.end.toISOString(), 'set end'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "/FcTU/tB",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"input/md-date-range\",null,[[\"class\",\"startDateTime\",\"endDateTime\",\"profilePath\"],[\"testme\",[24,[\"start\"]],[24,[\"end\"]],\"foobar\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#input/md-date-range class="testme" startDateTime=start endDateTime=end profilePath="foobar"}}
+              template block text
+            {{/input/md-date-range}}
+          
+      */
+      {
+        "id": "CVIDheIQ",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,2],null,[[\"class\",\"startDateTime\",\"endDateTime\",\"profilePath\"],[\"testme\",[35,1],[35,0],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"end\",\"start\",\"input/md-date-range\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.testme').textContent.replace(/[ \n]+/g, '|').trim(), 'Dates|Start|Date|End|Date|Pick|Fiscal|Year|Pick|a|Fiscal|Year|template|block|text|', 'block');
@@ -3609,12 +4239,19 @@ define("mdeditor/tests/integration/pods/components/input/md-datetime/component-t
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
       this.set('mydate', '1999-12-31T23:59:59.999+0900');
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "Ab2s54pq",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"input/md-datetime\",null,[[\"date\",\"format\",\"placeholder\"],[[24,[\"mydate\"]],\"YYYY-MM-DD\",\"Enter date\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{input/md-datetime
+                            date=mydate
+                            format="YYYY-MM-DD"
+                            placeholder="Enter date"}}
+      */
+      {
+        "id": "vRM8p2HI",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"date\",\"format\",\"placeholder\"],[[35,0],\"YYYY-MM-DD\",\"Enter date\"]]]]],\"hasEval\":false,\"upvars\":[\"mydate\",\"input/md-datetime\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('input').value, '1999-12-31', 'binding works');
+      assert.dom('input').hasValue('1999-12-31', 'binding works');
     });
   });
 });
@@ -3626,21 +4263,33 @@ define("mdeditor/tests/integration/pods/components/input/md-input-confirm/compon
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "0E7ddOfR",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"input/md-input-confirm\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{input/md-input-confirm}}
+      */
+      {
+        "id": "FqkEhXru",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"input/md-input-confirm\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('.md-input').textContent.trim(), 'Edit');
-      assert.ok((0, _testHelpers.find)('.md-input input[disabled]'), 'input disabled');
+      assert.dom('.md-input').hasText('Edit');
+      assert.dom('.md-input input[disabled]').exists('input disabled');
       await (0, _testHelpers.click)('.btn-warning');
-      assert.equal((0, _testHelpers.find)('.md-input').textContent.trim(), 'Confirm', 'confirm ok');
+      assert.dom('.md-input').hasText('Confirm', 'confirm ok');
       await (0, _testHelpers.click)('.btn-warning');
-      assert.ok((0, _testHelpers.find)('.md-input input:not([disabled])'), 'input enabled'); // Template block usage:
+      assert.dom('.md-input input:not([disabled])').exists('input enabled'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "eL0jDQk3",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"input/md-input-confirm\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#input/md-input-confirm}}
+              template block text
+            {{/input/md-input-confirm}}
+          
+      */
+      {
+        "id": "tg6N6ap7",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"input/md-input-confirm\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-input').textContent.replace(/[ \n]+/g, '|').trim(), '|Edit|template|block|text|', 'block');
@@ -3655,22 +4304,42 @@ define("mdeditor/tests/integration/pods/components/input/md-input/component-test
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "AfX7hdJE",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n      \"],[1,[28,\"input/md-input\",null,[[\"label\",\"value\",\"maxlength\",\"required\",\"inputClass\",\"placeholder\"],[\"Foo\",\"Bar\",100,\"true\",\"test\",\"Enter FooBar\"]]],false],[0,\"\\n    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{input/md-input
+              label="Foo"
+              value="Bar"
+              maxlength=100
+              required="true"
+              inputClass="test"
+              placeholder="Enter FooBar"}}
+          
+      */
+      {
+        "id": "LPikmntu",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n      \"],[1,[30,[36,0],null,[[\"label\",\"value\",\"maxlength\",\"required\",\"inputClass\",\"placeholder\"],[\"Foo\",\"Bar\",100,\"true\",\"test\",\"Enter FooBar\"]]]],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"input/md-input\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('label').textContent, 'Foo', 'labeled OK');
+      assert.dom('label').hasText('Foo', 'labeled OK');
       const input = this.$('input');
       const props = [input.prop('required'), input.prop('maxlength'), input.val(), input.prop('placeholder'), input.hasClass('test')];
       assert.deepEqual(props, [true, 100, 'Bar', 'Enter FooBar', true], 'properties set OK'); // Template block usage:" + EOL +
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "rBc/beup",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"input/md-input\",null,null,{\"statements\":[[0,\"        \"],[7,\"p\",true],[10,\"class\",\"help-block\"],[8],[0,\"help text\"],[9],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#input/md-input}}
+              <p class="help-block">help text</p>
+            {{/input/md-input}}
+          
+      */
+      {
+        "id": "TmtlG1tf",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        \"],[10,\"p\"],[14,0,\"help-block\"],[12],[2,\"help text\"],[13],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"input/md-input\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('.help-block').textContent, 'help text', 'block renders');
+      assert.dom('.help-block').hasText('help text', 'block renders');
     });
   });
 });
@@ -3683,28 +4352,49 @@ define("mdeditor/tests/integration/pods/components/input/md-markdown-area/compon
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
       assert.expect(6);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "NfbDl9S4",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"input/md-markdown-area\",null,[[\"required\"],[true]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{input/md-markdown-area required=true}}
+      */
+      {
+        "id": "qHIhqxzJ",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"required\"],[true]]]]],\"hasEval\":false,\"upvars\":[\"input/md-markdown-area\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-markdown-editor').innerText.replace(/[ \n\s]+/g, '').trim(), '||||Entertext,Markdownissupported.​length:010');
-      assert.ok((0, _testHelpers.find)('.md-markdown-editor .length.md-error'), 'required ok');
+      assert.dom('.md-markdown-editor .length.md-error').exists('required ok');
       this.set('markdownValue', 'This is foobar.');
       this.set('change', value => {
         assert.equal(value, this.markdownValue, `changed to ${this.markdownValue}`);
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "+b3FFYka",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"input/md-markdown-area\",null,[[\"value\",\"maxlength\",\"required\",\"change\"],[[24,[\"markdownValue\"]],10,false,[28,\"action\",[[23,0,[]],[24,[\"change\"]],[24,[\"markdownValue\"]]],null]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{input/md-markdown-area
+                value=markdownValue
+                maxlength=10
+                required=false
+                change=(action change markdownValue)
+              }}
+      */
+      {
+        "id": "ccxsHdLR",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,3],null,[[\"value\",\"maxlength\",\"required\",\"change\"],[[35,0],10,false,[30,[36,2],[[32,0],[35,1],[35,0]],null]]]]]],\"hasEval\":false,\"upvars\":[\"markdownValue\",\"change\",\"action\",\"input/md-markdown-area\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('.md-markdown-editor .length.md-error').textContent, 'length: 15', 'maxlength ok');
+      assert.dom('.md-markdown-editor .length.md-error').hasText('length: 15', 'maxlength ok');
       this.set('markdownValue', 'This is binbash.'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "Ltu4oWFp",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"input/md-markdown-area\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#input/md-markdown-area}}
+              template block text
+            {{/input/md-markdown-area}}
+          
+      */
+      {
+        "id": "/V4v/NMC",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"input/md-markdown-area\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-markdown-editor').innerText.replace(/[ \n\s]+/g, '').trim(), '||||Entertext,Markdownissupported.​length:010templateblocktext', 'block');
@@ -3719,19 +4409,31 @@ define("mdeditor/tests/integration/pods/components/input/md-month/component-test
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "+yoBomZr",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"input/md-month\",null,[[\"date\"],[\"10\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{input/md-month date="10"}}
+      */
+      {
+        "id": "QXO1yAHG",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"date\"],[\"10\"]]]]],\"hasEval\":false,\"upvars\":[\"input/md-month\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('input').value, 'October'); // Template block usage:
+      assert.dom('input').hasValue('October'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "atqTYxDI",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"input/md-month\",null,[[\"class\",\"date\"],[\"testme\",\"10\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#input/md-month class="testme" date="10"}}
+              template block text
+            {{/input/md-month}}
+          
+      */
+      {
+        "id": "UVjEuC06",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"class\",\"date\"],[\"testme\",\"10\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"input/md-month\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('.testme').textContent.trim(), '', 'no block');
+      assert.dom('.testme').hasText('', 'no block');
     });
   });
 });
@@ -3745,19 +4447,31 @@ define("mdeditor/tests/integration/pods/components/input/md-select-contact/compo
       var cs = this.owner.lookup('service:contacts');
       cs.set('contacts', contacts);
       this.set('contacts', contacts);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "wswGMPs0",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"input/md-select-contact\",null,[[\"value\"],[1]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{input/md-select-contact value=1}}
+      */
+      {
+        "id": "CNy0PYpO",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"value\"],[1]]]]],\"hasEval\":false,\"upvars\":[\"input/md-select-contact\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-select-contact').textContent.replace(/[ \n]+/g, '|').trim(), '|Contact1|×|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "B/VACfLw",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"input/md-select-contact\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#input/md-select-contact}}
+              template block text
+            {{/input/md-select-contact}}
+          
+      */
+      {
+        "id": "LKaS5G8y",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"input/md-select-contact\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('.md-select-contact').textContent.trim(), 'Select one option');
+      assert.dom('.md-select-contact').hasText('Select one option');
     });
   });
 });
@@ -3769,12 +4483,16 @@ define("mdeditor/tests/integration/pods/components/input/md-select-contacts/comp
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "BszrmhJZ",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"input/md-select-contacts\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{input/md-select-contacts}}
+      */
+      {
+        "id": "rzPSksyB",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"input/md-select-contacts\"]}",
         "meta": {}
       }));
-      assert.ok((0, _testHelpers.find)('.md-select-contact'));
+      assert.dom('.md-select-contact').exists();
     });
     (0, _qunit.test)('contact selected', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
@@ -3786,9 +4504,13 @@ define("mdeditor/tests/integration/pods/components/input/md-select-contacts/comp
       cs.set('contacts', contacts); //store.createRecord('contact', contacts[0]);
       //store.createRecord('contact', contacts[1]);
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "BszrmhJZ",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"input/md-select-contacts\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{input/md-select-contacts}}
+      */
+      {
+        "id": "rzPSksyB",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"input/md-select-contacts\"]}",
         "meta": {}
       }));
       await (0, _testSupport.selectChoose)('.md-select-contact', 'Contact0');
@@ -3807,9 +4529,17 @@ define("mdeditor/tests/integration/pods/components/input/md-select-profile/compo
       // test dummy for the external profile action
       this.set('updateProfile', () => {});
       this.set('profileId', _environment.default.APP.defaultProfileId);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "N5QfEFEi",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"input/md-select-profile\",null,[[\"value\",\"updateProfile\",\"class\"],[[24,[\"profileId\"]],[24,[\"updateProfile\"]],\"testme\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{input/md-select-profile
+            value=profileId
+            updateProfile=updateProfile
+            class="testme"
+          }}
+      */
+      {
+        "id": "RaQcQhba",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"value\",\"updateProfile\",\"class\"],[[35,1],[35,0],\"testme\"]]]]],\"hasEval\":false,\"upvars\":[\"updateProfile\",\"profileId\",\"input/md-select-profile\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.testme').textContent.replace(/[ \n]+/g, '|'), '|Profile|Full|?|');
@@ -3821,9 +4551,13 @@ define("mdeditor/tests/integration/pods/components/input/md-select-profile/compo
       this.set('updateProfile', actual => {
         assert.equal(actual, _environment.default.APP.defaultProfileId, 'submitted value is passed to external action');
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "yLsB4s+B",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"input/md-select-profile\",null,[[\"value\",\"updateProfile\"],[null,[28,\"action\",[[23,0,[]],[24,[\"updateProfile\"]]],null]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{input/md-select-profile value=null updateProfile=(action updateProfile)}}
+      */
+      {
+        "id": "XjM87Mmv",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"value\",\"updateProfile\"],[null,[30,[36,1],[[32,0],[35,0]],null]]]]]],\"hasEval\":false,\"upvars\":[\"updateProfile\",\"action\",\"input/md-select-profile\"]}",
         "meta": {}
       })); // select a value and force an onchange
 
@@ -3840,16 +4574,28 @@ define("mdeditor/tests/integration/pods/components/input/md-select-thesaurus/com
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "d3VLD8rQ",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"input/md-select-thesaurus\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{input/md-select-thesaurus}}
+      */
+      {
+        "id": "FQF6aOTH",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"input/md-select-thesaurus\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-select').textContent.replace(/[ \n]+/g, '|'), '|Pick|a|thesaurus|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "ThFIe8O9",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"input/md-select-thesaurus\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#input/md-select-thesaurus}}
+              template block text
+            {{/input/md-select-thesaurus}}
+          
+      */
+      {
+        "id": "GCiQWYNK",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"input/md-select-thesaurus\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-select').textContent.replace(/[ \n]+/g, '|'), '|Pick|a|thesaurus|');
@@ -3861,9 +4607,13 @@ define("mdeditor/tests/integration/pods/components/input/md-select-thesaurus/com
       this.set('selectThesaurus', id => {
         assert.equal(id.citation.identifier[0].identifier, '1eb0ea0a-312c-4d74-8d42-6f1ad758f999', 'submitted value is passed to external action');
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "KzCmCf4Z",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"input/md-select-thesaurus\",null,[[\"selectThesaurus\"],[[24,[\"selectThesaurus\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{input/md-select-thesaurus selectThesaurus=selectThesaurus}}
+      */
+      {
+        "id": "km1GDQDz",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"selectThesaurus\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"selectThesaurus\",\"input/md-select-thesaurus\"]}",
         "meta": {}
       })); // select a value and force an onchange
 
@@ -3885,9 +4635,21 @@ define("mdeditor/tests/integration/pods/components/input/md-select/component-tes
         name: 'foo',
         tip: 'bar'
       })]);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "YBlB4Kdz",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n      \"],[1,[28,\"input/md-select\",null,[[\"value\",\"objectArray\",\"valuePath\",\"namePath\",\"tooltipPath\",\"placeholder\"],[1,[24,[\"objArray\"]],\"id\",\"name\",\"tip\",\"Select one\"]]],false],[0,\"\\n    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{input/md-select
+              value=1
+              objectArray=objArray
+              valuePath="id"
+              namePath="name"
+              tooltipPath="tip"
+              placeholder="Select one"}}
+          
+      */
+      {
+        "id": "Ai8wqy4R",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n      \"],[1,[30,[36,1],null,[[\"value\",\"objectArray\",\"valuePath\",\"namePath\",\"tooltipPath\",\"placeholder\"],[1,[35,0],\"id\",\"name\",\"tip\",\"Select one\"]]]],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"objArray\",\"input/md-select\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-select').textContent.replace(/[ \n]+/g, '|'), '|foo|', 'renders ok');
@@ -3906,16 +4668,26 @@ define("mdeditor/tests/integration/pods/components/input/md-select/component-tes
         tip: 'biz'
       })]);
       this.set('value', 1);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "adgl6jS9",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n      \"],[1,[28,\"input/md-select\",null,[[\"value\",\"objectArray\",\"valuePath\",\"namePath\"],[[24,[\"value\"]],[24,[\"objArray\"]],\"id\",\"name\"]]],false],[0,\"\\n    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{input/md-select
+              value=value
+              objectArray=objArray
+              valuePath="id"
+              namePath="name"}}
+          
+      */
+      {
+        "id": "LuWkF+9X",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n      \"],[1,[30,[36,2],null,[[\"value\",\"objectArray\",\"valuePath\",\"namePath\"],[[35,1],[35,0],\"id\",\"name\"]]]],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"objArray\",\"value\",\"input/md-select\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-select').textContent.replace(/[ \n]+/g, '|'), '|foo|', 'value set');
       await (0, _helpers.clickTrigger)();
       await (0, _testHelpers.triggerEvent)((0, _testHelpers.findAll)('.ember-power-select-option')[1], 'mouseup');
       assert.equal((0, _testHelpers.find)('.md-select').textContent.replace(/[ \n]+/g, '|'), '|baz|', 'display value updates');
-      assert.equal(this.get('value'), 2, 'value is updated');
+      assert.equal(this.value, 2, 'value is updated');
     });
     (0, _qunit.test)('create option', async function (assert) {
       assert.expect(3); // Set any properties with this.set('myProperty', 'value');
@@ -3931,9 +4703,20 @@ define("mdeditor/tests/integration/pods/components/input/md-select/component-tes
         tip: 'biz'
       })]);
       this.set('value', 1);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "rcKdh2K6",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n      \"],[1,[28,\"input/md-select\",null,[[\"value\",\"create\",\"objectArray\",\"valuePath\",\"namePath\"],[[24,[\"value\"]],true,[24,[\"objArray\"]],\"id\",\"name\"]]],false],[0,\"\\n    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{input/md-select
+              value=value
+              create=true
+              objectArray=objArray
+              valuePath="id"
+              namePath="name"}}
+          
+      */
+      {
+        "id": "VBP+LpgX",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n      \"],[1,[30,[36,2],null,[[\"value\",\"create\",\"objectArray\",\"valuePath\",\"namePath\"],[[35,1],true,[35,0],\"id\",\"name\"]]]],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"objArray\",\"value\",\"input/md-select\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-select').textContent.replace(/[ \n]+/g, '|'), '|foo|', 'value set');
@@ -3941,7 +4724,7 @@ define("mdeditor/tests/integration/pods/components/input/md-select/component-tes
       await (0, _helpers.typeInSearch)('biz');
       await (0, _testHelpers.triggerEvent)((0, _testHelpers.find)('.ember-power-select-option'), 'mouseup');
       assert.equal((0, _testHelpers.find)('.md-select').textContent.replace(/[ \n]+/g, '|'), '|biz|', 'display value updates');
-      assert.equal(this.get('value'), 'biz', 'value is updated');
+      assert.equal(this.value, 'biz', 'value is updated');
     });
   });
 });
@@ -3953,20 +4736,38 @@ define("mdeditor/tests/integration/pods/components/input/md-textarea/component-t
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "MP9NEYBp",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n      \"],[1,[28,\"input/md-textarea\",null,[[\"value\",\"label\",\"placeholder\",\"rows\"],[\"Foo bar baz\",\"FooBar\",\"placeholder\",10]]],false],[0,\"\\n      \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{input/md-textarea
+            value="Foo bar baz"
+            label="FooBar"
+            placeholder="placeholder"
+            rows=10}}
+            
+      */
+      {
+        "id": "7s+MiF0h",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n      \"],[1,[30,[36,0],null,[[\"value\",\"label\",\"placeholder\",\"rows\"],[\"Foo bar baz\",\"FooBar\",\"placeholder\",10]]]],[2,\"\\n      \"]],\"hasEval\":false,\"upvars\":[\"input/md-textarea\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('textarea').value, 'Foo bar baz');
-      assert.equal((0, _testHelpers.find)('label').textContent, 'FooBar', 'label renders'); // Template block usage:" + EOL +
+      assert.dom('textarea').hasValue('Foo bar baz');
+      assert.dom('label').hasText('FooBar', 'label renders'); // Template block usage:" + EOL +
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "OrJLXcDT",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"input/md-textarea\",null,[[\"class\"],[\"testme\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#input/md-textarea class="testme"}}
+              template block text
+            {{/input/md-textarea}}
+          
+      */
+      {
+        "id": "yCtJkNNA",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"class\"],[\"testme\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"input/md-textarea\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('.testme').textContent.trim(), 'template block text', 'block renders');
+      assert.dom('.testme').hasText('template block text', 'block renders');
     });
   });
 });
@@ -3979,21 +4780,39 @@ define("mdeditor/tests/integration/pods/components/input/md-toggle/component-tes
       // Set any properties with this.set('myProperty', 'value');
       this.set('value', false); // Handle any actions with this.on('myAction', function(val) { ... });
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "fcKCbwmF",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"input/md-toggle\",null,[[\"value\",\"showLabels\",\"onToggle\",\"offLabel\",\"onLabel\"],[[23,0,[\"value\"]],true,[28,\"action\",[[23,0,[]],[28,\"mut\",[[23,0,[\"value\"]]],null]],null],\"No\",\"Yes\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{input/md-toggle
+            value=this.value
+            showLabels=true
+            onToggle=(action (mut this.value))
+            offLabel="No"
+            onLabel="Yes"
+          }}
+      */
+      {
+        "id": "uEs1nIoh",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"value\",\"showLabels\",\"onToggle\",\"offLabel\",\"onLabel\"],[[32,0,[\"value\"]],true,[30,[36,1],[[32,0],[30,[36,0],[[32,0,[\"value\"]]],null]],null],\"No\",\"Yes\"]]]]],\"hasEval\":false,\"upvars\":[\"mut\",\"action\",\"input/md-toggle\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.x-toggle-component').textContent.replace(/[ \n]+/g, '|').trim(), '|No|Yes|');
       await (0, _testHelpers.click)('.x-toggle-btn');
-      assert.ok((0, _testHelpers.find)('.toggle-on'), 'toggle on'); // Template block usage:
+      assert.dom('.toggle-on').exists('toggle on'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "AxyKbbVw",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"input/md-toggle\",null,[[\"class\"],[\"testme\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#input/md-toggle class="testme"}}
+              template block text
+            {{/input/md-toggle}}
+          
+      */
+      {
+        "id": "uyxsFFe5",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"class\"],[\"testme\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"input/md-toggle\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('.testme').textContent.trim(), 'template block text');
+      assert.dom('.testme').hasText('template block text');
     });
   });
 });
@@ -4005,28 +4824,48 @@ define("mdeditor/tests/integration/pods/components/layout/md-card/component-test
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "lJn7MTX7",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"layout/md-card\",null,[[\"title\"],[\"foo\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{layout/md-card title="foo"}}
+      */
+      {
+        "id": "U6MD5ruM",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"title\"],[\"foo\"]]]]],\"hasEval\":false,\"upvars\":[\"layout/md-card\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('.md-card').textContent.trim(), 'foo'); // await render(hbs`{{layout/md-card title="foo" collasped="true"}}`);
+      assert.dom('.md-card').hasText('foo'); // await render(hbs`{{layout/md-card title="foo" collasped="true"}}`);
       // assert.equal(find('.md-card').textContent.trim(), 'foo');
       // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "M+5H0+hm",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"layout/md-card\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#layout/md-card}}
+              template block text
+            {{/layout/md-card}}
+          
+      */
+      {
+        "id": "fRPYX80K",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"layout/md-card\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('.md-card').textContent.trim(), 'template block text', 'block');
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "pGMgp3ey",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"layout/md-card\",null,[[\"title\",\"collapsed\",\"collapsible\"],[\"foo\",true,true]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      assert.dom('.md-card').hasText('template block text', 'block');
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#layout/md-card title="foo" collapsed=true collapsible=true}}
+              template block text
+            {{/layout/md-card}}
+          
+      */
+      {
+        "id": "Tpdi6RdR",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"title\",\"collapsed\",\"collapsible\"],[\"foo\",true,true]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"layout/md-card\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-card').innerText.trim(), 'foo', 'collapsed');
-      assert.ok((0, _testHelpers.find)('.md-card .card-block:not(.in)'), 'class ok');
+      assert.dom('.md-card .card-block:not(.in)').exists('class ok');
     });
   });
 });
@@ -4043,17 +4882,29 @@ define("mdeditor/tests/integration/pods/components/layout/md-footer/component-te
           autoSave: false
         }
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "ANTpV+Sw",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"layout/md-footer\",null,[[\"settings\"],[[24,[\"settings\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{layout/md-footer settings=settings}}
+      */
+      {
+        "id": "iISoCLBo",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"settings\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"settings\",\"layout/md-footer\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-footer').textContent.replace(/[ \n]+/g, '|').trim(), '|Report|Issue|AutoSave:|Off|');
       this.set('settings.data.autoSave', true); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "w7koDt8e",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"layout/md-footer\",null,[[\"settings\"],[[24,[\"settings\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#layout/md-footer settings=settings}}
+              template block text
+            {{/layout/md-footer}}
+          
+      */
+      {
+        "id": "fGeKIKUd",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"settings\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"settings\",\"layout/md-footer\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-footer').textContent.replace(/[ \n]+/g, '|').trim(), '|Report|Issue|AutoSave:|On|template|block|text|');
@@ -4069,16 +4920,28 @@ define("mdeditor/tests/integration/pods/components/layout/md-nav-main/component-
       assert.expect(2); // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "7HbRySVX",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"layout/md-nav-main\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{layout/md-nav-main}}
+      */
+      {
+        "id": "+DaIXbMk",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"layout/md-nav-main\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('nav').innerText.replace(/[ \n]+/g, '|'), '|Dashboard|Export|Import|Publish|Settings'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "vTbqEBbv",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"layout/md-nav-main\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#layout/md-nav-main}}
+              template block text
+            {{/layout/md-nav-main}}
+          
+      */
+      {
+        "id": "l2eUIkFn",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"layout/md-nav-main\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('nav').innerText.replace(/[ \n]+/g, '|'), '|Dashboard|Export|Import|Publish|template|block|text|Settings');
@@ -4141,17 +5004,29 @@ define("mdeditor/tests/integration/pods/components/layout/md-nav-secondary/compo
       assert.expect(2); // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "vCS56Cuf",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"layout/md-nav-secondary\",null,[[\"model\"],[[24,[\"model\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{layout/md-nav-secondary model=model}}
+      */
+      {
+        "id": "PY1SYRxZ",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"layout/md-nav-secondary\"]}",
         "meta": {}
       }));
       var more = (0, _testHelpers.findAll)('.overflow-nav').length ? '|More' : '';
       assert.equal((0, _testHelpers.find)('.nav').textContent.replace(/[ \n]+/g, '|'), more + '|Foo|Bar|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "7PVVRSYN",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"layout/md-nav-secondary\",null,[[\"model\"],[[24,[\"model\"]]]],{\"statements\":[[0,\"        \"],[7,\"li\",true],[8],[0,\"template block text\"],[9],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#layout/md-nav-secondary model=model}}
+              <li>template block text</li>
+            {{/layout/md-nav-secondary}}
+          
+      */
+      {
+        "id": "Gy72XLPm",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        \"],[10,\"li\"],[12],[2,\"template block text\"],[13],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"layout/md-nav-secondary\"]}",
         "meta": {}
       }));
       more = (0, _testHelpers.findAll)('.overflow-nav').length ? '|More' : '';
@@ -4162,16 +5037,24 @@ define("mdeditor/tests/integration/pods/components/layout/md-nav-secondary/compo
       // Handle any actions with this.on('myAction', function(val) { ... });
 
       this.set('customService.active', 'org.adiwg.profile.basic');
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "vCS56Cuf",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"layout/md-nav-secondary\",null,[[\"model\"],[[24,[\"model\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{layout/md-nav-secondary model=model}}
+      */
+      {
+        "id": "PY1SYRxZ",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"layout/md-nav-secondary\"]}",
         "meta": {}
       }));
       var more = (0, _testHelpers.findAll)('.overflow-nav').length ? '|More' : '';
       assert.equal((0, _testHelpers.find)('.nav').textContent.replace(/[ \n]+/g, '|'), more + '|FooBar|BarFoo|FooBar1|BarFoo2|');
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "fT9ZgaMr",
-        "block": "{\"symbols\":[],\"statements\":[[7,\"div\",true],[10,\"style\",\"width:100px;\"],[8],[1,[28,\"layout/md-nav-secondary\",null,[[\"model\"],[[24,[\"model\"]]]]],false],[9]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        <div style="width:100px;">{{layout/md-nav-secondary model=model}}</div>
+      */
+      {
+        "id": "OWI/PvzN",
+        "block": "{\"symbols\":[],\"statements\":[[10,\"div\"],[14,5,\"width:100px;\"],[12],[1,[30,[36,1],null,[[\"model\"],[[35,0]]]]],[13]],\"hasEval\":false,\"upvars\":[\"model\",\"layout/md-nav-secondary\"]}",
         "meta": {}
       }));
       assert.ok((0, _testHelpers.findAll)('.dropdown .dropdown-menu').length, 'render more dropdown');
@@ -4197,19 +5080,31 @@ define("mdeditor/tests/integration/pods/components/layout/md-nav-secondary/link/
       this.nav = {
         links: this.links
       };
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "SjqIZjc7",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"layout/md-nav-secondary/link\",null,[[\"link\",\"nav\"],[[24,[\"links\",\"firstObject\"]],[24,[\"nav\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{layout/md-nav-secondary/link link=links.firstObject nav=nav}}
+      */
+      {
+        "id": "LCnErCKN",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"link\",\"nav\"],[[35,1,[\"firstObject\"]],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"nav\",\"links\",\"layout/md-nav-secondary/link\"]}",
         "meta": {}
       }));
-      assert.equal(this.element.textContent.trim(), 'Foo'); // Template block usage:
+      assert.dom(this.element).hasText('Foo'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "dTotO+8I",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"layout/md-nav-secondary/link\",null,[[\"link\",\"nav\"],[[24,[\"links\",\"lastObject\"]],[24,[\"nav\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#layout/md-nav-secondary/link link=links.lastObject nav=nav}}
+              template block text
+            {{/layout/md-nav-secondary/link}}
+          
+      */
+      {
+        "id": "wiHx4Nel",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,2],null,[[\"link\",\"nav\"],[[35,1,[\"lastObject\"]],[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"nav\",\"links\",\"layout/md-nav-secondary/link\"]}",
         "meta": {}
       }));
-      assert.equal(this.element.textContent.trim(), 'Bar');
+      assert.dom(this.element).hasText('Bar');
     });
   });
 });
@@ -4241,30 +5136,42 @@ define("mdeditor/tests/integration/pods/components/layout/md-nav-sidebar/compone
       // Handle any actions with this.on('myAction', function(val) { ... });
 
       this.set('model', [records, contacts, dicts]);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "oOzPshzD",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"layout/md-nav-sidebar\",null,[[\"items\",\"version\"],[[24,[\"model\"]],\"test\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{layout/md-nav-sidebar items=model version="test"}}
+      */
+      {
+        "id": "sL7pb9lE",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"items\",\"version\"],[[35,0],\"test\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"layout/md-nav-sidebar\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.sidebar-nav').textContent.replace(/[ \n]+/g, '|'), '|mdditorvtest|Records|(2)|My|Record0|My|Record1|Contacts|(2)|Contact0|Contact1|Dictionaries|(2)|My|Dictionary0|My|Dictionary1|');
     });
     (0, _qunit.test)('toggle help action', async function (assert) {
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "/wtPdttb",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"layout/md-nav-sidebar\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{layout/md-nav-sidebar}}
+      */
+      {
+        "id": "YFgcAh+p",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"layout/md-nav-sidebar\"]}",
         "meta": {}
       }));
       await (0, _testHelpers.click)('.md-btn-help');
-      assert.ok((0, _testHelpers.find)('.md-sidebar-wrapper').classList.contains('help'));
+      assert.dom('.md-sidebar-wrapper').hasClass('help');
     });
     (0, _qunit.test)('toggle sidebar action', async function (assert) {
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "YaaE/gVE",
-        "block": "{\"symbols\":[],\"statements\":[[7,\"div\",true],[10,\"id\",\"md-wrapper\"],[8],[1,[22,\"layout/md-nav-sidebar\"],false],[9]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        <div id="md-wrapper">{{layout/md-nav-sidebar}}</div>
+      */
+      {
+        "id": "5mhyCIra",
+        "block": "{\"symbols\":[],\"statements\":[[10,\"div\"],[14,1,\"md-wrapper\"],[12],[1,[34,0]],[13]],\"hasEval\":false,\"upvars\":[\"layout/md-nav-sidebar\"]}",
         "meta": {}
       }));
       await (0, _testHelpers.click)('.sidebar-brand-link');
-      assert.ok((0, _testHelpers.find)('#md-wrapper').classList.contains('toggled'));
+      assert.dom('#md-wrapper').hasClass('toggled');
     });
   });
 });
@@ -4276,22 +5183,38 @@ define("mdeditor/tests/integration/pods/components/layout/md-object-container/co
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.set('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "Hm3ScjAT",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"layout/md-object-container\",null,[[\"title\",\"isCollapsible\",\"index\"],[\"Foo\",true,\"1\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{layout/md-object-container
+            title="Foo"
+            isCollapsible=true
+            index="1"
+          }}
+      */
+      {
+        "id": "NiqBtvPZ",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"title\",\"isCollapsible\",\"index\"],[\"Foo\",true,\"1\"]]]]],\"hasEval\":false,\"upvars\":[\"layout/md-object-container\"]}",
         "meta": {}
       }));
-      assert.equal(this.element.textContent.trim(), 'Foo #1');
+      assert.dom(this.element).hasText('Foo #1');
       assert.dom('.md-object-container').hasClass('even');
       await (0, _testHelpers.click)('.md-object-container-header a');
       assert.dom('.md-object-container .btn-collapse').hasClass('collapsed'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "oZCFfN2y",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"layout/md-object-container\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#layout/md-object-container}}
+              template block text
+            {{/layout/md-object-container}}
+          
+      */
+      {
+        "id": "ST1QrR+0",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"layout/md-object-container\"]}",
         "meta": {}
       }));
-      assert.equal(this.element.textContent.trim(), 'template block text', 'block renders');
+      assert.dom(this.element).hasText('template block text', 'block renders');
     });
   });
 });
@@ -4303,20 +5226,37 @@ define("mdeditor/tests/integration/pods/components/layout/md-slider/component-te
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "K8sOFqjB",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"layout/md-slider\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{layout/md-slider}}
+      */
+      {
+        "id": "ZljuUWee",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"layout/md-slider\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('.md-slider').textContent.trim(), 'Close'); // Template block usage:
+      assert.dom('.md-slider').hasText('Close'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "FLb3THMW",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"layout/md-slider\",null,[[\"fromName\"],[\"slider\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"      \"],[1,[28,\"to-elsewhere\",null,[[\"named\",\"send\"],[\"slider\",[28,\"hash\",null,[[\"title\",\"body\"],[\"biz\",[28,\"component\",[\"layout/md-card\"],[[\"title\"],[\"foobar\"]]]]]]]]],false],[0,\"\\n    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#layout/md-slider fromName="slider"}}
+              template block text
+            {{/layout/md-slider}}
+            {{to-elsewhere named="slider"
+              send=(hash
+                title="biz"
+                body=(component "layout/md-card" title="foobar"))
+            }}
+          
+      */
+      {
+        "id": "bikw2yGT",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"fromName\"],[\"slider\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"      \"],[1,[30,[36,3],null,[[\"named\",\"send\"],[\"slider\",[30,[36,2],null,[[\"title\",\"body\"],[\"biz\",[30,[36,1],[\"layout/md-card\"],[[\"title\"],[\"foobar\"]]]]]]]]]],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"layout/md-slider\",\"component\",\"hash\",\"to-elsewhere\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-slider').textContent.replace(/[ \n]+/g, '|').trim(), '|Close|biz|foobar|template|block|text|');
-      assert.ok((0, _testHelpers.find)('.md-card'), 'rendered slider content');
+      assert.dom('.md-card').exists('rendered slider content');
     });
   });
 });
@@ -4328,19 +5268,31 @@ define("mdeditor/tests/integration/pods/components/layout/md-wrap/component-test
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "moXlat3Z",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"layout/md-wrap\",null,[[\"class\"],[\"testme\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{layout/md-wrap class="testme"}}
+      */
+      {
+        "id": "XM99w4Nf",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"class\"],[\"testme\"]]]]],\"hasEval\":false,\"upvars\":[\"layout/md-wrap\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('.testme').textContent.trim(), ''); // Template block usage:
+      assert.dom('.testme').hasText(''); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "fJoC4aqA",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"layout/md-wrap\",null,[[\"class\"],[\"testme\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#layout/md-wrap class="testme"}}
+              template block text
+            {{/layout/md-wrap}}
+          
+      */
+      {
+        "id": "H/8bpurQ",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"class\"],[\"testme\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"layout/md-wrap\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('.testme').textContent.trim(), 'template block text');
+      assert.dom('.testme').hasText('template block text');
     });
   });
 });
@@ -4400,19 +5352,34 @@ define("mdeditor/tests/integration/pods/components/layout/nav/dictionary/nav-mai
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.set('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "kfjnpNao",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"layout/nav/dictionary/nav-main\",null,[[\"model\"],[[24,[\"model\"]]]]],false],[0,\"\\n      \"],[1,[28,\"to-elsewhere\",null,[[\"named\",\"send\"],[\"dictionary-nav\",[28,\"component\",[\"control/md-button\"],[[\"text\"],[\"testme\"]]]]]],false],[0,\"\\n      \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{layout/nav/dictionary/nav-main model=model}}
+            {{to-elsewhere named="dictionary-nav" send=(component "control/md-button" text="testme")}}
+            
+      */
+      {
+        "id": "qr4S9Ie4",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\"],[[35,0]]]]],[2,\"\\n      \"],[1,[30,[36,3],null,[[\"named\",\"send\"],[\"dictionary-nav\",[30,[36,2],[\"control/md-button\"],[[\"text\"],[\"testme\"]]]]]]],[2,\"\\n      \"]],\"hasEval\":false,\"upvars\":[\"model\",\"layout/nav/dictionary/nav-main\",\"component\",\"to-elsewhere\"]}",
         "meta": {}
       }));
-      assert.equal(this.element.textContent.trim(), 'testme'); // Template block usage:
+      assert.dom(this.element).hasText('testme'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "uRoBR1Kt",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"layout/nav/dictionary/nav-main\",null,[[\"model\"],[[24,[\"model\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"      \"],[1,[28,\"to-elsewhere\",null,[[\"named\",\"send\"],[\"dictionary-nav\",[28,\"component\",[\"control/md-button\"],[[\"text\"],[\"testme\"]]]]]],false],[0,\"\\n    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#layout/nav/dictionary/nav-main model=model}}
+              template block text
+            {{/layout/nav/dictionary/nav-main}}
+            {{to-elsewhere named="dictionary-nav" send=(component "control/md-button" text="testme")}}
+          
+      */
+      {
+        "id": "+a8mDtmP",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"      \"],[1,[30,[36,3],null,[[\"named\",\"send\"],[\"dictionary-nav\",[30,[36,2],[\"control/md-button\"],[[\"text\"],[\"testme\"]]]]]]],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"layout/nav/dictionary/nav-main\",\"component\",\"to-elsewhere\"]}",
         "meta": {}
       }));
-      assert.equal(this.element.textContent.trim(), 'testme');
+      assert.dom(this.element).hasText('testme');
     });
   });
 });
@@ -4427,19 +5394,33 @@ define("mdeditor/tests/integration/pods/components/layout/nav/record/nav-main/co
       this.foo = function () {};
 
       this.profileId = _environment.default.APP.defaultProfileId;
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "lAREQhMJ",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"layout/nav/record/nav-main\"],false],[0,\"\\n    \"],[1,[28,\"to-elsewhere\",null,[[\"named\",\"send\"],[\"record-nav\",[28,\"component\",[\"input/md-select-profile\"],[[\"value\",\"updateProfile\"],[[24,[\"profileId\"]],[23,0,[\"foo\"]]]]]]]],false],[0,\"\\n    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{layout/nav/record/nav-main}}
+          {{to-elsewhere named="record-nav" send=(component "input/md-select-profile" value=profileId updateProfile=this.foo)}}
+          
+      */
+      {
+        "id": "6qLgWQ79",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]],[2,\"\\n    \"],[1,[30,[36,3],null,[[\"named\",\"send\"],[\"record-nav\",[30,[36,2],[\"input/md-select-profile\"],[[\"value\",\"updateProfile\"],[[35,1],[32,0,[\"foo\"]]]]]]]]],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"layout/nav/record/nav-main\",\"profileId\",\"component\",\"to-elsewhere\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Translate|Profile|Full|?|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "1nFMK2zh",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"layout/nav/record/nav-main\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#layout/nav/record/nav-main}}
+              template block text
+            {{/layout/nav/record/nav-main}}
+          
+      */
+      {
+        "id": "QSgNWTuH",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"layout/nav/record/nav-main\"]}",
         "meta": {}
       }));
-      assert.equal(this.element.textContent.trim(), 'Translate');
+      assert.dom(this.element).hasText('Translate');
     });
   });
 });
@@ -4452,16 +5433,28 @@ define("mdeditor/tests/integration/pods/components/md-help/component-test", ["@e
       assert.expect(2); // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "iLPoPgdy",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"md-help\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{md-help}}
+      */
+      {
+        "id": "xyh0wVHr",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"md-help\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Help|Main|Tour|The|mdEditor|is|a|web|application|that|allows|users|to|author|and|edit|metadata|for|projects|and|datasets.|The|primary|design|goal|is|to|develop|an|editor|that|will|allow|creation|and|management|of|archival|quality|metadata|without|requiring|extensive|knowledge|of|metadata|standards.|A|comprehensive|User|Manual|is|available.|The|manual|includes|a|tutorial,|reference,|and|best|practices.|View|User|Manual|If|you|would|like|to|receive|announcements|regarding|the|mdEditor,|join|our|email|list!|Join|Email|list|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "mDCBuwo3",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"md-help\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#md-help}}
+              template block text
+            {{/md-help}}
+          
+      */
+      {
+        "id": "32xioHmZ",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"md-help\"]}",
         "meta": {}
       }));
       assert.ok(this.element.textContent.trim().indexOf('template block text') > 0);
@@ -4490,16 +5483,28 @@ define("mdeditor/tests/integration/pods/components/md-models-table/component-tes
         propertyName: 'type',
         title: 'Type'
       }]);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "SimpEWop",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"md-models-table\",null,[[\"data\",\"columns\"],[[24,[\"data\"]],[24,[\"columns\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{md-models-table data=data columns=columns}}
+      */
+      {
+        "id": "hK8PkSh2",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"data\",\"columns\"],[[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"columns\",\"data\",\"md-models-table\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Search:|Columns|Show|All|Hide|All|Restore|Defaults|Title|Type|Title|Type|Title|Type|foo|bar|biz|baz|Show|1|-|2|of|2|Clear|all|filters|Rows:|10|25|50|500|Page:|1|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "HFawtjvi",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"md-models-table\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#md-models-table}}
+              template block text
+            {{/md-models-table}}
+          
+      */
+      {
+        "id": "dP/T9gL5",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"md-models-table\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|template|block|text|');
@@ -4531,22 +5536,34 @@ define("mdeditor/tests/integration/pods/components/md-models-table/components/ch
         this.set('selectedItems.length', 1);
       };
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "CQdEzpau",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"md-models-table/components/check-all\",null,[[\"data\",\"selectedItems\",\"themeInstance\",\"toggleAllSelection\"],[[24,[\"data\"]],[24,[\"data\",\"selectedItems\"]],[24,[\"data\",\"themeInstance\"]],[24,[\"toggleAllSelection\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{md-models-table/components/check-all data=data selectedItems=data.selectedItems themeInstance=data.themeInstance toggleAllSelection=toggleAllSelection}}
+      */
+      {
+        "id": "iw3MgI1s",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"data\",\"selectedItems\",\"themeInstance\",\"toggleAllSelection\"],[[35,1],[35,1,[\"selectedItems\"]],[35,1,[\"themeInstance\"]],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"toggleAllSelection\",\"data\",\"md-models-table/components/check-all\"]}",
         "meta": {}
       }));
-      assert.ok((0, _testHelpers.find)('span').classList.contains('deselect'), 'add class');
+      assert.dom('span').hasClass('deselect', 'add class');
       await (0, _testHelpers.click)('span'); // await render(hbs`{{md-models-table/components/check-all data=data themeInstance=data.themeInstance toggleAllSelection=toggleAllSelection}}`);
 
-      assert.ok((0, _testHelpers.find)('span').classList.contains('select'), 'deselect'); // Template block usage:
+      assert.dom('span').hasClass('select', 'deselect'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "xwLd9HXZ",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"md-models-table/components/check-all\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#md-models-table/components/check-all}}
+              template block text
+            {{/md-models-table/components/check-all}}
+          
+      */
+      {
+        "id": "AWZKDqh/",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"md-models-table/components/check-all\"]}",
         "meta": {}
       }));
-      assert.equal(this.element.textContent.trim(), '');
+      assert.dom(this.element).hasText('');
     });
   });
 });
@@ -4563,21 +5580,33 @@ define("mdeditor/tests/integration/pods/components/md-models-table/components/ch
         'deselect-row': 'deselect'
       };
       this.set('isSelected', false);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "PMo3Xmev",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"md-models-table/components/check\",null,[[\"isSelected\",\"themeInstance\"],[[24,[\"isSelected\"]],[24,[\"themeInstance\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{md-models-table/components/check isSelected=isSelected themeInstance=themeInstance}}
+      */
+      {
+        "id": "AhX63/WA",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"isSelected\",\"themeInstance\"],[[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"themeInstance\",\"isSelected\",\"md-models-table/components/check\"]}",
         "meta": {}
       }));
-      assert.ok((0, _testHelpers.find)('span').classList.contains('deselect'), 'add class');
+      assert.dom('span').hasClass('deselect', 'add class');
       this.set('isSelected', true);
-      assert.ok((0, _testHelpers.find)('span').classList.contains('select'), 'update class'); // Template block usage:
+      assert.dom('span').hasClass('select', 'update class'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "vzjRZrkF",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"md-models-table/components/check\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#md-models-table/components/check}}
+              template block text
+            {{/md-models-table/components/check}}
+          
+      */
+      {
+        "id": "YtICXwQ+",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"md-models-table/components/check\"]}",
         "meta": {}
       }));
-      assert.equal(this.element.textContent.trim(), '');
+      assert.dom(this.element).hasText('');
     });
   });
 });
@@ -4593,9 +5622,13 @@ define("mdeditor/tests/integration/pods/components/md-models-table/components/ro
       this.set('myAction', function () {
         assert.ok(true, 'call collapseRow');
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "lcd48Rwn",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"md-models-table/components/row-body\",null,[[\"collapseRow\"],[[24,[\"myAction\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{md-models-table/components/row-body collapseRow=myAction}}
+      */
+      {
+        "id": "8n7mqOxU",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"collapseRow\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"myAction\",\"md-models-table/components/row-body\"]}",
         "meta": {}
       }));
     });
@@ -4614,9 +5647,13 @@ define("mdeditor/tests/integration/pods/components/md-models-table/components/ro
         assert.equal(record.title, 'foo', 'called passed action');
         this.expandRow(index, record);
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "L/GNUZXL",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"md-models-table/components/row-buttons\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{md-models-table/components/row-buttons}}
+      */
+      {
+        "id": "T12/tRqf",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"md-models-table/components/row-buttons\"]}",
         "meta": {}
       }));
       this.set('data', [{
@@ -4651,13 +5688,21 @@ define("mdeditor/tests/integration/pods/components/md-models-table/components/ro
           action: this.myAction
         }]
       }]);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "MtwUtds9",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"md-models-table\",null,[[\"data\",\"columns\",\"expandedRowComponent\"],[[24,[\"data\"]],[24,[\"columns\"]],[28,\"component\",[\"md-models-table/components/row-body\"],[[\"spotlighted\"],[true]]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{md-models-table data=data columns=columns expandedRowComponent=(component "md-models-table/components/row-body" spotlighted=true)}}
+      */
+      {
+        "id": "lPRiO4Ay",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,3],null,[[\"data\",\"columns\",\"expandedRowComponent\"],[[35,2],[35,1],[30,[36,0],[\"md-models-table/components/row-body\"],[[\"spotlighted\"],[true]]]]]]]],\"hasEval\":false,\"upvars\":[\"component\",\"columns\",\"data\",\"md-models-table\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.findAll)('.md-row-buttons .btn').length, 4);
-      assert.equal((0, _testHelpers.findAll)('.md-row-buttons .btn-danger').length, 2);
+      assert.dom('.md-row-buttons .btn').exists({
+        count: 4
+      });
+      assert.dom('.md-row-buttons .btn-danger').exists({
+        count: 2
+      });
       assert.dom('.md-button-confirm').hasText('biz');
       assert.dom('.md-button-confirm.btn-danger .fa').hasClass('fa-times');
       await (0, _testHelpers.click)('.md-button-confirm');
@@ -4674,19 +5719,31 @@ define("mdeditor/tests/integration/pods/components/md-title/component-test", ["@
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "8da3z/LK",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"md-title\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{md-title}}
+      */
+      {
+        "id": "he2fztQe",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"md-title\"]}",
         "meta": {}
       }));
-      assert.equal(this.element.textContent.trim(), ''); // Template block usage:
+      assert.dom(this.element).hasText(''); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "i7KE7rEm",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"md-title\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#md-title}}
+              template block text
+            {{/md-title}}
+          
+      */
+      {
+        "id": "tUq68J8q",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"md-title\"]}",
         "meta": {}
       }));
-      assert.equal(this.element.textContent.trim(), 'template block text');
+      assert.dom(this.element).hasText('template block text');
     });
   });
 });
@@ -4711,24 +5768,44 @@ define("mdeditor/tests/integration/pods/components/md-translate/component-test",
         assert.equal(blob.constructor.name, 'Blob', 'save blob');
       };
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "hTkEAnbu",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"md-translate\",null,[[\"model\",\"isLoading\",\"messages\",\"result\",\"errorLevel\",\"isJson\",\"writeObj\"],[[24,[\"model\"]],[24,[\"isLoading\"]],[24,[\"messages\"]],[24,[\"result\"]],2,true,[24,[\"writer\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{md-translate
+            model=model
+            isLoading=isLoading
+            messages=messages
+            result=result
+            errorLevel=2
+            isJson=true
+            writeObj=writer
+          }}
+      */
+      {
+        "id": "iVzT47MG",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,5],null,[[\"model\",\"isLoading\",\"messages\",\"result\",\"errorLevel\",\"isJson\",\"writeObj\"],[[35,4],[35,3],[35,2],[35,1],2,true,[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"writer\",\"result\",\"messages\",\"isLoading\",\"model\",\"md-translate\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Options|Choose|Format|Select|one|option|Force|Valid|Ouput?|No|Yes|Show|Empty|Tags?|No|Yes|Translate|');
       this.set('isLoading', true);
-      assert.ok((0, _testHelpers.find)('.md-spinner'), 'loading');
+      assert.dom('.md-spinner').exists('loading');
       this.set('messages', [["WARNING", " FGDC writer", " citation originator role is missing", " CONTEXT is lineage method"], ["WARNING", " FGDC writer", " citation publication date is missing", " CONTEXT is lineage method"]]);
       assert.equal((0, _testHelpers.find)('.md-translator-error').textContent.replace(/[\s\n]+/g, '|').trim(), '|Translation|Warning|Warning|ocurred|during|translation.|WARNING|citation|originator|role|is|missing|FGDC|writer|context|is|lineage|method|WARNING|citation|publication|date|is|missing|FGDC|writer|context|is|lineage|method|', 'messages');
       this.set('result', '{"foo":"bar"}');
       assert.equal((0, _testHelpers.find)('.md-translator-preview.warning').textContent.replace(/[\s\n]+/g, '|').trim(), '|Result|Preview|JSON|Format|Save|Result|', 'result');
-      assert.equal((0, _testHelpers.find)('.md-translator-preview.warning textarea').value, '{"foo":"bar"}', 'textarea value set');
+      assert.dom('.md-translator-preview.warning textarea').hasValue('{"foo":"bar"}', 'textarea value set');
       (0, _testHelpers.click)('.md-translator-preview.warning .btn-success'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "1qFgffnw",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"md-translate\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#md-translate}}
+              template block text
+            {{/md-translate}}
+          
+      */
+      {
+        "id": "6vwKZl/Q",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"md-translate\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Options|Choose|Format|Select|one|option|Force|Valid|Ouput?|No|Yes|Show|Empty|Tags?|No|Yes|Translate|template|block|text|', 'block');
@@ -4750,23 +5827,31 @@ define("mdeditor/tests/integration/pods/components/models-table/cell-content-dis
         title: 'foo biz baz',
         uri: 'bar'
       }));
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "PQfhnCwq",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"models-table/cell-content-display\",null,[[\"column\",\"record\"],[[24,[\"column\"]],[24,[\"data\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{models-table/cell-content-display column=column record=data}}
+      */
+      {
+        "id": "wK0pxt37",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"column\",\"record\"],[[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"data\",\"column\",\"models-table/cell-content-display\"]}",
         "meta": {}
       }));
-      assert.equal(this.element.textContent.trim(), 'foo biz baz');
+      assert.dom(this.element).hasText('foo biz baz');
       this.set('column1', {
         propertyName: 'title',
         truncate: true,
         wordLimit: 2
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "95UWO0PS",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"models-table/cell-content-display\",null,[[\"column\",\"record\"],[[24,[\"column1\"]],[24,[\"data\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{models-table/cell-content-display column=column1 record=data}}
+      */
+      {
+        "id": "Vo6La+L8",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"column\",\"record\"],[[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"data\",\"column1\",\"models-table/cell-content-display\"]}",
         "meta": {}
       }));
-      assert.equal(this.element.textContent.trim(), 'foo biz ...');
+      assert.dom(this.element).hasText('foo biz ...');
     });
   });
 });
@@ -4778,19 +5863,31 @@ define("mdeditor/tests/integration/pods/components/models-table/row-expand/compo
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.set('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "HeHLdig+",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"models-table/row-expand\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{models-table/row-expand}}
+      */
+      {
+        "id": "F8cDIePn",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"models-table/row-expand\"]}",
         "meta": {}
       }));
-      assert.equal(this.element.textContent.trim(), ''); // Template block usage:
+      assert.dom(this.element).hasText(''); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "ksixTEU6",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"models-table/row-expand\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#models-table/row-expand}}
+              template block text
+            {{/models-table/row-expand}}
+          
+      */
+      {
+        "id": "OFN6T65k",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"models-table/row-expand\"]}",
         "meta": {}
       }));
-      assert.equal(this.element.textContent.trim(), 'template block text');
+      assert.dom(this.element).hasText('template block text');
     });
   });
 });
@@ -4802,19 +5899,31 @@ define("mdeditor/tests/integration/pods/components/models-table/table-body/compo
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.set('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "mTRK7kno",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"models-table/table-body\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{models-table/table-body}}
+      */
+      {
+        "id": "dSAKCqiD",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"models-table/table-body\"]}",
         "meta": {}
       }));
-      assert.equal(this.element.textContent.trim(), ''); // Template block usage:
+      assert.dom(this.element).hasText(''); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "amuBMJuB",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"models-table/table-body\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#models-table/table-body}}
+              template block text
+            {{/models-table/table-body}}
+          
+      */
+      {
+        "id": "5bGBJcp6",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"models-table/table-body\"]}",
         "meta": {}
       }));
-      assert.equal(this.element.textContent.trim(), 'template block text');
+      assert.dom(this.element).hasText('template block text');
     });
   });
 });
@@ -4834,16 +5943,28 @@ define("mdeditor/tests/integration/pods/components/object/md-address/md-address-
         "postalCode": "postalCode",
         "country": "country"
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "3D38jJSW",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-address/md-address-block\",null,[[\"item\"],[[24,[\"address\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-address/md-address-block item=address}}
+      */
+      {
+        "id": "zIWvkTMJ",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"item\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"address\",\"object/md-address/md-address-block\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('address').textContent.replace(/[ \n]+/g, '|').trim(), '|deliveryPoint0|deliveryPoint1|city,|administrativeArea|postalCode|country|mailing,|physical|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "RNQ15DLO",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-address/md-address-block\",null,[[\"item\"],[[24,[\"address\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-address/md-address-block item=address}}
+              template block text
+            {{/object/md-address/md-address-block}}
+          
+      */
+      {
+        "id": "d7vrtub4",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"item\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"address\",\"object/md-address/md-address-block\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('address').textContent.replace(/[ \n]+/g, '|').trim(), '|deliveryPoint0|deliveryPoint1|city,|administrativeArea|postalCode|country|mailing,|physical|');
@@ -4866,16 +5987,28 @@ define("mdeditor/tests/integration/pods/components/object/md-allocation/componen
         'comment': 'comment',
         sourceAllocationId: 'sourceAllocationId'
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "WxU7VCci",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-allocation\",null,[[\"profilePath\",\"model\"],[\"test\",[24,[\"allocation\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-allocation profilePath="test" model=allocation}}
+      */
+      {
+        "id": "VEa4T97T",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"test\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"allocation\",\"object/md-allocation\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-card').textContent.replace(/[ \n]+/g, '|').trim(), '|Amount|Amount|Currency|Choose|unit|of|currency|Award|ID|Source|Pick|contact|that|supplied|funds|Recipient|Pick|contact|that|received|funds|No|Other|Contacts|found.|Add|Other|Contact|Matching|Matching|funds|or|in-kind|services|Comment|No|Online|Resource|found.|Add|Online|Resource|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "mq87gFhb",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-allocation\",null,[[\"profilePath\",\"model\",\"class\"],[\"test\",[24,[\"allocation\"]],\"testme\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-allocation profilePath="test" model=allocation class="testme"}}
+              template block text
+            {{/object/md-allocation}}
+          
+      */
+      {
+        "id": "peFNUYF3",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\",\"class\"],[\"test\",[35,0],\"testme\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"allocation\",\"object/md-allocation\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.testme').textContent.replace(/[ \n]+/g, '|').trim(), '|Amount|Amount|Currency|Choose|unit|of|currency|Award|ID|Source|Pick|contact|that|supplied|funds|Recipient|Pick|contact|that|received|funds|No|Other|Contacts|found.|Add|Other|Contact|Matching|Matching|funds|or|in-kind|services|Comment|No|Online|Resource|found.|Add|Online|Resource|template|block|text|');
@@ -4896,16 +6029,46 @@ define("mdeditor/tests/integration/pods/components/object/md-array-table/compone
         biz: 'biz2',
         baz: 'baz2'
       }]);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "WbGu1T5E",
-        "block": "{\"symbols\":[\"f\"],\"statements\":[[0,\"\\n\"],[4,\"object/md-array-table\",null,[[\"columns\",\"value\",\"title\",\"data-spy\"],[\"biz,baz\",[24,[\"data\"]],\"FooBar\",\"FooBar\"]],{\"statements\":[[0,\"        \"],[7,\"td\",true],[8],[0,\"\\n          \"],[1,[23,1,[\"item\",\"biz\"]],false],[0,\"\\n        \"],[9],[0,\"\\n        \"],[7,\"td\",true],[8],[0,\"\\n          \"],[1,[23,1,[\"item\",\"baz\"]],false],[0,\"\\n        \"],[9],[0,\"\\n\"]],\"parameters\":[1]},null],[0,\"      \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-array-table
+              columns="biz,baz"
+              value=data
+              title="FooBar"
+              data-spy="FooBar" as |f|
+            }}
+              <td>
+                {{f.item.biz}}
+              </td>
+              <td>
+                {{f.item.baz}}
+              </td>
+            {{/object/md-array-table}}
+            
+      */
+      {
+        "id": "FWUbVu4E",
+        "block": "{\"symbols\":[\"f\"],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"columns\",\"value\",\"title\",\"data-spy\"],[\"biz,baz\",[35,0],\"FooBar\",\"FooBar\"]],[[\"default\"],[{\"statements\":[[2,\"        \"],[10,\"td\"],[12],[2,\"\\n          \"],[1,[32,1,[\"item\",\"biz\"]]],[2,\"\\n        \"],[13],[2,\"\\n        \"],[10,\"td\"],[12],[2,\"\\n          \"],[1,[32,1,[\"item\",\"baz\"]]],[2,\"\\n        \"],[13],[2,\"\\n\"]],\"parameters\":[1]}]]],[2,\"      \"]],\"hasEval\":false,\"upvars\":[\"data\",\"object/md-array-table\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.panel').textContent.replace(/[ \n]+/g, '|').trim(), '|FooBars|2|Add|#|Biz|Baz|0|biz1|baz1|Delete|1|biz2|baz2|Delete|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "Dx2VY2vr",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-array-table\",null,[[\"columns\",\"value\",\"title\"],[\"biz,baz\",[24,[\"data\"]],\"FooBar\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-array-table
+              columns="biz,baz"
+              value=data
+              title="FooBar"
+            }}
+              template block text
+            {{/object/md-array-table}}
+          
+      */
+      {
+        "id": "T1ysv6Oa",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"columns\",\"value\",\"title\"],[\"biz,baz\",[35,0],\"FooBar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"data\",\"object/md-array-table\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.panel').textContent.replace(/[ \n]+/g, '|').trim(), '|FooBars|2|Add|#|Biz|Baz|0|template|block|text|Delete|1|template|block|text|Delete|', 'block');
@@ -4960,16 +6123,28 @@ define("mdeditor/tests/integration/pods/components/object/md-associated/componen
           "type": "product"
         }]
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "GjEkhvWk",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-associated\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"model\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-associated profilePath="foobar" model=model}}
+      */
+      {
+        "id": "GaQMjill",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-associated\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[ \n]+/g, '|').trim(), '|Association|Type|product|?|×|Initiative|Type|Choose|Type|of|Initiative|Resource|Types|2|Add|#|Type|Name|0|website|?|×|Delete|1|product|?|×|Delete|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|Dates|1|Add|Date|#|Date|Date|Type|Description|0|publication|?|×|Delete|Edition|Presentation|Form|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|Identifier|1|Add|OK|#|Identifier|Namespace|Description|0|5a70c2dee4b0a9a2e9dafbe7|gov.sciencebase.catalog|Identifier|imported|from|ScienceBase|during|publication|More...|Delete|Identifier|1|Add|OK|#|Identifier|Namespace|0|5a70c2dee4b0a9a2e9dafbe7|gov.sciencebase.catalog|Edit|Delete|Identifier|1|Add|OK|#|Identifier|Namespace|0|5a70c2dee4b0a9a2e9dafbe7|gov.sciencebase.catalog|Edit|Delete|Series|Name|Issue|Page|No|Other|Details|found.|Add|Other|Detail|No|Graphic|found.|Add|Graphic|Metadata|Citation|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|Responsible|Parties|1|Add|#|Role|Contacts|0|author|?|×|Delete|No|Online|Resource|found.|Add|Online|Resource|Identifier|1|Add|OK|#|Identifier|Namespace|Description|0|f4abb4e0-a3d6-450f-adca-6d07eac19b0b|urn:uuid|Not|Defined|More...|Delete|Identifier|1|Add|OK|#|Identifier|Namespace|0|f4abb4e0-a3d6-450f-adca-6d07eac19b0b|urn:uuid|Edit|Delete|Identifier|1|Add|OK|#|Identifier|Namespace|0|f4abb4e0-a3d6-450f-adca-6d07eac19b0b|urn:uuid|Edit|Delete|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "kv9BOMnh",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-associated\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"model\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-associated profilePath="foobar" model=model}}
+              template block text
+            {{/object/md-associated}}
+          
+      */
+      {
+        "id": "y4KFtzjY",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-associated\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[ \n]+/g, '|').trim(), '|Association|Type|product|?|×|Initiative|Type|Choose|Type|of|Initiative|Resource|Types|2|Add|#|Type|Name|0|website|?|×|Delete|1|product|?|×|Delete|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|Dates|1|Add|Date|#|Date|Date|Type|Description|0|publication|?|×|Delete|Edition|Presentation|Form|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|Identifier|1|Add|OK|#|Identifier|Namespace|Description|0|5a70c2dee4b0a9a2e9dafbe7|gov.sciencebase.catalog|Identifier|imported|from|ScienceBase|during|publication|More...|Delete|Identifier|1|Add|OK|#|Identifier|Namespace|0|5a70c2dee4b0a9a2e9dafbe7|gov.sciencebase.catalog|Edit|Delete|Identifier|1|Add|OK|#|Identifier|Namespace|0|5a70c2dee4b0a9a2e9dafbe7|gov.sciencebase.catalog|Edit|Delete|Series|Name|Issue|Page|No|Other|Details|found.|Add|Other|Detail|No|Graphic|found.|Add|Graphic|Metadata|Citation|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|Responsible|Parties|1|Add|#|Role|Contacts|0|author|?|×|Delete|No|Online|Resource|found.|Add|Online|Resource|Identifier|1|Add|OK|#|Identifier|Namespace|Description|0|f4abb4e0-a3d6-450f-adca-6d07eac19b0b|urn:uuid|Not|Defined|More...|Delete|Identifier|1|Add|OK|#|Identifier|Namespace|0|f4abb4e0-a3d6-450f-adca-6d07eac19b0b|urn:uuid|Edit|Delete|Identifier|1|Add|OK|#|Identifier|Namespace|0|f4abb4e0-a3d6-450f-adca-6d07eac19b0b|urn:uuid|Edit|Delete|template|block|text|', 'block');
@@ -5024,16 +6199,28 @@ define("mdeditor/tests/integration/pods/components/object/md-associated/preview/
           "type": "product"
         }]
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "3JJNArXu",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-associated/preview\",null,[[\"item\",\"class\"],[[24,[\"model\"]],\"testme\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-associated/preview item=model class="testme"}}
+      */
+      {
+        "id": "ZHuO+Laj",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"item\",\"class\"],[[35,0],\"testme\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-associated/preview\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.testme').textContent.replace(/[ \n]+/g, '|').trim(), '|Resource|#|Association|Type|product|Initiative|Type|Not|Defined|Title|Pacific|Connectivity|Website|Alternate|Titles|No|alternate|titles|assigned.|Dates|September|30th|2015|(publication)|Identifier|5a70c2dee4b0a9a2e9dafbe7|(gov.sciencebase.catalog)|Responsible|Party|No|responsibility|assigned.|Metadata|Identifier|f4abb4e0-a3d6-450f-adca-6d07eac19b0b|(urn:uuid)|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "ZTN9BnAs",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-associated/preview\",null,[[\"item\",\"class\"],[[24,[\"model\"]],\"testme\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-associated/preview item=model class="testme"}}
+              template block text
+            {{/object/md-associated/preview}}
+          
+      */
+      {
+        "id": "IUpt9rJ/",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"item\",\"class\"],[[35,0],\"testme\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-associated/preview\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.testme').textContent.replace(/[ \n]+/g, '|').trim(), '|Resource|#|Association|Type|product|Initiative|Type|Not|Defined|Title|Pacific|Connectivity|Website|Alternate|Titles|No|alternate|titles|assigned.|Dates|September|30th|2015|(publication)|Identifier|5a70c2dee4b0a9a2e9dafbe7|(gov.sciencebase.catalog)|Responsible|Party|No|responsibility|assigned.|Metadata|Identifier|f4abb4e0-a3d6-450f-adca-6d07eac19b0b|(urn:uuid)|');
@@ -5048,16 +6235,28 @@ define("mdeditor/tests/integration/pods/components/object/md-attribute/component
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       this.set('model', (0, _createDictionary.createAttribute)(1)[0]);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "NlKKzA/m",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-attribute\",null,[[\"model\",\"profilePath\"],[[24,[\"model\"]],\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-attribute model=model profilePath="foobar"}}
+      */
+      {
+        "id": "SBVjcVw6",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-attribute\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-card').textContent.replace(/[ \n]+/g, '|').trim(), '|Attribute|Information|Code|Name|Definition|Data|Type|dataType0|×|Allow|Null?|Allow|null|values|Common|Name|Domain|Select|or|enter|the|domain|for|this|attribute.|Aliases|1|Add|Alias|0|Delete|Units|Units|Resolution|Case|Sensitive?|Is|the|attribute|content|case|sensitive?|Field|Width|Missing|Value|Minimum|Value|Maximum|Value|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "3jDPPN+X",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-attribute\",null,[[\"model\",\"profilePath\"],[[24,[\"model\"]],\"foobar\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-attribute model=model profilePath="foobar"}}
+              template block text
+            {{/object/md-attribute}}
+          
+      */
+      {
+        "id": "w5lm1Jt/",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-attribute\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-card').textContent.replace(/[ \n]+/g, '|').trim(), '|Attribute|Information|Code|Name|Definition|Data|Type|dataType0|×|Allow|Null?|Allow|null|values|Common|Name|Domain|Select|or|enter|the|domain|for|this|attribute.|Aliases|1|Add|Alias|0|Delete|Units|Units|Resolution|Case|Sensitive?|Is|the|attribute|content|case|sensitive?|Field|Width|Missing|Value|Minimum|Value|Maximum|Value|', 'block');
@@ -5072,14 +6271,20 @@ define("mdeditor/tests/integration/pods/components/object/md-attribute/preview/c
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       this.set('model', (0, _createDictionary.createAttribute)(1)[0]);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "BgEXHkYj",
-        "block": "{\"symbols\":[],\"statements\":[[7,\"div\",true],[10,\"class\",\"testme\"],[8],[1,[28,\"object/md-attribute/preview\",null,[[\"model\",\"profilePath\"],[[24,[\"model\"]],\"foobar\"]]],false],[9]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        <div class="testme">{{object/md-attribute/preview model=model profilePath="foobar"}}</div>
+      */
+      {
+        "id": "yrYxy+wt",
+        "block": "{\"symbols\":[],\"statements\":[[10,\"div\"],[14,0,\"testme\"],[12],[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]],[13]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-attribute/preview\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.testme').textContent.replace(/[ \n]+/g, '|').trim(), '|dataType0|×|');
-      assert.equal((0, _testHelpers.findAll)('.testme input').length, 3, 'render inputs');
-      assert.ok((0, _testHelpers.find)('.testme .md-select'), 'render select');
+      assert.dom('.testme input').exists({
+        count: 3
+      }, 'render inputs');
+      assert.dom('.testme .md-select').exists('render select');
     });
   });
 });
@@ -5096,9 +6301,13 @@ define("mdeditor/tests/integration/pods/components/object/md-bbox/component-test
         "southLatitude": 29.640690610830635,
         "northLatitude": 30.42485959910817
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "W4HvGjO9",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-bbox\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"model\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-bbox profilePath="foobar" model=model}}
+      */
+      {
+        "id": "BdhPif1c",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-bbox\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.form').textContent.replace(/[ \n]+/g, '|').trim(), '|North|East|South|West|');
@@ -5108,9 +6317,17 @@ define("mdeditor/tests/integration/pods/components/object/md-bbox/component-test
       assert.equal(inputs[2].value, this.model.southLatitude, 'south');
       assert.equal(inputs[3].value, this.model.westLongitude, 'west'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "S4FHfW5A",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-bbox\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"model\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-bbox profilePath="foobar" model=model}}
+              template block text
+            {{/object/md-bbox}}
+          
+      */
+      {
+        "id": "Znm5bpz7",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-bbox\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.form').textContent.replace(/[ \n]+/g, '|').trim(), '|North|East|South|West|template|block|text|', 'block');
@@ -5125,22 +6342,38 @@ define("mdeditor/tests/integration/pods/components/object/md-citation-array/comp
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       this.set('citation', (0, _createCitation.default)(3));
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "MBehbRDh",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"object/md-citation-array\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-citation-array}}
+      */
+      {
+        "id": "N8RUwbQX",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"object/md-citation-array\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-object-table').textContent.replace(/[ \n]+/g, '|').trim(), '|No|Citation|found.|Add|Citation|');
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "/uXqSVc7",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-citation-array\",null,[[\"model\"],[[24,[\"citation\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-citation-array model=citation}}
+      */
+      {
+        "id": "ARVu5wAp",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"citation\",\"object/md-citation-array\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-object-table').textContent.replace(/[ \n]+/g, '|').trim(), '|Citation|3|Add|OK|#|Title|0|title0|More...|Delete|1|title1|More...|Delete|2|title2|More...|Delete|', 'renders rows'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "8LMMQcD1",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-citation-array\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-citation-array}}
+              template block text
+            {{/object/md-citation-array}}
+          
+      */
+      {
+        "id": "W8UVWvLo",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"object/md-citation-array\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-object-table').textContent.replace(/[ \n]+/g, '|').trim(), '|No|Citation|found.|Add|Citation|');
@@ -5155,16 +6388,28 @@ define("mdeditor/tests/integration/pods/components/object/md-citation/component-
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       this.set('citation', (0, _createCitation.default)(1)[0]);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "RtW37Mdh",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-citation\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"citation\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-citation profilePath="foobar" model=citation}}
+      */
+      {
+        "id": "lAppvf5s",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"citation\",\"object/md-citation\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[ \n]+/g, '|').trim(), '|Basic|Information|Title|Alternate|Titles|2|Add|Alternate|Title|0|Delete|1|Delete|Dates|2|Add|Date|#|Date|Date|Type|Description|0|dateType|×|Delete|1|dateType|×|Delete|Edition|Presentation|Form|×|presentationForm0|×|presentationForm1|Responsible|Parties|2|Add|#|Role|Contacts|0|role|×|Delete|1|role|×|Delete|Online|Resource|2|Add|OK|#|Name|Uri|0|Not|Defined|http://adiwg.org|Edit|Delete|1|Not|Defined|http://mdeditor.org|Edit|Delete|Identifier|2|Add|OK|#|Identifier|Namespace|Description|0|identifier0|Not|Defined|Not|Defined|More...|Delete|1|identifier-0|Not|Defined|Not|Defined|More...|Delete|Identifier|2|Add|OK|#|Identifier|Namespace|0|identifier0|Not|Defined|Edit|Delete|1|identifier-0|Not|Defined|Edit|Delete|Identifier|2|Add|OK|#|Identifier|Namespace|0|identifier0|Not|Defined|Edit|Delete|1|identifier-0|Not|Defined|Edit|Delete|Series|Name|Issue|Page|Other|Details|2|Add|0|Delete|1|Delete|Graphic|2|Add|OK|0|fileName:|Edit|Delete|1|fileName:|Edit|Delete|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "eOi54CPK",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-citation\",null,[[\"profilePath\"],[\"foobar\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-citation profilePath="foobar"}}
+              template block text
+            {{/object/md-citation}}
+          
+      */
+      {
+        "id": "PlvHvf/v",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"profilePath\"],[\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"object/md-citation\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[ \n]+/g, '|').trim(), '|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|Edition|Presentation|Form|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|Series|Name|Issue|Page|No|Other|Details|found.|Add|Other|Detail|No|Graphic|found.|Add|Graphic|template|block|text|', 'block');
@@ -5179,16 +6424,28 @@ define("mdeditor/tests/integration/pods/components/object/md-citation/preview/bo
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       this.set('citation', (0, _createCitation.default)(1)[0]);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "YuudbIQI",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-citation/preview/body\",null,[[\"citation\"],[[24,[\"citation\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-citation/preview/body citation=citation}}
+      */
+      {
+        "id": "luGQwXox",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"citation\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"citation\",\"object/md-citation/preview/body\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.row').textContent.replace(/[ \n]+/g, '|').trim(), '|Title|title0|Alternate|Titles|alternateTitle0|alternateTitle1|Dates|October|13th|2016|(dateType)|October|22nd|2016|(dateType)|Identifier|identifier0|identifier-0|Responsible|Party|role|(|)|role|(|)|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "sUcR8ZyH",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-citation/preview/body\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-citation/preview/body}}
+              template block text
+            {{/object/md-citation/preview/body}}
+          
+      */
+      {
+        "id": "VhPlte47",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"object/md-citation/preview/body\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.row').textContent.replace(/[ \n]+/g, '|').trim(), '|Title|Not|Defined|Alternate|Titles|No|alternate|titles|assigned.|Dates|No|dates|assigned.|Identifier|No|identifiers|assigned.|Responsible|Party|No|responsibility|assigned.|template|block|text|', 'block');
@@ -5207,17 +6464,29 @@ define("mdeditor/tests/integration/pods/components/object/md-citation/preview/co
       this.set('editCitation', function (v) {
         assert.ok(v, 'Called external action');
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "w1mHv6wI",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-citation/preview\",null,[[\"editCitation\",\"citation\"],[[24,[\"editCitation\"]],[24,[\"citation\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-citation/preview editCitation=editCitation citation=citation}}
+      */
+      {
+        "id": "VFHUr0j2",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"editCitation\",\"citation\"],[[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"citation\",\"editCitation\",\"object/md-citation/preview\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-card').textContent.replace(/[ \n]+/g, '|').trim(), '|Citation|Edit|Title|title0|Alternate|Titles|alternateTitle0|alternateTitle1|Dates|October|13th|2016|(dateType)|October|22nd|2016|(dateType)|Identifier|identifier0|identifier-0|Responsible|Party|role|(|)|role|(|)|Edit|Citation|');
       await (0, _testHelpers.click)('.btn-success'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "imkcj7Dl",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-citation/preview\",null,[[\"editCitation\"],[[24,[\"editCitation\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-citation/preview editCitation=editCitation}}
+              template block text
+            {{/object/md-citation/preview}}
+          
+      */
+      {
+        "id": "awiX/FJZ",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"editCitation\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"editCitation\",\"object/md-citation/preview\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-card').textContent.replace(/[ \n]+/g, '|').trim(), '|Citation|Edit|Title|Not|Defined|Alternate|Titles|No|alternate|titles|assigned.|Dates|No|dates|assigned.|Identifier|No|identifiers|assigned.|Responsible|Party|No|responsibility|assigned.|template|block|text|Edit|Citation|', 'block');
@@ -5232,16 +6501,28 @@ define("mdeditor/tests/integration/pods/components/object/md-constraint/componen
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       this.set('model', {});
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "RZXh4ND8",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-constraint\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"model\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-constraint profilePath="foobar" model=model}}
+      */
+      {
+        "id": "yFxAaTz7",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-constraint\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[ \n]+/g, '|').trim(), '|Constraint|Type|The|type|of|constraint.|No|Use|Limitations|found.|Add|Use|Limitation|Legal|Access|Constraints|Use|Constraints|No|Other|Constraint|found.|Add|Other|Constraint|Security|Classification|Name|of|the|handling|restrictions|on|the|resource|or|metadata.|Classification|System|Name|Note|Handling|Description|No|Responsible|Party|found.|Add|Responsible|Party|No|Graphic|or|Logo|found.|Add|Graphic|or|Logo|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "QB8DUCsX",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-constraint\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"model\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-constraint profilePath="foobar" model=model}}
+              template block text
+            {{/object/md-constraint}}
+          
+      */
+      {
+        "id": "xZDNNVUF",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-constraint\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[ \n]+/g, '|').trim(), '|Constraint|Type|The|type|of|constraint.|No|Use|Limitations|found.|Add|Use|Limitation|Legal|Access|Constraints|Use|Constraints|No|Other|Constraint|found.|Add|Other|Constraint|Security|Classification|Name|of|the|handling|restrictions|on|the|resource|or|metadata.|Classification|System|Name|Note|Handling|Description|No|Responsible|Party|found.|Add|Responsible|Party|No|Graphic|or|Logo|found.|Add|Graphic|or|Logo|template|block|text|', 'block');
@@ -5256,9 +6537,13 @@ define("mdeditor/tests/integration/pods/components/object/md-date-array/componen
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "Ce/zxQyN",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-date-array\",null,[[\"value\",\"profilePath\"],[[24,[\"model\"]],\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-date-array value=model profilePath="foobar"}}
+      */
+      {
+        "id": "BFGuGO1f",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"value\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-date-array\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[ \n]+/g, '|').trim(), '|No|Date|found.|Add|Date|');
@@ -5269,9 +6554,17 @@ define("mdeditor/tests/integration/pods/components/object/md-date-array/componen
       }]);
       assert.equal((0, _testHelpers.find)('.panel').textContent.replace(/[ \n]+/g, '|').trim(), '|Dates|1|Add|#|Date|Date|Type|Description|0|dateType|×|Delete|', 'item'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "ZTcAMYtC",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-date-array\",null,[[\"value\",\"profilePath\"],[[24,[\"model\"]],\"foobar\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-date-array value=model profilePath="foobar"}}
+              template block text
+            {{/object/md-date-array}}
+          
+      */
+      {
+        "id": "Tc7P0rrK",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"value\",\"profilePath\"],[[35,0],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-date-array\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.panel').textContent.replace(/[ \n]+/g, '|').trim(), '|Dates|1|Add|#|Date|Date|Type|Description|0|dateType|×|template|block|text|Delete|', 'block');
@@ -5285,9 +6578,13 @@ define("mdeditor/tests/integration/pods/components/object/md-date/component-test
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "dIggkcq3",
-        "block": "{\"symbols\":[],\"statements\":[[7,\"table\",true],[8],[7,\"tr\",true],[8],[1,[28,\"object/md-date\",null,[[\"model\",\"profilePath\"],[[24,[\"model\"]],\"foobar\"]]],false],[9],[9]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        <table><tr>{{object/md-date model=model profilePath="foobar"}}</tr></table>
+      */
+      {
+        "id": "NP0Uy4eC",
+        "block": "{\"symbols\":[],\"statements\":[[10,\"table\"],[12],[10,\"tr\"],[12],[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]],[13],[13]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-date\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('table').textContent.replace(/[ \n]+/g, '|').trim(), "|Choose|date|type|");
@@ -5298,9 +6595,17 @@ define("mdeditor/tests/integration/pods/components/object/md-date/component-test
       });
       assert.equal((0, _testHelpers.find)('table').textContent.replace(/[ \n]+/g, '|').trim(), "|dateType|×|"); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "BmkCkQcZ",
-        "block": "{\"symbols\":[],\"statements\":[[7,\"table\",true],[8],[7,\"tr\",true],[8],[0,\"\\n\"],[4,\"object/md-date\",null,[[\"profilePath\"],[\"foobar\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"],[9],[9]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        <table><tr>
+            {{#object/md-date profilePath="foobar"}}
+              template block text
+            {{/object/md-date}}
+          </tr></table>
+      */
+      {
+        "id": "OaHUDko9",
+        "block": "{\"symbols\":[],\"statements\":[[10,\"table\"],[12],[10,\"tr\"],[12],[2,\"\\n\"],[6,[37,0],null,[[\"profilePath\"],[\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"],[13],[13]],\"hasEval\":false,\"upvars\":[\"object/md-date\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('table').textContent.replace(/[ \n]+/g, '|').trim(), "|Choose|date|type|template|block|text|");
@@ -5340,16 +6645,28 @@ define("mdeditor/tests/integration/pods/components/object/md-distribution/compon
           }
         }]
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "IjVuDFEm",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-distribution\",null,[[\"model\",\"profilePath\"],[[24,[\"model\"]],\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-distribution model=model profilePath="foobar"}}
+      */
+      {
+        "id": "Ng8Z84R8",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-distribution\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('section').textContent.replace(/[\s\n]+/g, '|').trim(), '|Distribution|#|Delete|Description|Liablity|Statement|Distributors|2|Add|OK|#|Contacts|0|role|(|)|More...|Delete|1|role|(|)|More...|Delete|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "Z9yg2Qxf",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-distribution\",null,[[\"model\",\"profilePath\"],[[24,[\"model\"]],\"foobar\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-distribution model=model profilePath="foobar"}}
+              template block text
+            {{/object/md-distribution}}
+          
+      */
+      {
+        "id": "u37ISDfu",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-distribution\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('section').textContent.replace(/[\s\n]+/g, '|').trim(), '|Distribution|#|Delete|Description|Liablity|Statement|Distributors|2|Add|OK|#|Contacts|0|role|(|)|More...|Delete|1|role|(|)|More...|Delete|', 'block and list');
@@ -5391,16 +6708,28 @@ define("mdeditor/tests/integration/pods/components/object/md-distributor/compone
           "transferSize": 10.9
         }]
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "kde4eDLI",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-distributor\",null,[[\"model\",\"profilePath\"],[[24,[\"distributor\"]],\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-distributor model=distributor profilePath="foobar"}}
+      */
+      {
+        "id": "uBoM5LdZ",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"distributor\",\"object/md-distributor\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|Contacts|Role|role|×|Transfer|Options|2|Add|OK|#|Size(mb)|Online?|Offline?|Format?|0|9.9|no|no|no|More...|Delete|1|10.9|no|no|no|More...|Delete|Order|Process|Fees|Planned|Availability|Ordering|Instructions|Turnaround|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "4L4t1mtP",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-distributor\",null,[[\"model\",\"profilePath\"],[[24,[\"distributor\"]],\"foobar\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-distributor model=distributor profilePath="foobar"}}
+              template block text
+            {{/object/md-distributor}}
+          
+      */
+      {
+        "id": "ZiygAYPx",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"distributor\",\"object/md-distributor\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|Contacts|Role|role|×|Transfer|Options|2|Add|OK|#|Size(mb)|Online?|Offline?|Format?|0|9.9|no|no|no|More...|Delete|1|10.9|no|no|no|More...|Delete|Order|Process|Fees|Planned|Availability|Ordering|Instructions|Turnaround|template|block|text|', 'block');
@@ -5442,16 +6771,28 @@ define("mdeditor/tests/integration/pods/components/object/md-distributor/preview
           "transferSize": 10.9
         }]
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "KKG8Y9pR",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-distributor/preview\",null,[[\"item\"],[[24,[\"distributor\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-distributor/preview item=distributor}}
+      */
+      {
+        "id": "KYgZCtcs",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"item\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"distributor\",\"object/md-distributor/preview\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|role|(|Contact0|)|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "Hv2mqg4O",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-distributor/preview\",null,[[\"class\",\"item\"],[\"testme\",[24,[\"distributor\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-distributor/preview class="testme" item=distributor}}
+              template block text
+            {{/object/md-distributor/preview}}
+          
+      */
+      {
+        "id": "l3ppSKqK",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"class\",\"item\"],[\"testme\",[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"distributor\",\"object/md-distributor/preview\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.testme').textContent.replace(/[\s\n]+/g, '|').trim(), '|role|(|Contact0|)|template|block|text|');
@@ -5472,16 +6813,28 @@ define("mdeditor/tests/integration/pods/components/object/md-documentation/compo
         }],
         citation: (0, _createCitation.default)(2)
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "lK+RHGL3",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-documentation\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"doc\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-documentation profilePath="foobar" model=doc}}
+      */
+      {
+        "id": "a7j4+XFn",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"doc\",\"object/md-documentation\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|Resource|Types|1|Add|#|Type|Name|0|foo|×|Delete|Basic|Information|Title|Alternate|Titles|2|Add|Alternate|Title|0|Delete|1|Delete|Dates|2|Add|Date|#|Date|Date|Type|Description|0|dateType|×|Delete|1|dateType|×|Delete|Edition|Presentation|Form|×|presentationForm0|×|presentationForm1|Responsible|Parties|2|Add|#|Role|Contacts|0|role|×|Delete|1|role|×|Delete|Online|Resource|2|Add|OK|#|Name|Uri|0|Not|Defined|http://adiwg.org|Edit|Delete|1|Not|Defined|http://mdeditor.org|Edit|Delete|Identifier|2|Add|OK|#|Identifier|Namespace|Description|0|identifier0|Not|Defined|Not|Defined|More...|Delete|1|identifier-0|Not|Defined|Not|Defined|More...|Delete|Identifier|2|Add|OK|#|Identifier|Namespace|0|identifier0|Not|Defined|Edit|Delete|1|identifier-0|Not|Defined|Edit|Delete|Identifier|2|Add|OK|#|Identifier|Namespace|0|identifier0|Not|Defined|Edit|Delete|1|identifier-0|Not|Defined|Edit|Delete|Series|Name|Issue|Page|Other|Details|2|Add|0|Delete|1|Delete|Graphic|2|Add|OK|0|fileName:|Edit|Delete|1|fileName:|Edit|Delete|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "B4gRASXT",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-documentation\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"doc\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-documentation profilePath="foobar" model=doc}}
+              template block text
+            {{/object/md-documentation}}
+          
+      */
+      {
+        "id": "zzHGNytB",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"doc\",\"object/md-documentation\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|Resource|Types|1|Add|#|Type|Name|0|foo|×|Delete|Basic|Information|Title|Alternate|Titles|2|Add|Alternate|Title|0|Delete|1|Delete|Dates|2|Add|Date|#|Date|Date|Type|Description|0|dateType|×|Delete|1|dateType|×|Delete|Edition|Presentation|Form|×|presentationForm0|×|presentationForm1|Responsible|Parties|2|Add|#|Role|Contacts|0|role|×|Delete|1|role|×|Delete|Online|Resource|2|Add|OK|#|Name|Uri|0|Not|Defined|http://adiwg.org|Edit|Delete|1|Not|Defined|http://mdeditor.org|Edit|Delete|Identifier|2|Add|OK|#|Identifier|Namespace|Description|0|identifier0|Not|Defined|Not|Defined|More...|Delete|1|identifier-0|Not|Defined|Not|Defined|More...|Delete|Identifier|2|Add|OK|#|Identifier|Namespace|0|identifier0|Not|Defined|Edit|Delete|1|identifier-0|Not|Defined|Edit|Delete|Identifier|2|Add|OK|#|Identifier|Namespace|0|identifier0|Not|Defined|Edit|Delete|1|identifier-0|Not|Defined|Edit|Delete|Series|Name|Issue|Page|Other|Details|2|Add|0|Delete|1|Delete|Graphic|2|Add|OK|0|fileName:|Edit|Delete|1|fileName:|Edit|Delete|template|block|text|', 'block');
@@ -5502,16 +6855,28 @@ define("mdeditor/tests/integration/pods/components/object/md-documentation/previ
         }],
         citation: (0, _createCitation.default)(2)
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "d1q6QYMQ",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-documentation/preview\",null,[[\"item\"],[[24,[\"doc\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-documentation/preview item=doc}}
+      */
+      {
+        "id": "waRXwSEx",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"item\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"doc\",\"object/md-documentation/preview\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.text-muted').textContent.replace(/[\s\n]+/g, '|').trim(), '|Document|#|Resource|Type(s)|foo:|bar|Title|title0|Alternate|Titles|alternateTitle0|alternateTitle1|Dates|October|13th|2016|(dateType)|October|22nd|2016|(dateType)|Identifier|identifier0|identifier-0|Responsible|Party|role|(|)|role|(|)|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "9RRr8EXK",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-documentation/preview\",null,[[\"class\",\"item\"],[\"testme\",[24,[\"doc\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-documentation/preview class="testme" item=doc}}
+              template block text
+            {{/object/md-documentation/preview}}
+          
+      */
+      {
+        "id": "xyYQaqiC",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"class\",\"item\"],[\"testme\",[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"doc\",\"object/md-documentation/preview\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.testme').textContent.replace(/[\s\n]+/g, '|').trim(), '|Document|#|Resource|Type(s)|foo:|bar|Title|title0|Alternate|Titles|alternateTitle0|alternateTitle1|Dates|October|13th|2016|(dateType)|October|22nd|2016|(dateType)|Identifier|identifier0|identifier-0|Responsible|Party|role|(|)|role|(|)|', 'block');
@@ -5526,16 +6891,28 @@ define("mdeditor/tests/integration/pods/components/object/md-domain/component-te
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       this.set('domain', (0, _createDictionary.createDomain)(1)[0]);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "iBmZeHij",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-domain\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"domain\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-domain profilePath="foobar" model=domain}}
+      */
+      {
+        "id": "Qixb3pZb",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"domain\",\"object/md-domain\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|Domain|Information|Domain|Identifier|Code|Name|Common|Name|Description|Domain|Items|1|Add|OK|#|Domain|Item|Name|Value|Definition|0|More...|Delete|Domain|Reference|Edit|Title|Not|Defined|Alternate|Titles|No|alternate|titles|assigned.|Dates|No|dates|assigned.|Identifier|No|identifiers|assigned.|Responsible|Party|No|responsibility|assigned.|Edit|Citation|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "HY2/r6Qe",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-domain\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"domain\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-domain profilePath="foobar" model=domain}}
+              template block text
+            {{/object/md-domain}}
+          
+      */
+      {
+        "id": "0+9HoZys",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"domain\",\"object/md-domain\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|Domain|Information|Domain|Identifier|Code|Name|Common|Name|Description|Domain|Items|1|Add|OK|#|Domain|Item|Name|Value|Definition|0|More...|Delete|Domain|Reference|Edit|Title|Not|Defined|Alternate|Titles|No|alternate|titles|assigned.|Dates|No|dates|assigned.|Identifier|No|identifiers|assigned.|Responsible|Party|No|responsibility|assigned.|Edit|Citation|', 'block');
@@ -5557,16 +6934,28 @@ define("mdeditor/tests/integration/pods/components/object/md-domainitem/componen
           "title": "domainReference"
         }
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "DQCyHSmh",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-domainitem\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"item\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-domainitem profilePath="foobar" model=item}}
+      */
+      {
+        "id": "mzgmPIiN",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"item\",\"object/md-domainitem\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), 'Name|Value|Definition|Item|Reference|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "X6RAna9g",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-domainitem\",null,[[\"profilePath\",\"model\"],[\"foobar\",[28,\"hash\",null,null]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-domainitem profilePath="foobar" model=(hash)}}
+              template block text
+            {{/object/md-domainitem}}
+          
+      */
+      {
+        "id": "QFdCM861",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[30,[36,0],null,null]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-domainitem\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), 'Name|Value|Definition|Item|Reference|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|', 'block');
@@ -5588,19 +6977,33 @@ define("mdeditor/tests/integration/pods/components/object/md-domainitem/preview/
           "title": "domainReference"
         }
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "p03DaPWz",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-domainitem/preview\",null,[[\"profilePath\",\"model\",\"tagName\"],[\"foobar\",[24,[\"item\"]],\"table\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-domainitem/preview profilePath="foobar" model=item tagName="table"}}
+      */
+      {
+        "id": "akAZYwJ3",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\",\"tagName\"],[\"foobar\",[35,0],\"table\"]]]]],\"hasEval\":false,\"upvars\":[\"item\",\"object/md-domainitem/preview\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.findAll)('input').length, 3);
+      assert.dom('input').exists({
+        count: 3
+      });
       assert.equal((0, _testHelpers.findAll)('input')[0].value, 'name0', 'name');
       assert.equal((0, _testHelpers.findAll)('input')[1].value, 'value0', 'value');
       assert.equal((0, _testHelpers.findAll)('input')[2].value, 'definition0', 'definition'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "xpy0yCpN",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-domainitem/preview\",null,[[\"profilePath\",\"model\",\"tagName\"],[\"foobar\",[24,[\"item\"]],\"table\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-domainitem/preview profilePath="foobar" model=item tagName="table"}}
+              template block text
+            {{/object/md-domainitem/preview}}
+          
+      */
+      {
+        "id": "opRhn+HS",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\",\"tagName\"],[\"foobar\",[35,0],\"table\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"item\",\"object/md-domainitem/preview\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('table').textContent.replace(/[\s\n]+/g, '|').trim(), '|', 'block');
@@ -5616,9 +7019,13 @@ define("mdeditor/tests/integration/pods/components/object/md-entity/component-te
       // Set any properties with this.set('myProperty', 'value');
       this.set('dictionary', (0, _createDictionary.createDictionary)(1)[0].json.dataDictionary);
       this.set('entity', this.dictionary.entity[0]);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "VfNF51Hq",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-entity\",null,[[\"dictionary\",\"profilePath\",\"model\"],[[24,[\"dictionary\"]],\"foobar\",[24,[\"entity\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-entity dictionary=dictionary profilePath="foobar" model=entity}}
+      */
+      {
+        "id": "vr9l4Blt",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"dictionary\",\"profilePath\",\"model\"],[[35,1],\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"entity\",\"dictionary\",\"object/md-entity\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|Entity|Information|Entity|Identifier|Code|Name|Definition|Common|Name|Aliases|2|Add|Alias|0|Delete|1|Delete|Attributes|3|Add|OK|#|Attribute|Name|Data|Type|Definition|Allow|Null?|0|dataType0|×|More...|Delete|1|dataType1|×|More...|Delete|2|dataType2|×|More...|Delete|Entity|Structure|Field|Separator|Character|#|Header|Lines|Quote|Character|Entity|Keys|Primary|Key|Attributes|×|primaryKeyAttributeCodeName0-0|×|primaryKeyAttributeCodeName1-0|Foreign|Keys|1|Add|Foreign|Key|#|Local|Attributes|Referenced|Entity|Referenced|Attributes|0|×|attributeCommonName0-0|referencedEntityCodeName00|×|×|referencedAttributeCodeName0-0|Delete|Entity|Indices|1|Add|#|Name|Attributes|Duplicates?|0|×|attributeCodeName0-0|?|Delete|No|Entity|Reference|found.|Add|Entity|Reference|');
@@ -5626,9 +7033,17 @@ define("mdeditor/tests/integration/pods/components/object/md-entity/component-te
         count: 2
       }); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "Lw1Zxth9",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-entity\",null,[[\"dictionary\",\"profilePath\",\"model\"],[[28,\"hash\",null,null],\"foobar\",[28,\"hash\",null,null]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-entity dictionary=(hash) profilePath="foobar" model=(hash)}}
+              template block text
+            {{/object/md-entity}}
+          
+      */
+      {
+        "id": "WIJa1bHJ",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"dictionary\",\"profilePath\",\"model\"],[[30,[36,0],null,null],\"foobar\",[30,[36,0],null,null]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-entity\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|Entity|Information|Entity|Identifier|Code|Name|Definition|Common|Name|No|Alias|found.|Add|Alias|No|Attributes|found.|Add|Attribute|Entity|Structure|Field|Separator|Character|#|Header|Lines|Quote|Character|Entity|Keys|Primary|Key|Attributes|No|Foreign|Key|found.|Add|Foreign|Key|No|Entity|Index|found.|Add|Entity|Index|No|Entity|Reference|found.|Add|Entity|Reference|', 'block');
@@ -5644,9 +7059,13 @@ define("mdeditor/tests/integration/pods/components/object/md-extent/component-te
       assert.expect(9); // Set any properties with this.set('myProperty', 'value');
 
       this.set('model', (0, _createExtent.default)(1)[0]);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "fs1CjFbQ",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-extent\",null,[[\"profilePath\",\"extent\"],[\"foobar\",[24,[\"model\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-extent profilePath="foobar" extent=model}}
+      */
+      {
+        "id": "GZzHskFS",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"extent\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-extent\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Extent|Description|Geographic|Extent|Bounding|Box|North|East|South|West|Calculate|Clear|Description|Contains|Data|The|geographic|extent|contains|some|or|all|of|the|data|Edit|Features|Clear|Features|+−|Terrain|Features|Bounding|BoxLeaflet|');
@@ -5655,9 +7074,17 @@ define("mdeditor/tests/integration/pods/components/object/md-extent/component-te
       this.set('model.geographicExtent.firstObject.geographicElement', []);
       this.set('model.geographicExtent.firstObject.boundingBox', {}); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "VALjKwHA",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-extent\",null,[[\"profilePath\",\"extent\"],[\"foobar\",[24,[\"model\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-extent profilePath="foobar" extent=model}}
+              template block text
+            {{/object/md-extent}}
+          
+      */
+      {
+        "id": "cwcmjBEh",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"extent\"],[\"foobar\",[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-extent\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Extent|Description|Geographic|Extent|Bounding|Box|North|East|South|West|Calculate|Clear|Description|Contains|Data|The|geographic|extent|contains|some|or|all|of|the|data|No|Features|to|display.|Add|Features|');
@@ -5702,9 +7129,19 @@ define("mdeditor/tests/integration/pods/components/object/md-extent/spatial/comp
           }]
         }]
       };
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "onnypTQh",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-extent/spatial\",null,[[\"extent\",\"index\",\"deleteFeatures\",\"editFeatures\",\"profilePath\"],[[24,[\"extent\"]],9,[24,[\"deleteFeatures\"]],[24,[\"editFeatures\"]],\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-extent/spatial
+            extent=extent
+            index=9
+            deleteFeatures=deleteFeatures
+            editFeatures=editFeatures
+            profilePath="foobar"
+          }}
+      */
+      {
+        "id": "CROtDKo8",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,3],null,[[\"extent\",\"index\",\"deleteFeatures\",\"editFeatures\",\"profilePath\"],[[35,2],9,[35,1],[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"editFeatures\",\"deleteFeatures\",\"extent\",\"object/md-extent/spatial\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Geographic|Extent|Bounding|Box|North|East|South|West|Calculate|Clear|Description|Contains|Data|The|geographic|extent|contains|some|or|all|of|the|data|Edit|Features|Clear|Features|+−|Terrain|FeaturesLeaflet|');
@@ -5728,9 +7165,18 @@ define("mdeditor/tests/integration/pods/components/object/md-extent/spatial/comp
         geographicExtent: [{}]
       }; // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "JmHmFY2R",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-extent/spatial\",null,[[\"extent\",\"profilePath\"],[[24,[\"empty\"]],\"foobar\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-extent/spatial extent=empty profilePath="foobar"
+      }}
+              template block text
+            {{/object/md-extent/spatial}}
+          
+      */
+      {
+        "id": "BqvMvCHw",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"extent\",\"profilePath\"],[[35,0],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"empty\",\"object/md-extent/spatial\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Geographic|Extent|Bounding|Box|North|East|South|West|Calculate|Clear|Description|Contains|Data|The|geographic|extent|contains|some|or|all|of|the|data|No|Features|to|display.|Add|Features|', 'block');
@@ -5776,16 +7222,28 @@ define("mdeditor/tests/integration/pods/components/object/md-funding/component-t
         },
         description: 'foo is bar.'
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "6q2W+QCK",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-funding\",null,[[\"model\",\"profilePath\"],[[24,[\"funding\"]],\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-funding model=funding profilePath="foobar"}}
+      */
+      {
+        "id": "GHf0uQ/9",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"funding\",\"object/md-funding\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|Allocation|1|Add|OK|#|Amount|Currency|Matching|0|9.9|currency|Not|Defined|Edit|Delete|Time|Period|Dates|Start|Date|End|Date|Pick|Fiscal|Year|Pick|a|Fiscal|Year|Identifier|Description|Time|Period|Names|2|Add|Time|Period|Name|0|Delete|1|Delete|Interval|Interval|Amount|Time|Unit|year|×|Duration|Years|Months|Days|Hours|Minutes|Seconds|Description|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "f9ZRveQ5",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-funding\",null,[[\"model\",\"profilePath\"],[[28,\"hash\",null,null],\"foobar\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-funding model=(hash) profilePath="foobar"}}
+              template block text
+            {{/object/md-funding}}
+          
+      */
+      {
+        "id": "ldA4kpK2",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\",\"profilePath\"],[[30,[36,0],null,null],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-funding\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|No|Allocation|found.|Add|Allocation|Time|Period|Dates|Start|Date|End|Date|Pick|Fiscal|Year|Pick|a|Fiscal|Year|Identifier|Description|No|Time|Period|Name|found.|Add|Time|Period|Name|Interval|Interval|Amount|Time|Unit|Choose|unit|of|time|Duration|Years|Months|Days|Hours|Minutes|Seconds|Description|', 'block');
@@ -5808,16 +7266,28 @@ define("mdeditor/tests/integration/pods/components/object/md-funding/preview/com
           "endDateTime": "2016-12-31"
         }
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "Q8uI/JwI",
-        "block": "{\"symbols\":[],\"statements\":[[7,\"section\",true],[8],[1,[28,\"object/md-funding/preview\",null,[[\"item\"],[[24,[\"funding\"]]]]],false],[9]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        <section>{{object/md-funding/preview item=funding}}</section>
+      */
+      {
+        "id": "P9acy/mZ",
+        "block": "{\"symbols\":[],\"statements\":[[10,\"section\"],[12],[1,[30,[36,1],null,[[\"item\"],[[35,0]]]]],[13]],\"hasEval\":false,\"upvars\":[\"funding\",\"object/md-funding/preview\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('section').textContent.replace(/[\s\n]+/g, '|').trim(), '|Start|Date:|Not|defined|End|Date:|12-31-2016|Allocations|Amount|Currency|Source|Recipient|Match?|9.9|currency|--|--|--|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "Z+60OAaN",
-        "block": "{\"symbols\":[],\"statements\":[[7,\"section\",true],[8],[0,\"\\n\"],[4,\"object/md-funding/preview\",null,[[\"item\"],[[28,\"hash\",null,null]]],{\"statements\":[[0,\"        template block text\\n      \"]],\"parameters\":[]},null],[9],[0,\"\\n    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        <section>
+            {{#object/md-funding/preview item=(hash)}}
+              template block text
+            {{/object/md-funding/preview}}</section>
+          
+      */
+      {
+        "id": "u5YnIJjM",
+        "block": "{\"symbols\":[],\"statements\":[[10,\"section\"],[12],[2,\"\\n\"],[6,[37,1],null,[[\"item\"],[[30,[36,0],null,null]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n      \"]],\"parameters\":[]}]]],[13],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-funding/preview\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('section').textContent.replace(/[\s\n]+/g, '|').trim(), '|Start|Date:|Not|defined|End|Date:|Not|defined|Allocations|Amount|Currency|Source|Recipient|Match?|No|allocations|found.|', 'block');
@@ -5846,17 +7316,29 @@ define("mdeditor/tests/integration/pods/components/object/md-graphic-array/compo
           "uri": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
         }]
       }]);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "jM9fWjKK",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-graphic-array\",null,[[\"model\"],[[24,[\"graphic\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-graphic-array model=graphic}}
+      */
+      {
+        "id": "awMJ9MGZ",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"graphic\",\"object/md-graphic-array\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-object-table').textContent.replace(/[\s\n]+/g, '|').trim(), '|Graphic|2|Add|OK|0|fileName:|Edit|Delete|1|fileName1:|Edit|Delete|');
       assert.ok((0, _testHelpers.find)('.md-logo-preview').complete, 'loaded image'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "2uHo3Yy4",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-graphic-array\",null,[[\"model\"],[[24,[\"graphic\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-graphic-array model=graphic}}
+              template block text
+            {{/object/md-graphic-array}}
+          
+      */
+      {
+        "id": "tJeTnJ9/",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"graphic\",\"object/md-graphic-array\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-object-table').textContent.replace(/[\s\n]+/g, '|').trim(), '|Graphic|2|Add|OK|0|fileName:|Edit|Delete|1|fileName1:|Edit|Delete|', 'block');
@@ -5885,9 +7367,13 @@ define("mdeditor/tests/integration/pods/components/object/md-identifier-array/co
       this.set('edit', function (id) {
         assert.ok(id, 'called edit');
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "/3bM0zOy",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-identifier-array\",null,[[\"model\",\"editItem\"],[[24,[\"id\"]],[24,[\"edit\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-identifier-array model=id editItem=edit}}
+      */
+      {
+        "id": "jbJNiPPM",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"model\",\"editItem\"],[[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"edit\",\"id\",\"object/md-identifier-array\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-object-table').textContent.replace(/[\s\n]+/g, '|').trim(), '|Identifier|2|Add|OK|#|Identifier|Namespace|Description|0|identifier|Not|Defined|Not|Defined|More...|Delete|1|identifier1|Not|Defined|Not|Defined|More...|Delete|');
@@ -5896,9 +7382,18 @@ define("mdeditor/tests/integration/pods/components/object/md-identifier-array/co
       await (0, _testHelpers.doubleClick)('.btn-danger');
       assert.equal(this.id.length, 2), 'delete item'; // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "5Mm4RR9N",
-        "block": "{\"symbols\":[],\"statements\":[[7,\"section\",true],[8],[0,\"\\n\"],[4,\"object/md-identifier-array\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"      \"],[9],[0,\"\\n    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        <section>
+            {{#object/md-identifier-array}}
+              template block text
+            {{/object/md-identifier-array}}
+            </section>
+          
+      */
+      {
+        "id": "fqjiwIDs",
+        "block": "{\"symbols\":[],\"statements\":[[10,\"section\"],[12],[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"      \"],[13],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"object/md-identifier-array\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('section').textContent.replace(/[\s\n]+/g, '|').trim(), '|No|Identifier|found.|Add|Identifier|template|block|text|', 'block');
@@ -5913,16 +7408,28 @@ define("mdeditor/tests/integration/pods/components/object/md-identifier-object-t
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       this.set('id', (0, _createIdentifier.default)(2));
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "CAHsy/y/",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-identifier-object-table\",null,[[\"model\"],[[24,[\"id\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-identifier-object-table model=id}}
+      */
+      {
+        "id": "RX3+0rHF",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"id\",\"object/md-identifier-object-table\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-object-table').textContent.replace(/[\s\n]+/g, '|').trim(), '|Identifier|2|Add|OK|#|Identifier|Namespace|0|identifier0|namespace0|Edit|Delete|1|identifier1|namespace1|Edit|Delete|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "e+6pAH/T",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-identifier-object-table\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-identifier-object-table}}
+              template block text
+            {{/object/md-identifier-object-table}}
+          
+      */
+      {
+        "id": "RWjlmQEi",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"object/md-identifier-object-table\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-object-table').textContent.replace(/[\s\n]+/g, '|').trim(), '|No|Identifier|found.|Add|Identifier|', 'block');
@@ -5937,17 +7444,29 @@ define("mdeditor/tests/integration/pods/components/object/md-identifier/componen
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       this.set('id', (0, _createIdentifier.default)(1)[0]);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "/A8dkIwJ",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-identifier\",null,[[\"model\",\"profilePath\"],[[24,[\"id\"]],\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-identifier model=id profilePath="foobar"}}
+      */
+      {
+        "id": "36roWv/X",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"id\",\"object/md-identifier\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-identifier').textContent.replace(/[\s\n]+/g, '|').trim(), 'Identifier|Namespace|namespace0|×|Version|Description|Authority|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|');
-      assert.equal((0, _testHelpers.find)('input').value, 'identifier0', 'assign value'); // Template block usage:
+      assert.dom('input').hasValue('identifier0', 'assign value'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "S0bKBB76",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-identifier\",null,[[\"profilePath\",\"model\"],[\"foobar\",[28,\"hash\",null,null]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-identifier profilePath="foobar" model=(hash)}}
+              template block text
+            {{/object/md-identifier}}
+          
+      */
+      {
+        "id": "p5Mynaui",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[30,[36,0],null,null]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-identifier\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.md-identifier').textContent.replace(/[\s\n]+/g, '|').trim(), "Identifier|Namespace|Select|or|type|a|namespace|for|the|identifier.|Version|Description|Authority|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|template|block|text|", 'block');
@@ -5965,18 +7484,30 @@ define("mdeditor/tests/integration/pods/components/object/md-keyword-citation/co
         keywordType: 'theme',
         thesaurus: (0, _createCitation.default)(1)[0]
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "f4hP+NZa",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-keyword-citation\",null,[[\"model\",\"profilePath\"],[[24,[\"keyword\"]],\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-keyword-citation model=keyword profilePath="foobar"}}
+      */
+      {
+        "id": "sjth2048",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"keyword\",\"object/md-keyword-citation\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|Title|Date|Date|Type|Choose|date|type|Type|theme|?|Edition|URL|');
       var input = (0, _testHelpers.findAll)('form input').mapBy('value').join('|');
       assert.equal(input, "title0|2016-10-13|edition|http://adiwg.org", 'input values'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "2BL9vNbl",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-keyword-citation\",null,[[\"model\",\"profilePath\"],[[28,\"hash\",null,[[\"thesaurus\"],[[28,\"hash\",null,null]]]],\"foobar\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-keyword-citation model=(hash thesaurus=(hash)) profilePath="foobar"}}
+              template block text
+            {{/object/md-keyword-citation}}
+          
+      */
+      {
+        "id": "AKc/2GEO",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\",\"profilePath\"],[[30,[36,0],null,[[\"thesaurus\"],[[30,[36,0],null,null]]]],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-keyword-citation\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), "|Title|Date|Date|Type|Choose|date|type|Type|Choose|keyword|type|Edition|URL|", 'block');
@@ -6001,26 +7532,46 @@ define("mdeditor/tests/integration/pods/components/object/md-keyword-list/compon
           'path': ['foo1', 'bar1']
         }]
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "H4IRxUCa",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-keyword-list\",null,[[\"model\",\"profilePath\"],[[24,[\"model\"]],\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-keyword-list model=model profilePath="foobar"}}
+      */
+      {
+        "id": "MWF+OsCP",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-keyword-list\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('ul').textContent.replace(/[ \n]+/g, '|').trim(), '|Delete|foo1|Delete|bar1|');
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "KP3cNAbQ",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-keyword-list\",null,[[\"model\",\"readOnly\",\"profilePath\"],[[24,[\"model\"]],false,\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-keyword-list model=model readOnly=false profilePath="foobar"}}
+      */
+      {
+        "id": "scT4U9f+",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"readOnly\",\"profilePath\"],[[35,0],false,\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-keyword-list\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.findAll)('tr').length, 4, 'Check number of rows.');
-      assert.equal((0, _testHelpers.findAll)('input').length, 4, 'Check number of input el.');
+      assert.dom('tr').exists({
+        count: 4
+      }, 'Check number of rows.');
+      assert.dom('input').exists({
+        count: 4
+      }, 'Check number of input el.');
       assert.equal(this.$('input')[2].value, 'bar1', 'Correct value for keyword input.');
       assert.equal(this.$('input')[3].value, 'id2', 'Correct value for id input.');
       assert.equal((0, _testHelpers.find)('table').textContent.replace(/[ \n]+/g, '|').trim(), '|Keyword|Id|(Optional)|Delete|Delete|Add|Keyword|Toggle|Thesaurus|', 'readOnly = false.'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "IQ1acbqm",
-        "block": "{\"symbols\":[],\"statements\":[[7,\"section\",true],[8],[0,\"\\n\"],[4,\"object/md-keyword-list\",null,[[\"profilePath\"],[\"foobar\"]],{\"statements\":[[0,\"        template block text\\n      \"]],\"parameters\":[]},null],[9],[0,\"\\n    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        <section>
+            {{#object/md-keyword-list profilePath="foobar"}}
+              template block text
+            {{/object/md-keyword-list}}</section>
+          
+      */
+      {
+        "id": "l+RvqXwY",
+        "block": "{\"symbols\":[],\"statements\":[[10,\"section\"],[12],[2,\"\\n\"],[6,[37,0],null,[[\"profilePath\"],[\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n      \"]],\"parameters\":[]}]]],[13],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"object/md-keyword-list\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('section').textContent.replace(/[ \n]+/g, '|').trim(), '|Add|some|keywords.|template|block|text|', 'Block form renders.');
@@ -6055,16 +7606,28 @@ define("mdeditor/tests/integration/pods/components/object/md-lineage/component-t
           "description": "description"
         }]
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "S+cZidXh",
-        "block": "{\"symbols\":[],\"statements\":[[7,\"section\",true],[8],[1,[28,\"object/md-lineage\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"lineage\"]]]]],false],[9]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        <section>{{object/md-lineage profilePath="foobar" model=lineage}}</section>
+      */
+      {
+        "id": "WUVCTcic",
+        "block": "{\"symbols\":[],\"statements\":[[10,\"section\"],[12],[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]],[13]],\"hasEval\":false,\"upvars\":[\"lineage\",\"object/md-lineage\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('section').textContent.replace(/[\s\n]+/g, '|').trim(), '|Statement|No|Process|Step|found.|Add|Process|Step|Source|2|Add|OK|#|Description|0|More...|Delete|1|More...|Delete|Citation|2|Add|OK|#|Title|0|title|More...|Delete|1|title|More...|Delete|Scope|scopeCode|×|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "NQkI0apa",
-        "block": "{\"symbols\":[],\"statements\":[[7,\"section\",true],[8],[0,\"\\n\"],[4,\"object/md-lineage\",null,[[\"profilePath\",\"model\"],[\"foobar\",[28,\"hash\",null,null]]],{\"statements\":[[0,\"        template block text\\n      \"]],\"parameters\":[]},null],[9],[0,\"\\n    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        <section>
+            {{#object/md-lineage profilePath="foobar" model=(hash)}}
+              template block text
+            {{/object/md-lineage}}</section>
+          
+      */
+      {
+        "id": "hJ5SGx5p",
+        "block": "{\"symbols\":[],\"statements\":[[10,\"section\"],[12],[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[30,[36,0],null,null]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n      \"]],\"parameters\":[]}]]],[13],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-lineage\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('section').textContent.replace(/[\s\n]+/g, '|').trim(), '|Statement|No|Process|Step|found.|Add|Process|Step|No|Source|found.|Add|Source|No|Citation|found.|Add|Citation|Scope|Select|type|of|resource.|template|block|text|', 'block');
@@ -6100,16 +7663,28 @@ define("mdeditor/tests/integration/pods/components/object/md-lineage/preview/com
           "description": "description"
         }]
       });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "cyboD7KQ",
-        "block": "{\"symbols\":[],\"statements\":[[7,\"section\",true],[8],[1,[28,\"object/md-lineage/preview\",null,[[\"item\"],[[24,[\"lineage\"]]]]],false],[9]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        <section>{{object/md-lineage/preview item=lineage}}</section>
+      */
+      {
+        "id": "F2vVxa2y",
+        "block": "{\"symbols\":[],\"statements\":[[10,\"section\"],[12],[1,[30,[36,1],null,[[\"item\"],[[35,0]]]]],[13]],\"hasEval\":false,\"upvars\":[\"lineage\",\"object/md-lineage/preview\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('section').textContent.replace(/[\s\n]+/g, '|').trim(), '|Lineage|#|Statement|statement|Process|Step|No|process|steps|assigned.|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "6CYwiqob",
-        "block": "{\"symbols\":[],\"statements\":[[7,\"section\",true],[8],[0,\"\\n\"],[4,\"object/md-lineage/preview\",null,null,{\"statements\":[[0,\"        template block text\\n      \"]],\"parameters\":[]},null],[9],[0,\"\\n    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        <section>
+            {{#object/md-lineage/preview}}
+              template block text
+            {{/object/md-lineage/preview}}</section>
+          
+      */
+      {
+        "id": "opDX7pN6",
+        "block": "{\"symbols\":[],\"statements\":[[10,\"section\"],[12],[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n      \"]],\"parameters\":[]}]]],[13],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"object/md-lineage/preview\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('section').textContent.replace(/[\s\n]+/g, '|').trim(), '|Lineage|#|Statement|Not|Defined|Process|Step|No|process|steps|assigned.|', 'template block');
@@ -6132,16 +7707,28 @@ define("mdeditor/tests/integration/pods/components/object/md-locale-array/compon
         characterSet: "UTF-32",
         country: "BDI"
       }]);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "HP04e62h",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-locale-array\",null,[[\"value\"],[[24,[\"locales\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-locale-array value=locales}}
+      */
+      {
+        "id": "lbgcQLTm",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"value\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"locales\",\"object/md-locale-array\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.panel').textContent.replace(/[\s\n]+/g, '|').trim(), '|2|Add|#|Language|Character|Set|Country|0|eng|?|×|UTF-8|?|×|USA|?|×|Delete|1|spa|?|×|UTF-32|?|×|BDI|?|×|Delete|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "RpEtvD8W",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-locale-array\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-locale-array}}
+              template block text
+            {{/object/md-locale-array}}
+          
+      */
+      {
+        "id": "E0I2vsc2",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"object/md-locale-array\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('.panel').textContent.replace(/[\s\n]+/g, '|').trim(), '|Add|#|Language|Character|Set|Country|Add|', 'block');
@@ -6162,16 +7749,28 @@ define("mdeditor/tests/integration/pods/components/object/md-locale/component-te
           country: "USA"
         })
       }));
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "c61yMLcj",
-        "block": "{\"symbols\":[],\"statements\":[[7,\"section\",true],[8],[1,[28,\"object/md-locale\",null,[[\"settings\",\"model\",\"profilePath\"],[[24,[\"settings\"]],[28,\"hash\",null,null],\"foobar\"]]],false],[9]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        <section>{{object/md-locale settings=settings model=(hash) profilePath="foobar"}}</section>
+      */
+      {
+        "id": "akF4+Jw4",
+        "block": "{\"symbols\":[],\"statements\":[[10,\"section\"],[12],[1,[30,[36,2],null,[[\"settings\",\"model\",\"profilePath\"],[[35,1],[30,[36,0],null,null],\"foobar\"]]]],[13]],\"hasEval\":false,\"upvars\":[\"hash\",\"settings\",\"object/md-locale\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('section').textContent.replace(/[\s\n]+/g, '|').trim(), '|Language|eng|?|×|Character|Set|UTF-8|?|×|Country|USA|?|×|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "t+dPPCQy",
-        "block": "{\"symbols\":[],\"statements\":[[7,\"section\",true],[8],[0,\"\\n\"],[4,\"object/md-locale\",null,[[\"settings\",\"model\",\"profilePath\"],[[24,[\"settings\"]],[28,\"hash\",null,null],\"foobar\"]],{\"statements\":[[0,\"        template block text\\n      \"]],\"parameters\":[]},null],[9],[0,\"\\n    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        <section>
+            {{#object/md-locale settings=settings model=(hash) profilePath="foobar"}}
+              template block text
+            {{/object/md-locale}}</section>
+          
+      */
+      {
+        "id": "R4cZd0Mm",
+        "block": "{\"symbols\":[],\"statements\":[[10,\"section\"],[12],[2,\"\\n\"],[6,[37,2],null,[[\"settings\",\"model\",\"profilePath\"],[[35,1],[30,[36,0],null,null],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n      \"]],\"parameters\":[]}]]],[13],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"settings\",\"object/md-locale\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('section').textContent.replace(/[\s\n]+/g, '|').trim(), '|Language|eng|?|×|Character|Set|UTF-8|?|×|Country|USA|?|×|template|block|text|', 'template block');
@@ -6226,16 +7825,28 @@ define("mdeditor/tests/integration/pods/components/object/md-maintenance/compone
           }]
         }]
       };
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "XzuGL4wJ",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-maintenance\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"model\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-maintenance profilePath="foobar" model=model}}
+      */
+      {
+        "id": "wqW4gVjy",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-maintenance\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|Frequency|frequency|×|Dates|2|Add|Date|#|Date|Date|Type|Description|0|creation|?|×|Delete|1|publication|?|×|Delete|Contacts|2|Add|Contact|#|Role|Contacts|0|author|?|×|Delete|1|publisher|?|×|Delete|Notes|2|Add|Notes|0|Delete|1|Delete|Scope|×|scopeCode0|×|scopeCode1|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "n3hfZH+Z",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-maintenance\",null,[[\"profilePath\"],[\"foobar\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-maintenance profilePath="foobar"}}
+              template block text
+            {{/object/md-maintenance}}
+          
+      */
+      {
+        "id": "UpcZMzhm",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"profilePath\"],[\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"object/md-maintenance\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|Frequency|Choose|a|value.|No|Date|found.|Add|Date|No|Contact|found.|Add|Contact|No|Notes|found.|Add|Note|Scope|template|block|text|', 'block');
@@ -6262,16 +7873,28 @@ define("mdeditor/tests/integration/pods/components/object/md-medium/component-te
           "identifier": "identifier"
         }
       };
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "JLaw0qhe",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-medium\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"model\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-medium profilePath="foobar" model=model}}
+      */
+      {
+        "id": "zadm3Hi6",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-medium\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), 'Medium|Title|Storage|Density|Density|Units|Number|Of|Volumes|Storage|Format|×|mediumFormat0|×|mediumFormat1|Identifier|Namespace|Select|or|type|a|namespace|for|the|identifier.|Version|Description|Note|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "CeRB0Yod",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-medium\",null,[[\"profilePath\",\"model\"],[\"foobar\",[28,\"hash\",null,null]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-medium profilePath="foobar" model=(hash)}}
+              template block text
+            {{/object/md-medium}}
+          
+      */
+      {
+        "id": "fcXjux+b",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[30,[36,0],null,null]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-medium\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), "Medium|Title|Storage|Density|Density|Units|Number|Of|Volumes|Storage|Format|Identifier|Namespace|Select|or|type|a|namespace|for|the|identifier.|Version|Description|Note|template|block|text|", 'block');
@@ -6293,16 +7916,36 @@ define("mdeditor/tests/integration/pods/components/object/md-object-table/compon
         biz: 'biz1',
         baz: 'baz1'
       }];
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "mLSftx/q",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-object-table\",null,[[\"header\",\"attributes\"],[\"Foo Bars\",\"biz,baz\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-object-table header="Foo Bars" attributes="biz,baz"}}
+      */
+      {
+        "id": "AwbScY+A",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"header\",\"attributes\"],[\"Foo Bars\",\"biz,baz\"]]]]],\"hasEval\":false,\"upvars\":[\"object/md-object-table\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|No|Foo|Bars|found.|Add|Foo|Bar|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "EKoK956b",
-        "block": "{\"symbols\":[\"foo\"],\"statements\":[[0,\"\\n\"],[4,\"object/md-object-table\",null,[[\"items\",\"header\",\"buttonText\",\"ellipsis\",\"profilePath\",\"attributes\"],[[24,[\"model\"]],\"FooBar\",\"Add FooBar\",true,\"foobar\",\"biz,baz\"]],{\"statements\":[[0,\"        \"],[7,\"span\",true],[8],[0,\"Biz:\"],[1,[23,1,[\"biz\"]],false],[9],[0,\"\\n        \"],[7,\"span\",true],[8],[0,\"Baz:\"],[1,[23,1,[\"baz\"]],false],[9],[0,\"\\n\"]],\"parameters\":[1]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-object-table
+             items=model
+             header="FooBar"
+             buttonText="Add FooBar"
+             ellipsis=true
+             profilePath="foobar"
+             attributes="biz,baz" as |foo|
+            }}
+              <span>Biz:{{foo.biz}}</span>
+              <span>Baz:{{foo.baz}}</span>
+            {{/object/md-object-table}}
+          
+      */
+      {
+        "id": "quh/Pht5",
+        "block": "{\"symbols\":[\"foo\"],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"items\",\"header\",\"buttonText\",\"ellipsis\",\"profilePath\",\"attributes\"],[[35,0],\"FooBar\",\"Add FooBar\",true,\"foobar\",\"biz,baz\"]],[[\"default\"],[{\"statements\":[[2,\"        \"],[10,\"span\"],[12],[2,\"Biz:\"],[1,[32,1,[\"biz\"]]],[13],[2,\"\\n        \"],[10,\"span\"],[12],[2,\"Baz:\"],[1,[32,1,[\"baz\"]]],[13],[2,\"\\n\"]],\"parameters\":[1]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-object-table\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|FooBar|2|Add|OK|#|Biz|Baz|0|biz0|baz0|Edit|Delete|1|biz1|baz1|Edit|Delete|', 'block');
@@ -6324,16 +7967,36 @@ define("mdeditor/tests/integration/pods/components/object/md-objectroute-table/c
         biz: 'biz1',
         baz: 'baz1'
       }];
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "FotqDrNK",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-objectroute-table\",null,[[\"attributes\",\"header\"],[\"biz,baz\",\"FooBar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-objectroute-table attributes="biz,baz" header="FooBar"}}
+      */
+      {
+        "id": "A75WjSg7",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"attributes\",\"header\"],[\"biz,baz\",\"FooBar\"]]]]],\"hasEval\":false,\"upvars\":[\"object/md-objectroute-table\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|No|FooBar|found.|Add|FooBar|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "FeR2hN55",
-        "block": "{\"symbols\":[\"foo\"],\"statements\":[[0,\"\\n\"],[4,\"object/md-objectroute-table\",null,[[\"items\",\"header\",\"buttonText\",\"ellipsis\",\"profilePath\",\"attributes\"],[[24,[\"model\"]],\"FooBar\",\"Add FooBar\",true,\"foobar\",\"biz,baz\"]],{\"statements\":[[0,\"        \"],[7,\"span\",true],[8],[0,\"Biz:\"],[1,[23,1,[\"biz\"]],false],[9],[0,\"\\n        \"],[7,\"span\",true],[8],[0,\"Baz:\"],[1,[23,1,[\"baz\"]],false],[9],[0,\"\\n\"]],\"parameters\":[1]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-objectroute-table
+             items=model
+             header="FooBar"
+             buttonText="Add FooBar"
+             ellipsis=true
+             profilePath="foobar"
+             attributes="biz,baz" as |foo|
+            }}
+              <span>Biz:{{foo.biz}}</span>
+              <span>Baz:{{foo.baz}}</span>
+            {{/object/md-objectroute-table}}
+          
+      */
+      {
+        "id": "vh3Fq5h+",
+        "block": "{\"symbols\":[\"foo\"],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"items\",\"header\",\"buttonText\",\"ellipsis\",\"profilePath\",\"attributes\"],[[35,0],\"FooBar\",\"Add FooBar\",true,\"foobar\",\"biz,baz\"]],[[\"default\"],[{\"statements\":[[2,\"        \"],[10,\"span\"],[12],[2,\"Biz:\"],[1,[32,1,[\"biz\"]]],[13],[2,\"\\n        \"],[10,\"span\"],[12],[2,\"Baz:\"],[1,[32,1,[\"baz\"]]],[13],[2,\"\\n\"]],\"parameters\":[1]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-objectroute-table\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|FooBar|2|Add|OK|#|Biz|Baz|0|biz0|baz0|More...|Delete|1|biz1|baz1|More...|Delete|', 'block');
@@ -6357,16 +8020,28 @@ define("mdeditor/tests/integration/pods/components/object/md-online-resource/com
         "applicationProfile": "applicationProfile",
         "protocolRequest": "protocolRequest"
       };
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "5wXqjXqN",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-online-resource\",null,[[\"model\",\"profilePath\"],[[24,[\"model\"]],\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-online-resource model=model profilePath="foobar"}}
+      */
+      {
+        "id": "oSJqh5j/",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-online-resource\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), 'Name|URI|Protocol|Description|Function|download|?|×|Application|Profile|applicationProfile|×|Protocol|Request|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "lCJo8dT9",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-online-resource\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"model\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-online-resource profilePath="foobar" model=model}}
+              template block text
+            {{/object/md-online-resource}}
+          
+      */
+      {
+        "id": "PySVGstf",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-online-resource\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Name|URI|Protocol|Description|Function|download|?|×|Application|Profile|applicationProfile|×|Protocol|Request|template|block|text|', 'block');
@@ -6402,16 +8077,28 @@ define("mdeditor/tests/integration/pods/components/object/md-party-array/compone
       var contacts = (0, _createContact.default)(2);
       var cs = this.owner.lookup('service:contacts');
       cs.set('contacts', contacts);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "K0cFGeTa",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-party-array\",null,[[\"value\",\"profilePath\"],[[24,[\"party\"]],\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-party-array value=party profilePath="foobar"}}
+      */
+      {
+        "id": "2YK7jbov",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"value\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"party\",\"object/md-party-array\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|2|Add|#|Role|Contacts|0|author|?|×|×|Contact0|Delete|1|publisher|?|×|×|Contact1|Delete|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "yyKFpwnZ",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-party-array\",null,[[\"model\",\"profilePath\"],[[28,\"hash\",null,null],\"foobar\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-party-array model=(hash) profilePath="foobar"}}
+              template block text
+            {{/object/md-party-array}}
+          
+      */
+      {
+        "id": "672TylOc",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\",\"profilePath\"],[[30,[36,0],null,null],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-party-array\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Add|#|Role|Contacts|Add|', 'block');
@@ -6441,16 +8128,28 @@ define("mdeditor/tests/integration/pods/components/object/md-party/component-tes
       var contacts = (0, _createContact.default)(2);
       var cs = this.owner.lookup('service:contacts');
       cs.set('contacts', contacts);
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "KOhCxx2D",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-party\",null,[[\"model\"],[[24,[\"party\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-party model=party}}
+      */
+      {
+        "id": "8b3chPDH",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"party\",\"object/md-party\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Role|author|?|×|Contacts|×|Contact0|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "LGrqDqqp",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-party\",null,[[\"model\"],[[28,\"hash\",null,null]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-party model=(hash)}}
+              template block text
+            {{/object/md-party}}
+          
+      */
+      {
+        "id": "tQRKZFQv",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\"],[[30,[36,0],null,null]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-party\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), "|Role|Select|or|enter|a|role|Contacts|", 'block');
@@ -6551,16 +8250,28 @@ define("mdeditor/tests/integration/pods/components/object/md-process-step/compon
           "title": "title1"
         }]
       };
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "uzoARtvT",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-process-step\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"step\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-process-step profilePath="foobar" model=step}}
+      */
+      {
+        "id": "wp1epR63",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"step\",\"object/md-process-step\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), "Step|ID|Description|Step|Sources|1|Add|#|Description|0|Delete|Step|Products|1|Add|#|Description|0|Delete|Processors|2|Add|#|Role|Contacts|0|role|×|Delete|1|role|×|Delete|Step|Reference|2|Add|OK|#|Title|0|title0|More...|Delete|1|title1|More...|Delete|Time|Period|Dates|Start|Date|End|Date|Pick|Fiscal|Year|Pick|a|Fiscal|Year|Identifier|Description|No|Time|Period|Name|found.|Add|Time|Period|Name|Interval|Interval|Amount|Time|Unit|Choose|unit|of|time|Duration|Years|Months|Days|Hours|Minutes|Seconds|Scope|Select|type|of|resource.|"); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "aedjZNnb",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-process-step\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"step\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-process-step profilePath="foobar" model=step}}
+              template block text
+            {{/object/md-process-step}}
+          
+      */
+      {
+        "id": "0FJyA4Xx",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"step\",\"object/md-process-step\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), "|Step|ID|Description|Step|Sources|1|Add|#|Description|0|Delete|Step|Products|1|Add|#|Description|0|Delete|Processors|2|Add|#|Role|Contacts|0|role|×|Delete|1|role|×|Delete|Step|Reference|2|Add|OK|#|Title|0|title0|More...|Delete|1|title1|More...|Delete|Time|Period|Dates|Start|Date|End|Date|Pick|Fiscal|Year|Pick|a|Fiscal|Year|Identifier|Description|No|Time|Period|Name|found.|Add|Time|Period|Name|Interval|Interval|Amount|Time|Unit|Choose|unit|of|time|Duration|Years|Months|Days|Hours|Minutes|Seconds|Scope|Select|type|of|resource.|template|block|text|", 'block');
@@ -6604,19 +8315,31 @@ define("mdeditor/tests/integration/pods/components/object/md-process-step/previe
           "description": "description1"
         }]
       };
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "Ml4L1GuD",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-process-step/preview\",null,[[\"model\",\"profilePath\"],[[24,[\"source\"]],\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-process-step/preview model=source profilePath="foobar"}}
+      */
+      {
+        "id": "t+ezhZci",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"source\",\"object/md-process-step/preview\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('textarea').value, 'description'); // Template block usage:
+      assert.dom('textarea').hasValue('description'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "6P6AX1CU",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-process-step/preview\",null,[[\"model\",\"profilePath\"],[[24,[\"source\"]],\"foobar\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-process-step/preview model=source profilePath="foobar"}}
+              template block text
+            {{/object/md-process-step/preview}}
+          
+      */
+      {
+        "id": "gxSiRSSq",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"source\",\"object/md-process-step/preview\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('textarea').value, 'description');
+      assert.dom('textarea').hasValue('description');
     });
   });
 });
@@ -6629,16 +8352,28 @@ define("mdeditor/tests/integration/pods/components/object/md-profile/component-t
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.set('myAction', function(val) { ... });
       this.model = (0, _createProfile.default)(1)[0];
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "koQIUq/w",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-profile\",null,[[\"record\"],[[24,[\"model\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-profile record=model}}
+      */
+      {
+        "id": "qyHgvxy5",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"record\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-profile\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[ \n]+/g, '|').trim(), '|URL|Alias|Version|0.0.0|Update|Available|(0.0.1)|Title|Minimal|Description|A|Minimalist|Profile|Identifier|minimal|Namespace|org.adiwg.profile|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "3KIb/ZG3",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-profile\",null,[[\"record\"],[[24,[\"model\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-profile record=model}}
+              template block text
+            {{/object/md-profile}}
+          
+      */
+      {
+        "id": "H67THDTC",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"record\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-profile\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[ \n]+/g, '|').trim(), '|URL|Alias|Version|0.0.0|Update|Available|(0.0.1)|Title|Minimal|Description|A|Minimalist|Profile|Identifier|minimal|Namespace|org.adiwg.profile|');
@@ -6657,16 +8392,28 @@ define("mdeditor/tests/integration/pods/components/object/md-profile/custom/comp
         title: 'testme',
         description: 'testing description'
       };
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "z+SNgkSX",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-profile/custom\",null,[[\"record\"],[[24,[\"model\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-profile/custom record=model}}
+      */
+      {
+        "id": "eP6ZzTzU",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"record\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-profile/custom\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[ \n]+/g, '|').trim(), 'Title|Description|Profile|Definition|Select|the|profile|definition.|Select|Schemas|No|schemas|avialable.|Schemas|Selected|Select|schemas|from|the|list.|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "KM4Hbwhi",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-profile/custom\",null,[[\"record\"],[[24,[\"model\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-profile/custom record=model}}
+              template block text
+            {{/object/md-profile/custom}}
+          
+      */
+      {
+        "id": "XXuXtyKq",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"record\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-profile/custom\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[ \n]+/g, '|').trim(), '|Title|Description|Profile|Definition|Select|the|profile|definition.|Select|Schemas|No|schemas|avialable.|Schemas|Selected|Select|schemas|from|the|list.|template|block|text|');
@@ -6682,16 +8429,28 @@ define("mdeditor/tests/integration/pods/components/object/md-profile/form/compon
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.set('myAction', function(val) { ... });
       this.model = (0, _createProfile.default)(1)[0];
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "W/2x61O8",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-profile/form\",null,[[\"record\"],[[24,[\"model\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-profile/form record=model}}
+      */
+      {
+        "id": "WvoO0JRc",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"record\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-profile/form\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[ \n]+/g, '|').trim(), 'URL|Alias|Version|0.0.0|Update|Available|(0.0.1)|Title|Minimal|Description|A|Minimalist|Profile|Identifier|minimal|Namespace|org.adiwg.profile|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "oE+O+NSo",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-profile/form\",null,[[\"record\"],[[24,[\"model\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-profile/form record=model}}
+              template block text
+            {{/object/md-profile/form}}
+          
+      */
+      {
+        "id": "WYJBhn+P",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"record\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-profile/form\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[ \n]+/g, '|').trim(), '|URL|Alias|Version|0.0.0|Update|Available|(0.0.1)|Title|Minimal|Description|A|Minimalist|Profile|Identifier|minimal|Namespace|org.adiwg.profile|template|block|text|');
@@ -6707,139 +8466,31 @@ define("mdeditor/tests/integration/pods/components/object/md-profile/preview/com
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.set('myAction', function(val) { ... });
       this.model = (0, _createProfile.default)(1)[0];
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "9SAZavA7",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-profile/preview\",null,[[\"record\"],[[24,[\"model\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-profile/preview  record=model}}
+      */
+      {
+        "id": "FmnIK2vN",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"record\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-profile/preview\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[ \n]+/g, '|').trim(), '|Title|Minimal|Description|A|Minimalist|Profile|Identifier|minimal|Namespace|org.adiwg.profile|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "fj2A1Puf",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-profile/preview\",null,[[\"record\"],[[24,[\"model\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-profile/preview record=model}}
+              template block text
+            {{/object/md-profile/preview}}
+          
+      */
+      {
+        "id": "lNE51O/H",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"record\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-profile/preview\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[ \n]+/g, '|').trim(), '|Title|Minimal|Description|A|Minimalist|Profile|Identifier|minimal|Namespace|org.adiwg.profile|template|block|text|');
-    });
-  });
-});
-define("mdeditor/tests/integration/pods/components/object/md-raster/attrgroup/attribute/component-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
-  "use strict";
-
-  (0, _qunit.module)('Integration | Component | object/md-raster/attrgroup/attribute', function (hooks) {
-    (0, _emberQunit.setupRenderingTest)(hooks);
-    (0, _qunit.test)('it renders', async function (assert) {
-      // Set any properties with this.set('myProperty', 'value');
-      // Handle any actions with this.set('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "IDv6pbet",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"object/md-raster/attrgroup/attribute\"],false]],\"hasEval\":false}",
-        "meta": {}
-      }));
-      assert.equal(this.element.textContent.trim(), ''); // Template block usage:
-
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "1VbSBwx7",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-raster/attrgroup/attribute\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
-        "meta": {}
-      }));
-      assert.equal(this.element.textContent.trim(), 'template block text');
-    });
-  });
-});
-define("mdeditor/tests/integration/pods/components/object/md-raster/attrgroup/component-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
-  "use strict";
-
-  (0, _qunit.module)('Integration | Component | object/md-raster/attrgroup', function (hooks) {
-    (0, _emberQunit.setupRenderingTest)(hooks);
-    (0, _qunit.test)('it renders', async function (assert) {
-      // Set any properties with this.set('myProperty', 'value');
-      // Handle any actions with this.set('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "JRuxaajN",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"object/md-raster/attrgroup\"],false]],\"hasEval\":false}",
-        "meta": {}
-      }));
-      assert.equal(this.element.textContent.trim(), ''); // Template block usage:
-
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "xqZbePcg",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-raster/attrgroup\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
-        "meta": {}
-      }));
-      assert.equal(this.element.textContent.trim(), 'template block text');
-    });
-  });
-});
-define("mdeditor/tests/integration/pods/components/object/md-raster/component-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
-  "use strict";
-
-  (0, _qunit.module)('Integration | Component | object/md-raster', function (hooks) {
-    (0, _emberQunit.setupRenderingTest)(hooks);
-    (0, _qunit.test)('it renders', async function (assert) {
-      // Set any properties with this.set('myProperty', 'value');
-      // Handle any actions with this.set('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "3eVNlDsX",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"object/md-raster\"],false]],\"hasEval\":false}",
-        "meta": {}
-      }));
-      assert.equal(this.element.textContent.trim(), ''); // Template block usage:
-
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "fUd9q2ab",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-raster\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
-        "meta": {}
-      }));
-      assert.equal(this.element.textContent.trim(), 'template block text');
-    });
-  });
-});
-define("mdeditor/tests/integration/pods/components/object/md-raster/image-desc/component-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
-  "use strict";
-
-  (0, _qunit.module)('Integration | Component | object/md-raster/image-desc', function (hooks) {
-    (0, _emberQunit.setupRenderingTest)(hooks);
-    (0, _qunit.test)('it renders', async function (assert) {
-      // Set any properties with this.set('myProperty', 'value');
-      // Handle any actions with this.set('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "TCsGadEE",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"object/md-raster/image-desc\"],false]],\"hasEval\":false}",
-        "meta": {}
-      }));
-      assert.equal(this.element.textContent.trim(), ''); // Template block usage:
-
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "e4M59WH7",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-raster/image-desc\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
-        "meta": {}
-      }));
-      assert.equal(this.element.textContent.trim(), 'template block text');
-    });
-  });
-});
-define("mdeditor/tests/integration/pods/components/object/md-raster/preview/component-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
-  "use strict";
-
-  (0, _qunit.module)('Integration | Component | object/md-raster/preview', function (hooks) {
-    (0, _emberQunit.setupRenderingTest)(hooks);
-    (0, _qunit.test)('it renders', async function (assert) {
-      // Set any properties with this.set('myProperty', 'value');
-      // Handle any actions with this.set('myAction', function(val) { ... });
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "7sRRh385",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"object/md-raster/preview\"],false]],\"hasEval\":false}",
-        "meta": {}
-      }));
-      assert.equal(this.element.textContent.trim(), ''); // Template block usage:
-
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "rE/G45xX",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-raster/preview\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
-        "meta": {}
-      }));
-      assert.equal(this.element.textContent.trim(), 'template block text');
     });
   });
 });
@@ -6862,18 +8513,30 @@ define("mdeditor/tests/integration/pods/components/object/md-repository-array/co
         },
         "repository": "data.gov"
       }];
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "wlAh+/SZ",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-repository-array\",null,[[\"value\",\"profilePath\"],[[24,[\"repo\"]],\"foo\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-repository-array value=repo profilePath="foo"}}
+      */
+      {
+        "id": "l/M+ZClh",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"value\",\"profilePath\"],[[35,0],\"foo\"]]]]],\"hasEval\":false,\"upvars\":[\"repo\",\"object/md-repository-array\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Metadata|Repositories|2|Add|#|Repository|Collection|Title|0|data.gov|?|×|Delete|1|data.gov|?|×|Delete|');
       assert.dom('.md-input input').hasValue('Arctic LCC data.gov');
       assert.dom('.select-value').hasText('data.gov'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "l4pQMrgv",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-repository-array\",null,[[\"profilePath\"],[\"foo\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-repository-array profilePath="foo"}}
+              template block text
+            {{/object/md-repository-array}}
+          
+      */
+      {
+        "id": "8PAp/eXu",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"profilePath\"],[\"foo\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"object/md-repository-array\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Metadata|Repositories|Add|#|Repository|Collection|Title|Add|Metadata|Repository|', 'block');
@@ -6894,16 +8557,28 @@ define("mdeditor/tests/integration/pods/components/object/md-resource-type-array
       }, {
         "type": "map"
       }];
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "DK9kiKq4",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-resource-type-array\",null,[[\"value\",\"profilePath\"],[[24,[\"rt\"]],\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-resource-type-array value=rt profilePath="foobar"}}
+      */
+      {
+        "id": "s61s8NLi",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"value\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"rt\",\"object/md-resource-type-array\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Resource|Types|2|Add|#|Type|Name|0|project|?|×|Delete|1|map|?|×|Delete|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "HUfG50uE",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-resource-type-array\",null,[[\"profilePath\"],[\"foobar\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-resource-type-array profilePath="foobar"}}
+              template block text
+            {{/object/md-resource-type-array}}
+          
+      */
+      {
+        "id": "VyqusENP",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"profilePath\"],[\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"object/md-resource-type-array\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Resource|Types|Add|#|Type|Name|Add|Resource|Type|', 'block');
@@ -6925,17 +8600,29 @@ define("mdeditor/tests/integration/pods/components/object/md-schema/component-te
         localVersion: '1.0',
         hasUpdate: true
       }));
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "aeWXPLJE",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-schema\",null,[[\"record\"],[[24,[\"data\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-schema record=data}}
+      */
+      {
+        "id": "71xKqOml",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"record\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"data\",\"object/md-schema\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[ \s\n]+/g, '|').trim(), '|Info|Schemas|Title|URL|Version|1.0|Update|Available|(1.1)|Description|Type|Select|the|record|type|for|schema.|Apply|Globally?|No|Yes|');
-      assert.equal((0, _testHelpers.find)('.md-schema input').value, 'foo', 'render form'); // Template block usage:
+      assert.dom('.md-schema input').hasValue('foo', 'render form'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "nvBqZFUC",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-schema\",null,[[\"record\"],[[24,[\"data\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-schema record=data}}
+              template block text
+            {{/object/md-schema}}
+          
+      */
+      {
+        "id": "t+eUPNHP",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"record\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"data\",\"object/md-schema\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[ \s\n]+/g, '|').trim(), '|Info|Schemas|Title|URL|Version|1.0|Update|Available|(1.1)|Description|Type|Select|the|record|type|for|schema.|Apply|Globally?|No|Yes|');
@@ -6957,17 +8644,29 @@ define("mdeditor/tests/integration/pods/components/object/md-schema/form/compone
         localVersion: '1.0',
         hasUpdate: true
       }));
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "+MyiVzQN",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-schema/form\",null,[[\"record\"],[[24,[\"data\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-schema/form record=data}}
+      */
+      {
+        "id": "cc8ZZvMb",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"record\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"data\",\"object/md-schema/form\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[ \s\n]+/g, '|').trim(), 'Title|URL|Version|1.0|Update|Available|(1.1)|Description|Type|Select|the|record|type|for|schema.|Apply|Globally?|No|Yes|');
-      assert.equal((0, _testHelpers.find)('input').value, 'foo', 'render form'); // Template block usage:
+      assert.dom('input').hasValue('foo', 'render form'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "GsxwB8iq",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-schema/form\",null,[[\"record\"],[[24,[\"data\"]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-schema/form record=data}}
+              template block text
+            {{/object/md-schema/form}}
+          
+      */
+      {
+        "id": "9mUTX/7O",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"record\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"data\",\"object/md-schema/form\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[ \s\n]+/g, '|').trim(), '|Title|URL|Version|1.0|Update|Available|(1.1)|Description|Type|Select|the|record|type|for|schema.|Apply|Globally?|No|Yes|template|block|text|');
@@ -6989,21 +8688,42 @@ define("mdeditor/tests/integration/pods/components/object/md-simple-array-table/
       //   this.model.pushObject(val);
       // });
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "elWQtSaT",
-        "block": "{\"symbols\":[],\"statements\":[[1,[22,\"object/md-simple-array-table\"],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-simple-array-table}}
+      */
+      {
+        "id": "GyqrCRDv",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"object/md-simple-array-table\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|No|Item|found.|Add|Item|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "II9umch+",
-        "block": "{\"symbols\":[\"foo\"],\"statements\":[[0,\"\\n\"],[4,\"object/md-simple-array-table\",null,[[\"title\",\"required\",\"plain\",\"value\"],[\"FooBar\",false,true,[24,[\"model\"]]]],{\"statements\":[[0,\"        \"],[7,\"td\",true],[8],[0,\"\\n            \"],[1,[23,1,[\"item\",\"value\"]],false],[0,\"\\n        \"],[9],[0,\"\\n\"]],\"parameters\":[1]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-simple-array-table
+              title="FooBar"
+              required=false
+              plain=true
+              value=model as |foo|
+            }}
+              <td>
+                  {{foo.item.value}}
+              </td>
+            {{/object/md-simple-array-table}}
+          
+      */
+      {
+        "id": "MHoKcUIB",
+        "block": "{\"symbols\":[\"foo\"],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"title\",\"required\",\"plain\",\"value\"],[\"FooBar\",false,true,[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        \"],[10,\"td\"],[12],[2,\"\\n            \"],[1,[32,1,[\"item\",\"value\"]]],[2,\"\\n        \"],[13],[2,\"\\n\"]],\"parameters\":[1]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-simple-array-table\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|FooBars|2|Add|FooBar|0|biz|Delete|1|baz|Delete|');
       await (0, _testHelpers.click)('.btn-info');
-      assert.equal((0, _testHelpers.findAll)('.table tr').length, 3, 'addItem');
+      assert.dom('.table tr').exists({
+        count: 3
+      }, 'addItem');
       await (0, _testHelpers.doubleClick)('.btn-danger');
       assert.equal(this.model.length, 1, 'deleteItem');
     });
@@ -7046,16 +8766,28 @@ define("mdeditor/tests/integration/pods/components/object/md-source/component-te
           "description": "description1"
         }]
       };
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "vqCFfQaa",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-source\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"source\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-source profilePath="foobar" model=source}}
+      */
+      {
+        "id": "SeTmDmV7",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"source\",\"object/md-source\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), 'Source|ID|Description|Scope|Select|type|of|resource.|Source|Citation|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|Metadata|Citation|2|Add|OK|#|Title|0|title0|Edit|Delete|1|title1|Edit|Delete|Spatial|Reference|System|Reference|System|Type|referenceSystemType|×|Reference|System|Identifier|Identifier|Namespace|Select|or|type|a|namespace|for|the|identifier.|Version|Description|Authority|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|Spatial|Resolution|Scale|Factor|Level|Of|Detail|Measure|Measure|Type|distance|Value|Units|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "liklxbTM",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-source\",null,[[\"profilePath\",\"model\"],[\"foobar\",[28,\"hash\",null,null]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-source profilePath="foobar" model=(hash)}}
+              template block text
+            {{/object/md-source}}
+          
+      */
+      {
+        "id": "VyiJ+dYt",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[30,[36,0],null,null]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-source\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), "|Source|ID|Description|Scope|Select|type|of|resource.|Source|Citation|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Metadata|Citation|found.|Add|Metadata|Citation|Spatial|Reference|System|Reference|System|Type|Select|type|of|reference|system|used.|Reference|System|Identifier|Identifier|Namespace|Select|or|type|a|namespace|for|the|identifier.|Version|Description|Authority|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|Spatial|Resolution|Scale|Factor|Level|Of|Detail|Measure|Measure|Type|The|type|of|measurement.|Value|Units|", 'block');
@@ -7099,19 +8831,31 @@ define("mdeditor/tests/integration/pods/components/object/md-source/preview/comp
           "description": "description1"
         }]
       };
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "JirYe/lT",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-source/preview\",null,[[\"model\",\"profilePath\"],[[24,[\"source\"]],\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-source/preview model=source profilePath="foobar"}}
+      */
+      {
+        "id": "99OLtH6s",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"source\",\"object/md-source/preview\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('textarea').value, 'description'); // Template block usage:
+      assert.dom('textarea').hasValue('description'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "+un1IO3o",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-source/preview\",null,[[\"model\",\"profilePath\"],[[24,[\"source\"]],\"foobar\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-source/preview model=source profilePath="foobar"}}
+              template block text
+            {{/object/md-source/preview}}
+          
+      */
+      {
+        "id": "Qa4k1Ksu",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"source\",\"object/md-source/preview\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('textarea').value, 'description');
+      assert.dom('textarea').hasValue('description');
     });
   });
 });
@@ -7199,16 +8943,28 @@ define("mdeditor/tests/integration/pods/components/object/md-spatial-info/compon
         }],
         spatialRepresentationType: ["vector", "stereoModel"]
       };
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "xMvYgFoi",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-spatial-info\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"model\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-spatial-info profilePath="foobar" model=model}}
+      */
+      {
+        "id": "/Q4bnxCS",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-spatial-info\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Spatial|Representation|Type|×|stereoModel|?|×|vector|?|Spatial|Reference|System|5|Add|OK|#|Reference|System|Type|Identifier|0|referenceSystemType|identifier|Edit|Delete|1|projected|Zone|10|Edit|Delete|2|geodeticGeographic2D|4326|Edit|Delete|3|projected|Not|Defined|Edit|Delete|4|geodeticGeographic2D|Not|Defined|Edit|Delete|Spatial|Resolution|6|Add|OK|#|Scale|Factor|Level|Of|Detail|Type|0|99999|Not|Defined|Not|Defined|Edit|Delete|1|Not|Defined|Not|Defined|distance|Edit|Delete|2|Not|Defined|levelOfDetail|Not|Defined|Edit|Delete|3|Not|Defined|Not|Defined|Not|Defined|Edit|Delete|4|Not|Defined|Not|Defined|Not|Defined|Edit|Delete|5|Not|Defined|Not|Defined|Not|Defined|Edit|Delete|Add|Spatial|Resolution|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "SFe1LKyx",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-spatial-info\",null,[[\"profilePath\",\"model\"],[\"foobar\",[28,\"hash\",null,null]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-spatial-info profilePath="foobar" model=(hash)}}
+              template block text
+            {{/object/md-spatial-info}}
+          
+      */
+      {
+        "id": "9ofHfvVM",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[30,[36,0],null,null]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-spatial-info\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Spatial|Representation|Type|No|Spatial|Reference|System|found.|Add|Spatial|Reference|System|No|Spatial|Resolution|found.|Add|Spatial|Resolution|template|block|text|', 'block');
@@ -7266,52 +9022,84 @@ define("mdeditor/tests/integration/pods/components/object/md-spatial-resolution/
         }
       };
       var empty = "Scale|Factor|Level|Of|Detail|Measure|Measure|Type|The|type|of|measurement.|Value|Units|";
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "eXxtRz+M",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-spatial-resolution\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"model\",\"scaleFactor\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-spatial-resolution profilePath="foobar" model=model.scaleFactor}}
+      */
+      {
+        "id": "Uy7S9jZ+",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0,[\"scaleFactor\"]]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-spatial-resolution\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.findAll)('.md-input-input input')[0].value, this.model.scaleFactor.scaleFactor, 'scaleFactor');
       assert.ok((0, _testHelpers.findAll)('.md-input-input input')[1].disabled, 'level disabled');
       assert.ok((0, _testHelpers.findAll)('.md-input-input input')[2].disabled, 'measure disabled');
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "0eFa4FGj",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-spatial-resolution\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"model\",\"measure\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-spatial-resolution profilePath="foobar" model=model.measure}}
+      */
+      {
+        "id": "cBpLqP7N",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0,[\"measure\"]]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-spatial-resolution\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.findAll)('.md-input-input input')[2].value, this.model.measure.measure.value, 'measure');
       assert.ok((0, _testHelpers.findAll)('.md-input-input input')[1].disabled, 'level disabled');
       assert.ok((0, _testHelpers.findAll)('.md-input-input input')[0].disabled, 'scaleFactor disabled');
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "MUZ988Xw",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-spatial-resolution\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"model\",\"levelOfDetail\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-spatial-resolution profilePath="foobar" model=model.levelOfDetail}}
+      */
+      {
+        "id": "FrLa5op1",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0,[\"levelOfDetail\"]]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-spatial-resolution\"]}",
         "meta": {}
       }));
       assert.equal((0, _testHelpers.findAll)('.md-input-input input')[1].value, this.model.levelOfDetail.levelOfDetail, 'levelOfDetail');
       assert.ok((0, _testHelpers.findAll)('.md-input-input input')[2].disabled, 'measure disabled');
       assert.ok((0, _testHelpers.findAll)('.md-input-input input')[0].disabled, 'scaleFactor disabled');
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "MOe+H7V/",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-spatial-resolution\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"model\",\"geographicResolution\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-spatial-resolution profilePath="foobar" model=model.geographicResolution}}
+      */
+      {
+        "id": "5YKCZpAr",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0,[\"geographicResolution\"]]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-spatial-resolution\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), empty, 'geographicResolution');
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "e3fWXarz",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-spatial-resolution\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"model\",\"bearingDistanceResolution\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-spatial-resolution profilePath="foobar" model=model.bearingDistanceResolution}}
+      */
+      {
+        "id": "8kAd0KZR",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0,[\"bearingDistanceResolution\"]]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-spatial-resolution\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), empty, 'bearingDistanceResolution');
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "Oc7PDvLs",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-spatial-resolution\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"model\",\"coordinateResolution\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-spatial-resolution profilePath="foobar" model=model.coordinateResolution}}
+      */
+      {
+        "id": "CRgnDOb6",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0,[\"coordinateResolution\"]]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-spatial-resolution\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), empty, 'coordinateResolution'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "YXFsDwzP",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-spatial-resolution\",null,[[\"model\",\"profilePath\"],[[28,\"hash\",null,null],\"foobar\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-spatial-resolution model=(hash) profilePath="foobar"}}
+              template block text
+            {{/object/md-spatial-resolution}}
+          
+      */
+      {
+        "id": "iScH6Ao4",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\",\"profilePath\"],[[30,[36,0],null,null],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-spatial-resolution\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|' + empty + 'template|block|text|', 'block');
@@ -7334,18 +9122,30 @@ define("mdeditor/tests/integration/pods/components/object/md-srs/component-test"
           "description": "description"
         }
       };
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "Sy6WAXJG",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-srs\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"srs\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-srs profilePath="foobar" model=srs}}
+      */
+      {
+        "id": "sQ+gc2OA",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"srs\",\"object/md-srs\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Reference|System|Type|projected|?|×|Reference|System|Identifier|Identifier|Namespace|Select|or|type|a|namespace|for|the|identifier.|Version|Description|Authority|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|');
       var input = (0, _testHelpers.findAll)('input, textarea').mapBy('value').join('|');
       assert.equal(input, 'identifier|version|description|', 'input values'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "8sDbB5EM",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-srs\",null,[[\"profilePath\"],[\"foobar\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-srs profilePath="foobar"}}
+              template block text
+            {{/object/md-srs}}
+          
+      */
+      {
+        "id": "76G1wxx3",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"profilePath\"],[\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"object/md-srs\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), "|Reference|System|Type|Select|type|of|reference|system|used.|template|block|text|", 'block');
@@ -7361,22 +9161,38 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/classifica
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
       this.model = (0, _createTaxonomy.default)()[0].taxonomicClassification;
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "RN7++R2/",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-taxonomy/classification\",null,[[\"model\",\"profilePath\"],[[24,[\"model\"]],\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-taxonomy/classification model=model profilePath="foobar"}}
+      */
+      {
+        "id": "smZaqasn",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-taxonomy/classification\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Kingdom|Fungi|(555705)|Kingdom|Edit|Delete|Add|Child|Subkingdom|Dikarya|(936287)|Edit|Delete|Add|Child|Division|Basidiomycota|(623881)|Edit|Delete|Add|Child|Kingdom|Animalia|(202423)|Edit|Delete|Add|Child|Subkingdom|Radiata|(914153)|Edit|Delete|Add|Child|Phylum|Cnidaria|(48738)|Edit|Delete|Add|Child|Subphylum|Medusozoa|(718920)|Edit|Delete|Add|Child|Class|Scyphozoa|(51483)|Edit|Delete|Add|Child|Subclass|Discomedusae|(718923)|Edit|Delete|Add|Child|Order|Rhizostomeae|(51756)|Edit|Delete|Add|Child|Family|Rhizostomatidae|(51911)|Edit|Delete|Add|Child|Genus|Rhopilema|(51919)|Edit|Delete|Add|Child|Species|Rhopilema|verrilli|(51920)|mushroom|jellyfish|Edit|Delete|Add|Child|');
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "mJysUZSf",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-taxonomy/classification\",null,[[\"model\",\"preview\",\"profilePath\"],[[24,[\"model\"]],true,\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-taxonomy/classification model=model preview=true profilePath="foobar"}}
+      */
+      {
+        "id": "GPudaZlE",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"preview\",\"profilePath\"],[[35,0],true,\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-taxonomy/classification\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Kingdom|Fungi|(555705)|Kingdom|Kingdom|Animalia|(202423)|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "m7kGbppK",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-taxonomy/classification\",null,[[\"profilePath\"],[\"foobar\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-taxonomy/classification profilePath="foobar"}}
+              template block text
+            {{/object/md-taxonomy/classification}}
+          
+      */
+      {
+        "id": "l5799c+e",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"profilePath\"],[\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"object/md-taxonomy/classification\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|No|Classification|found.|', 'block');
@@ -7396,9 +9212,13 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/classifica
         assert.ok(taxa, 'called delete');
       };
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "crm4Gk3O",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-taxonomy/classification/taxon\",null,[[\"model\",\"deleteTaxa\",\"top\",\"profilePath\"],[[24,[\"model\"]],[24,[\"delete\"]],[24,[\"top\"]],\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-taxonomy/classification/taxon model=model deleteTaxa=delete top=top profilePath="foobar"}}
+      */
+      {
+        "id": "0etNkTjA",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,3],null,[[\"model\",\"deleteTaxa\",\"top\",\"profilePath\"],[[35,2],[35,1],[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"top\",\"delete\",\"model\",\"object/md-taxonomy/classification/taxon\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Kingdom|Fungi|(555705)|Kingdom|Edit|Delete|Add|Child|Subkingdom|Dikarya|(936287)|Edit|Delete|Add|Child|Division|Basidiomycota|(623881)|Edit|Delete|Add|Child|'); // await click('.btn-info');
@@ -7410,9 +9230,15 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/classifica
       await (0, _testHelpers.click)('.btn-danger');
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Kingdom|Fungi|(555705)|Kingdom|Edit|Delete|Add|Child|Subkingdom|Dikarya|(936287)|Edit|Delete|Add|Child|Division|Basidiomycota|(623881)|Edit|Delete|Add|Child|');
       await (0, _testHelpers.click)('.md-taxon .md-taxon .btn-info');
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "MGLvUSe2",
-        "block": "{\"symbols\":[],\"statements\":[[7,\"ul\",true],[10,\"class\",\"list-group md-classification\"],[8],[0,\"\\n      \"],[1,[28,\"object/md-taxonomy/classification/taxon\",null,[[\"model\",\"preview\",\"top\",\"profilePath\"],[[24,[\"model\"]],false,[24,[\"top\"]],\"foobar\"]]],false],[0,\"\\n    \"],[9]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        <ul class="list-group md-classification">
+            {{object/md-taxonomy/classification/taxon model=model preview=false top=top profilePath="foobar"}}
+          </ul>
+      */
+      {
+        "id": "XiBREr4r",
+        "block": "{\"symbols\":[],\"statements\":[[10,\"ul\"],[14,0,\"list-group md-classification\"],[12],[2,\"\\n      \"],[1,[30,[36,2],null,[[\"model\",\"preview\",\"top\",\"profilePath\"],[[35,1],false,[35,0],\"foobar\"]]]],[2,\"\\n    \"],[13]],\"hasEval\":false,\"upvars\":[\"top\",\"model\",\"object/md-taxonomy/classification/taxon\"]}",
         "meta": {}
       }));
       await (0, _testHelpers.waitFor)('.md-taxon-form', {
@@ -7428,9 +9254,17 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/classifica
       await (0, _testHelpers.click)(del);
       await (0, _testHelpers.click)(del); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "QoGdMJ/5",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-taxonomy/classification/taxon\",null,[[\"model\",\"profilePath\"],[[24,[\"model\"]],\"foobar\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-taxonomy/classification/taxon model=model profilePath="foobar"}}
+              template block text
+            {{/object/md-taxonomy/classification/taxon}}
+          
+      */
+      {
+        "id": "tl/3Bitm",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-taxonomy/classification/taxon\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Kingdom|Fungi|(555705)|Kingdom|Edit|Delete|Add|Child|Subkingdom|Dikarya|(936287)|Edit|Delete|Add|Child|Division|Basidiomycota|(623881)|Edit|Delete|Add|Child|', 'block');
@@ -7446,18 +9280,30 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/collection
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
       this.model = (0, _createTaxonomy.default)()[0];
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "hxINAx20",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-taxonomy/collection\",null,[[\"model\",\"profilePath\"],[[24,[\"model\"]],\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-taxonomy/collection model=model profilePath="foobar"}}
+      */
+      {
+        "id": "aNR7/pG3",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-taxonomy/collection\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Taxonomic|System|1|Add|OK|#|Title|Modifications|0|More...|Delete|Classification|Kingdom|Fungi|(555705)|Kingdom|Edit|Delete|Add|Child|Subkingdom|Dikarya|(936287)|Edit|Delete|Add|Child|Division|Basidiomycota|(623881)|Edit|Delete|Add|Child|Kingdom|Animalia|(202423)|Edit|Delete|Add|Child|Subkingdom|Radiata|(914153)|Edit|Delete|Add|Child|Phylum|Cnidaria|(48738)|Edit|Delete|Add|Child|Subphylum|Medusozoa|(718920)|Edit|Delete|Add|Child|Class|Scyphozoa|(51483)|Edit|Delete|Add|Child|Subclass|Discomedusae|(718923)|Edit|Delete|Add|Child|Order|Rhizostomeae|(51756)|Edit|Delete|Add|Child|Family|Rhizostomatidae|(51911)|Edit|Delete|Add|Child|Genus|Rhopilema|(51919)|Edit|Delete|Add|Child|Species|Rhopilema|verrilli|(51920)|mushroom|jellyfish|Edit|Delete|Add|Child|Observers|1|Add|#|Role|Contacts|0|pointOfContact|?|×|Delete|General|Scope|Identification|Procedure|Identification|Completeness|Voucher|1|Add|OK|#|Specimen|0|Specimen|Edit|Delete|');
       var input = (0, _testHelpers.findAll)('form input, form textarea').mapBy('value').join('|');
       assert.equal(input, "Integrated Taxonomic Information System (ITIS)|modifications||Scope|Id Procedure|Id Completeness", 'input values'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "ELqbY7+N",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-taxonomy/collection\",null,[[\"profilePath\",\"model\"],[\"foobar\",[28,\"hash\",null,null]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-taxonomy/collection profilePath="foobar" model=(hash)}}
+              template block text
+            {{/object/md-taxonomy/collection}}
+          
+      */
+      {
+        "id": "6/N8CFh/",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[30,[36,0],null,null]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-taxonomy/collection\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|No|Taxonomic|System|found.|Add|Taxonomic|System|Classification|No|Classification|found.|No|Observer|found.|Add|Observer|General|Scope|Identification|Procedure|Identification|Completeness|No|Voucher|found.|Add|Voucher|', 'block');
@@ -7473,18 +9319,30 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/collection
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
       this.model = (0, _createTaxonomy.default)()[0].taxonomicSystem[0];
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "WenkIkkq",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-taxonomy/collection/system\",null,[[\"model\",\"profilePath\"],[[24,[\"model\"]],\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-taxonomy/collection/system model=model profilePath="foobar"}}
+      */
+      {
+        "id": "nJQOnzZ5",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-taxonomy/collection/system\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Modifications|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|Dates|1|Add|Date|#|Date|Date|Type|Description|0|transmitted|?|×|Delete|Edition|Presentation|Form|×|webService|?|×|webSite|?|No|Responsible|Party|found.|Add|Responsible|Party|Online|Resource|1|Add|OK|#|Name|Uri|0|ITIS|website|https://www.itis.gov|Edit|Delete|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|Series|Name|Issue|Page|Other|Details|1|Add|0|Delete|Graphic|1|Add|OK|0|itis_logo.jpg:|Edit|Delete|');
       var input = (0, _testHelpers.findAll)('form input, form textarea').mapBy('value').join('|');
       assert.equal(input, "modifications|Integrated Taxonomic Information System (ITIS)|2019-02-26|Taxa imported from ITIS||||||Retrieved from the Integrated Taxonomic Information System on-line database, https://www.itis.gov.", 'input values'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "ThrbIf9n",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-taxonomy/collection/system\",null,[[\"model\",\"profilePath\"],[[28,\"hash\",null,null],\"foobar\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-taxonomy/collection/system model=(hash) profilePath="foobar"}}
+              template block text
+            {{/object/md-taxonomy/collection/system}}
+          
+      */
+      {
+        "id": "GUJn3LmN",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\",\"profilePath\"],[[30,[36,0],null,null],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-taxonomy/collection/system\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Modifications|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|Edition|Presentation|Form|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|Series|Name|Issue|Page|No|Other|Details|found.|Add|Other|Detail|No|Graphic|found.|Add|Graphic|', 'block');
@@ -7500,17 +9358,29 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/collection
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
       this.model = (0, _createTaxonomy.default)()[0].taxonomicSystem[0];
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "NNUO0dJ0",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-taxonomy/collection/system/preview\",null,[[\"model\",\"profilePath\"],[[24,[\"model\"]],\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-taxonomy/collection/system/preview model=model profilePath="foobar"}}
+      */
+      {
+        "id": "xKyqdQg3",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-taxonomy/collection/system/preview\"]}",
         "meta": {}
       }));
       var input = (0, _testHelpers.findAll)('input, textarea').mapBy('value').join('|');
       assert.equal(input, "Integrated Taxonomic Information System (ITIS)|modifications", 'input values'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "61zUzbnB",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-taxonomy/collection/system/preview\",null,[[\"model\",\"profilePath\"],[[28,\"hash\",null,null],\"foobar\"]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-taxonomy/collection/system/preview model=(hash) profilePath="foobar"}}
+              template block text
+            {{/object/md-taxonomy/collection/system/preview}}
+          
+      */
+      {
+        "id": "ZR5G6AQV",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\",\"profilePath\"],[[30,[36,0],null,null],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-taxonomy/collection/system/preview\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), "|");
@@ -7526,18 +9396,30 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/collection
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
       this.model = (0, _createTaxonomy.default)()[0].voucher[0];
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "78byeNMw",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-taxonomy/collection/voucher\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"model\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-taxonomy/collection/voucher profilePath="foobar" model=model}}
+      */
+      {
+        "id": "JAOOwNXN",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-taxonomy/collection/voucher\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Specimen|Repository|Role|custodian|?|×|Contacts|');
       var input = (0, _testHelpers.findAll)('input, textarea').mapBy('value').join('|');
       assert.equal(input, "Specimen|", 'input values'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "4iJ3y5K3",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-taxonomy/collection/voucher\",null,[[\"profilePath\",\"model\"],[\"foobar\",[28,\"hash\",null,[[\"repository\"],[[28,\"hash\",null,null]]]]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-taxonomy/collection/voucher profilePath="foobar" model=(hash repository=(hash))}}
+              template block text
+            {{/object/md-taxonomy/collection/voucher}}
+          
+      */
+      {
+        "id": "Qz9M18cu",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[30,[36,0],null,[[\"repository\"],[[30,[36,0],null,null]]]]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-taxonomy/collection/voucher\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), "|Specimen|Repository|Role|Select|or|enter|a|role|Contacts|", 'block');
@@ -7553,18 +9435,30 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/component-
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.on('myAction', function(val) { ... });
       this.model = (0, _createTaxonomy.default)()[0];
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "hKuL6Ndg",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-taxonomy\",null,[[\"model\",\"index\",\"profilePath\"],[[24,[\"model\"]],0,\"foobar\"]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-taxonomy model=model index=0 profilePath="foobar"}}
+      */
+      {
+        "id": "1ui33qDz",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"index\",\"profilePath\"],[[35,0],0,\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-taxonomy\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Collection|#0:|Integrated|Taxonomic|Information|System|(ITIS)|Edit|Collection|Delete|Collection|Kingdom|Fungi|(555705)|Kingdom|Kingdom|Animalia|(202423)|');
       await (0, _testHelpers.click)('li .icon');
       assert.equal((0, _testHelpers.find)('li').textContent.replace(/[\s\n]+/g, '|').trim(), '|Kingdom|Fungi|(555705)|Kingdom|Subkingdom|Dikarya|(936287)|Division|Basidiomycota|(623881)|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "HDyTEyIi",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-taxonomy\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-taxonomy}}
+              template block text
+            {{/object/md-taxonomy}}
+          
+      */
+      {
+        "id": "o/8jaQTT",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"object/md-taxonomy\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Collection|#undefined|Edit|Collection|Delete|Collection|No|Classification|found.|', 'block');
@@ -7619,26 +9513,42 @@ define("mdeditor/tests/integration/pods/components/object/md-time-period/compone
           "ageEstimate": "ageEstimate"
         }
       }];
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "U89TaM8f",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-time-period\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"model\",\"firstObject\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-time-period profilePath="foobar" model=model.firstObject}}
+      */
+      {
+        "id": "In5MpMVU",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0,[\"firstObject\"]]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-time-period\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Time|Period|Dates|Start|Date|End|Date|Pick|Fiscal|Year|Pick|a|Fiscal|Year|Identifier|Description|Time|Period|Names|2|Add|Time|Period|Name|0|Delete|1|Delete|Interval|Interval|Amount|Time|Unit|year|×|Duration|Years|Months|Days|Hours|Minutes|Seconds|');
       var input = (0, _testHelpers.findAll)('form input, form textarea').mapBy('value').join('|');
       assert.equal(input, (0, _moment.default)(date).format('YYYY-MM-DD HH:mm:ss') + '|2016-12-31 00:00:00|identifier|description|periodName0|periodName1|9|1|1|1|1|1|1', 'input values');
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "dFw4B4Mc",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-time-period\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"model\",\"lastObject\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-time-period profilePath="foobar" model=model.lastObject}}
+      */
+      {
+        "id": "k0SB9ZHv",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0,[\"lastObject\"]]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-time-period\"]}",
         "meta": {}
       }));
       var input1 = (0, _testHelpers.findAll)('form input, form textarea').mapBy('value').join('|');
       assert.equal(input1, "||identifier|description|periodName0|periodName1|||||||", 'geologic input values');
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), "|Time|Period|Dates|Start|Date|End|Date|Pick|Fiscal|Year|Pick|a|Fiscal|Year|Identifier|Description|Time|Period|Names|2|Add|Time|Period|Name|0|Delete|1|Delete|Interval|Interval|Amount|Time|Unit|Choose|unit|of|time|Duration|Years|Months|Days|Hours|Minutes|Seconds|", 'geologic age'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "EsFl+8oJ",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-time-period\",null,[[\"profilePath\",\"model\"],[\"foobar\",[28,\"hash\",null,null]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-time-period profilePath="foobar" model=(hash)}}
+              template block text
+            {{/object/md-time-period}}
+          
+      */
+      {
+        "id": "GS2JSMfy",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[30,[36,0],null,null]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-time-period\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Time|Period|Dates|Start|Date|End|Date|Pick|Fiscal|Year|Pick|a|Fiscal|Year|Identifier|Description|No|Time|Period|Name|found.|Add|Time|Period|Name|Interval|Interval|Amount|Time|Unit|Choose|unit|of|time|Duration|Years|Months|Days|Hours|Minutes|Seconds|template|block|text|', 'block');
@@ -7683,18 +9593,30 @@ define("mdeditor/tests/integration/pods/components/object/md-transfer/component-
           }
         }]
       };
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "ytYwBogl",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-transfer\",null,[[\"profilePath\",\"model\"],[\"foobar\",[24,[\"model\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-transfer profilePath="foobar" model=model}}
+      */
+      {
+        "id": "hnAaxrw2",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-transfer\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Transfer|Size|(MB)|Distribution|units|Online|Option|2|Add|OK|#|Name|Uri|0|Not|Defined|http://adiwg.org|Edit|Delete|1|Not|Defined|http://adiwg.org/|Edit|Delete|Offline|Option|2|Add|OK|#|Title|0|title0|Edit|Delete|1|title1|Edit|Delete|Distribution|Formats|2|Add|#|Format|Name|Version|Compression|Method|URL|0|Delete|1|Delete|Transfer|Frequency|Years|Months|Days|Hours|Minutes|Seconds|');
       var input = (0, _testHelpers.findAll)('form input').mapBy('value').join('|');
       assert.equal(input, "9.9|unitsOfDistribution|title0||||title1|||||9||||", 'input values'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "WDutFaE4",
-        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"object/md-transfer\",null,[[\"profilePath\",\"model\"],[\"foobar\",[28,\"hash\",null,null]]],{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-transfer profilePath="foobar" model=(hash)}}
+              template block text
+            {{/object/md-transfer}}
+          
+      */
+      {
+        "id": "Cy/DcM5a",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[30,[36,0],null,null]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-transfer\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Transfer|Size|(MB)|Distribution|units|No|Online|Option|found.|Add|Online|Option|No|Offline|Option|found.|Add|Offline|Option|No|Distribution|Format|found.|Add|Distribution|Format|Transfer|Frequency|Years|Months|Days|Hours|Minutes|Seconds|template|block|text|', 'block');
@@ -7738,3971 +9660,32 @@ define("mdeditor/tests/integration/pods/components/object/md-transfer/preview/co
           }
         }]
       };
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "RXid3Ivo",
-        "block": "{\"symbols\":[],\"statements\":[[1,[28,\"object/md-transfer/preview\",null,[[\"item\"],[[24,[\"model\"]]]]],false]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-transfer/preview item=model}}
+      */
+      {
+        "id": "qfM7LT6+",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"item\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-transfer/preview\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|9.9|yes(2)|yes(2)|yes(2)|'); // Template block usage:
 
-      await (0, _testHelpers.render)(Ember.HTMLBars.template({
-        "id": "4jzQXstu",
-        "block": "{\"symbols\":[\"t\"],\"statements\":[[0,\"\\n\"],[4,\"object/md-transfer/preview\",null,[[\"isTable\",\"item\"],[false,[24,[\"model\"]]]],{\"statements\":[[0,\"        transferSize: \"],[1,[23,1,[\"transferSize\"]],false],[0,\"\\n\"]],\"parameters\":[1]},null],[0,\"    \"]],\"hasEval\":false}",
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#object/md-transfer/preview isTable=false item=model as |t|}}
+              transferSize: {{t.transferSize}}
+            {{/object/md-transfer/preview}}
+          
+      */
+      {
+        "id": "dy9WMelG",
+        "block": "{\"symbols\":[\"t\"],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"isTable\",\"item\"],[false,[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        transferSize: \"],[1,[32,1,[\"transferSize\"]]],[2,\"\\n\"]],\"parameters\":[1]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-transfer/preview\"]}",
         "meta": {}
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|transferSize:|9.9|');
     });
-  });
-});
-define("mdeditor/tests/lint/app.lint-test", [], function () {
-  "use strict";
-
-  QUnit.module('ESLint | app');
-  QUnit.test('adapters/application.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'adapters/application.js should pass ESLint\n\n');
-  });
-  QUnit.test('app.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app.js should pass ESLint\n\n');
-  });
-  QUnit.test('formats.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'formats.js should pass ESLint\n\n');
-  });
-  QUnit.test('helpers/add-em.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'helpers/add-em.js should pass ESLint\n\n');
-  });
-  QUnit.test('helpers/bbox-to-poly.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'helpers/bbox-to-poly.js should pass ESLint\n\n');
-  });
-  QUnit.test('helpers/get-dash.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'helpers/get-dash.js should pass ESLint\n\n');
-  });
-  QUnit.test('helpers/get-property.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'helpers/get-property.js should pass ESLint\n\n');
-  });
-  QUnit.test('helpers/md-markdown.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'helpers/md-markdown.js should pass ESLint\n\n');
-  });
-  QUnit.test('helpers/mod.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'helpers/mod.js should pass ESLint\n\n');
-  });
-  QUnit.test('helpers/object-is-empty.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'helpers/object-is-empty.js should pass ESLint\n\n');
-  });
-  QUnit.test('helpers/present.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'helpers/present.js should pass ESLint\n\n');
-  });
-  QUnit.test('helpers/uc-words.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'helpers/uc-words.js should pass ESLint\n\n');
-  });
-  QUnit.test('helpers/word-limit.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'helpers/word-limit.js should pass ESLint\n\n');
-  });
-  QUnit.test('initializers/leaflet.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'initializers/leaflet.js should pass ESLint\n\n');
-  });
-  QUnit.test('initializers/local-storage-export.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'initializers/local-storage-export.js should pass ESLint\n\n');
-  });
-  QUnit.test('instance-initializers/profile.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'instance-initializers/profile.js should pass ESLint\n\n');
-  });
-  QUnit.test('instance-initializers/route-publish.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'instance-initializers/route-publish.js should pass ESLint\n\n');
-  });
-  QUnit.test('instance-initializers/settings.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'instance-initializers/settings.js should pass ESLint\n\n');
-  });
-  QUnit.test('mixins/cancel.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mixins/cancel.js should pass ESLint\n\n');
-  });
-  QUnit.test('mixins/hash-poll.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mixins/hash-poll.js should pass ESLint\n\n');
-  });
-  QUnit.test('mixins/object-template.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mixins/object-template.js should pass ESLint\n\n');
-  });
-  QUnit.test('mixins/scroll-to.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mixins/scroll-to.js should pass ESLint\n\n');
-  });
-  QUnit.test('models/base.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'models/base.js should pass ESLint\n\n51:18 - Don\'t use observers if possible (ember/no-observers)\n59:20 - Don\'t use observers if possible (ember/no-observers)');
-  });
-  QUnit.test('models/contact.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'models/contact.js should pass ESLint\n\n');
-  });
-  QUnit.test('models/custom-profile.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'models/custom-profile.js should pass ESLint\n\n');
-  });
-  QUnit.test('models/dictionary.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'models/dictionary.js should pass ESLint\n\n');
-  });
-  QUnit.test('models/profile.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'models/profile.js should pass ESLint\n\n');
-  });
-  QUnit.test('models/record.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'models/record.js should pass ESLint\n\n');
-  });
-  QUnit.test('models/schema.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'models/schema.js should pass ESLint\n\n');
-  });
-  QUnit.test('models/setting.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'models/setting.js should pass ESLint\n\n95:19 - Don\'t use observers if possible (ember/no-observers)');
-  });
-  QUnit.test('pods/components/control/md-alert-table/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-alert-table/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-button-confirm/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-button-confirm/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-button-modal/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-button-modal/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-button/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-button/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-contact-link/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-contact-link/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-contact-title/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-contact-title/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-crud-buttons/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-crud-buttons/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-definition/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-definition/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-edit-table/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-edit-table/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-errors/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-errors/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-fiscalyear/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-fiscalyear/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-import-csv/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-import-csv/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-indicator/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-indicator/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-indicator/related/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-indicator/related/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-infotip/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-infotip/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-itis/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-itis/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-json-button/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-json-button/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-json-viewer/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-json-viewer/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-modal/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-modal/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-record-table/buttons/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-record-table/buttons/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-record-table/buttons/custom/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-record-table/buttons/custom/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-record-table/buttons/filter/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-record-table/buttons/filter/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-record-table/buttons/show/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-record-table/buttons/show/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-record-table/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-record-table/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-repo-link/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-repo-link/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-scroll-into-view/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-scroll-into-view/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-scroll-spy/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-scroll-spy/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-select-table/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-select-table/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-spinner/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-spinner/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-spotlight/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-spotlight/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/md-status/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/md-status/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/subbar-citation/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/subbar-citation/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/subbar-importcsv/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/subbar-importcsv/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/subbar-link/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/subbar-link/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/control/subbar-spatial/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/control/subbar-spatial/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/ember-tooltip/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/ember-tooltip/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/input/md-boolean/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/input/md-boolean/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/input/md-codelist-multi/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/input/md-codelist-multi/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/input/md-codelist/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/input/md-codelist/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/input/md-date-range/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/input/md-date-range/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/input/md-datetime/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/input/md-datetime/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/input/md-input-confirm/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/input/md-input-confirm/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/input/md-input/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/input/md-input/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/input/md-markdown-area/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/input/md-markdown-area/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/input/md-month/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/input/md-month/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/input/md-select-contact/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/input/md-select-contact/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/input/md-select-contacts/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/input/md-select-contacts/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/input/md-select-profile/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/input/md-select-profile/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/input/md-select-thesaurus/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/input/md-select-thesaurus/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/input/md-select/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/input/md-select/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/input/md-textarea/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/input/md-textarea/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/input/md-toggle/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/input/md-toggle/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/layout/md-breadcrumb/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/layout/md-breadcrumb/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/layout/md-card/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/layout/md-card/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/layout/md-footer/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/layout/md-footer/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/layout/md-nav-main/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/layout/md-nav-main/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/layout/md-nav-secondary/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/layout/md-nav-secondary/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/layout/md-nav-secondary/link/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/layout/md-nav-secondary/link/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/layout/md-nav-sidebar/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/layout/md-nav-sidebar/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/layout/md-object-container/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/layout/md-object-container/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/layout/md-slider/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/layout/md-slider/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/layout/md-wrap/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/layout/md-wrap/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/layout/nav/dictionary/nav-main/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/layout/nav/dictionary/nav-main/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/layout/nav/record/nav-main/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/layout/nav/record/nav-main/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/md-help/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/md-help/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/md-models-table/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/md-models-table/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/md-models-table/components/check-all/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/md-models-table/components/check-all/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/md-models-table/components/check/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/md-models-table/components/check/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/md-models-table/components/row-body/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/md-models-table/components/row-body/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/md-models-table/components/row-buttons/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/md-models-table/components/row-buttons/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/md-models-table/themes/bootstrap3.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/md-models-table/themes/bootstrap3.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/md-title/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/md-title/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/md-translate/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/md-translate/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/models-table/table-body/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/models-table/table-body/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-address/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-address/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-address/md-address-block/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-address/md-address-block/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-allocation/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-allocation/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-array-table/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-array-table/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-associated/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-associated/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-associated/preview/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-associated/preview/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-attribute/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-attribute/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-attribute/preview/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-attribute/preview/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-bbox/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-bbox/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-citation-array/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-citation-array/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-citation/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-citation/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-citation/preview/body/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-citation/preview/body/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-citation/preview/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-citation/preview/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-constraint/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-constraint/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-date-array/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-date-array/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-date/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-date/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-distribution/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-distribution/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-distributor/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-distributor/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-distributor/preview/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-distributor/preview/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-documentation/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-documentation/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-documentation/preview/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-documentation/preview/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-domain/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-domain/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-domainitem/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-domainitem/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-domainitem/preview/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-domainitem/preview/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-entity/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-entity/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-extent/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-extent/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-extent/spatial/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-extent/spatial/component.js should pass ESLint\n\n57:21 - Don\'t use observers if possible (ember/no-observers)');
-  });
-  QUnit.test('pods/components/object/md-funding/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-funding/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-funding/preview/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-funding/preview/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-graphic-array/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-graphic-array/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-identifier-array/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-identifier-array/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-identifier-object-table/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-identifier-object-table/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-identifier/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-identifier/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-keyword-citation/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-keyword-citation/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-keyword-list/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-keyword-list/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-lineage/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-lineage/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-lineage/preview/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-lineage/preview/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-locale-array/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-locale-array/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-locale/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-locale/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-maintenance/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-maintenance/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-medium/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-medium/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-object-table/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-object-table/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-objectroute-table/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-objectroute-table/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-online-resource-array/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-online-resource-array/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-online-resource/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-online-resource/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-party-array/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-party-array/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-party/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-party/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-phone-array/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-phone-array/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-process-step/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-process-step/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-process-step/preview/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-process-step/preview/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-profile/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-profile/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-profile/custom/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-profile/custom/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-profile/form/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-profile/form/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-profile/preview/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-profile/preview/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-raster/attrgroup/attribute/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-raster/attrgroup/attribute/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-raster/attrgroup/attribute/preview/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-raster/attrgroup/attribute/preview/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-raster/attrgroup/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-raster/attrgroup/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-raster/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-raster/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-raster/image-desc/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-raster/image-desc/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-raster/preview/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-raster/preview/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-repository-array/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-repository-array/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-resource-type-array/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-resource-type-array/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-schema/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-schema/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-schema/form/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-schema/form/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-simple-array-table/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-simple-array-table/component.js should pass ESLint\n\n74:19 - Don\'t use observers if possible (ember/no-observers)');
-  });
-  QUnit.test('pods/components/object/md-source/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-source/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-source/preview/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-source/preview/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-spatial-info/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-spatial-info/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-spatial-resolution/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-spatial-resolution/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-srs/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-srs/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-taxonomy/classification/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-taxonomy/classification/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-taxonomy/classification/taxon/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-taxonomy/classification/taxon/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-taxonomy/collection/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-taxonomy/collection/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-taxonomy/collection/system/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-taxonomy/collection/system/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-taxonomy/collection/system/preview/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-taxonomy/collection/system/preview/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-taxonomy/collection/voucher/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-taxonomy/collection/voucher/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-taxonomy/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-taxonomy/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-time-period/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-time-period/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-transfer/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-transfer/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/components/object/md-transfer/preview/component.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/components/object/md-transfer/preview/component.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/contact/new/id/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/contact/new/id/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/contact/new/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/contact/new/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/contact/new/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/contact/new/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/contact/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/contact/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/contact/show/edit/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/contact/show/edit/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/contact/show/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/contact/show/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/contact/show/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/contact/show/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/contacts/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/contacts/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dashboard/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dashboard/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionaries/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionaries/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/new/id/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/new/id/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/new/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/new/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/new/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/new/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/edit/citation/identifier/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/edit/citation/identifier/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/edit/citation/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/edit/citation/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/edit/citation/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/edit/citation/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/edit/domain/edit/citation/identifier/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/edit/domain/edit/citation/identifier/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/edit/domain/edit/citation/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/edit/domain/edit/citation/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/edit/domain/edit/citation/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/edit/domain/edit/citation/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/edit/domain/edit/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/edit/domain/edit/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/edit/domain/edit/item/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/edit/domain/edit/item/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/edit/domain/edit/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/edit/domain/edit/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/edit/domain/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/edit/domain/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/edit/domain/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/edit/domain/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/edit/entity/edit/attribute/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/edit/entity/edit/attribute/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/edit/entity/edit/attribute/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/edit/entity/edit/attribute/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/edit/entity/edit/citation/identifier/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/edit/entity/edit/citation/identifier/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/edit/entity/edit/citation/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/edit/entity/edit/citation/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/edit/entity/edit/citation/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/edit/entity/edit/citation/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/edit/entity/edit/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/edit/entity/edit/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/edit/entity/edit/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/edit/entity/edit/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/edit/entity/import/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/edit/entity/import/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/edit/entity/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/edit/entity/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/edit/entity/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/edit/entity/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/edit/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/edit/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/edit/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/edit/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/dictionary/show/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/dictionary/show/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/error/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/error/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/export/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/export/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/help/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/help/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/import/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/import/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/not-found/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/not-found/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/publish/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/publish/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/publish/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/publish/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/new/id/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/new/id/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/new/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/new/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/new/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/new/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/associated/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/associated/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/associated/resource/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/associated/resource/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/associated/resource/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/associated/resource/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/associated/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/associated/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/constraint/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/constraint/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/constraint/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/constraint/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/coverages/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/coverages/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/dictionary/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/dictionary/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/distribution/distributor/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/distribution/distributor/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/distribution/distributor/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/distribution/distributor/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/distribution/distributor/transfer/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/distribution/distributor/transfer/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/distribution/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/distribution/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/distribution/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/distribution/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/documents/citation/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/documents/citation/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/documents/citation/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/documents/citation/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/documents/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/documents/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/documents/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/documents/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/extent/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/extent/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/extent/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/extent/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/extent/spatial/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/extent/spatial/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/funding/allocation/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/funding/allocation/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/funding/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/funding/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/funding/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/funding/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/grid/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/grid/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/keywords/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/keywords/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/keywords/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/keywords/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/keywords/thesaurus/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/keywords/thesaurus/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/lineage/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/lineage/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/lineage/lineageobject/citation/identifier/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/lineage/lineageobject/citation/identifier/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/lineage/lineageobject/citation/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/lineage/lineageobject/citation/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/lineage/lineageobject/citation/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/lineage/lineageobject/citation/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/lineage/lineageobject/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/lineage/lineageobject/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/lineage/lineageobject/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/lineage/lineageobject/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/lineage/lineageobject/source/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/lineage/lineageobject/source/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/lineage/lineageobject/source/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/lineage/lineageobject/source/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/lineage/lineageobject/step/citation/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/lineage/lineageobject/step/citation/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/lineage/lineageobject/step/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/lineage/lineageobject/step/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/lineage/lineageobject/step/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/lineage/lineageobject/step/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/lineage/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/lineage/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/main/citation/identifier/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/main/citation/identifier/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/main/citation/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/main/citation/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/main/citation/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/main/citation/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/main/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/main/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/main/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/main/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/metadata/alternate/identifier/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/metadata/alternate/identifier/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/metadata/alternate/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/metadata/alternate/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/metadata/alternate/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/metadata/alternate/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/metadata/identifier/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/metadata/identifier/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/metadata/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/metadata/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/metadata/parent/identifier/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/metadata/parent/identifier/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/metadata/parent/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/metadata/parent/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/metadata/parent/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/metadata/parent/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/metadata/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/metadata/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/spatial/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/spatial/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/spatial/raster/attribute/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/spatial/raster/attribute/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/spatial/raster/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/spatial/raster/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/spatial/raster/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/spatial/raster/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/spatial/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/spatial/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/taxonomy/collection/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/taxonomy/collection/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/taxonomy/collection/itis/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/taxonomy/collection/itis/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/taxonomy/collection/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/taxonomy/collection/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/taxonomy/collection/system/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/taxonomy/collection/system/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/taxonomy/collection/system/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/taxonomy/collection/system/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/taxonomy/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/taxonomy/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/edit/taxonomy/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/edit/taxonomy/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/record/show/translate/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/record/show/translate/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/records/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/records/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/save/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/save/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/settings/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/settings/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/settings/main/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/settings/main/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/settings/profile/index/controller.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/settings/profile/index/controller.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/settings/profile/index/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/settings/profile/index/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/settings/profile/manage/controller.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/settings/profile/manage/controller.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/settings/profile/manage/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/settings/profile/manage/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/settings/profile/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/settings/profile/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/settings/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/settings/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/settings/validation/controller.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/settings/validation/controller.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/settings/validation/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/settings/validation/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('pods/translate/route.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'pods/translate/route.js should pass ESLint\n\n');
-  });
-  QUnit.test('resolver.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'resolver.js should pass ESLint\n\n');
-  });
-  QUnit.test('router.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'router.js should pass ESLint\n\n');
-  });
-  QUnit.test('routes/application.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'routes/application.js should pass ESLint\n\n');
-  });
-  QUnit.test('routes/index.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'routes/index.js should pass ESLint\n\n');
-  });
-  QUnit.test('serializers/application.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'serializers/application.js should pass ESLint\n\n');
-  });
-  QUnit.test('services/cleaner.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'services/cleaner.js should pass ESLint\n\n');
-  });
-  QUnit.test('services/codelist.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'services/codelist.js should pass ESLint\n\n');
-  });
-  QUnit.test('services/contacts.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'services/contacts.js should pass ESLint\n\n');
-  });
-  QUnit.test('services/custom-profile.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'services/custom-profile.js should pass ESLint\n\n');
-  });
-  QUnit.test('services/icon.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'services/icon.js should pass ESLint\n\n');
-  });
-  QUnit.test('services/itis.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'services/itis.js should pass ESLint\n\n');
-  });
-  QUnit.test('services/jsonvalidator.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'services/jsonvalidator.js should pass ESLint\n\n');
-  });
-  QUnit.test('services/keyword.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'services/keyword.js should pass ESLint\n\n');
-  });
-  QUnit.test('services/mdjson.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'services/mdjson.js should pass ESLint\n\n');
-  });
-  QUnit.test('services/patch.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'services/patch.js should pass ESLint\n\n');
-  });
-  QUnit.test('services/profile.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'services/profile.js should pass ESLint\n\n');
-  });
-  QUnit.test('services/publish.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'services/publish.js should pass ESLint\n\n');
-  });
-  QUnit.test('services/schemas.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'services/schemas.js should pass ESLint\n\n');
-  });
-  QUnit.test('services/settings.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'services/settings.js should pass ESLint\n\n');
-  });
-  QUnit.test('services/slider.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'services/slider.js should pass ESLint\n\n21:18 - Don\'t use observers if possible (ember/no-observers)');
-  });
-  QUnit.test('services/spotlight.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'services/spotlight.js should pass ESLint\n\n');
-  });
-  QUnit.test('transforms/json.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'transforms/json.js should pass ESLint\n\n');
-  });
-  QUnit.test('transitions.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'transitions.js should pass ESLint\n\n');
-  });
-  QUnit.test('utils/md-interpolate.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'utils/md-interpolate.js should pass ESLint\n\n');
-  });
-  QUnit.test('utils/md-object.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'utils/md-object.js should pass ESLint\n\n');
-  });
-  QUnit.test('validators/array-required.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'validators/array-required.js should pass ESLint\n\n');
-  });
-  QUnit.test('validators/array-valid.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'validators/array-valid.js should pass ESLint\n\n');
-  });
-  QUnit.test('validators/messages.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'validators/messages.js should pass ESLint\n\n');
-  });
-});
-define("mdeditor/tests/lint/templates.template.lint-test", [], function () {
-  "use strict";
-
-  QUnit.module('TemplateLint');
-  QUnit.test('mdeditor/pods/components/control/md-alert-table/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-alert-table/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-button-confirm/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-button-confirm/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-button-modal/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-button-modal/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-button/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-button/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-contact-title/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-contact-title/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-crud-buttons/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-crud-buttons/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-definition/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-definition/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-edit-table/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-edit-table/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-errors/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-errors/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-import-csv/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-import-csv/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-indicator/related/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-indicator/related/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-indicator/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-indicator/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-infotip/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-infotip/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-itis/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-itis/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-json-button/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-json-button/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-json-viewer/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-json-viewer/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-modal/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-modal/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-record-table/buttons/custom/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-record-table/buttons/custom/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-record-table/buttons/filter/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-record-table/buttons/filter/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-record-table/buttons/show/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-record-table/buttons/show/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-record-table/buttons/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-record-table/buttons/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-repo-link/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-repo-link/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-scroll-into-view/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-scroll-into-view/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-scroll-spy/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-scroll-spy/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-spinner/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-spinner/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/md-status/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/md-status/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/subbar-citation/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/subbar-citation/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/subbar-importcsv/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/subbar-importcsv/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/subbar-link/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/subbar-link/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/control/subbar-spatial/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/control/subbar-spatial/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/input/md-boolean/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/input/md-boolean/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/input/md-date-range/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/input/md-date-range/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/input/md-datetime/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/input/md-datetime/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/input/md-input-confirm/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/input/md-input-confirm/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/input/md-input/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/input/md-input/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/input/md-markdown-area/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/input/md-markdown-area/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/input/md-select-profile/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/input/md-select-profile/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/input/md-select-thesaurus/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/input/md-select-thesaurus/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/input/md-select/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/input/md-select/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/input/md-textarea/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/input/md-textarea/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/layout/md-breadcrumb/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/layout/md-breadcrumb/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/layout/md-card/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/layout/md-card/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/layout/md-footer/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/layout/md-footer/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/layout/md-nav-main/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/layout/md-nav-main/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/layout/md-nav-secondary/link/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/layout/md-nav-secondary/link/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/layout/md-nav-secondary/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/layout/md-nav-secondary/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/layout/md-nav-sidebar/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/layout/md-nav-sidebar/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/layout/md-object-container/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/layout/md-object-container/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/layout/md-slider/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/layout/md-slider/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/layout/md-wrap/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/layout/md-wrap/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/layout/nav/dictionary/nav-main/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/layout/nav/dictionary/nav-main/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/layout/nav/record/nav-main/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/layout/nav/record/nav-main/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/md-help/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/md-help/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/md-models-table/components/check-all/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/md-models-table/components/check-all/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/md-models-table/components/check/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/md-models-table/components/check/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/md-models-table/components/row-body/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/md-models-table/components/row-body/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/md-models-table/components/row-buttons/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/md-models-table/components/row-buttons/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/md-title/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/md-title/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/md-translate/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/md-translate/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/models-table/cell-content-display/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/models-table/cell-content-display/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/models-table/row-expand/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/models-table/row-expand/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/models-table/table-body/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/models-table/table-body/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-address/md-address-block/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-address/md-address-block/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-address/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-address/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-allocation/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-allocation/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-array-table/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-array-table/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-associated/preview/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-associated/preview/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-associated/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-associated/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-attribute/preview/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-attribute/preview/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-attribute/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-attribute/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-bbox/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-bbox/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-citation-array/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-citation-array/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-citation/preview/body/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-citation/preview/body/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-citation/preview/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-citation/preview/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-citation/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-citation/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-constraint/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-constraint/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-date-array/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-date-array/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-date/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-date/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-distribution/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-distribution/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-distributor/preview/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-distributor/preview/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-distributor/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-distributor/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-documentation/preview/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-documentation/preview/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-documentation/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-documentation/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-domain/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-domain/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-domainitem/preview/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-domainitem/preview/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-domainitem/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-domainitem/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-entity/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-entity/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-extent/spatial/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-extent/spatial/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-extent/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-extent/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-funding/preview/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-funding/preview/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-funding/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-funding/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-graphic-array/md-graphic-preview/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-graphic-array/md-graphic-preview/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-graphic-array/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-graphic-array/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-identifier-array/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-identifier-array/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-identifier-object-table/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-identifier-object-table/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-identifier/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-identifier/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-keyword-citation/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-keyword-citation/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-keyword-list/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-keyword-list/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-lineage/preview/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-lineage/preview/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-lineage/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-lineage/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-locale-array/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-locale-array/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-locale/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-locale/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-maintenance/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-maintenance/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-medium/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-medium/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-object-table/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-object-table/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-online-resource-array/md-image-preview/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-online-resource-array/md-image-preview/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-online-resource-array/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-online-resource-array/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-online-resource/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-online-resource/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-party-array/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-party-array/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-party/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-party/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-phone-array/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-phone-array/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-process-step/preview/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-process-step/preview/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-process-step/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-process-step/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-profile/custom/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-profile/custom/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-profile/form/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-profile/form/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-profile/preview/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-profile/preview/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-profile/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-profile/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-raster/attrgroup/attribute/preview/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-raster/attrgroup/attribute/preview/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-raster/attrgroup/attribute/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-raster/attrgroup/attribute/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-raster/attrgroup/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-raster/attrgroup/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-raster/image-desc/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-raster/image-desc/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-raster/preview/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-raster/preview/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-raster/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-raster/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-repository-array/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-repository-array/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-resource-type-array/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-resource-type-array/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-schema/form/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-schema/form/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-schema/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-schema/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-source/preview/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-source/preview/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-source/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-source/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-spatial-info/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-spatial-info/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-spatial-resolution/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-spatial-resolution/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-srs/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-srs/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-taxonomy/classification/taxon/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-taxonomy/classification/taxon/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-taxonomy/classification/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-taxonomy/classification/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-taxonomy/collection/system/preview/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-taxonomy/collection/system/preview/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-taxonomy/collection/system/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-taxonomy/collection/system/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-taxonomy/collection/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-taxonomy/collection/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-taxonomy/collection/voucher/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-taxonomy/collection/voucher/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-taxonomy/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-taxonomy/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-time-period/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-time-period/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-transfer/preview/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-transfer/preview/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/components/object/md-transfer/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/components/object/md-transfer/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/contact/new/id/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/contact/new/id/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/contact/new/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/contact/new/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/contact/show/edit/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/contact/show/edit/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/contact/show/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/contact/show/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/contact/show/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/contact/show/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/contact/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/contact/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/contacts/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/contacts/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dashboard/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dashboard/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionaries/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionaries/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/new/id/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/new/id/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/new/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/new/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/edit/citation/identifier/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/edit/citation/identifier/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/edit/citation/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/edit/citation/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/edit/citation/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/edit/citation/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/edit/domain/edit/citation/identifier/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/edit/domain/edit/citation/identifier/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/edit/domain/edit/citation/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/edit/domain/edit/citation/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/edit/domain/edit/citation/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/edit/domain/edit/citation/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/edit/domain/edit/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/edit/domain/edit/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/edit/domain/edit/item/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/edit/domain/edit/item/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/edit/domain/edit/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/edit/domain/edit/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/edit/domain/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/edit/domain/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/edit/domain/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/edit/domain/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/edit/entity/edit/attribute/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/edit/entity/edit/attribute/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/edit/entity/edit/attribute/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/edit/entity/edit/attribute/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/edit/entity/edit/citation/identifier/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/edit/entity/edit/citation/identifier/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/edit/entity/edit/citation/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/edit/entity/edit/citation/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/edit/entity/edit/citation/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/edit/entity/edit/citation/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/edit/entity/edit/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/edit/entity/edit/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/edit/entity/edit/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/edit/entity/edit/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/edit/entity/import/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/edit/entity/import/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/edit/entity/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/edit/entity/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/edit/entity/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/edit/entity/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/edit/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/edit/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/edit/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/edit/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/show/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/show/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/dictionary/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/dictionary/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/error/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/error/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/export/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/export/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/help/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/help/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/import/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/import/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/not-found/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/not-found/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/publish/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/publish/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/publish/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/publish/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/nav/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/nav/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/new/id/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/new/id/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/new/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/new/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/associated/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/associated/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/associated/resource/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/associated/resource/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/associated/resource/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/associated/resource/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/associated/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/associated/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/constraint/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/constraint/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/constraint/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/constraint/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/coverages/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/coverages/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/dictionary/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/dictionary/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/distribution/distributor/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/distribution/distributor/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/distribution/distributor/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/distribution/distributor/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/distribution/distributor/transfer/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/distribution/distributor/transfer/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/distribution/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/distribution/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/distribution/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/distribution/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/documents/citation/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/documents/citation/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/documents/citation/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/documents/citation/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/documents/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/documents/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/documents/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/documents/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/extent/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/extent/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/extent/spatial/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/extent/spatial/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/extent/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/extent/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/funding/allocation/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/funding/allocation/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/funding/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/funding/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/funding/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/funding/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/grid/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/grid/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/keywords/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/keywords/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/keywords/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/keywords/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/keywords/thesaurus/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/keywords/thesaurus/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/lineage/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/lineage/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/lineage/lineageobject/citation/identifier/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/lineage/lineageobject/citation/identifier/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/lineage/lineageobject/citation/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/lineage/lineageobject/citation/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/lineage/lineageobject/citation/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/lineage/lineageobject/citation/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/lineage/lineageobject/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/lineage/lineageobject/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/lineage/lineageobject/source/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/lineage/lineageobject/source/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/lineage/lineageobject/source/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/lineage/lineageobject/source/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/lineage/lineageobject/step/citation/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/lineage/lineageobject/step/citation/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/lineage/lineageobject/step/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/lineage/lineageobject/step/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/lineage/lineageobject/step/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/lineage/lineageobject/step/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/lineage/lineageobject/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/lineage/lineageobject/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/lineage/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/lineage/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/main/citation/identifier/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/main/citation/identifier/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/main/citation/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/main/citation/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/main/citation/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/main/citation/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/main/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/main/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/main/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/main/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/metadata/alternate/identifier/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/metadata/alternate/identifier/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/metadata/alternate/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/metadata/alternate/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/metadata/alternate/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/metadata/alternate/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/metadata/identifier/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/metadata/identifier/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/metadata/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/metadata/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/metadata/parent/identifier/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/metadata/parent/identifier/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/metadata/parent/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/metadata/parent/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/metadata/parent/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/metadata/parent/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/metadata/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/metadata/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/spatial/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/spatial/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/spatial/raster/attribute/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/spatial/raster/attribute/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/spatial/raster/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/spatial/raster/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/spatial/raster/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/spatial/raster/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/spatial/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/spatial/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/taxonomy/collection/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/taxonomy/collection/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/taxonomy/collection/itis/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/taxonomy/collection/itis/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/taxonomy/collection/system/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/taxonomy/collection/system/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/taxonomy/collection/system/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/taxonomy/collection/system/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/taxonomy/collection/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/taxonomy/collection/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/taxonomy/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/taxonomy/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/taxonomy/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/taxonomy/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/edit/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/edit/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/nav/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/nav/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/show/translate/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/show/translate/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/record/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/record/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/records/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/records/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/save/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/save/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/settings/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/settings/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/settings/main/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/settings/main/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/settings/profile/index/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/settings/profile/index/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/settings/profile/manage/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/settings/profile/manage/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/settings/profile/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/settings/profile/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/settings/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/settings/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/settings/validation/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/settings/validation/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/pods/translate/template.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/pods/translate/template.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/templates/application.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/templates/application.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/templates/head.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/templates/head.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('mdeditor/templates/nav-secondary.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'mdeditor/templates/nav-secondary.hbs should pass TemplateLint.\n\n');
-  });
-});
-define("mdeditor/tests/lint/tests.lint-test", [], function () {
-  "use strict";
-
-  QUnit.module('ESLint | tests');
-  QUnit.test('acceptance/pods/components/layout/md-breadcrumb-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'acceptance/pods/components/layout/md-breadcrumb-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('acceptance/pods/contact/copy-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'acceptance/pods/contact/copy-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('acceptance/pods/contact/new-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'acceptance/pods/contact/new-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('acceptance/pods/contacts/contacts-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'acceptance/pods/contacts/contacts-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('acceptance/pods/dictionary/copy-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'acceptance/pods/dictionary/copy-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('acceptance/pods/dictionary/new-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'acceptance/pods/dictionary/new-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('acceptance/pods/record/copy-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'acceptance/pods/record/copy-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('acceptance/pods/record/new-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'acceptance/pods/record/new-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('helpers/create-citation.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'helpers/create-citation.js should pass ESLint\n\n');
-  });
-  QUnit.test('helpers/create-contact.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'helpers/create-contact.js should pass ESLint\n\n');
-  });
-  QUnit.test('helpers/create-dictionary.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'helpers/create-dictionary.js should pass ESLint\n\n');
-  });
-  QUnit.test('helpers/create-extent.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'helpers/create-extent.js should pass ESLint\n\n');
-  });
-  QUnit.test('helpers/create-identifier.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'helpers/create-identifier.js should pass ESLint\n\n');
-  });
-  QUnit.test('helpers/create-map-layer.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'helpers/create-map-layer.js should pass ESLint\n\n');
-  });
-  QUnit.test('helpers/create-profile.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'helpers/create-profile.js should pass ESLint\n\n');
-  });
-  QUnit.test('helpers/create-record.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'helpers/create-record.js should pass ESLint\n\n');
-  });
-  QUnit.test('helpers/create-taxonomy.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'helpers/create-taxonomy.js should pass ESLint\n\n');
-  });
-  QUnit.test('helpers/destroy-app.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'helpers/destroy-app.js should pass ESLint\n\n');
-  });
-  QUnit.test('helpers/flash-message.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'helpers/flash-message.js should pass ESLint\n\n');
-  });
-  QUnit.test('helpers/modal-asserts.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'helpers/modal-asserts.js should pass ESLint\n\n');
-  });
-  QUnit.test('helpers/start-app.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'helpers/start-app.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/components/feature-form-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/components/feature-form-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/components/feature-group-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/components/feature-group-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/components/feature-table-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/components/feature-table-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/components/geojson-layer-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/components/geojson-layer-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/components/leaflet-draw-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/components/leaflet-draw-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/components/leaflet-table-row-actions-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/components/leaflet-table-row-actions-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/components/leaflet-table-row-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/components/leaflet-table-row-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/components/leaflet-table-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/components/leaflet-table-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/components/sb-publisher-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/components/sb-publisher-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/components/sb-settings-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/components/sb-settings-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/components/sb-tree-label-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/components/sb-tree-label-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/components/sb-tree-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/components/sb-tree-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/components/tree-branch-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/components/tree-branch-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/components/tree-label-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/components/tree-label-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/components/tree-leaf-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/components/tree-leaf-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/components/tree-search-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/components/tree-search-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/components/tree-view-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/components/tree-view-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/helpers/object-is-empty-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/helpers/object-is-empty-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/helpers/present-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/helpers/present-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/helpers/word-limit-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/helpers/word-limit-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-alert-table/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-alert-table/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-button-confirm/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-button-confirm/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-button-modal/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-button-modal/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-button/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-button/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-contact-link/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-contact-link/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-contact-title/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-contact-title/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-crud-buttons/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-crud-buttons/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-definition/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-definition/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-edit-table/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-edit-table/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-errors/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-errors/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-fiscalyear/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-fiscalyear/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-import-csv/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-import-csv/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-indicator/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-indicator/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-indicator/related/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-indicator/related/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-infotip/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-infotip/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-itis/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-itis/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-json-button/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-json-button/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-json-viewer/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-json-viewer/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-modal/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-modal/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-record-table/buttons/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-record-table/buttons/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-record-table/buttons/custom/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-record-table/buttons/custom/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-record-table/buttons/filter/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-record-table/buttons/filter/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-record-table/buttons/show/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-record-table/buttons/show/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-record-table/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-record-table/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-repo-link/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-repo-link/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-scroll-into-view/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-scroll-into-view/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-scroll-spy/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-scroll-spy/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-select-table/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-select-table/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-spinner/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-spinner/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-spotlight/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-spotlight/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/md-status/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/md-status/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/subbar-citation/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/subbar-citation/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/subbar-importcsv/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/subbar-importcsv/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/subbar-link/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/subbar-link/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/control/subbar-spatial/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/control/subbar-spatial/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/ember-tooltip/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/ember-tooltip/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/input/md-boolean/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/input/md-boolean/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/input/md-codelist-multi/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/input/md-codelist-multi/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/input/md-codelist/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/input/md-codelist/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/input/md-date-range/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/input/md-date-range/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/input/md-datetime/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/input/md-datetime/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/input/md-input-confirm/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/input/md-input-confirm/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/input/md-input/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/input/md-input/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/input/md-markdown-area/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/input/md-markdown-area/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/input/md-month/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/input/md-month/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/input/md-select-contact/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/input/md-select-contact/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/input/md-select-contacts/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/input/md-select-contacts/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/input/md-select-profile/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/input/md-select-profile/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/input/md-select-thesaurus/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/input/md-select-thesaurus/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/input/md-select/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/input/md-select/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/input/md-textarea/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/input/md-textarea/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/input/md-toggle/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/input/md-toggle/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/layout/md-card/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/layout/md-card/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/layout/md-footer/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/layout/md-footer/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/layout/md-nav-main/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/layout/md-nav-main/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/layout/md-nav-secondary/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/layout/md-nav-secondary/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/layout/md-nav-secondary/link/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/layout/md-nav-secondary/link/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/layout/md-nav-sidebar/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/layout/md-nav-sidebar/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/layout/md-object-container/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/layout/md-object-container/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/layout/md-slider/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/layout/md-slider/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/layout/md-wrap/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/layout/md-wrap/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/layout/nav/dictionary/nav-main/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/layout/nav/dictionary/nav-main/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/layout/nav/record/nav-main/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/layout/nav/record/nav-main/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/md-help/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/md-help/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/md-models-table/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/md-models-table/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/md-models-table/components/check-all/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/md-models-table/components/check-all/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/md-models-table/components/check/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/md-models-table/components/check/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/md-models-table/components/row-body/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/md-models-table/components/row-body/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/md-models-table/components/row-buttons/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/md-models-table/components/row-buttons/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/md-title/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/md-title/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/md-translate/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/md-translate/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/models-table/cell-content-display/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/models-table/cell-content-display/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/models-table/row-expand/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/models-table/row-expand/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/models-table/table-body/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/models-table/table-body/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-address/md-address-block/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-address/md-address-block/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-allocation/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-allocation/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-array-table/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-array-table/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-associated/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-associated/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-associated/preview/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-associated/preview/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-attribute/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-attribute/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-attribute/preview/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-attribute/preview/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-bbox/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-bbox/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-citation-array/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-citation-array/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-citation/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-citation/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-citation/preview/body/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-citation/preview/body/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-citation/preview/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-citation/preview/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-constraint/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-constraint/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-date-array/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-date-array/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-date/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-date/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-distribution/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-distribution/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-distributor/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-distributor/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-distributor/preview/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-distributor/preview/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-documentation/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-documentation/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-documentation/preview/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-documentation/preview/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-domain/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-domain/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-domainitem/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-domainitem/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-domainitem/preview/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-domainitem/preview/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-entity/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-entity/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-extent/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-extent/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-extent/spatial/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-extent/spatial/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-funding/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-funding/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-funding/preview/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-funding/preview/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-graphic-array/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-graphic-array/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-identifier-array/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-identifier-array/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-identifier-object-table/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-identifier-object-table/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-identifier/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-identifier/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-keyword-citation/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-keyword-citation/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-keyword-list/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-keyword-list/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-lineage/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-lineage/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-lineage/preview/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-lineage/preview/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-locale-array/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-locale-array/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-locale/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-locale/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-maintenance/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-maintenance/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-medium/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-medium/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-object-table/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-object-table/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-objectroute-table/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-objectroute-table/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-online-resource/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-online-resource/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-party-array/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-party-array/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-party/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-party/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-process-step/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-process-step/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-process-step/preview/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-process-step/preview/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-profile/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-profile/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-profile/custom/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-profile/custom/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-profile/form/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-profile/form/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-profile/preview/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-profile/preview/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-raster/attrgroup/attribute/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-raster/attrgroup/attribute/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-raster/attrgroup/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-raster/attrgroup/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-raster/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-raster/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-raster/image-desc/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-raster/image-desc/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-raster/preview/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-raster/preview/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-repository-array/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-repository-array/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-resource-type-array/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-resource-type-array/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-schema/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-schema/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-schema/form/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-schema/form/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-simple-array-table/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-simple-array-table/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-source/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-source/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-source/preview/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-source/preview/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-spatial-info/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-spatial-info/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-spatial-resolution/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-spatial-resolution/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-srs/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-srs/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-taxonomy/classification/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-taxonomy/classification/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-taxonomy/classification/taxon/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-taxonomy/classification/taxon/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-taxonomy/collection/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-taxonomy/collection/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-taxonomy/collection/system/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-taxonomy/collection/system/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-taxonomy/collection/system/preview/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-taxonomy/collection/system/preview/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-taxonomy/collection/voucher/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-taxonomy/collection/voucher/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-taxonomy/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-taxonomy/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-time-period/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-time-period/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-transfer/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-transfer/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('integration/pods/components/object/md-transfer/preview/component-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'integration/pods/components/object/md-transfer/preview/component-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('test-helper.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'test-helper.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/adapters/application-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/adapters/application-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/helpers/bbox-to-poly-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/helpers/bbox-to-poly-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/helpers/get-dash-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/helpers/get-dash-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/helpers/make-range-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/helpers/make-range-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/helpers/md-markdown-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/helpers/md-markdown-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/helpers/mod-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/helpers/mod-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/initializers/leaflet-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/initializers/leaflet-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/initializers/local-storage-export-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/initializers/local-storage-export-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/instance-initializers/profile-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/instance-initializers/profile-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/instance-initializers/route-publish-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/instance-initializers/route-publish-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/instance-initializers/settings-sciencebase-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/instance-initializers/settings-sciencebase-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/instance-initializers/settings-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/instance-initializers/settings-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/mixins/cancel-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/mixins/cancel-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/mixins/hash-poll-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/mixins/hash-poll-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/mixins/object-template-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/mixins/object-template-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/mixins/scroll-to-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/mixins/scroll-to-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/models/base-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/models/base-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/models/contact-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/models/contact-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/models/dictionary-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/models/dictionary-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/models/record-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/models/record-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/models/setting-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/models/setting-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/contact/new/id/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/contact/new/id/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/contact/new/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/contact/new/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/contact/show/edit/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/contact/show/edit/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/contact/show/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/contact/show/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/contact/show/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/contact/show/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/contacts/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/contacts/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dashboard/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dashboard/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionaries/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionaries/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/new/id/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/new/id/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/new/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/new/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/edit/citation/identifier/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/edit/citation/identifier/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/edit/citation/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/edit/citation/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/edit/citation/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/edit/citation/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/edit/domain/edit/citation/identifier/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/edit/domain/edit/citation/identifier/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/edit/domain/edit/citation/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/edit/domain/edit/citation/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/edit/domain/edit/citation/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/edit/domain/edit/citation/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/edit/domain/edit/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/edit/domain/edit/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/edit/domain/edit/item/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/edit/domain/edit/item/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/edit/domain/edit/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/edit/domain/edit/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/edit/domain/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/edit/domain/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/edit/domain/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/edit/domain/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/edit/entity/edit/attribute/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/edit/entity/edit/attribute/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/edit/entity/edit/attribute/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/edit/entity/edit/attribute/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/edit/entity/edit/citation/identifier/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/edit/entity/edit/citation/identifier/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/edit/entity/edit/citation/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/edit/entity/edit/citation/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/edit/entity/edit/citation/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/edit/entity/edit/citation/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/edit/entity/edit/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/edit/entity/edit/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/edit/entity/edit/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/edit/entity/edit/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/edit/entity/import/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/edit/entity/import/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/edit/entity/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/edit/entity/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/edit/entity/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/edit/entity/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/edit/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/edit/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/edit/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/edit/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/dictionary/show/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/dictionary/show/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/error/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/error/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/export/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/export/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/help/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/help/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/import/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/import/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/not-found/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/not-found/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/publish/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/publish/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/publish/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/publish/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/new/id/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/new/id/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/new/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/new/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/associated/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/associated/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/associated/resource/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/associated/resource/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/associated/resource/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/associated/resource/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/associated/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/associated/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/constraint/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/constraint/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/constraint/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/constraint/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/coverages/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/coverages/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/dictionary/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/dictionary/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/distribution/distributor/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/distribution/distributor/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/distribution/distributor/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/distribution/distributor/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/distribution/distributor/transfer/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/distribution/distributor/transfer/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/distribution/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/distribution/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/distribution/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/distribution/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/documents/citation/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/documents/citation/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/documents/citation/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/documents/citation/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/documents/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/documents/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/documents/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/documents/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/extent/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/extent/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/funding/allocation/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/funding/allocation/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/funding/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/funding/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/funding/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/funding/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/grid/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/grid/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/keywords/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/keywords/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/keywords/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/keywords/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/keywords/thesaurus/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/keywords/thesaurus/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/lineage/lineageobject/citation/identifier/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/lineage/lineageobject/citation/identifier/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/lineage/lineageobject/citation/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/lineage/lineageobject/citation/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/lineage/lineageobject/citation/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/lineage/lineageobject/citation/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/lineage/lineageobject/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/lineage/lineageobject/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/lineage/lineageobject/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/lineage/lineageobject/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/lineage/lineageobject/source/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/lineage/lineageobject/source/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/lineage/lineageobject/source/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/lineage/lineageobject/source/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/lineage/lineageobject/step/citation/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/lineage/lineageobject/step/citation/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/lineage/lineageobject/step/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/lineage/lineageobject/step/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/lineage/lineageobject/step/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/lineage/lineageobject/step/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/main/citation/identifier/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/main/citation/identifier/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/main/citation/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/main/citation/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/main/citation/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/main/citation/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/main/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/main/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/main/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/main/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/metadata/alternate/identifier/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/metadata/alternate/identifier/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/metadata/alternate/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/metadata/alternate/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/metadata/alternate/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/metadata/alternate/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/metadata/identifier/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/metadata/identifier/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/metadata/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/metadata/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/metadata/parent/identifier/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/metadata/parent/identifier/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/metadata/parent/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/metadata/parent/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/metadata/parent/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/metadata/parent/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/metadata/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/metadata/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/spatial/extent/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/spatial/extent/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/spatial/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/spatial/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/spatial/raster/attribute/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/spatial/raster/attribute/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/spatial/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/spatial/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/taxonomy/collection/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/taxonomy/collection/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/taxonomy/collection/itis/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/taxonomy/collection/itis/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/taxonomy/collection/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/taxonomy/collection/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/taxonomy/collection/system/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/taxonomy/collection/system/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/taxonomy/collection/system/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/taxonomy/collection/system/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/taxonomy/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/taxonomy/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/edit/taxonomy/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/edit/taxonomy/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/spatial/raster/attribute/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/spatial/raster/attribute/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/record/show/translate/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/record/show/translate/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/records/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/records/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/settings/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/settings/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/settings/main/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/settings/main/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/settings/profile/index/controller-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/settings/profile/index/controller-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/settings/profile/index/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/settings/profile/index/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/settings/profile/manage/controller-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/settings/profile/manage/controller-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/settings/profile/manage/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/settings/profile/manage/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/settings/profile/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/settings/profile/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/settings/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/settings/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/settings/validation/controller-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/settings/validation/controller-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/settings/validation/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/settings/validation/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/pods/translate/route-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/pods/translate/route-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/routes/application-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/routes/application-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/routes/index-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/routes/index-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/routes/publish/sciencebase-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/routes/publish/sciencebase-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/serializers/application-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/serializers/application-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/services/cleaner-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/services/cleaner-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/services/codelist-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/services/codelist-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/services/contacts-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/services/contacts-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/services/custom-profile-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/services/custom-profile-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/services/icon-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/services/icon-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/services/itis-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/services/itis-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/services/jsonvalidator-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/services/jsonvalidator-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/services/keyword-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/services/keyword-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/services/mdjson-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/services/mdjson-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/services/patch-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/services/patch-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/services/profile-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/services/profile-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/services/publish-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/services/publish-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/services/schemas-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/services/schemas-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/services/settings-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/services/settings-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/services/slider-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/services/slider-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/services/spotlight-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/services/spotlight-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/transforms/json-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/transforms/json-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/utils/config-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/utils/config-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/utils/md-interpolate-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/utils/md-interpolate-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/utils/md-object-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/utils/md-object-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/utils/sb-tree-node-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/utils/sb-tree-node-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/validators/array-required-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/validators/array-required-test.js should pass ESLint\n\n');
-  });
-  QUnit.test('unit/validators/array-valid-test.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/validators/array-valid-test.js should pass ESLint\n\n');
   });
 });
 define("mdeditor/tests/test-helper", ["mdeditor/app", "mdeditor/config/environment", "@ember/test-helpers", "ember-qunit"], function (_app, _environment, _testHelpers, _emberQunit) {
@@ -11710,6 +9693,18 @@ define("mdeditor/tests/test-helper", ["mdeditor/app", "mdeditor/config/environme
 
   (0, _testHelpers.setApplication)(_app.default.create(_environment.default.APP));
   (0, _emberQunit.start)();
+});
+define("mdeditor/tests/unit/adapters/adapter-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
+  "use strict";
+
+  (0, _qunit.module)('Unit | Adapter | application', function (hooks) {
+    (0, _emberQunit.setupTest)(hooks); // Replace this with your real tests.
+
+    (0, _qunit.test)('it exists', function (assert) {
+      let adapter = this.owner.lookup('adapter:application');
+      assert.ok(adapter);
+    });
+  });
 });
 define("mdeditor/tests/unit/adapters/application-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
   "use strict";
@@ -13156,17 +11151,6 @@ define("mdeditor/tests/unit/pods/record/show/edit/spatial/index/route-test", ["q
     });
   });
 });
-define("mdeditor/tests/unit/pods/record/show/edit/spatial/raster/attribute/route-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
-  "use strict";
-
-  (0, _qunit.module)('Unit | Route | record/show/edit/spatial/raster/attribute', function (hooks) {
-    (0, _emberQunit.setupTest)(hooks);
-    (0, _qunit.test)('it exists', function (assert) {
-      let route = this.owner.lookup('route:record/show/edit/spatial/raster/attribute');
-      assert.ok(route);
-    });
-  });
-});
 define("mdeditor/tests/unit/pods/record/show/edit/spatial/route-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
   "use strict";
 
@@ -13273,17 +11257,6 @@ define("mdeditor/tests/unit/pods/record/show/route-test", ["qunit", "ember-qunit
     (0, _emberQunit.setupTest)(hooks);
     (0, _qunit.test)('it exists', function (assert) {
       var route = this.owner.lookup('route:record/show');
-      assert.ok(route);
-    });
-  });
-});
-define("mdeditor/tests/unit/pods/record/show/spatial/raster/attribute/route-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
-  "use strict";
-
-  (0, _qunit.module)('Unit | Route | record/show/spatial/raster/attribute', function (hooks) {
-    (0, _emberQunit.setupTest)(hooks);
-    (0, _qunit.test)('it exists', function (assert) {
-      let route = this.owner.lookup('route:record/show/spatial/raster/attribute');
       assert.ok(route);
     });
   });
@@ -13509,6 +11482,25 @@ define("mdeditor/tests/unit/serializers/application-test", ["ember-data", "qunit
     });
   });
 });
+define("mdeditor/tests/unit/serializers/serializer-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
+  "use strict";
+
+  (0, _qunit.module)('Unit | Serializer | application', function (hooks) {
+    (0, _emberQunit.setupTest)(hooks); // Replace this with your real tests.
+
+    (0, _qunit.test)('it exists', function (assert) {
+      let store = this.owner.lookup('service:store');
+      let serializer = store.serializerFor('application');
+      assert.ok(serializer);
+    });
+    (0, _qunit.test)('it serializes records', function (assert) {
+      let store = this.owner.lookup('service:store');
+      let record = store.createRecord('application', {});
+      let serializedRecord = record.serialize();
+      assert.ok(serializedRecord);
+    });
+  });
+});
 define("mdeditor/tests/unit/services/cleaner-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
   "use strict";
 
@@ -13517,32 +11509,7 @@ define("mdeditor/tests/unit/services/cleaner-test", ["qunit", "ember-qunit"], fu
 
     (0, _qunit.test)('it exists', function (assert) {
       let service = this.owner.lookup('service:cleaner');
-      const obj = {
-        test: [[], {}, '', null, undefined],
-        foo: 'bar',
-        bar: null,
-        biz: {},
-        baz: {
-          foo: [undefined]
-        },
-        jim: [{
-          jam: ''
-        }],
-        hey: {
-          ya: ['', 'keep', true, false],
-          zoo: []
-        }
-      };
       assert.ok(service);
-      assert.equal(JSON.stringify(service.clean(obj, {
-        preserveArrays: true,
-        preserveRootOnly: false
-      })), '{"test":[[]],"foo":"bar","baz":{"foo":[]},"jim":[],"hey":{"ya":["keep",true,false],"zoo":[]}}', 'preserveArrays: true, preserveRootOnly: false');
-      assert.equal(JSON.stringify(service.clean(obj)), '{"test":[],"foo":"bar","jim":[],"hey":{"ya":["keep",true,false]}}', 'preserveArrays: true, preserveRootOnly: true');
-      assert.equal(JSON.stringify(service.clean(obj, {
-        preserveArrays: false,
-        preserveRootOnly: true
-      })), '{"foo":"bar","hey":{"ya":["keep",true,false]}}', 'preserveArrays: false, preserveRootOnly: true');
     });
   });
 });
@@ -13800,33 +11767,6 @@ define("mdeditor/tests/unit/utils/md-interpolate-test", ["mdeditor/utils/md-inte
       assert.equal(result, 'The attribute <em>foo</em> has an associated domain: <strong>bar</strong>.');
       let result2 = (0, _mdInterpolate.parseArgs)(note);
       assert.deepEqual(result2, ['value1', 'value2']);
-    });
-  });
-});
-define("mdeditor/tests/unit/utils/md-object-test", ["mdeditor/utils/md-object", "qunit"], function (_mdObject, _qunit) {
-  "use strict";
-
-  (0, _qunit.module)('Unit | Utility | md-object', function () {
-    // Replace this with your real tests.
-    (0, _qunit.test)('it works', function (assert) {
-      assert.equal(_mdObject.default.isEmpty({}), true);
-      assert.equal(_mdObject.default.isEmpty({
-        foo: ''
-      }), true);
-      assert.equal(_mdObject.default.isEmpty({
-        foo: []
-      }), true);
-      assert.equal(_mdObject.default.isEmpty({
-        foo: 'bar'
-      }), false);
-      assert.equal(_mdObject.default.isEmpty({
-        foo: {
-          bar: {}
-        }
-      }), true);
-      assert.equal(_mdObject.default.isEmpty({
-        foo: false
-      }), false);
     });
   });
 });

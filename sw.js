@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const VERSION = '1593443913581|0.021002863341671896';
+  const VERSION = '1612282283806|0.12617960933209815';
   self.CACHE_BUSTER = VERSION;
   self.addEventListener('install', function installEventListenerCallback(event) {
     return self.skipWaiting();
@@ -10,7 +10,7 @@
     return self.clients.claim();
   });
 
-  const FILES = ['assets/auto-import-fastboot.js', 'assets/images/layers-2x.png', 'assets/images/layers.png', 'assets/images/marker-icon-2x.png', 'assets/images/marker-icon.png', 'assets/images/marker-shadow.png', 'assets/images/spritesheet-2x.png', 'assets/images/spritesheet.png', 'assets/images/spritesheet.svg', 'assets/mdeditor.css', 'assets/mdeditor.js', 'assets/mdeditor.map', 'assets/test-support.css', 'assets/test-support.js', 'assets/test-support.map', 'assets/tests.js', 'assets/tests.map', 'assets/vendor.css', 'assets/vendor.js', 'assets/vendor.map', 'assets/workers/worker_papaparse.js', 'assets/workers/worker_papaparse.map', 'fonts/fontawesome-webfont.eot', 'fonts/fontawesome-webfont.svg', 'fonts/fontawesome-webfont.ttf', 'fonts/fontawesome-webfont.woff', 'fonts/fontawesome-webfont.woff2', 'fonts/FontAwesome.otf', 'fonts/mdeditor.eot', 'fonts/mdeditor.svg', 'fonts/mdeditor.ttf', 'fonts/mdeditor.woff', 'favicon-128.png', 'favicon-16x16.png', 'favicon-196x196.png', 'favicon-32x32.png', 'favicon-96x96.png', 'favicon.ico', 'apple-touch-icon-144x144.png', 'apple-touch-icon-152x152.png', 'mstile-144x144.png'];
+  const FILES = ['assets/images/layers-2x.png', 'assets/images/layers.png', 'assets/images/marker-icon-2x.png', 'assets/images/marker-icon.png', 'assets/images/marker-shadow.png', 'assets/images/spritesheet-2x.png', 'assets/images/spritesheet.png', 'assets/images/spritesheet.svg', 'assets/mdeditor.css', 'assets/mdeditor.js', 'assets/mdeditor.map', 'assets/test-support.css', 'assets/test-support.js', 'assets/test-support.map', 'assets/tests.js', 'assets/tests.map', 'assets/vendor.css', 'assets/vendor.js', 'assets/vendor.map', 'assets/workers/worker_papaparse.js', 'assets/workers/worker_papaparse.map', 'fonts/fontawesome-webfont.eot', 'fonts/fontawesome-webfont.svg', 'fonts/fontawesome-webfont.ttf', 'fonts/fontawesome-webfont.woff', 'fonts/fontawesome-webfont.woff2', 'fonts/FontAwesome.otf', 'fonts/mdeditor.eot', 'fonts/mdeditor.svg', 'fonts/mdeditor.ttf', 'fonts/mdeditor.woff', 'favicon-128.png', 'favicon-16x16.png', 'favicon-196x196.png', 'favicon-32x32.png', 'favicon-96x96.png', 'favicon.ico', 'apple-touch-icon-144x144.png', 'apple-touch-icon-152x152.png', 'mstile-144x144.png'];
   const VERSION$1 = '1';
   const REQUEST_MODE = 'cors';
 
@@ -163,7 +163,7 @@
   const INDEX_HTML_PATH = 'index.html';
   const INDEX_EXCLUDE_SCOPE = [];
   const INDEX_INCLUDE_SCOPE = [];
-  self.INDEX_FILE_HASH = '3c7d66ef67abe1dc0270b08e38edd8fd';
+  self.INDEX_FILE_HASH = '1705a8825be8ed3fb772e2fcbc84d9ea';
 
   const CACHE_KEY_PREFIX$2 = 'esw-index';
   const CACHE_NAME$2 = `${CACHE_KEY_PREFIX$2}-${VERSION$3}`;
@@ -189,24 +189,33 @@
     let isTests = url.pathname === '/tests' && ENVIRONMENT === 'development';
 
     if (!isTests && isGETRequest && isHTMLRequest && isLocal && scopeIncluded && !scopeExcluded) {
-      event.respondWith(caches.match(INDEX_HTML_URL, {
-        cacheName: CACHE_NAME$2
-      }).then(response => {
-        if (response) {
-          return response;
-        } // Re-fetch the resource in the event that the cache had been cleared
-        // (mostly an issue with Safari 11.1 where clearing the cache causes
-        // the browser to throw a non-descriptive blank error page).
-
-
-        return fetch(INDEX_HTML_URL, {
-          credentials: 'include'
-        }).then(fetchedResponse => {
-          caches.open(CACHE_NAME$2).then(cache => cache.put(INDEX_HTML_URL, fetchedResponse));
-          return fetchedResponse.clone();
-        });
-      }));
+      {
+        return cacheFirstFetch(event);
+      }
     }
   });
+
+  function cacheFirstFetch(event) {
+    return event.respondWith(caches.match(INDEX_HTML_URL, {
+      cacheName: CACHE_NAME$2
+    }).then(response => {
+      if (response) {
+        return response;
+      }
+      /**
+        Re-fetch the resource in the event that the cache had been cleared
+        (mostly an issue with Safari 11.1 where clearing the cache causes
+        the browser to throw a non-descriptive blank error page).
+      */
+
+
+      return fetch(INDEX_HTML_URL, {
+        credentials: 'include'
+      }).then(fetchedResponse => {
+        caches.open(CACHE_NAME$2).then(cache => cache.put(INDEX_HTML_URL, fetchedResponse));
+        return fetchedResponse.clone();
+      });
+    }));
+  }
 
 }());

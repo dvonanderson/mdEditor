@@ -3245,7 +3245,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	}
 
 .leaflet-oldie .leaflet-popup-content-wrapper {
-	zoom: 1;
+	-ms-zoom: 1;
 	}
 .leaflet-oldie .leaflet-popup-tip {
 	width: 24px;
@@ -3542,6 +3542,14 @@ label > .x-toggle-btn::before {
   padding: 4px;
 }
 
+/* Dark theme variables */
+:root{
+  --ios-track-dark: #2121218f;
+  --ios-border-dark: 1px solid #646464;
+  --ios-thumb-checked-dark: #86d993;
+}
+
+/* Default theme */
 .x-toggle-ios.x-toggle-btn {
   background: #fbfbfb;
   border-radius: 2em;
@@ -3568,7 +3576,7 @@ label > .x-toggle-btn::before {
 }
 
 .x-toggle:checked + label > .x-toggle-ios.x-toggle-btn {
-  background: #86d993;
+  background: #54d159;
 }
 
 .x-toggle:checked + label > .x-toggle-ios.x-toggle-btn:active {
@@ -3594,6 +3602,28 @@ label > .x-toggle-btn::before {
   width: 4.7em;
   height: 2.1em;
   padding: 4px;
+}
+
+/* Dark mode styling */
+.x-toggle-ios.dark.x-toggle-btn {
+  background: var(--ios-track-dark);
+  border: var( --ios-border-dark);
+}
+
+.x-toggle:checked + label > .x-toggle-ios.dark.x-toggle-btn {
+  background: var(--ios-thumb-checked-dark);
+}
+
+/* Auto mode styling */
+@media (prefers-color-scheme: dark) {
+  .x-toggle-ios.auto.x-toggle-btn {
+    background: var(--ios-track-dark);
+    border: var( --ios-border-dark);
+  }
+  
+  .x-toggle:checked + label > .x-toggle-ios.auto.x-toggle-btn {
+    background: var(--ios-thumb-checked-dark);
+  }
 }
 
 label > .x-toggle-default.x-toggle-btn {
@@ -3630,6 +3660,15 @@ label > .x-toggle-default.large {
   padding: 4px;
 }
 
+/* Dark theme variables */
+:root{
+  --flat-track-dark: #2121218f;
+  --flat-thumb-dark: #e2e2e2;
+  --flat-border-dark: 3px solid #a3a3a3;
+  --flat-border-checked-dark: 3px solid #7fc6a6;
+}
+
+/* Default theme */
 .x-toggle-flat.x-toggle-btn {
   padding: 2px;
   -webkit-transition: all 0.2s ease;
@@ -3647,7 +3686,7 @@ label > .x-toggle-default.large {
   border-radius: 1em;
 }
 
-.x-toggle:checked + .label .x-toggle-flat.x-toggle-btn {
+.x-toggle:checked + label .x-toggle-flat.x-toggle-btn {
   border: 4px solid #7fc6a6;
 }
 
@@ -3671,6 +3710,37 @@ label > .x-toggle-default.large {
   width: 4.7em;
   height: 2.1em;
   padding: 4px;
+}
+
+/* Dark mode styling */
+
+.x-toggle-flat.dark.x-toggle-btn {
+  background: var(--flat-track-dark);
+  border: var(--flat-border-dark);
+}
+
+.x-toggle-flat.dark.x-toggle-btn::after {
+  background: var(--flat-thumb-dark);
+}
+
+.x-toggle:checked + label .x-toggle-flat.dark.x-toggle-btn {
+  border: var(--flat-border-checked-dark);
+}
+
+/* Auto mode styling */
+@media (prefers-color-scheme: dark) {
+  .x-toggle-flat.auto.x-toggle-btn {
+    background: var(--flat-track-dark);
+    border: var(--flat-border-dark);
+  }
+  
+  .x-toggle-flat.auto.x-toggle-btn::after {
+    background: var(--flat-thumb-dark);
+  }
+  
+  .x-toggle:checked + label .x-toggle-flat.auto.x-toggle-btn {
+    border: var(--flat-border-checked-dark);
+  }
 }
 
 .x-toggle-skewed.x-toggle-btn {
@@ -3858,8 +3928,15 @@ label > .x-toggle-default.large {
   font-size: 1.1em;
 }
 
+/* Dark theme variables */
+:root{
+  --material-track-dark: #727272;
+}
+
 .x-toggle-material.x-toggle-btn {
   position: relative;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
 }
 
 /* Handle */
@@ -3867,8 +3944,8 @@ label > .x-toggle-default.large {
   border-radius: 2em;
   background-color: #fafafa;
   box-shadow: 0 3px 2px rgba(0, 0, 0, 0.1);
-  -webkit-transition: all 0.4s ease;
-  transition: all 0.4s ease;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .x-toggle:checked + label > .x-toggle-material.x-toggle-btn::after {
@@ -3886,8 +3963,8 @@ label > .x-toggle-default.large {
   background-color: #000;
   opacity: 0.38;
   border-radius: 2em;
-  -webkit-transition: all 0.4s ease;
-  transition: all 0.4s ease;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .x-toggle:checked + label > .x-toggle-material.x-toggle-btn::before {
@@ -3897,13 +3974,17 @@ label > .x-toggle-default.large {
 
 /* Disabled */
 .x-toggle-material.x-toggle-btn.x-toggle-disabled::before,
-.x-toggle:checked + label > .x-toggle-material.x-toggle-btn.x-toggle-disabled::before {
+.x-toggle:checked
+  + label
+  > .x-toggle-material.x-toggle-btn.x-toggle-disabled::before {
   background-color: #000;
   opacity: 0.12;
 }
 
 .x-toggle-material.x-toggle-btn.x-toggle-disabled::after,
-.x-toggle:checked + label > .x-toggle-material.x-toggle-btn.x-toggle-disabled::after {
+.x-toggle:checked
+  + label
+  > .x-toggle-material.x-toggle-btn.x-toggle-disabled::after {
   background-color: #bdbdbd;
 }
 
@@ -3936,6 +4017,36 @@ label > .x-toggle-default.large {
 
 .x-toggle-material.large::before {
   margin: 0.4em 0;
+}
+
+/* Dark mode styling */
+
+/* Background */
+.x-toggle-material.dark.x-toggle-btn::before {
+  background-color: var(--material-track-dark);
+}
+
+/* Disabled */
+.x-toggle-material.dark.x-toggle-btn.x-toggle-disabled::before,
+.x-toggle:checked
+  + label
+  > .x-toggle-material.dark.x-toggle-btn.x-toggle-disabled::before {
+  background-color: var(--material-track-dark);
+}
+
+/* Auto mode styling */
+@media (prefers-color-scheme: dark) {
+  .x-toggle-material.auto.x-toggle-btn::before {
+    background-color: var(--material-track-dark);
+  }
+  
+  /* Disabled */
+  .x-toggle-material.auto.x-toggle-btn.x-toggle-disabled::before,
+  .x-toggle:checked
+    + label
+    > .x-toggle-material.auto.x-toggle-btn.x-toggle-disabled::before {
+    background-color: var(--material-track-dark);
+  } 
 }
 
 #ember-welcome-page-id-selector {
@@ -4117,45 +4228,6 @@ Version: 0.0.6
 
 .vector-marker .icon-white {
   color: #fff; }
-
-slide-toggle {
-  box-sizing: border-box;
-  background: #f0f0f0;
-  border: 0.05em solid #e0e0e0;
-  cursor: pointer;
-  width: 1.75em;
-  height: 1em;
-  position: static;
-  display: inline-block;
-  font-size: 2em;
-  border-radius: 0.5em;
-}
-
-slide-toggle > .slideToggleButton {
-  background: #f8f8f8;
-  border-radius: 0.5em;
-  height: 1em;
-  position: relative;
-  left: 0;
-  top: -0.05em;
-  width: 1em;
-  box-shadow: 1px 0 2px 0 #bbb;
-  transition: 0.1s ease-out;
-}
-
-slide-toggle.isOn {
-  background: #37b737 linear-gradient(to bottom, #2c922c 0, #2c922c 20%, #37b737 100%);
-  border-color: #37b737;
-}
-
-slide-toggle.isOn > .slideToggleButton {
-  -ms-transform: translate(0.75em, 0);
-  transform: translate(0.75em, 0);
-  -webkit-transform: translate(0.75em, 0);
-  -moz-transform: translate(0.75em, 0);
-  -o-transform: translate(0.75em, 0);
-  box-shadow: -1px 0 2px 0 #3f7952;
-}
 
 input.bs-disable[readonly] {
   background-color: #fff;
