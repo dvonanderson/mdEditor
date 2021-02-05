@@ -6348,18 +6348,18 @@
     }
   } = _environment.default;
   const Validations = (0, _emberCpValidations.buildValidations)({
-    "json.dictionaryId": (0, _emberCpValidations.validator)("presence", {
+    'json.dictionaryId': (0, _emberCpValidations.validator)('presence', {
       presence: true,
       ignoreBlank: true
     }),
-    "json.dataDictionary.citation.title": (0, _emberCpValidations.validator)("presence", {
+    'json.dataDictionary.citation.title': (0, _emberCpValidations.validator)('presence', {
       presence: true,
       ignoreBlank: true
     }),
-    "json.dataDictionary.subject": [(0, _emberCpValidations.validator)("presence", {
+    'json.dataDictionary.subject': [(0, _emberCpValidations.validator)('presence', {
       presence: true,
       ignoreBlank: true
-    }), (0, _emberCpValidations.validator)("array-required", {
+    }), (0, _emberCpValidations.validator)('array-required', {
       track: []
     })]
   });
@@ -6374,10 +6374,10 @@
             title: null,
             date: [{
               date: new Date().toISOString(),
-              dateType: "creation"
+              dateType: 'creation'
             }]
           },
-          description: "",
+          description: '',
           subject: [],
           responsibleParty: {},
           domain: [],
@@ -6401,27 +6401,27 @@
     init() {
       this._super(...arguments);
 
-      this.on("didLoad", this, this.assignId);
+      this.on('didLoad', this, this.assignId);
     },
 
-    profile: (0, _model.attr)("string", {
+    profile: (0, _model.attr)('string', {
       defaultValue: defaultProfileId
     }),
-    json: (0, _model.attr)("json", {
+    json: (0, _model.attr)('json', {
       defaultValue() {
         return JsonDefault.create();
       }
 
     }),
-    dateUpdated: (0, _model.attr)("date", {
+    dateUpdated: (0, _model.attr)('date', {
       defaultValue() {
         return new Date();
       }
 
     }),
-    title: Ember.computed.alias("json.dataDictionary.citation.title"),
-    dictionaryId: Ember.computed.alias("json.dictionaryId"),
-    icon: "book",
+    title: Ember.computed.alias('json.dataDictionary.citation.title'),
+    dictionaryId: Ember.computed.alias('json.dictionaryId'),
+    icon: 'book',
 
     /**
      * A list of schema errors return by the validator.
@@ -6432,14 +6432,14 @@
      * @category computed
      * @requires status
      */
-    schemaErrors: Ember.computed("hasDirtyHash", "customSchemas.[]", function () {
+    schemaErrors: Ember.computed('cleanJson', 'customSchemas.[]', 'hasDirtyHash', 'mdjson', function () {
       let mdjson = this.mdjson;
       let errors = [];
       let result = mdjson.validateDictionary(this).errors;
 
       if (result) {
         errors.pushObject({
-          title: "Default Dictionary Validation",
+          title: 'Default Dictionary Validation',
           errors: result
         });
       }
@@ -6461,7 +6461,7 @@
 
     assignId(force) {
       if (force || !this.dictionaryId) {
-        this.set("json.dictionaryId", (0, _uuid.v4)());
+        this.set('json.dictionaryId', (0, _uuid.v4)());
       }
     },
 
@@ -6469,9 +6469,9 @@
       let current = this.cleanJson;
       let json = Ember.Object.create(current);
       let name = current.dataDictionary.citation.title;
-      json.set("dataDictionary.citation.title", `Copy of ${name}`);
+      json.set('dataDictionary.citation.title', `Copy of ${name}`);
       this.assignId(true);
-      return this.store.createRecord("dictionary", {
+      return this.store.createRecord('dictionary', {
         json: json
       });
     }
@@ -6635,24 +6635,24 @@
     }
   } = _environment.default;
   const Validations = (0, _emberCpValidations.buildValidations)({
-    recordId: (0, _emberCpValidations.validator)("presence", {
+    recordId: (0, _emberCpValidations.validator)('presence', {
       presence: true,
       ignoreBlank: true
     }),
-    "json.metadata.resourceInfo.resourceType": [(0, _emberCpValidations.validator)("array-valid"), (0, _emberCpValidations.validator)("array-required", {
-      track: ["type"]
+    'json.metadata.resourceInfo.resourceType': [(0, _emberCpValidations.validator)('array-valid'), (0, _emberCpValidations.validator)('array-required', {
+      track: ['type']
     })],
-    "json.metadata.resourceInfo.pointOfContact": {
-      disabled: Ember.computed.alias("model.isNew"),
-      validators: [(0, _emberCpValidations.validator)("array-valid"), (0, _emberCpValidations.validator)("array-required", {
-        track: ["type"]
+    'json.metadata.resourceInfo.pointOfContact': {
+      disabled: Ember.computed.alias('model.isNew'),
+      validators: [(0, _emberCpValidations.validator)('array-valid'), (0, _emberCpValidations.validator)('array-required', {
+        track: ['type']
       })]
     },
     // 'json.resourceInfo.abstract': validator('presence', {
     //   presence: true,
     //   ignoreBlank: true
     // }),
-    "json.metadata.resourceInfo.citation.title": (0, _emberCpValidations.validator)("presence", {
+    'json.metadata.resourceInfo.citation.title': (0, _emberCpValidations.validator)('presence', {
       presence: true,
       ignoreBlank: true
     }) // 'json.metadata.resourceInfo.citation': validator('length', {
@@ -6680,22 +6680,22 @@
      * @module mdeditor
      * @submodule data-models
      */
-    profile: (0, _model.attr)("string", {
+    profile: (0, _model.attr)('string', {
       defaultValue: defaultProfileId
     }),
-    json: (0, _model.attr)("json", {
+    json: (0, _model.attr)('json', {
       defaultValue() {
         const obj = Ember.Object.create({
           schema: {
-            name: "mdJson",
-            version: "2.6.0"
+            name: 'mdJson',
+            version: '2.6.0'
           },
           contact: [],
           metadata: {
             metadataInfo: {
               metadataIdentifier: {
                 identifier: (0, _uuid.v4)(),
-                namespace: "urn:uuid"
+                namespace: 'urn:uuid'
               },
               metadataContact: [],
               defaultMetadataLocale: {}
@@ -6707,8 +6707,8 @@
                 date: []
               },
               pointOfContact: [],
-              abstract: "",
-              shortAbstract: "",
+              abstract: '',
+              shortAbstract: '',
               status: [],
               defaultResourceLocale: {// characterSet: UTF-8,
                 // country: USA,
@@ -6728,45 +6728,45 @@
       }
 
     }),
-    dateUpdated: (0, _model.attr)("date", {
+    dateUpdated: (0, _model.attr)('date', {
       defaultValue() {
         return new Date();
       }
 
     }),
-    title: Ember.computed.alias("json.metadata.resourceInfo.citation.title"),
-    icon: Ember.computed("json.metadata.resourceInfo.resourceType.firstObject.type", function () {
-      const type = this.get("json.metadata.resourceInfo.resourceType.0.type") || "";
-      const list = Ember.getOwner(this).lookup("service:icon");
-      return type ? list.get(type) || list.get("default") : list.get("defaultFile");
+    title: Ember.computed.alias('json.metadata.resourceInfo.citation.title'),
+    icon: Ember.computed('json.metadata.resourceInfo.resourceType.firstObject.type', function () {
+      const type = this.json.metadata.resourceInfo.resourceType.firstObject.type || '';
+      const list = Ember.getOwner(this).lookup('service:icon');
+      return type ? list.get(type) || list.get('default') : list.get('defaultFile');
     }),
-    recordId: Ember.computed.alias("json.metadata.metadataInfo.metadataIdentifier.identifier"),
-    recordIdNamespace: Ember.computed.alias("json.metadata.metadataInfo.metadataIdentifier.namespace"),
-    parentIds: Ember.computed.alias("json.metadata.metadataInfo.parentMetadata.identifier"),
-    hasParent: Ember.computed("parentIds.[]", function () {
+    recordId: Ember.computed.alias('json.metadata.metadataInfo.metadataIdentifier.identifier'),
+    recordIdNamespace: Ember.computed.alias('json.metadata.metadataInfo.metadataIdentifier.namespace'),
+    parentIds: Ember.computed.alias('json.metadata.metadataInfo.parentMetadata.identifier'),
+    hasParent: Ember.computed('parentIds.[]', 'store', function () {
       let ids = this.parentIds;
-      let allRecords = this.store.peekAll("record");
-      let records = allRecords.rejectBy("hasSchemaErrors");
+      let allRecords = this.store.peekAll('record');
+      let records = allRecords.rejectBy('hasSchemaErrors');
 
       if (!ids) {
         return false;
       }
 
       return ids.find(id => {
-        return records.findBy("recordId", id.identifier) ? true : false;
+        return records.findBy('recordId', id.identifier) ? true : false;
       });
     }),
-    defaultParent: Ember.computed("hasParent", function () {
-      let id = this.get("hasParent.identifier");
-      let allRecords = this.store.peekAll("record");
+    defaultParent: Ember.computed('hasParent.identifier', 'store', function () {
+      let id = this.hasParent.identifier;
+      let allRecords = this.store.peekAll('record');
 
       if (!id) {
         return undefined;
       }
 
-      return allRecords.findBy("recordId", id);
+      return allRecords.findBy('recordId', id);
     }),
-    defaultType: Ember.computed.alias("json.metadata.resourceInfo.resourceType.firstObject.type"),
+    defaultType: Ember.computed.alias('json.metadata.resourceInfo.resourceType.firstObject.type'),
 
     /**
      * The trimmed varsion of the recordId.
@@ -6777,11 +6777,11 @@
      * @category computed
      * @requires recordId
      */
-    shortId: Ember.computed("recordId", function () {
+    shortId: Ember.computed('recordId', function () {
       const recordId = this.recordId;
 
       if (recordId) {
-        let index = recordId.indexOf("-");
+        let index = recordId.indexOf('-');
         return recordId.substring(0, index > -1 ? index : 8);
       }
 
@@ -6797,14 +6797,14 @@
      * @category computed
      * @requires status
      */
-    schemaErrors: Ember.computed("hasDirtyHash", "customSchemas.[]", function () {
+    schemaErrors: Ember.computed('customSchemas.[]', 'hasDirtyHash', 'mdjson', function () {
       let mdjson = this.mdjson;
       let errors = [];
       let result = mdjson.validateRecord(this).errors;
 
       if (result) {
         errors.pushObject({
-          title: "Default Record Validation",
+          title: 'Default Record Validation',
           errors: result
         });
       }
@@ -6827,26 +6827,26 @@
       });
       return errors;
     }),
-    formatted: Ember.computed.alias("_formatted"),
+    formatted: Ember.computed.alias('_formatted'),
 
     copy() {
       let current = this.cleanJson;
       let json = Ember.Object.create(current);
       let name = current.metadata.resourceInfo.citation.title;
-      json.set("metadata.resourceInfo.citation.title", `Copy of ${name}`);
-      json.set("metadata.resourceInfo.resourceType", Ember.getWithDefault(json, "metadata.resourceInfo.resourceType", [{}]));
-      json.set("metadata.metadataInfo.metadataIdentifier", {
+      json.set('metadata.resourceInfo.citation.title', `Copy of ${name}`);
+      json.set('metadata.resourceInfo.resourceType', Ember.getWithDefault(json, 'metadata.resourceInfo.resourceType', [{}]));
+      json.set('metadata.metadataInfo.metadataIdentifier', {
         identifier: (0, _uuid.v4)(),
-        namespace: "urn:uuid"
+        namespace: 'urn:uuid'
       });
-      return this.store.createRecord("record", {
+      return this.store.createRecord('record', {
         json: json
       });
     }
 
   });
 
-  Object.defineProperty(Record.prototype, "_formatted", {
+  Object.defineProperty(Record.prototype, '_formatted', {
     get() {
       return this.mdjson.formatRecord(this);
     }
@@ -10602,7 +10602,7 @@
   let EmberTooltip = classic(_class = (_temp = class EmberTooltip extends _emberTooltip.default {
     constructor(...args) {
       super(...args);
-      (0, _defineProperty2.default)(this, "popperContainer", "body");
+      (0, _defineProperty2.default)(this, "popperContainer", 'body');
     }
 
   }, _temp)) || _class;
@@ -13323,8 +13323,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "TkhwPPb/",
-    "block": "{\"symbols\":[\"&default\"],\"statements\":[[10,\"div\"],[14,0,\"footer-container\"],[12],[2,\"\\n  \"],[10,\"span\"],[12],[10,\"a\"],[14,0,\"btn btn-xs btn-warning\"],[14,6,\"https://github.com/adiwg/mdEditor/issues/new\"],[14,\"target\",\"_blank\"],[14,\"rel\",\"noopener noreferrer\"],[12],[10,\"i\"],[14,0,\"fa fa-github\"],[14,\"aria-hidden\",\"true\"],[12],[13],[2,\" Report Issue\\n\\n    \"],[1,[30,[36,0],null,[[\"text\",\"side\"],[\"Report bugs, Request features - GitHub account required.\",\"top\"]]]],[2,\"\\n  \"],[13],[13],[2,\"\\n  \"],[10,\"span\"],[12],[2,\"AutoSave:\\n      \"],[10,\"span\"],[15,0,[30,[36,2],[[35,1,[\"data\",\"autoSave\"]],\"text-success\",\"text-warning\"],null]],[12],[2,\"\\n        \"],[1,[30,[36,2],[[35,1,[\"data\",\"autoSave\"]],\"On\",\"Off\"],null]],[13],[2,\"\\n  \"],[13],[2,\"\\n  \"],[18,1,null],[2,\"\\n\"],[13],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"ember-tooltip\",\"settings\",\"if\"]}",
+    "id": "foQRjJHC",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[10,\"div\"],[14,0,\"footer-container\"],[12],[2,\"\\n  \"],[10,\"span\"],[12],[2,\"\\n    \"],[10,\"a\"],[14,0,\"btn btn-xs btn-warning\"],[14,6,\"https://github.com/adiwg/mdEditor/issues\"],[14,\"target\",\"_blank\"],[14,\"rel\",\"noopener noreferrer\"],[12],[2,\"\\n      \"],[10,\"i\"],[14,0,\"fa fa-github\"],[14,\"aria-hidden\",\"true\"],[12],[13],[2,\" Report Issue\\n      \"],[8,\"ember-tooltip\",[],[[\"@text\",\"@side\"],[\"Report bugs, Request features - GitHub account required.\",\"top\"]],null],[2,\"\\n    \"],[13],[2,\"\\n  \"],[13],[2,\"\\n  \"],[10,\"span\"],[12],[2,\"\\n    AutoSave:\\n    \"],[10,\"span\"],[15,0,[30,[36,0],[[32,0,[\"settings\",\"data\",\"autoSave\"]],\"text-success\",\"text-warning\"],null]],[12],[2,\"\\n      \"],[1,[30,[36,0],[[32,0,[\"settings\",\"data\",\"autoSave\"]],\"On\",\"Off\"],null]],[2,\"\\n    \"],[13],[2,\"\\n  \"],[13],[2,\"\\n  \"],[18,1,null],[2,\"\\n\"],[13],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"if\"]}",
     "meta": {
       "moduleName": "mdeditor/pods/components/layout/md-footer/template.hbs"
     }
@@ -13996,7 +13996,7 @@
   var _dec, _dec2, _class, _class2, _descriptor, _temp;
 
   const classic = __EMBER_CLASSIC_DECORATOR;
-  let RowBody = (_dec = (0, _component2.classNames)('md-row-body'), _dec2 = Ember.inject.service, _dec(_class = classic(_class = (_class2 = (_temp = class RowBody extends _component.default {
+  let RowBody = (_dec = (0, _component2.classNames)("md-row-body"), _dec2 = Ember.inject.service, _dec(_class = classic(_class = (_class2 = (_temp = class RowBody extends _component.default {
     constructor(...args) {
       super(...args);
       (0, _initializerDefineProperty2.default)(this, "spotlight", _descriptor, this);
@@ -14005,7 +14005,7 @@
     didInsertElement() {
       super.didInsertElement(...arguments);
       this.spotlight.setTarget(this.elementId, this.collapse, this);
-      this.element.classList.add('fade-in-fast');
+      this.element.classList.add("fade-in-fast");
     }
 
     willDestroyElement() {
@@ -14014,7 +14014,7 @@
     }
 
     collapse() {
-      this.element.classList.add('fade-out-fast');
+      this.element.classList.add("fade-out-fast");
       this.collapseRow(this.index, this.record);
     }
 
@@ -14044,7 +14044,7 @@
 
   _exports.default = _default;
 });
-;define("mdeditor/pods/components/md-models-table/components/row-buttons/component", ["exports", "@ember-decorators/component", "@glimmer/component"], function (_exports, _component, _component2) {
+;define("mdeditor/pods/components/md-models-table/components/row-buttons/component", ["exports", "@ember-decorators/component"], function (_exports, _component) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -14054,7 +14054,8 @@
 
   var _dec, _class;
 
-  let RowButtons = (_dec = (0, _component.classNames)('md-row-buttons'), _dec(_class = class RowButtons extends _component2.default {}) || _class);
+  const classic = __EMBER_CLASSIC_DECORATOR;
+  let RowButtons = (_dec = (0, _component.classNames)("md-row-buttons"), _dec(_class = classic(_class = class RowButtons extends Ember.Component {}) || _class) || _class);
   _exports.default = RowButtons;
 });
 ;define("mdeditor/pods/components/md-models-table/components/row-buttons/template", ["exports"], function (_exports) {
@@ -14090,31 +14091,31 @@
   let Boostrap3 = classic(_class = (_temp = class Boostrap3 extends _bootstrap.default {
     constructor(...args) {
       super(...args);
-      (0, _defineProperty2.default)(this, 'sort-asc', 'fa fa-caret-up');
-      (0, _defineProperty2.default)(this, 'sort-desc', 'fa fa-caret-down');
-      (0, _defineProperty2.default)(this, 'column-visible', 'fa fa-check-square-o');
-      (0, _defineProperty2.default)(this, 'column-hidden', 'fa fa-square-o');
-      (0, _defineProperty2.default)(this, 'nav-first', 'fa fa-fast-backward');
-      (0, _defineProperty2.default)(this, 'nav-prev', 'fa fa-backward');
-      (0, _defineProperty2.default)(this, 'nav-next', 'fa fa-forward');
-      (0, _defineProperty2.default)(this, 'nav-last', 'fa fa-fast-forward');
-      (0, _defineProperty2.default)(this, 'caret', 'fa fa-caret-down');
-      (0, _defineProperty2.default)(this, 'select-row', 'fa fa-fw fa-check-square-o');
-      (0, _defineProperty2.default)(this, 'deselect-row', 'fa fa-fw fa-square-o');
-      (0, _defineProperty2.default)(this, 'select-all-rows', 'fa fa-fw fa-check-square-o');
-      (0, _defineProperty2.default)(this, 'deselect-all-rows', 'fa fa-fw fa-square-o');
-      (0, _defineProperty2.default)(this, 'expand-row', 'fa fa-plus');
-      (0, _defineProperty2.default)(this, 'expand-all-rows', 'fa fa-plus');
-      (0, _defineProperty2.default)(this, 'collapse-row', 'fa fa-minus');
-      (0, _defineProperty2.default)(this, 'collapse-all-rows', 'fa fa-minus');
-      (0, _defineProperty2.default)(this, "clearFilterIcon", 'fa fa-times form-control-feedback');
-      (0, _defineProperty2.default)(this, "clearAllFiltersIcon", 'fa fa-times');
-      (0, _defineProperty2.default)(this, "sortGroupedPropertyBtn", 'btn');
-      (0, _defineProperty2.default)(this, "input", 'form-control');
-      (0, _defineProperty2.default)(this, "inputGroup", 'input-group');
-      (0, _defineProperty2.default)(this, "expandedRow", 'expanded-row');
-      (0, _defineProperty2.default)(this, "expandRow", 'expand-row md-collapsible-content');
-      (0, _defineProperty2.default)(this, "table", 'table table-striped table-bordered table-condensed table-hover');
+      (0, _defineProperty2.default)(this, "sort-asc", "fa fa-caret-up");
+      (0, _defineProperty2.default)(this, "sort-desc", "fa fa-caret-down");
+      (0, _defineProperty2.default)(this, "column-visible", "fa fa-check-square-o");
+      (0, _defineProperty2.default)(this, "column-hidden", "fa fa-square-o");
+      (0, _defineProperty2.default)(this, "nav-first", "fa fa-fast-backward");
+      (0, _defineProperty2.default)(this, "nav-prev", "fa fa-backward");
+      (0, _defineProperty2.default)(this, "nav-next", "fa fa-forward");
+      (0, _defineProperty2.default)(this, "nav-last", "fa fa-fast-forward");
+      (0, _defineProperty2.default)(this, "caret", "fa fa-caret-down");
+      (0, _defineProperty2.default)(this, "select-row", "fa fa-fw fa-check-square-o");
+      (0, _defineProperty2.default)(this, "deselect-row", "fa fa-fw fa-square-o");
+      (0, _defineProperty2.default)(this, "select-all-rows", "fa fa-fw fa-check-square-o");
+      (0, _defineProperty2.default)(this, "deselect-all-rows", "fa fa-fw fa-square-o");
+      (0, _defineProperty2.default)(this, "expand-row", "fa fa-plus");
+      (0, _defineProperty2.default)(this, "expand-all-rows", "fa fa-plus");
+      (0, _defineProperty2.default)(this, "collapse-row", "fa fa-minus");
+      (0, _defineProperty2.default)(this, "collapse-all-rows", "fa fa-minus");
+      (0, _defineProperty2.default)(this, "clearFilterIcon", "fa fa-times form-control-feedback");
+      (0, _defineProperty2.default)(this, "clearAllFiltersIcon", "fa fa-times");
+      (0, _defineProperty2.default)(this, "sortGroupedPropertyBtn", "btn");
+      (0, _defineProperty2.default)(this, "input", "form-control");
+      (0, _defineProperty2.default)(this, "inputGroup", "input-group");
+      (0, _defineProperty2.default)(this, "expandedRow", "expanded-row");
+      (0, _defineProperty2.default)(this, "expandRow", "expand-row md-collapsible-content");
+      (0, _defineProperty2.default)(this, "table", "table table-striped table-bordered table-condensed table-hover");
       (0, _defineProperty2.default)(this, "selectRowOnExpandClick", false);
     }
 
@@ -14504,7 +14505,7 @@
 
   _exports.default = _default;
 });
-;define("mdeditor/pods/components/object/md-address/component", ["exports"], function (_exports) {
+;define("mdeditor/pods/components/object/md-address/component", ["exports", "@babel/runtime/helpers/esm/defineProperty", "@ember-decorators/component"], function (_exports, _defineProperty2, _component) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -14512,60 +14513,39 @@
   });
   _exports.default = void 0;
 
-  var _default = Ember.Component.extend({
-    /**
-     * mdEditor class for input and edit of mdJSON 'address' object
-     * arrays. The class manages the maintenance of an array of address
-     * objects using the md-object-table class.
-     *
-     * @class md-address
-     * @constructor
-     * @requires md-object-table
-     */
-    attributeBindings: ['data-spy'],
+  var _dec, _class, _temp;
 
-    /**
-     * mdJSON object containing the 'address' array.
-     *
-     * @property model
-     * @type Object
-     * @required
-     */
+  const classic = __EMBER_CLASSIC_DECORATOR;
+  let MdAddress = (
+  /**
+    * mdEditor class for input and edit of mdJSON 'address' object
+    * arrays. The class manages the maintenance of an array of address
+    * objects using the md-object-table class.
+    *
+    * @submodule components-object
+    * @module mdeditor
+    * @class md-address
+    * @constructor
+    * @requires md-object-table
+    */
+  _dec = (0, _component.attributeBindings)('data-spy'), _dec(_class = classic(_class = (_temp = class MdAddress extends Ember.Component {
+    constructor(...args) {
+      super(...args);
+      (0, _defineProperty2.default)(this, "attributes", '');
+      (0, _defineProperty2.default)(this, "label", 'Address');
+      (0, _defineProperty2.default)(this, "templateClass", Ember.Object.extend({
+        init() {
+          this._super(...arguments);
 
-    /**
-     * List of mdJSON 'address' object attributes to display in
-     * md-object-table to aid in choosing the address to edit or
-     * delete.
-     * The property is passed to md-object-table for configuration.
-     *
-     * @property attributes
-     * @type String
-     * @default ''
-     */
-    attributes: '',
+          this.set('addressType', Ember.A());
+          this.set('deliveryPoint', Ember.A());
+        }
 
-    /**
-     * Name to place on the mdEditor panel header for entry and edit of
-     * 'address' objects.
-     * The property is passed to md-object-table for configuration.
-     *
-     * @property label
-     * @type String
-     * @default 'Address'
-     */
-    label: 'Address',
-    templateClass: Ember.Object.extend({
-      init() {
-        this._super(...arguments);
+      }));
+    }
 
-        this.set('addressType', Ember.A());
-        this.set('deliveryPoint', Ember.A());
-      }
-
-    })
-  });
-
-  _exports.default = _default;
+  }, _temp)) || _class) || _class);
+  _exports.default = MdAddress;
 });
 ;define("mdeditor/pods/components/object/md-address/md-address-block/component", ["exports"], function (_exports) {
   "use strict";
@@ -20863,21 +20843,21 @@
   });
   _exports.default = void 0;
   const columns = [{
-    propertyName: 'title',
-    title: 'Title'
+    propertyName: "title",
+    title: "Title"
   }, {
-    propertyName: 'defaultOrganizationName',
-    title: 'Organization'
+    propertyName: "defaultOrganizationName",
+    title: "Organization"
   }, {
-    propertyName: 'json.electronicMailAddress.firstObject',
-    title: 'E-mail'
+    propertyName: "json.electronicMailAddress.firstObject",
+    title: "E-mail"
   }, {
-    propertyName: 'contactId',
-    title: 'ID',
+    propertyName: "contactId",
+    title: "ID",
     isHidden: true
   }, {
-    propertyName: 'type',
-    title: 'Contact Type',
+    propertyName: "type",
+    title: "Contact Type",
     filterWithSelect: true
   }];
 
@@ -20886,7 +20866,7 @@
 
     model() {
       //return this.store.peekAll('contact');
-      return this.modelFor('application').findBy('modelName', 'contact');
+      return this.modelFor("application").findBy("modelName", "contact");
     },
 
     columns: columns,
@@ -20898,8 +20878,8 @@
       showSlider(rec, evt) {
         let slider = this.slider;
         evt.stopPropagation();
-        this.controller.set('errorTarget', rec);
-        slider.set('fromName', 'md-slider-error');
+        this.controller.set("errorTarget", rec);
+        slider.set("fromName", "md-slider-error");
         slider.toggleSlider(true);
         return false;
       }
@@ -32100,7 +32080,7 @@ catch(err) {
 
 ;
           if (!runningTests) {
-            require("mdeditor/app")["default"].create({"repository":"https://github.com/adiwg/mdEditor","defaultProfileId":"org.adiwg.profile.full","name":"mdeditor","version":"0.11.0-dev+4581aa57"});
+            require("mdeditor/app")["default"].create({"repository":"https://github.com/adiwg/mdEditor","defaultProfileId":"org.adiwg.profile.full","name":"mdeditor","version":"0.11.0-dev+b856fc97"});
           }
         
 //# sourceMappingURL=mdeditor.map

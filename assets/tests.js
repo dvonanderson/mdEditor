@@ -58,7 +58,7 @@ define("mdeditor/tests/acceptance/pods/contact/new-test", ["qunit", "@ember/test
     (0, _qunit.test)('test new contact initial page conditions', async function (assert) {
       assert.expect(5);
       await (0, _testHelpers.visit)('/contact/new');
-      assert.dom('.x-toggle-component.toggle-off').exists();
+      assert.dom('.toggle-off').exists();
       assert.equal((0, _testHelpers.findAll)('.md-input-input input')[0].value.length, 36);
       assert.equal((0, _testHelpers.findAll)('.md-input-input input')[1].value, '');
       assert.equal((0, _testHelpers.findAll)('.md-input-input input')[2].value, '');
@@ -81,9 +81,9 @@ define("mdeditor/tests/acceptance/pods/contact/new-test", ["qunit", "@ember/test
       await (0, _testHelpers.visit)('/contact/new');
       await (0, _testHelpers.click)('.x-toggle-btn');
       await (0, _testHelpers.fillIn)((0, _testHelpers.findAll)('.md-input-input input')[1], 'Organization Name');
-      assert.dom('.x-toggle-component.toggle-on').exists();
+      assert.dom('.toggle-on').exists();
       assert.equal((0, _testHelpers.findAll)('.md-input-input input')[0].value.length, 36);
-      assert.equal((0, _testHelpers.findAll)('.md-input-input input')[1].value, "Organization Name");
+      assert.equal((0, _testHelpers.findAll)('.md-input-input input')[1].value, 'Organization Name');
       assert.dom('button.md-form-save').isNotDisabled(); //change route to prevent error during teardown
 
       await (0, _testHelpers.visit)('/');
@@ -285,63 +285,63 @@ define("mdeditor/tests/helpers/create-citation", ["exports"], function (_exports
 
     for (let i = 0; i < total; i++) {
       const citation = Ember.Object.create({
-        "title": "title" + i,
-        "alternateTitle": ["alternateTitle0", "alternateTitle1"],
-        "date": [{
-          "date": "2016-10-13",
-          "dateType": "dateType"
+        title: 'title' + i,
+        alternateTitle: ['alternateTitle0', 'alternateTitle1'],
+        date: [{
+          date: '2016-10-13',
+          dateType: 'dateType'
         }, {
-          "date": "2016-10-22",
-          "dateType": "dateType"
+          date: '2016-10-22',
+          dateType: 'dateType'
         }],
-        "edition": "edition",
-        "responsibleParty": [{
-          "role": "role",
-          "roleExtent": [{
-            "temporalExtent": [{
-              "timePeriod": {
-                "startDateTime": "2016-10-24T11:10:15.2-10:00"
+        edition: 'edition',
+        responsibleParty: [{
+          role: 'role',
+          roleExtent: [{
+            temporalExtent: [{
+              timePeriod: {
+                startDateTime: '2016-10-24T11:10:15.2-10:00'
               }
             }]
           }],
-          "party": [{
-            "contactId": "individualId0"
+          party: [{
+            contactId: 'individualId0'
           }]
         }, {
-          "role": "role",
-          "roleExtent": [{
-            "temporalExtent": [{
-              "timePeriod": {
-                "startDateTime": "2016-10-24T11:10:15.2-10:00"
+          role: 'role',
+          roleExtent: [{
+            temporalExtent: [{
+              timePeriod: {
+                startDateTime: '2016-10-24T11:10:15.2-10:00'
               }
             }]
           }],
-          "party": [{
-            "contactId": "individualId0"
+          party: [{
+            contactId: 'individualId0'
           }]
         }],
-        "presentationForm": ["presentationForm0", "presentationForm1"],
-        "identifier": [{
-          "identifier": "identifier" + i,
-          "authority": {
-            "title": "title"
+        presentationForm: ['presentationForm0', 'presentationForm1'],
+        identifier: [{
+          identifier: 'identifier' + i,
+          authority: {
+            title: 'title'
           }
         }, {
-          "identifier": "identifier-" + i
+          identifier: 'identifier-' + i
         }],
-        "series": {
-          "seriesName": "seriesName"
+        series: {
+          seriesName: 'seriesName'
         },
-        "otherCitationDetails": ["otherCitationDetails0", "otherCitationDetails1"],
-        "onlineResource": [{
-          "uri": "http://adiwg.org"
+        otherCitationDetails: ['otherCitationDetails0', 'otherCitationDetails1'],
+        onlineResource: [{
+          uri: 'http://adiwg.org'
         }, {
-          "uri": "http://mdeditor.org"
+          uri: 'http://mdeditor.org'
         }],
-        "graphic": [{
-          "fileName": "fileName"
+        graphic: [{
+          fileName: 'fileName'
         }, {
-          "fileName": "fileName"
+          fileName: 'fileName'
         }]
       });
       citations.push(citation);
@@ -364,14 +364,14 @@ define("mdeditor/tests/helpers/create-contact", ["exports"], function (_exports)
     for (let i = 0; i < total; i++) {
       const contact = Ember.Object.create({
         json: {
-          "contactId": i,
-          "isOrganization": false,
-          "name": "Contact" + i,
-          "positionName": null,
-          "phoneBook": [],
-          "address": {},
-          "onlineResource": [],
-          "contactInstructions": null
+          contactId: i,
+          isOrganization: false,
+          name: 'Contact' + i,
+          positionName: null,
+          phoneBook: [],
+          address: {},
+          onlineResource: [],
+          contactInstructions: null
         },
         title: 'Contact' + i,
         icon: 'user',
@@ -397,15 +397,15 @@ define("mdeditor/tests/helpers/create-dictionary", ["exports"], function (_expor
     for (let i = 0; i < total; i++) {
       const dictionary = Ember.Object.create({
         json: {
-          "dataDictionary": {
-            "citation": {
-              "title": "My Dictionary" + i,
-              "date": [{
-                "date": new Date().toISOString(),
-                "dateType": "creation"
+          dataDictionary: {
+            citation: {
+              title: 'My Dictionary' + i,
+              date: [{
+                date: new Date().toISOString(),
+                dateType: 'creation'
               }]
             },
-            "description": "Data dictionary." + i,
+            description: 'Data dictionary.' + i,
             subject: [],
             responsibleParty: {},
             domain: createDomain(2),
@@ -428,14 +428,14 @@ define("mdeditor/tests/helpers/create-dictionary", ["exports"], function (_expor
 
     for (let i = 0; i < total; i++) {
       const domain = Ember.Object.create({
-        "domainId": "domainId" + i,
-        "commonName": "commonName" + i,
-        "codeName": "codeName" + i,
-        "description": "description" + i,
-        "domainItem": [{
-          "name": "name" + i,
-          "value": "value" + i,
-          "definition": "definition" + i
+        domainId: 'domainId' + i,
+        commonName: 'commonName' + i,
+        codeName: 'codeName' + i,
+        description: 'description' + i,
+        domainItem: [{
+          name: 'name' + i,
+          value: 'value' + i,
+          definition: 'definition' + i
         }]
       });
       domains.push(domain);
@@ -451,16 +451,16 @@ define("mdeditor/tests/helpers/create-dictionary", ["exports"], function (_expor
 
     for (let i = 0; i < total; i++) {
       const attribute = Ember.Object.create({
-        "commonName": "attributeCommonName" + i,
-        "codeName": "attributeCodeName0-" + i,
-        "alias": ["attributeAlias0-" + i],
-        "definition": "definition" + i,
-        "dataType": "dataType" + i,
-        "allowNull": true,
-        "units": "units" + i,
-        "domainId": "domainId" + i,
-        "minValue": "0" + i,
-        "maxValue": "99"
+        commonName: 'attributeCommonName' + i,
+        codeName: 'attributeCodeName0-' + i,
+        alias: ['attributeAlias0-' + i],
+        definition: 'definition' + i,
+        dataType: 'dataType' + i,
+        allowNull: true,
+        units: 'units' + i,
+        domainId: 'domainId' + i,
+        minValue: '0' + i,
+        maxValue: '99'
       });
       attributes.push(attribute);
     }
@@ -475,26 +475,26 @@ define("mdeditor/tests/helpers/create-dictionary", ["exports"], function (_expor
 
     for (let i = 0; i < total; i++) {
       const entity = Ember.Object.create({
-        "entityId": "entityId" + i,
-        "commonName": "commonName" + i,
-        "codeName": "codeName" + i,
-        "alias": ["alias0-" + i, "alias1-" + i],
-        "definition": "definition" + i,
-        "primaryKeyAttributeCodeName": ["primaryKeyAttributeCodeName0-" + i, "primaryKeyAttributeCodeName1-" + i],
-        "index": [{
-          "codeName": "attributeIndex0-" + i,
-          "allowDuplicates": false,
-          "attributeCodeName": ["attributeCodeName0-" + i]
+        entityId: 'entityId' + i,
+        commonName: 'commonName' + i,
+        codeName: 'codeName' + i,
+        alias: ['alias0-' + i, 'alias1-' + i],
+        definition: 'definition' + i,
+        primaryKeyAttributeCodeName: ['primaryKeyAttributeCodeName0-' + i, 'primaryKeyAttributeCodeName1-' + i],
+        index: [{
+          codeName: 'attributeIndex0-' + i,
+          allowDuplicates: false,
+          attributeCodeName: ['attributeCodeName0-' + i]
         }],
-        "attribute": createAttribute(3),
-        "foreignKey": [{
-          "localAttributeCodeName": ["attributeCommonName0-" + i],
-          "referencedEntityCodeName": "referencedEntityCodeName0" + i,
-          "referencedAttributeCodeName": ["referencedAttributeCodeName0-" + i]
+        attribute: createAttribute(3),
+        foreignKey: [{
+          localAttributeCodeName: ['attributeCommonName0-' + i],
+          referencedEntityCodeName: 'referencedEntityCodeName0' + i,
+          referencedAttributeCodeName: ['referencedAttributeCodeName0-' + i]
         }],
-        "fieldSeparatorCharacter": ",",
-        "numberOfHeaderLines": 9,
-        "quoteCharacter": "\""
+        fieldSeparatorCharacter: ',',
+        numberOfHeaderLines: 9,
+        quoteCharacter: '"'
       });
       entities.push(entity);
     }
@@ -517,57 +517,57 @@ define("mdeditor/tests/helpers/create-extent", ["exports"], function (_exports) 
 
     for (let i = 0; i < total; i++) {
       const contact = Ember.Object.create({
-        "description": "description" + i,
-        "geographicExtent": [{
-          "description": "description" + i,
-          "boundingBox": {
-            "westLongitude": -87.52179241764053,
-            "eastLongitude": -85.30119385960293,
-            "southLatitude": 29.640690610830635,
-            "northLatitude": 30.42485959910817
+        description: 'description' + i,
+        geographicExtent: [{
+          description: 'description' + i,
+          boundingBox: {
+            westLongitude: -87.52179241764053,
+            eastLongitude: -85.30119385960293,
+            southLatitude: 29.640690610830635,
+            northLatitude: 30.42485959910817
           },
-          "containsData": false,
-          "geographicElement": [{
-            "type": "Point",
-            "coordinates": [100, 0]
+          containsData: false,
+          geographicElement: [{
+            type: 'Point',
+            coordinates: [100, 0]
           }, {
-            "type": "LineString",
-            "coordinates": [[100, 0], [101, 1]]
+            type: 'LineString',
+            coordinates: [[100, 0], [101, 1]]
           }]
         }, {
-          "geographicElement": [{
-            "type": "Point",
-            "coordinates": [100, 0]
+          geographicElement: [{
+            type: 'Point',
+            coordinates: [100, 0]
           }]
         }],
-        "temporalExtent": [{
-          "timeInstant": {
-            "description": "description" + i,
-            "dateTime": "2016-10-24T11:10:15.2-10:00"
+        temporalExtent: [{
+          timeInstant: {
+            description: 'description' + i,
+            dateTime: '2016-10-24T11:10:15.2-10:00'
           }
         }, {
-          "timePeriod": {
-            "description": "description" + i,
-            "startDateTime": "2016-10-24T11:10:15.2-10:00"
+          timePeriod: {
+            description: 'description' + i,
+            startDateTime: '2016-10-24T11:10:15.2-10:00'
           }
         }],
-        "verticalExtent": [{
-          "description": "description" + i,
-          "minValue": 9.9,
-          "maxValue": 9.9,
-          "crsId": {
-            "referenceSystemType": "referenceSystemType",
-            "referenceSystemIdentifier": {
-              "identifier": "identifier"
+        verticalExtent: [{
+          description: 'description' + i,
+          minValue: 9.9,
+          maxValue: 9.9,
+          crsId: {
+            referenceSystemType: 'referenceSystemType',
+            referenceSystemIdentifier: {
+              identifier: 'identifier'
             }
           }
         }, {
-          "minValue": 9.9,
-          "maxValue": 9.9,
-          "crsId": {
-            "referenceSystemType": "referenceSystemType",
-            "referenceSystemIdentifier": {
-              "identifier": "identifier"
+          minValue: 9.9,
+          maxValue: 9.9,
+          crsId: {
+            referenceSystemType: 'referenceSystemType',
+            referenceSystemIdentifier: {
+              identifier: 'identifier'
             }
           }
         }]
@@ -591,12 +591,12 @@ define("mdeditor/tests/helpers/create-identifier", ["exports"], function (_expor
 
     for (let i = 0; i < total; i++) {
       const identifier = Ember.Object.create({
-        "identifier": "identifier" + i,
-        "namespace": "namespace" + i,
-        "version": "version" + i,
-        "description": "description" + i,
-        "authority": {
-          "title": "title" + i
+        identifier: 'identifier' + i,
+        namespace: 'namespace' + i,
+        version: 'version' + i,
+        description: 'description' + i,
+        authority: {
+          title: 'title' + i
         }
       });
       identifiers.push(identifier);
@@ -650,97 +650,97 @@ define("mdeditor/tests/helpers/create-profile", ["exports"], function (_exports)
 
     for (let i = 0; i < total; i++) {
       const profile = Ember.Object.create({
-        "uri": "https://jlblcc.github.io/test-profile/profiles/minimal.json",
-        "alias": 'My alias' + i,
-        "altDescription": 'alternate decscription' + i,
-        "remoteVersion": "0.0.1",
+        uri: 'https://jlblcc.github.io/test-profile/profiles/minimal.json',
+        alias: 'My alias' + i,
+        altDescription: 'alternate decscription' + i,
+        remoteVersion: '0.0.1',
         components: {
-          "record": {
-            "main": {
-              "recordId": false,
-              "purpose": false,
-              "environmentDescription": false,
-              "supplementalInfo": false,
-              "credit": false,
-              "timePeriod": {
-                "id": false,
-                "description": false,
-                "periodName": false,
-                "duration": false,
-                "interval": false
+          record: {
+            main: {
+              recordId: false,
+              purpose: false,
+              environmentDescription: false,
+              supplementalInfo: false,
+              credit: false,
+              timePeriod: {
+                id: false,
+                description: false,
+                periodName: false,
+                duration: false,
+                interval: false
               },
-              "citation": {
-                "edition": false,
-                "onlineResource": {
-                  "protocol": false
+              citation: {
+                edition: false,
+                onlineResource: {
+                  protocol: false
                 },
-                "presentationForm": false,
-                "otherCitationDetails": false,
-                "graphic": false,
-                "series": false,
-                "identifier": false,
-                "graphicOverview": false
+                presentationForm: false,
+                otherCitationDetails: false,
+                graphic: false,
+                series: false,
+                identifier: false,
+                graphicOverview: false
               },
-              "graphicOverview": false
+              graphicOverview: false
             },
-            "metadata": {
-              "identifier": {
-                "identifier": true,
-                "namespace": true,
-                "version": false,
-                "description": false,
-                "authority": false
+            metadata: {
+              identifier: {
+                identifier: true,
+                namespace: true,
+                version: false,
+                description: false,
+                authority: false
               },
-              "parentMetadata": false,
-              "alternateMetadataReference": false,
-              "defaultLocale": false,
-              "maintenance": false
+              parentMetadata: false,
+              alternateMetadataReference: false,
+              defaultLocale: false,
+              maintenance: false
             }
           }
         },
-        description: "A Minimalist Profile" + i,
+        description: 'A Minimalist Profile' + i,
         hasUpdate: true,
-        identifier: "minimal",
-        localVersion: "0.0.0",
-        namespace: "org.adiwg.profile",
+        identifier: 'minimal',
+        localVersion: '0.0.0',
+        namespace: 'org.adiwg.profile',
         nav: {
-          "record": [{
-            "title": "Basic Info",
-            "target": "record.show.edit.main",
-            "tip": "This is a customized tip."
+          record: [{
+            title: 'Basic Info',
+            target: 'record.show.edit.main',
+            tip: 'This is a customized tip.'
           }, {
-            "title": "About Metadata",
-            "target": "record.show.edit.metadata",
-            "tip": "Information about the metadata for the resource."
+            title: 'About Metadata',
+            target: 'record.show.edit.metadata',
+            tip: 'Information about the metadata for the resource.'
           }, {
-            "title": "Keywords",
-            "target": "record.show.edit.keywords",
-            "tip": "Terms used to describe the resource."
+            title: 'Keywords',
+            target: 'record.show.edit.keywords',
+            tip: 'Terms used to describe the resource.'
           }, {
-            "title": "Boundaries",
-            "target": "record.show.edit.extent",
-            "tip": "Information describing the bounds of the resource."
+            title: 'Boundaries',
+            target: 'record.show.edit.extent',
+            tip: 'Information describing the bounds of the resource.'
           }, {
-            "title": "Distribution",
-            "target": "record.show.edit.distribution",
-            "tip": "Information about obtaining the resource."
+            title: 'Distribution',
+            target: 'record.show.edit.distribution',
+            tip: 'Information about obtaining the resource.'
           }],
-          "dictionary": [{
-            "title": "Main",
-            "target": "dictionary.show.edit.index",
-            "tip": "Basic information about the dictionary."
+          dictionary: [{
+            title: 'Main',
+            target: 'dictionary.show.edit.index',
+            tip: 'Basic information about the dictionary.'
           }, {
-            "title": "Citation",
-            "target": "dictionary.show.edit.citation",
-            "tip": "The citation for the dictionary."
+            title: 'Citation',
+            target: 'dictionary.show.edit.citation',
+            tip: 'The citation for the dictionary.'
           }, {
-            "title": "Tables",
-            "target": "dictionary.show.edit.entity",
-            "tip": "Information about entities(tables) and attributes(columns or fields)."
+            title: 'Tables',
+            target: 'dictionary.show.edit.entity',
+            tip: 'Information about entities(tables) and attributes(columns or fields).'
           }]
         },
-        title: "Minimal",
-        config: JSON.parse("{\"identifier\":\"minimal\",\"namespace\":\"org.adiwg.profile\",\"alternateId\":[],\"title\":\"Minimal\",\"description\":\"A Minimalist Profile\",\"version\":\"0.0.0\",\"components\":{\"record\":{\"main\":{\"recordId\":false,\"purpose\":false,\"environmentDescription\":false,\"supplementalInfo\":false,\"credit\":false,\"timePeriod\":{\"id\":false,\"description\":false,\"periodName\":false,\"duration\":false,\"interval\":false},\"citation\":{\"edition\":false,\"onlineResource\":{\"protocol\":false},\"presentationForm\":false,\"otherCitationDetails\":false,\"graphic\":false,\"series\":false,\"identifier\":false,\"graphicOverview\":false},\"graphicOverview\":false},\"metadata\":{\"identifier\":{\"identifier\":true,\"namespace\":true,\"version\":false,\"description\":false,\"authority\":false},\"parentMetadata\":false,\"alternateMetadataReference\":false,\"defaultLocale\":false,\"maintenance\":false}}},\"nav\":{\"record\":[{\"title\":\"Basic Info\",\"target\":\"record.show.edit.main\",\"tip\":\"This is a customized tip.\"},{\"title\":\"About Metadata\",\"target\":\"record.show.edit.metadata\",\"tip\":\"Information about the metadata for the resource.\"},{\"title\":\"Keywords\",\"target\":\"record.show.edit.keywords\",\"tip\":\"Terms used to describe the resource.\"},{\"title\":\"Boundaries\",\"target\":\"record.show.edit.extent\",\"tip\":\"Information describing the bounds of the resource.\"},{\"title\":\"Distribution\",\"target\":\"record.show.edit.distribution\",\"tip\":\"Information about obtaining the resource.\"}],\"dictionary\":[{\"title\":\"Main\",\"target\":\"dictionary.show.edit.index\",\"tip\":\"Basic information about the dictionary.\"},{\"title\":\"Citation\",\"target\":\"dictionary.show.edit.citation\",\"tip\":\"The citation for the dictionary.\"},{\"title\":\"Tables\",\"target\":\"dictionary.show.edit.entity\",\"tip\":\"Information about entities(tables) and attributes(columns or fields).\"}]}}")
+        title: 'Minimal',
+        config: JSON.parse('{"identifier":"minimal","namespace":"org.adiwg.profile","alternateId":[],"title":"Minimal","description":"A Minimalist Profile","version":"0.0.0","components":{"record":{"main":{"recordId":false,"purpose":false,"environmentDescription":false,"supplementalInfo":false,"credit":false,"timePeriod":{"id":false,"description":false,"periodName":false,"duration":false,"interval":false},"citation":{"edition":false,"onlineResource":{"protocol":false},"presentationForm":false,"otherCitationDetails":false,"graphic":false,"series":false,"identifier":false,"graphicOverview":false},"graphicOverview":false},"metadata":{"identifier":{"identifier":true,"namespace":true,"version":false,"description":false,"authority":false},"parentMetadata":false,"alternateMetadataReference":false,"defaultLocale":false,"maintenance":false}}},"nav":{"record":[{"title":"Basic Info","target":"record.show.edit.main","tip":"This is a customized tip."},{"title":"About Metadata","target":"record.show.edit.metadata","tip":"Information about the metadata for the resource."},{"title":"Keywords","target":"record.show.edit.keywords","tip":"Terms used to describe the resource."},{"title":"Boundaries","target":"record.show.edit.extent","tip":"Information describing the bounds of the resource."},{"title":"Distribution","target":"record.show.edit.distribution","tip":"Information about obtaining the resource."}],"dictionary":[{"title":"Main","target":"dictionary.show.edit.index","tip":"Basic information about the dictionary."},{"title":"Citation","target":"dictionary.show.edit.citation","tip":"The citation for the dictionary."},{"title":"Tables","target":"dictionary.show.edit.entity","tip":"Information about entities(tables) and attributes(columns or fields)."}]}}')
       });
       profiles.push(profile);
     }
@@ -767,30 +767,30 @@ define("mdeditor/tests/helpers/create-record", ["exports"], function (_exports) 
             version: '2.6.0'
           },
           contact: [],
-          "metadata": {
-            "metadataInfo": {
-              "metadataIdentifier": {
-                "identifier": 'r' + i,
-                "type": "uuid"
+          metadata: {
+            metadataInfo: {
+              metadataIdentifier: {
+                identifier: 'r' + i,
+                type: 'uuid'
               }
             },
-            "resourceInfo": {
-              "resourceType": [{
-                "type": "project"
+            resourceInfo: {
+              resourceType: [{
+                type: 'project'
               }],
-              "citation": {
-                "title": "My Record" + i,
-                "date": [{
-                  "date": new Date().toISOString(),
-                  "dateType": "creation"
+              citation: {
+                title: 'My Record' + i,
+                date: [{
+                  date: new Date().toISOString(),
+                  dateType: 'creation'
                 }]
               },
-              "pointOfrecord": [],
-              "abstract": "An abstract.",
-              "status": ["completed"],
-              "language": ["eng; USA"]
+              pointOfrecord: [],
+              abstract: 'An abstract.',
+              status: ['completed'],
+              language: ['eng; USA']
             },
-            "resourceDistribution": []
+            resourceDistribution: []
           }
         },
         title: 'My Record' + i,
@@ -812,276 +812,276 @@ define("mdeditor/tests/helpers/create-taxonomy", ["exports"], function (_exports
 
   function createTaxonomy() {
     const taxonomies = [{
-      "taxonomicClassification": [{
-        "taxonomicSystemId": "555705",
-        "taxonomicLevel": "Kingdom",
-        "taxonomicName": "Fungi",
-        "subClassification": [{
-          "taxonomicSystemId": "936287",
-          "taxonomicLevel": "Subkingdom",
-          "taxonomicName": "Dikarya",
-          "subClassification": [{
-            "taxonomicSystemId": "623881",
-            "taxonomicLevel": "Division",
-            "taxonomicName": "Basidiomycota",
-            "isITIS": true
+      taxonomicClassification: [{
+        taxonomicSystemId: '555705',
+        taxonomicLevel: 'Kingdom',
+        taxonomicName: 'Fungi',
+        subClassification: [{
+          taxonomicSystemId: '936287',
+          taxonomicLevel: 'Subkingdom',
+          taxonomicName: 'Dikarya',
+          subClassification: [{
+            taxonomicSystemId: '623881',
+            taxonomicLevel: 'Division',
+            taxonomicName: 'Basidiomycota',
+            isITIS: true
           }],
-          "isITIS": true
+          isITIS: true
         }],
-        "isITIS": true,
-        "commonName": ["Kingdom"]
+        isITIS: true,
+        commonName: ['Kingdom']
       }, {
-        "taxonomicSystemId": "202423",
-        "taxonomicLevel": "Kingdom",
-        "taxonomicName": "Animalia",
-        "subClassification": [{
-          "taxonomicSystemId": "914153",
-          "taxonomicLevel": "Subkingdom",
-          "taxonomicName": "Radiata",
-          "subClassification": [{
-            "taxonomicSystemId": "48738",
-            "taxonomicLevel": "Phylum",
-            "taxonomicName": "Cnidaria",
-            "subClassification": [{
-              "taxonomicSystemId": "718920",
-              "taxonomicLevel": "Subphylum",
-              "taxonomicName": "Medusozoa",
-              "subClassification": [{
-                "taxonomicSystemId": "51483",
-                "taxonomicLevel": "Class",
-                "taxonomicName": "Scyphozoa",
-                "subClassification": [{
-                  "taxonomicSystemId": "718923",
-                  "taxonomicLevel": "Subclass",
-                  "taxonomicName": "Discomedusae",
-                  "subClassification": [{
-                    "taxonomicSystemId": "51756",
-                    "taxonomicLevel": "Order",
-                    "taxonomicName": "Rhizostomeae",
-                    "subClassification": [{
-                      "taxonomicSystemId": "51911",
-                      "taxonomicLevel": "Family",
-                      "taxonomicName": "Rhizostomatidae",
-                      "subClassification": [{
-                        "taxonomicSystemId": "51919",
-                        "taxonomicLevel": "Genus",
-                        "taxonomicName": "Rhopilema",
-                        "subClassification": [{
-                          "taxonomicSystemId": "51920",
-                          "taxonomicLevel": "Species",
-                          "taxonomicName": "Rhopilema verrilli",
-                          "commonName": ["mushroom jellyfish"],
-                          "isITIS": true
+        taxonomicSystemId: '202423',
+        taxonomicLevel: 'Kingdom',
+        taxonomicName: 'Animalia',
+        subClassification: [{
+          taxonomicSystemId: '914153',
+          taxonomicLevel: 'Subkingdom',
+          taxonomicName: 'Radiata',
+          subClassification: [{
+            taxonomicSystemId: '48738',
+            taxonomicLevel: 'Phylum',
+            taxonomicName: 'Cnidaria',
+            subClassification: [{
+              taxonomicSystemId: '718920',
+              taxonomicLevel: 'Subphylum',
+              taxonomicName: 'Medusozoa',
+              subClassification: [{
+                taxonomicSystemId: '51483',
+                taxonomicLevel: 'Class',
+                taxonomicName: 'Scyphozoa',
+                subClassification: [{
+                  taxonomicSystemId: '718923',
+                  taxonomicLevel: 'Subclass',
+                  taxonomicName: 'Discomedusae',
+                  subClassification: [{
+                    taxonomicSystemId: '51756',
+                    taxonomicLevel: 'Order',
+                    taxonomicName: 'Rhizostomeae',
+                    subClassification: [{
+                      taxonomicSystemId: '51911',
+                      taxonomicLevel: 'Family',
+                      taxonomicName: 'Rhizostomatidae',
+                      subClassification: [{
+                        taxonomicSystemId: '51919',
+                        taxonomicLevel: 'Genus',
+                        taxonomicName: 'Rhopilema',
+                        subClassification: [{
+                          taxonomicSystemId: '51920',
+                          taxonomicLevel: 'Species',
+                          taxonomicName: 'Rhopilema verrilli',
+                          commonName: ['mushroom jellyfish'],
+                          isITIS: true
                         }],
-                        "isITIS": true
+                        isITIS: true
                       }],
-                      "isITIS": true
+                      isITIS: true
                     }],
-                    "isITIS": true
+                    isITIS: true
                   }],
-                  "isITIS": true
+                  isITIS: true
                 }],
-                "isITIS": true
+                isITIS: true
               }],
-              "isITIS": true
+              isITIS: true
             }],
-            "isITIS": true
+            isITIS: true
           }],
-          "isITIS": true
+          isITIS: true
         }],
-        "isITIS": true
+        isITIS: true
       }],
-      "taxonomicSystem": [{
-        "citation": {
-          "title": "Integrated Taxonomic Information System (ITIS)",
-          "date": [{
-            "date": "2019-02-26",
-            "dateType": "transmitted",
-            "description": "Taxa imported from ITIS"
+      taxonomicSystem: [{
+        citation: {
+          title: 'Integrated Taxonomic Information System (ITIS)',
+          date: [{
+            date: '2019-02-26',
+            dateType: 'transmitted',
+            description: 'Taxa imported from ITIS'
           }],
-          "presentationForm": ["webService", "webSite"],
-          "otherCitationDetails": ["Retrieved from the Integrated Taxonomic Information System on-line database, https://www.itis.gov."],
-          "onlineResource": [{
-            "uri": "https://www.itis.gov",
-            "name": "ITIS website",
-            "protocol": "HTTPS",
-            "function": "information",
-            "description": "ITIS contains taxonomic information on plants, animals, fungi, and microbes of North America and the world."
+          presentationForm: ['webService', 'webSite'],
+          otherCitationDetails: ['Retrieved from the Integrated Taxonomic Information System on-line database, https://www.itis.gov.'],
+          onlineResource: [{
+            uri: 'https://www.itis.gov',
+            name: 'ITIS website',
+            protocol: 'HTTPS',
+            function: 'information',
+            description: 'ITIS contains taxonomic information on plants, animals, fungi, and microbes of North America and the world.'
           }],
-          "graphic": [{
-            "fileName": "itis_logo.jpg",
-            "fileType": "JPEG",
-            "fileUri": [{
-              "uri": "https://itis.gov/Static/images/itis_logo.jpg"
+          graphic: [{
+            fileName: 'itis_logo.jpg',
+            fileType: 'JPEG',
+            fileUri: [{
+              uri: 'https://itis.gov/Static/images/itis_logo.jpg'
             }]
           }]
         },
-        modifications: "modifications"
+        modifications: 'modifications'
       }],
-      "observer": [{
-        "party": [{
-          "contactId": "CID003"
+      observer: [{
+        party: [{
+          contactId: 'CID003'
         }],
-        "role": "pointOfContact"
+        role: 'pointOfContact'
       }],
-      "voucher": [{
-        "repository": {
-          "party": [{
-            "contactId": "CID003"
+      voucher: [{
+        repository: {
+          party: [{
+            contactId: 'CID003'
           }],
-          "role": "custodian"
+          role: 'custodian'
         },
-        "specimen": "Specimen"
+        specimen: 'Specimen'
       }],
-      "generalScope": "Scope",
-      "identificationProcedure": "Id Procedure",
-      "identificationCompleteness": "Id Completeness"
+      generalScope: 'Scope',
+      identificationProcedure: 'Id Procedure',
+      identificationCompleteness: 'Id Completeness'
     }, {
-      "taxonomicSystem": [{
-        "citation": {
-          "title": "ITIS - Integrated Taxonomic Information System",
-          "alternateTitle": ["Citation for ITIS"],
-          "date": [{
-            "date": "2013-06-22",
-            "dateType": "publication"
+      taxonomicSystem: [{
+        citation: {
+          title: 'ITIS - Integrated Taxonomic Information System',
+          alternateTitle: ['Citation for ITIS'],
+          date: [{
+            date: '2013-06-22',
+            dateType: 'publication'
           }],
-          "responsibleParty": [{
-            "role": "originator",
-            "party": [{
-              "contactId": "CID004"
+          responsibleParty: [{
+            role: 'originator',
+            party: [{
+              contactId: 'CID004'
             }]
           }]
         },
-        "modifications": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+        modifications: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
       }, {
-        "citation": {
-          "title": "Some OTHER Taxonomic System",
-          "date": [{
-            "date": "2013-06-22",
-            "dateType": "publication"
+        citation: {
+          title: 'Some OTHER Taxonomic System',
+          date: [{
+            date: '2013-06-22',
+            dateType: 'publication'
           }],
-          "responsibleParty": [{
-            "role": "originator",
-            "party": [{
-              "contactId": "CID004"
+          responsibleParty: [{
+            role: 'originator',
+            party: [{
+              contactId: 'CID004'
             }]
           }]
         }
       }],
-      "generalScope": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-      "identificationReference": [{
-        "title": "citation",
-        "identifier": [{
-          "identifier": "identifier0",
-          "namespace": "namespace0",
-          "version": "version0",
-          "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-          "authority": {
-            "title": "title0",
-            "date": [{
-              "date": "2013-06-22",
-              "dateType": "publication"
+      generalScope: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      identificationReference: [{
+        title: 'citation',
+        identifier: [{
+          identifier: 'identifier0',
+          namespace: 'namespace0',
+          version: 'version0',
+          description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+          authority: {
+            title: 'title0',
+            date: [{
+              date: '2013-06-22',
+              dateType: 'publication'
             }],
-            "responsibleParty": [{
-              "role": "originator",
-              "party": [{
-                "contactId": "CID004"
+            responsibleParty: [{
+              role: 'originator',
+              party: [{
+                contactId: 'CID004'
               }]
             }]
           }
         }]
       }, {
-        "title": "citation1",
-        "identifier": [{
-          "identifier": "identifier1",
-          "namespace": "namespace1",
-          "version": "version1",
-          "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-          "authority": {
-            "title": "title1",
-            "date": [{
-              "date": "2013-06-22",
-              "dateType": "publication"
+        title: 'citation1',
+        identifier: [{
+          identifier: 'identifier1',
+          namespace: 'namespace1',
+          version: 'version1',
+          description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+          authority: {
+            title: 'title1',
+            date: [{
+              date: '2013-06-22',
+              dateType: 'publication'
             }],
-            "responsibleParty": [{
-              "role": "originator",
-              "party": [{
-                "contactId": "CID004"
+            responsibleParty: [{
+              role: 'originator',
+              party: [{
+                contactId: 'CID004'
               }]
             }]
           }
         }]
       }],
-      "observer": [{
-        "party": [{
-          "contactId": "CID006"
+      observer: [{
+        party: [{
+          contactId: 'CID006'
         }, {
-          "contactId": "CID004"
+          contactId: 'CID004'
         }],
-        "role": "coPrincipalInvestigator"
+        role: 'coPrincipalInvestigator'
       }, {
-        "party": [{
-          "contactId": "CID001"
+        party: [{
+          contactId: 'CID001'
         }],
-        "role": "editor"
+        role: 'editor'
       }],
-      "identificationProcedure": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-      "identificationCompleteness": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-      "voucher": [{
-        "repository": {
-          "role": "custodian",
-          "party": [{
-            "contactId": "CID002"
+      identificationProcedure: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      identificationCompleteness: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      voucher: [{
+        repository: {
+          role: 'custodian',
+          party: [{
+            contactId: 'CID002'
           }]
         },
-        "specimen": "bear claw"
+        specimen: 'bear claw'
       }, {
-        "repository": {
-          "role": "custodian",
-          "party": [{
-            "contactId": "CID002"
+        repository: {
+          role: 'custodian',
+          party: [{
+            contactId: 'CID002'
           }]
         },
-        "specimen": "moose tooth"
+        specimen: 'moose tooth'
       }],
-      "taxonomicClassification": [{
-        "taxonomicLevel": "taxonomicLevel0",
-        "taxonomicName": "taxonomicName",
-        "commonName": ["commonName0", "commonName1"],
-        "subClassification": [{
-          "taxonomicSystemId": "taxonomicSystemId00",
-          "taxonomicLevel": "taxonomicLevel00",
-          "taxonomicName": "taxonomicName",
-          "commonName": ["commonName0", "commonName1"],
-          "subClassification": [{
-            "taxonomicLevel": "taxonomicLevel000",
-            "taxonomicName": "taxonomicName",
-            "commonName": ["commonName0", "commonName1"],
-            "subClassification": [{
-              "taxonomicSystemId": "taxonomicSystemId0000.1",
-              "taxonomicLevel": "taxonomicLevel0000.1",
-              "taxonomicName": "taxonomicName",
-              "commonName": ["commonName0", "commonName1"]
+      taxonomicClassification: [{
+        taxonomicLevel: 'taxonomicLevel0',
+        taxonomicName: 'taxonomicName',
+        commonName: ['commonName0', 'commonName1'],
+        subClassification: [{
+          taxonomicSystemId: 'taxonomicSystemId00',
+          taxonomicLevel: 'taxonomicLevel00',
+          taxonomicName: 'taxonomicName',
+          commonName: ['commonName0', 'commonName1'],
+          subClassification: [{
+            taxonomicLevel: 'taxonomicLevel000',
+            taxonomicName: 'taxonomicName',
+            commonName: ['commonName0', 'commonName1'],
+            subClassification: [{
+              taxonomicSystemId: 'taxonomicSystemId0000.1',
+              taxonomicLevel: 'taxonomicLevel0000.1',
+              taxonomicName: 'taxonomicName',
+              commonName: ['commonName0', 'commonName1']
             }, {
-              "taxonomicSystemId": "taxonomicSystemId0000.2",
-              "taxonomicLevel": "taxonomicLevel0000.2",
-              "taxonomicName": "taxonomicName",
-              "commonName": ["commonName0", "commonName1"]
+              taxonomicSystemId: 'taxonomicSystemId0000.2',
+              taxonomicLevel: 'taxonomicLevel0000.2',
+              taxonomicName: 'taxonomicName',
+              commonName: ['commonName0', 'commonName1']
             }]
           }]
         }, {
-          "taxonomicLevel": "taxonomicLevel01",
-          "taxonomicName": "taxonomicName",
-          "commonName": ["commonName0", "commonName1"],
-          "subClassification": [{
-            "taxonomicLevel": "taxonomicLevel010",
-            "taxonomicName": "taxonomicName",
-            "commonName": ["commonName0", "commonName1"]
+          taxonomicLevel: 'taxonomicLevel01',
+          taxonomicName: 'taxonomicName',
+          commonName: ['commonName0', 'commonName1'],
+          subClassification: [{
+            taxonomicLevel: 'taxonomicLevel010',
+            taxonomicName: 'taxonomicName',
+            commonName: ['commonName0', 'commonName1']
           }]
         }]
       }, {
-        "taxonomicLevel": "taxonomicLevel0201",
-        "taxonomicName": "taxonomicName"
+        taxonomicLevel: 'taxonomicLevel0201',
+        taxonomicName: 'taxonomicName'
       }]
     }];
     return taxonomies;

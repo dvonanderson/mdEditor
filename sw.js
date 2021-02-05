@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const VERSION = '1612282283806|0.12617960933209815';
+  const VERSION = '1612558942773|0.1646506363194542';
   self.CACHE_BUSTER = VERSION;
   self.addEventListener('install', function installEventListenerCallback(event) {
     return self.skipWaiting();
@@ -163,7 +163,7 @@
   const INDEX_HTML_PATH = 'index.html';
   const INDEX_EXCLUDE_SCOPE = [];
   const INDEX_INCLUDE_SCOPE = [];
-  self.INDEX_FILE_HASH = '1705a8825be8ed3fb772e2fcbc84d9ea';
+  self.INDEX_FILE_HASH = 'c15ab96665a67b27f3d1a6ae49d1b998';
 
   const CACHE_KEY_PREFIX$2 = 'esw-index';
   const CACHE_NAME$2 = `${CACHE_KEY_PREFIX$2}-${VERSION$3}`;
