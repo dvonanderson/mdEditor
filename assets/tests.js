@@ -10502,6 +10502,31 @@ define("mdeditor/tests/unit/pods/import/route-test", ["qunit", "ember-qunit"], f
     });
   });
 });
+define("mdeditor/tests/unit/pods/main/initializer-test-test", ["mdeditor/initializers/main", "qunit", "ember-qunit", "mdeditor/tests/unit/helpers/destroy-app"], function (_main, _qunit, _emberQunit, _destroyApp) {
+  "use strict";
+
+  (0, _qunit.module)('Unit | Initializer | main', function (hooks) {
+    (0, _emberQunit.setupTest)(hooks);
+    hooks.beforeEach(function () {
+      this.TestApplication = Ember.Application.extend();
+      this.TestApplication.initializer({
+        name: 'initializer under test',
+        initialize: _main.initialize
+      });
+      this.application = this.TestApplication.create({
+        autoboot: false
+      });
+    });
+    hooks.afterEach(function () {
+      (0, _destroyApp.default)(this.application);
+    }); // Replace this with your real tests.
+
+    (0, _qunit.test)('it works', async function (assert) {
+      await this.application.boot();
+      assert.ok(true);
+    });
+  });
+});
 define("mdeditor/tests/unit/pods/not-found/route-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
   "use strict";
 
