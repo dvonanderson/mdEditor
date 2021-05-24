@@ -15,6 +15,24 @@
     }
   });
 });
+;define("mdeditor/adapters/application", ["exports", "ember-local-storage/adapters/adapter"], function (_exports, _adapter) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = _adapter.default.extend({// updateRecord(store, type, snapshot) {
+    //timestamp updates
+    // let date = new Date();
+    //snapshot.record.set('dateUpdated', date.toISOString());
+    //   return this._super.apply([store, snapshot, type]);
+    // }
+  });
+
+  _exports.default = _default;
+});
 ;define("mdeditor/app", ["exports", "@babel/runtime/helpers/esm/defineProperty", "ember-resolver", "ember-load-initializers", "mdeditor/config/environment"], function (_exports, _defineProperty2, _emberResolver, _emberLoadInitializers, _environment) {
   "use strict";
 
@@ -236,6 +254,19 @@
     enumerable: true,
     get: function () {
       return _basicDropdownContent.default;
+    }
+  });
+});
+;define("mdeditor/components/basic-dropdown-optional-tag", ["exports", "ember-basic-dropdown/components/basic-dropdown-optional-tag"], function (_exports, _basicDropdownOptionalTag) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _basicDropdownOptionalTag.default;
     }
   });
 });
@@ -1085,6 +1116,32 @@
     }
   });
 });
+;define("mdeditor/components/models-table/expand-all-toggle", ["exports", "ember-models-table/components/models-table/expand-all-toggle"], function (_exports, _expandAllToggle) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _expandAllToggle.default;
+    }
+  });
+});
+;define("mdeditor/components/models-table/expand-toggle", ["exports", "ember-models-table/components/models-table/expand-toggle"], function (_exports, _expandToggle) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _expandToggle.default;
+    }
+  });
+});
 ;define("mdeditor/components/models-table/footer", ["exports", "ember-models-table/components/models-table/footer"], function (_exports, _footer) {
   "use strict";
 
@@ -1254,6 +1311,32 @@
     }
   });
 });
+;define("mdeditor/components/models-table/row-select-all-checkbox", ["exports", "ember-models-table/components/models-table/row-select-all-checkbox"], function (_exports, _rowSelectAllCheckbox) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _rowSelectAllCheckbox.default;
+    }
+  });
+});
+;define("mdeditor/components/models-table/row-select-checkbox", ["exports", "ember-models-table/components/models-table/row-select-checkbox"], function (_exports, _rowSelectCheckbox) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _rowSelectCheckbox.default;
+    }
+  });
+});
 ;define("mdeditor/components/models-table/row-sorting-cell", ["exports", "ember-models-table/components/models-table/row-sorting-cell"], function (_exports, _rowSortingCell) {
   "use strict";
 
@@ -1371,6 +1454,19 @@
     }
   });
 });
+;define("mdeditor/components/models-table/themes/bootstrap3/row-select-all-checkbox", ["exports", "ember-models-table/components/models-table/themes/bootstrap3/row-select-all-checkbox"], function (_exports, _rowSelectAllCheckbox) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _rowSelectAllCheckbox.default;
+    }
+  });
+});
 ;define("mdeditor/components/models-table/themes/bootstrap4/columns-dropdown", ["exports", "ember-models-table/components/models-table/themes/bootstrap4/columns-dropdown"], function (_exports, _columnsDropdown) {
   "use strict";
 
@@ -1475,6 +1571,19 @@
     }
   });
 });
+;define("mdeditor/components/models-table/themes/ember-bootstrap-v3/row-select-all-checkbox", ["exports", "ember-models-table/components/models-table/themes/ember-bootstrap-v3/row-select-all-checkbox"], function (_exports, _rowSelectAllCheckbox) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _rowSelectAllCheckbox.default;
+    }
+  });
+});
 ;define("mdeditor/components/models-table/themes/ember-bootstrap-v3/summary", ["exports", "ember-models-table/components/models-table/themes/ember-bootstrap-v3/summary"], function (_exports, _summary) {
   "use strict";
 
@@ -1553,6 +1662,32 @@
     }
   });
 });
+;define("mdeditor/components/models-table/themes/ember-paper/cell-content-edit", ["exports", "ember-models-table/components/models-table/themes/ember-paper/cell-content-edit"], function (_exports, _cellContentEdit) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _cellContentEdit.default;
+    }
+  });
+});
+;define("mdeditor/components/models-table/themes/ember-paper/cell-edit-toggle", ["exports", "ember-models-table/components/models-table/themes/ember-paper/cell-edit-toggle"], function (_exports, _cellEditToggle) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _cellEditToggle.default;
+    }
+  });
+});
 ;define("mdeditor/components/models-table/themes/ember-paper/columns-dropdown", ["exports", "ember-models-table/components/models-table/themes/ember-paper/columns-dropdown"], function (_exports, _columnsDropdown) {
   "use strict";
 
@@ -1576,6 +1711,32 @@
     enumerable: true,
     get: function () {
       return _dataGroupBySelect.default;
+    }
+  });
+});
+;define("mdeditor/components/models-table/themes/ember-paper/expand-all-toggle", ["exports", "ember-models-table/components/models-table/themes/ember-paper/expand-all-toggle"], function (_exports, _expandAllToggle) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _expandAllToggle.default;
+    }
+  });
+});
+;define("mdeditor/components/models-table/themes/ember-paper/expand-toggle", ["exports", "ember-models-table/components/models-table/themes/ember-paper/expand-toggle"], function (_exports, _expandToggle) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _expandToggle.default;
     }
   });
 });
@@ -1644,6 +1805,32 @@
     }
   });
 });
+;define("mdeditor/components/models-table/themes/ember-paper/row-select-all-checkbox", ["exports", "ember-models-table/components/models-table/themes/ember-paper/row-select-all-checkbox"], function (_exports, _rowSelectAllCheckbox) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _rowSelectAllCheckbox.default;
+    }
+  });
+});
+;define("mdeditor/components/models-table/themes/ember-paper/row-select-checkbox", ["exports", "ember-models-table/components/models-table/themes/ember-paper/row-select-checkbox"], function (_exports, _rowSelectCheckbox) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _rowSelectCheckbox.default;
+    }
+  });
+});
 ;define("mdeditor/components/models-table/themes/ember-paper/row-sorting-cell", ["exports", "ember-models-table/components/models-table/themes/ember-paper/row-sorting-cell"], function (_exports, _rowSortingCell) {
   "use strict";
 
@@ -1683,33 +1870,7 @@
     }
   });
 });
-;define("mdeditor/components/models-table/themes/ember-semanticui/row-filtering-cell", ["exports", "ember-models-table/components/models-table/themes/ember-semanticui/row-filtering-cell"], function (_exports, _rowFilteringCell) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  Object.defineProperty(_exports, "default", {
-    enumerable: true,
-    get: function () {
-      return _rowFilteringCell.default;
-    }
-  });
-});
-;define("mdeditor/components/models-table/themes/ember-semanticui/select", ["exports", "ember-models-table/components/models-table/themes/ember-semanticui/select"], function (_exports, _select) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  Object.defineProperty(_exports, "default", {
-    enumerable: true,
-    get: function () {
-      return _select.default;
-    }
-  });
-});
-;define("mdeditor/components/models-table/themes/semanticui/columns-dropdown", ["exports", "ember-models-table/components/models-table/themes/semanticui/columns-dropdown"], function (_exports, _columnsDropdown) {
+;define("mdeditor/components/models-table/themes/plain-html/columns-dropdown", ["exports", "ember-models-table/components/models-table/themes/plain-html/columns-dropdown"], function (_exports, _columnsDropdown) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -1722,20 +1883,7 @@
     }
   });
 });
-;define("mdeditor/components/models-table/themes/semanticui/data-group-by-select", ["exports", "ember-models-table/components/models-table/themes/semanticui/data-group-by-select"], function (_exports, _dataGroupBySelect) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  Object.defineProperty(_exports, "default", {
-    enumerable: true,
-    get: function () {
-      return _dataGroupBySelect.default;
-    }
-  });
-});
-;define("mdeditor/components/models-table/themes/semanticui/global-filter", ["exports", "ember-models-table/components/models-table/themes/semanticui/global-filter"], function (_exports, _globalFilter) {
+;define("mdeditor/components/models-table/themes/plain-html/global-filter", ["exports", "ember-models-table/components/models-table/themes/plain-html/global-filter"], function (_exports, _globalFilter) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -1748,33 +1896,7 @@
     }
   });
 });
-;define("mdeditor/components/models-table/themes/semanticui/pagination-numeric", ["exports", "ember-models-table/components/models-table/themes/semanticui/pagination-numeric"], function (_exports, _paginationNumeric) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  Object.defineProperty(_exports, "default", {
-    enumerable: true,
-    get: function () {
-      return _paginationNumeric.default;
-    }
-  });
-});
-;define("mdeditor/components/models-table/themes/semanticui/pagination-simple", ["exports", "ember-models-table/components/models-table/themes/semanticui/pagination-simple"], function (_exports, _paginationSimple) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  Object.defineProperty(_exports, "default", {
-    enumerable: true,
-    get: function () {
-      return _paginationSimple.default;
-    }
-  });
-});
-;define("mdeditor/components/models-table/themes/semanticui/row-filtering-cell", ["exports", "ember-models-table/components/models-table/themes/semanticui/row-filtering-cell"], function (_exports, _rowFilteringCell) {
+;define("mdeditor/components/models-table/themes/plain-html/row-filtering-cell", ["exports", "ember-models-table/components/models-table/themes/plain-html/row-filtering-cell"], function (_exports, _rowFilteringCell) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -1787,20 +1909,7 @@
     }
   });
 });
-;define("mdeditor/components/models-table/themes/semanticui/select", ["exports", "ember-models-table/components/models-table/themes/semanticui/select"], function (_exports, _select) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  Object.defineProperty(_exports, "default", {
-    enumerable: true,
-    get: function () {
-      return _select.default;
-    }
-  });
-});
-;define("mdeditor/components/models-table/themes/semanticui/summary", ["exports", "ember-models-table/components/models-table/themes/semanticui/summary"], function (_exports, _summary) {
+;define("mdeditor/components/models-table/themes/plain-html/summary", ["exports", "ember-models-table/components/models-table/themes/plain-html/summary"], function (_exports, _summary) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -1836,6 +1945,19 @@
     enumerable: true,
     get: function () {
       return _nestableDraggableObject.default;
+    }
+  });
+});
+;define("mdeditor/components/node", ["exports", "ember-composability-tools/components/node"], function (_exports, _node) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _node.default;
     }
   });
 });
@@ -2093,6 +2215,19 @@
     enumerable: true,
     get: function () {
       return _rectangleLayer.default;
+    }
+  });
+});
+;define("mdeditor/components/root", ["exports", "ember-composability-tools/components/root"], function (_exports, _root) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _root.default;
     }
   });
 });
@@ -2371,19 +2506,6 @@
     enumerable: true,
     get: function () {
       return _debug.default;
-    }
-  });
-});
-;define("mdeditor/emt-themes/ember-paper", ["exports", "ember-models-table/emt-themes/ember-paper"], function (_exports, _emberPaper) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  Object.defineProperty(_exports, "default", {
-    enumerable: true,
-    get: function () {
-      return _emberPaper.default;
     }
   });
 });
@@ -2820,6 +2942,32 @@
     }
   });
 });
+;define("mdeditor/helpers/did-insert", ["exports", "ember-render-helpers/helpers/did-insert"], function (_exports, _didInsert) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _didInsert.default;
+    }
+  });
+});
+;define("mdeditor/helpers/did-update", ["exports", "ember-render-helpers/helpers/did-update"], function (_exports, _didUpdate) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _didUpdate.default;
+    }
+  });
+});
 ;define("mdeditor/helpers/div-icon", ["exports", "ember-leaflet/helpers/div-icon"], function (_exports, _divIcon) {
   "use strict";
 
@@ -2849,6 +2997,19 @@
     enumerable: true,
     get: function () {
       return _drop.default;
+    }
+  });
+});
+;define("mdeditor/helpers/element", ["exports", "ember-element-helper/helpers/element"], function (_exports, _element) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _element.default;
     }
   });
 });
@@ -2906,6 +3067,19 @@
     enumerable: true,
     get: function () {
       return _emberPowerSelectIsSelected.emberPowerSelectIsSelected;
+    }
+  });
+});
+;define("mdeditor/helpers/ensure-safe-component", ["exports", "@embroider/util"], function (_exports, _util) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _util.EnsureSafeComponentHelper;
     }
   });
 });
@@ -3977,6 +4151,22 @@
     }
   });
 });
+;define("mdeditor/helpers/object-is-empty", ["exports", "mdeditor/utils/md-object"], function (_exports, _mdObject) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.Helper.helper(function objectIsEmpty(params
+  /*, hash*/
+  ) {
+    return (0, _mdObject.isEmpty)(params[0]);
+  });
+
+  _exports.default = _default;
+});
 ;define("mdeditor/helpers/option-is-object", ["exports", "ember-models-table/helpers/option-is-object"], function (_exports, _optionIsObject) {
   "use strict";
 
@@ -4637,6 +4827,19 @@
     }
   });
 });
+;define("mdeditor/helpers/will-destroy", ["exports", "ember-render-helpers/helpers/will-destroy"], function (_exports, _willDestroy) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _willDestroy.default;
+    }
+  });
+});
 ;define("mdeditor/helpers/without", ["exports", "ember-composable-helpers/helpers/without"], function (_exports, _without) {
   "use strict";
 
@@ -4800,7 +5003,6 @@
     initialize: function () {
       let app = arguments[1] || arguments[0];
       app.register("drag:coordinator", _coordinator.default);
-      app.inject("component", "coordinator", "drag:coordinator");
     }
   };
   _exports.default = _default;
@@ -5610,7 +5812,7 @@
 
   _exports.default = _default;
 });
-;define("mdeditor/models/base", ["exports", "@ember-data/model", "object-hash"], function (_exports, _model, _objectHash) {
+;define("mdeditor/models/base", ["exports", "ember-data", "object-hash", "mdeditor/utils/md-object-size"], function (_exports, _emberData, _objectHash, _mdObjectSize) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -5618,7 +5820,7 @@
   });
   _exports.default = void 0;
 
-  const Base = _model.default.extend({
+  const Base = _emberData.default.Model.extend({
     /**
      * Base model
      *
@@ -5644,6 +5846,8 @@
     patch: Ember.inject.service(),
     clean: Ember.inject.service('cleaner'),
     mdjson: Ember.inject.service('mdjson'),
+    flashMessages: Ember.inject.service(),
+    localStorageMonitor: Ember.inject.service(),
 
     /**
      * The hash for the clean record.
@@ -5737,7 +5941,7 @@
      */
     hashObject(target, parsed) {
       let toHash = parsed ? target : JSON.parse(JSON.stringify(target));
-      return typeof toHash === 'object' ? (0, _objectHash.default)(toHash) : undefined;
+      return typeof toHash === "object" ? (0, _objectHash.default)(toHash) : undefined;
     },
 
     /**
@@ -5746,7 +5950,7 @@
      * @property hasDirtyHash
      * @return {Boolean} Boolean value indicating if hashes are equivalent
      */
-    hasDirtyHash: Ember.computed('currentHash', 'hasDirtyAttributes', function () {
+    hasDirtyHash: Ember.computed('currentHash', function () {
       let newHash = this.hashObject(JSON.parse(this.serialize().data.attributes.json), true); //if the currentHash is undefined, the record is either new or hasn't had the
       //hash calculated yet
       // if(this.get('currentHash') === undefined) {
@@ -5759,7 +5963,7 @@
 
       return false;
     }),
-    canRevert: Ember.computed('currentHash', 'hasDirtyHash', 'jsonRevert', 'settings.data.autoSave', function () {
+    canRevert: Ember.computed('hasDirtyHash', 'settings.data.autoSave', function () {
       let dirty = this.hasDirtyHash;
       let autoSave = this.get('settings.data.autoSave'); //no autoSave so just check if dirty
 
@@ -5780,7 +5984,7 @@
       return false;
     }),
     cleanJson: Ember.computed.alias('_cleanJson'),
-    status: Ember.computed('currentHash', 'hasDirtyHash', 'hasSchemaErrors', function () {
+    status: Ember.computed('hasDirtyHash', 'hasSchemaErrors', function () {
       let dirty = this.hasDirtyHash;
       let errors = this.hasSchemaErrors;
 
@@ -5812,7 +6016,7 @@
      * @category computed
      * @requires
      */
-    customSchemas: Ember.computed('constructor.modelName', 'customProfiles.mapById', 'profile', 'schemas.schemas.@each.isGlobal', function () {
+    customSchemas: Ember.computed('schemas.schemas.@each.isGlobal', 'profile', function () {
       return this.schemas.schemas.filter(schema => {
         if (schema.schemaType !== this.constructor.modelName) {
           return false;
@@ -5830,7 +6034,35 @@
 
         return profile.schemas.indexOf(schema) > -1;
       }, this);
-    })
+    }),
+
+    save(options) {
+      let snapshot = this.serialize({
+        includeId: true
+      });
+      let snapshotSize = (0, _mdObjectSize.default)(snapshot);
+      let localStorageSize = (0, _mdObjectSize.default)(window.localStorage.getItem(snapshot.data.type + "-" + snapshot.data.id));
+      let currLocalStorageSize = (0, _mdObjectSize.default)(window.localStorage);
+      let diff = localStorageSize ? snapshotSize - localStorageSize : snapshotSize;
+
+      if (currLocalStorageSize + diff > 5000) {
+        let errorMessage = 'Warning! You have exceeded your local storage capacity. Your recent activity will not be saved. Please back up records and clear storage cache.';
+        this.flashMessages.danger(`${errorMessage}`, {
+          timeout: 20000,
+          preventDuplicates: true,
+
+          onDestroy() {}
+
+        });
+        let error = new Error(errorMessage);
+        return Ember.RSVP.reject(error);
+      } else {
+        this.localStorageMonitor.storageSize();
+        this.localStorageMonitor.storagePercent();
+        return this._super.apply(this, [options]);
+      }
+    }
+
   }); //Modify the prototype instead of using computed.volatile()
   //see https://github.com/emberjs/ember.js/issues/17709#issuecomment-469941364
 
@@ -6217,11 +6449,29 @@
       var payload = this.get('objectMap').getObj(id);
 
       if (payload.ops.source && !payload.ops.source.isDestroying && !payload.ops.source.isDestroyed) {
-        payload.ops.source.sendAction('action', payload.obj);
+        const action = payload.ops.source['action']; // Support when action is a function
+
+        if (typeof action === 'function') {
+          action(payload.obj);
+        } // Support when action is a string
+
+
+        if (typeof action === 'string' && typeof payload.ops.source.target[action] === 'function') {
+          payload.ops.source.target[action](payload.obj);
+        }
       }
 
       if (payload.ops.target && !payload.ops.target.isDestroying && !payload.ops.target.isDestroyed) {
-        payload.ops.target.sendAction('action', payload.obj);
+        const action = payload.ops.target['action']; // Support when action is a function
+
+        if (typeof action === 'function') {
+          action(payload.obj);
+        } // Support when action is a string
+
+
+        if (typeof action === 'string' && typeof payload.ops.target.source[action] === 'function') {
+          payload.ops.target.source[action](payload.obj);
+        }
       }
 
       this.trigger("objectMoved", {
@@ -7188,6 +7438,19 @@
     enumerable: true,
     get: function () {
       return _inViewport.default;
+    }
+  });
+});
+;define("mdeditor/modifiers/style", ["exports", "ember-style-modifier/modifiers/style"], function (_exports, _style) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _style.default;
     }
   });
 });
@@ -8831,6 +9094,73 @@
     "block": "{\"symbols\":[\"&default\"],\"statements\":[[10,\"i\"],[15,0,[31,[\"fa fa-\",[34,0],\" fa-fw\"]]],[14,\"aria-hidden\",\"true\"],[12],[13],[2,\"\\n\\n\"],[6,[37,9],null,[[\"popoverHideDelay\",\"popperContainer\",\"tooltipClass\",\"event\"],[[35,8],[35,7],[30,[36,6],[\"md-tooltip \",[35,5]],null],[35,4]]],[[\"default\"],[{\"statements\":[[6,[37,1],[[35,2]],null,[[\"default\"],[{\"statements\":[[2,\"    \"],[10,\"h4\"],[14,0,\"title\"],[12],[2,\"\\n\"],[6,[37,1],[[35,0]],null,[[\"default\"],[{\"statements\":[[2,\"        \"],[10,\"i\"],[15,0,[31,[\"fa fa-\",[34,0]]]],[14,\"aria-hidden\",\"true\"],[12],[13],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"      \"],[1,[34,2]],[2,\"\\n    \"],[13],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"  \"],[10,\"span\"],[12],[1,[34,3]],[13],[2,\"\\n  \"],[18,1,null],[2,\"\\n\"]],\"parameters\":[]}]]]],\"hasEval\":false,\"upvars\":[\"icon\",\"if\",\"title\",\"interpolated\",\"event\",\"type\",\"concat\",\"popperContainer\",\"popoverHideDelay\",\"ember-popover\"]}",
     "meta": {
       "moduleName": "mdeditor/pods/components/control/md-indicator/template.hbs"
+    }
+  });
+
+  _exports.default = _default;
+});
+;define("mdeditor/pods/components/control/md-infotip/component", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.Component.extend({
+    /**
+    * Tooltip displayed as icon with font styled as superscript.
+    *
+    * @class md-infotip
+    * @module mdeditor
+    * @submodule components-control
+    * @constructor
+    */
+    tagName: 'sup',
+    classNames: ['md-infotip'],
+
+    /**
+    * Tooltip text
+    *
+    * @property text
+    * @type {String}
+    * @required
+    */
+
+    /**
+    * Tooltip text
+    *
+    * @property tip
+    * @type {String}
+    * @default 'info-circle'
+    */
+    icon: 'info-circle',
+
+    /**
+    * Tooltip delay
+    *
+    * @property tip
+    * @type {Number}
+    * @default 350
+    */
+    delay: 350
+  });
+
+  _exports.default = _default;
+});
+;define("mdeditor/pods/components/control/md-infotip/template", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "K//uboPj",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[10,\"i\"],[15,0,[31,[\"fa fa-\",[34,0]]]],[14,\"aria-hidden\",\"true\"],[12],[13],[2,\"\\n\"],[1,[30,[36,3],null,[[\"delay\",\"text\"],[[35,2],[35,1]]]]],[2,\"\\n\"],[18,1,null]],\"hasEval\":false,\"upvars\":[\"icon\",\"text\",\"delay\",\"ember-tooltip\"]}",
+    "meta": {
+      "moduleName": "mdeditor/pods/components/control/md-infotip/template.hbs"
     }
   });
 
@@ -13301,7 +13631,36 @@
   var _default = Ember.Component.extend({
     tagName: 'footer',
     classNames: ['md-footer'],
-    settings: Ember.inject.service()
+    settings: Ember.inject.service(),
+    localStorageMonitor: Ember.inject.service(),
+
+    /**
+     * Computed property that provides storage percentage to template via
+     * local storage monitor service
+     * @property percent
+     * @type {Number}
+     * @readonly
+     * @category computed
+     * @requires localStorageMonitor
+     */
+    percent: Ember.computed(function () {
+      return this.localStorageMonitor.storagePercentTracked;
+    }),
+
+    /**
+     * Computed property that provides a boolean value based on local
+     * storage percent. This will render a different color for the
+     * tag in the md-footer if the user is above the 90% threshold
+     *
+     * @property isOverThreshold
+     * @type {Boolean}
+     * @readonly
+     * @category computed
+     * @requires percent
+     */
+    isOverThreshold: Ember.computed('percent', function () {
+      return this.percent > 90;
+    })
   });
 
   _exports.default = _default;
@@ -13315,8 +13674,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "foQRjJHC",
-    "block": "{\"symbols\":[\"&default\"],\"statements\":[[10,\"div\"],[14,0,\"footer-container\"],[12],[2,\"\\n  \"],[10,\"span\"],[12],[2,\"\\n    \"],[10,\"a\"],[14,0,\"btn btn-xs btn-warning\"],[14,6,\"https://github.com/adiwg/mdEditor/issues\"],[14,\"target\",\"_blank\"],[14,\"rel\",\"noopener noreferrer\"],[12],[2,\"\\n      \"],[10,\"i\"],[14,0,\"fa fa-github\"],[14,\"aria-hidden\",\"true\"],[12],[13],[2,\" Report Issue\\n      \"],[8,\"ember-tooltip\",[],[[\"@text\",\"@side\"],[\"Report bugs, Request features - GitHub account required.\",\"top\"]],null],[2,\"\\n    \"],[13],[2,\"\\n  \"],[13],[2,\"\\n  \"],[10,\"span\"],[12],[2,\"\\n    AutoSave:\\n    \"],[10,\"span\"],[15,0,[30,[36,0],[[32,0,[\"settings\",\"data\",\"autoSave\"]],\"text-success\",\"text-warning\"],null]],[12],[2,\"\\n      \"],[1,[30,[36,0],[[32,0,[\"settings\",\"data\",\"autoSave\"]],\"On\",\"Off\"],null]],[2,\"\\n    \"],[13],[2,\"\\n  \"],[13],[2,\"\\n  \"],[18,1,null],[2,\"\\n\"],[13],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"if\"]}",
+    "id": "E/J/c9Ze",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[10,\"div\"],[14,0,\"footer-container\"],[12],[2,\"\\n  \"],[10,\"span\"],[12],[2,\"\\n    \"],[10,\"a\"],[14,0,\"btn btn-xs btn-warning\"],[14,6,\"https://github.com/adiwg/mdEditor/issues/new\"],[14,\"target\",\"_blank\"],[14,\"rel\",\"noopener noreferrer\"],[12],[2,\"\\n      \"],[10,\"i\"],[14,0,\"fa fa-github\"],[14,\"aria-hidden\",\"true\"],[12],[13],[2,\"\\n      Report Issue\\n    \"],[1,[30,[36,0],null,[[\"text\",\"side\"],[\"Report bugs, Request features - GitHub account required.\",\"top\"]]]],[2,\"\\n    \"],[13],[2,\"\\n  \"],[13],[2,\"\\n    \"],[10,\"span\"],[15,0,[30,[36,2],[[35,1],\"text-danger\",\"text-success\"],null]],[12],[2,\"\\n    \"],[10,\"i\"],[14,0,\"fa fa-archive\"],[14,\"aria-hidden\",\"true\"],[12],[13],[2,\": \"],[1,[34,3]],[2,\"\\n    %\\n    \"],[1,[30,[36,0],null,[[\"text\",\"side\"],[\"This is a percent of how much local storage has been used.\",\"top\"]]]],[2,\"\\n  \"],[13],[2,\"\\n  \"],[10,\"span\"],[12],[2,\"\\n    AutoSave:\\n    \"],[10,\"span\"],[15,0,[30,[36,2],[[35,4,[\"data\",\"autoSave\"]],\"text-success\",\"text-warning\"],null]],[12],[2,\"\\n      \"],[1,[30,[36,2],[[35,4,[\"data\",\"autoSave\"]],\"On\",\"Off\"],null]],[2,\"\\n    \"],[13],[2,\"\\n  \"],[13],[2,\"\\n  \"],[18,1,null],[2,\"\\n\"],[13],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"ember-tooltip\",\"isOverThreshold\",\"if\",\"percent\",\"settings\"]}",
     "meta": {
       "moduleName": "mdeditor/pods/components/layout/md-footer/template.hbs"
     }
@@ -18982,6 +19341,534 @@
 
   _exports.default = _default;
 });
+;define("mdeditor/pods/components/object/md-raster/attrgroup/attribute/component", ["exports", "mdeditor/helpers/uc-words", "mdjson-schemas/resources/js/attribute", "ember-cp-validations"], function (_exports, _ucWords, _attribute, _emberCpValidations) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  const Validations = (0, _emberCpValidations.buildValidations)({
+    'attrIdentifier': [(0, _emberCpValidations.validator)('presence', {
+      presence: true,
+      ignoreBlank: true
+    })]
+  });
+  const params = {
+    sequenceIdentifier: 'string',
+    sequenceIdentifierType: 'string',
+    minValue: 'number',
+    maxValue: 'number',
+    units: 'string',
+    scaleFactor: 'number',
+    offset: 'number',
+    meanValue: 'number',
+    numberOfValues: 'number',
+    standardDeviation: 'number',
+    bitsPerValue: 'number',
+    boundMin: 'number',
+    boundMax: 'number',
+    boundUnits: 'number',
+    peakResponse: 'number',
+    toneGradations: 'number',
+    nominalSpatialResolution: 'number'
+  };
+
+  var _default = Ember.Component.extend(Validations, {
+    /**
+     * mdEditor class for input and edit of mdJson 'coverageDescription.attributeGroup.attribute' object
+     * The class manages the maintenance of an array of 'attribute' ojbects.
+     *
+     * ```handlebars
+     * \{{object/md-raster/attrgroup/attribute
+     *    model=model.attribute
+     *    profilePath="path"
+     * }}
+     * ```
+     *
+     * @module mdeditor
+     * @submodule components-object-md-raster-attrgroup
+     * @constructor
+     * @class md-raster-attrgroup-attribute
+     */
+    init() {
+      this.params = Object.keys(params).map(p => {
+        return {
+          property: p,
+          label: (0, _ucWords.ucWords)([Ember.String.decamelize(p).replace(/_/g, ' ')], {
+            force: false
+          }),
+          type: params[p],
+          description: Ember.get(_attribute.default, `properties.${p}.description`)
+        };
+      });
+
+      this._super(...arguments);
+    },
+
+    didReceiveAttrs() {
+      this._super(...arguments);
+
+      let model = Ember.getWithDefault(this, 'model', []) || [];
+      Ember.run.once(this, function () {
+        Ember.set(model, 'attributeIdentifier', Ember.getWithDefault(model, 'attributeIdentifier', []));
+        Ember.set(model, 'bandBoundaryDefinition', Ember.getWithDefault(model, 'bandBoundaryDefinition', []));
+        Ember.set(model, 'transferFunctionType', Ember.getWithDefault(model, 'transferFunctionType', []));
+        Ember.set(model, 'transmittedPolarization', Ember.getWithDefault(model, 'transmittedPolarization', []));
+        Ember.set(model, 'detectedPolarization', Ember.getWithDefault(model, 'detectedPolarization', []));
+      });
+    },
+
+    tagName: 'form',
+
+    /**
+     * 'attrIdentifier' is the alias for 'attributeIdentifier.identifier' used in the validations for the
+     * 'attributeIdentifier' object.
+     *
+     * @property attrIdentifier
+     * @type String
+     * @requires alias
+     * @default "alias('model.attributeIdentifier.identifier')"
+     */
+    attrIdentifier: Ember.computed.alias('model.attributeIdentifier.identifier'),
+
+    /**
+     * 'attrDesc' is the alias for 'attributeDescription' used in the validations for the
+     * 'attribute' object.
+     *
+     * @property attrDesc
+     * @type String
+     * @requires alias
+     * @default "alias('model.attributeDescription')"
+     */
+    attrDesc: Ember.computed.alias('model.attriuteDescription')
+  });
+
+  _exports.default = _default;
+});
+;define("mdeditor/pods/components/object/md-raster/attrgroup/attribute/preview/component", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.Component.extend({
+    tagName: '',
+    item: Ember.computed.alias('model'),
+    attrDesc: Ember.computed.alias('model.attrbuteDescription')
+  });
+
+  _exports.default = _default;
+});
+;define("mdeditor/pods/components/object/md-raster/attrgroup/attribute/preview/template", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "hDCBQ4vM",
+    "block": "{\"symbols\":[],\"statements\":[[10,\"td\"],[14,0,\"property\"],[12],[2,\"\\n  \"],[1,[30,[36,3],null,[[\"value\",\"placeholder\",\"data-spy\",\"profilePath\"],[[35,2,[\"attributeDescription\"]],\"Description of the attribute\",false,[30,[36,1],[[35,0],\".attributeDescription\"],null]]]]],[2,\"\\n\"],[13],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"profilePath\",\"concat\",\"item\",\"input/md-textarea\"]}",
+    "meta": {
+      "moduleName": "mdeditor/pods/components/object/md-raster/attrgroup/attribute/preview/template.hbs"
+    }
+  });
+
+  _exports.default = _default;
+});
+;define("mdeditor/pods/components/object/md-raster/attrgroup/attribute/template", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "XPRhXsu7",
+    "block": "{\"symbols\":[\"param\"],\"statements\":[[6,[37,13],null,[[\"shadow\"],[true]],[[\"default\"],[{\"statements\":[[2,\"  \"],[1,[30,[36,10],null,[[\"value\",\"label\",\"infotip\",\"data-spy\",\"placeholder\",\"profilePath\"],[[35,2,[\"attributeDescription\"]],\"Attribute Description\",false,\"Attribute Description\",\"Description of the attribute\",[30,[36,1],[[35,0],\".attributeDescription\"],null]]]]],[2,\"\\n\\n  \"],[1,[30,[36,12],null,[[\"label\",\"shadow\",\"model\",\"valuePath\",\"data-spy\",\"class\",\"visibility\",\"profilePath\"],[\"Attribute Identifier\",false,[35,2,[\"attributeIdentifier\"]],\"attrIdentifier\",\"Attribute Identifier\",[30,[36,3],[[35,11],\"md-embedded\"],null],true,[30,[36,1],[[35,0],\".attributeIdentifier\"],null]]]]],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"\\n\"],[6,[37,13],null,[[\"shadow\"],[true]],[[\"default\"],[{\"statements\":[[2,\"  \"],[1,[30,[36,8],null,[[\"value\",\"create\",\"icon\",\"mdCodeName\",\"closeOnSelect\",\"placeholder\",\"data-spy\",\"label\",\"profilePath\"],[[35,2,[\"bandBoundaryDefinition\"]],true,false,\"bandDefinition\",false,\"Designation of criterion for defining maxiumum and minimum wavelenghts for a spectral band\",\"Band Boundary Definition\",\"Band Boundary Definition\",[30,[36,1],[[35,0],\".bandBoundaryDefinition\"],null]]]]],[2,\"\\n  \"],[1,[30,[36,8],null,[[\"value\",\"create\",\"icon\",\"mdCodeName\",\"closeOnSelect\",\"placeholder\",\"data-spy\",\"label\",\"profilePath\"],[[35,2,[\"transferFunctionType\"]],true,false,\"transferFunctionTypeCode\",false,\"Transform function to be used when scaling a physical value for a given element.\",\"Transfer Function Type\",\"Transfer Function Type\",[30,[36,1],[[35,0],\".transferFunctionType\"],null]]]]],[2,\"\\n  \"],[1,[30,[36,8],null,[[\"value\",\"create\",\"icon\",\"mdCodeName\",\"closeOnSelect\",\"label\",\"placeholder\",\"data-spy\",\"profilePath\"],[[35,2,[\"transmittedPolarization\"]],true,false,\"polarisationOrientationCode\",false,\"Transmitted Polarization\",\"Polarization of the radiation transmitted.\",\"Transmitted Polarization\",[30,[36,1],[[35,0],\".transmittedPolarization\"],null]]]]],[2,\"\\n  \"],[1,[30,[36,8],null,[[\"value\",\"create\",\"icon\",\"mdCodeName\",\"closeOnSelect\",\"label\",\"placeholder\",\"data-spy\",\"profilePath\"],[[35,2,[\"detectedPolarization\"]],true,false,\"polarisationOrientationCode\",false,\"Detected Polarization\",\"Polarization of the radiation transmitted.\",\"Detected Polarization\",[30,[36,1],[[35,0],\".detectedPolarization\"],null]]]]],[2,\"\\n\\n\"],[6,[37,9],null,[[\"shadow\",\"class\"],[true,\"md-flex-col-475 mt-4\"]],[[\"default\"],[{\"statements\":[[6,[37,7],[[30,[36,6],[[30,[36,6],[[35,5]],null]],null]],null,[[\"default\"],[{\"statements\":[[2,\"      \"],[1,[30,[36,4],null,[[\"model\",\"valuePath\",\"label\",\"infotip\",\"data-spy\",\"type\",\"class\",\"placeholder\",\"profilePath\"],[[35,2],[32,1,[\"property\"]],[32,1,[\"label\"]],true,[30,[36,3],[[35,2],[32,1,[\"label\"]]],null],[32,1,[\"type\"]],\"col-lg-6 col-xxxl-4\",[32,1,[\"description\"]],[30,[36,1],[[35,0],\".params.\",[32,1,[\"property\"]]],null]]]]],[2,\"\\n\"]],\"parameters\":[1]}]]]],\"parameters\":[]}]]]],\"parameters\":[]}]]],[2,\"\\n\\n\"]],\"hasEval\":false,\"upvars\":[\"profilePath\",\"concat\",\"model\",\"if\",\"input/md-input\",\"params\",\"-track-array\",\"each\",\"input/md-codelist-multi\",\"layout/md-wrap\",\"input/md-textarea\",\"embedded\",\"object/md-identifier-object-table\",\"layout/md-card\"]}",
+    "meta": {
+      "moduleName": "mdeditor/pods/components/object/md-raster/attrgroup/attribute/template.hbs"
+    }
+  });
+
+  _exports.default = _default;
+});
+;define("mdeditor/pods/components/object/md-raster/attrgroup/component", ["exports", "mdeditor/pods/components/object/md-array-table/component", "ember-cp-validations"], function (_exports, _component, _emberCpValidations) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.Validations = _exports.default = void 0;
+  const Validations = (0, _emberCpValidations.buildValidations)({
+    'attrCntType': [(0, _emberCpValidations.validator)('presence', {
+      presence: true,
+      ignoreBlank: true
+    })]
+  });
+  _exports.Validations = Validations;
+
+  var _default = _component.default.extend(Validations, {
+    /**
+     * mdEditor class for input and edit of mdJSON 'coverageDescription.attributeGroup' object.
+     * The class manages the maintenance of an array of attributeGroup objects.
+     *
+     * ```handlebars
+     * \{{object/md-raster/attrgroup
+     *    model=model.attributeGroup
+     *    profilePath="path"
+     * }}
+     * ```
+     *
+     * @module mdeditor
+     * @submodule components-object-md-raster
+     * @constructor
+     * @class md-raster-attrgroup
+     * @uses md-array-table
+     */
+    didReceiveAttrs() {
+      this._super(...arguments);
+
+      let model = Ember.get(this, 'model');
+
+      if (model) {
+        Ember.run.once(this, function () {
+          Ember.set(model, 'attributeContentType', Ember.getWithDefault(model, 'attributeContentType', []));
+          Ember.set(model, 'attribute', Ember.getWithDefault(model, 'attribute', []));
+        });
+      }
+    },
+
+    /**
+     * attrCntType is the alias for 'attributeContentType' used in the validations for the
+     * 'attributeGroup' object.
+     *
+     * @property attrCntType
+     * @type String
+     * @requires alias
+     * @default "alias('model.attrbuteContenType')"
+     */
+    attrCntType: Ember.computed.alias('model.attributeContentType'),
+    tagName: 'form',
+    actions: {
+      /**
+       * 'editAttribute' is an crud action for the 'attributeGroup' object that transitions users to
+       * the 'attribute' route for editing.
+       * @method editAttribute
+       * @param {Number} index
+       */
+      editAttribute(index) {
+        this.editAttribute(index);
+      },
+
+      /**
+       * 'deleteAttribute' is an crud action for the 'attributeGroup' object that deletes 'attribute' objects.
+       * @method deleteAttribute
+       * @param {Number} index
+       */
+      deleteAttrGroup(index) {
+        this.deleteAttrGroup(index);
+      },
+
+      /**
+       * 'addAttrGroup' is an crud action for the 'attributeGroup' object that adds 'attribute' objects.
+       * @method addAttrGroup
+       */
+      addAttrGroup() {
+        this.addAttrGroup();
+      }
+
+    }
+  });
+
+  _exports.default = _default;
+});
+;define("mdeditor/pods/components/object/md-raster/attrgroup/template", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "gEnb9bIo",
+    "block": "{\"symbols\":[\"item\",\"index\",\"prop\"],\"statements\":[[6,[37,16],[[35,29]],null,[[\"default\",\"else\"],[{\"statements\":[[2,\"  \"],[10,\"div\"],[15,0,[31,[\"panel panel-default \",[30,[36,8],[[35,22],\"box-shadow--4dp\"],null]]]],[12],[2,\"\\n    \"],[10,\"div\"],[14,0,\"panel-heading\"],[12],[2,\"\\n      \"],[10,\"h3\"],[14,0,\"panel-title md-panel-chevron\"],[12],[2,\"\\n        \"],[10,\"a\"],[14,\"data-toggle\",\"collapse\"],[15,\"aria-expanded\",[30,[36,8],[[35,23],\"false\",\"true\"],null]],[15,0,[30,[36,8],[[35,23],\"collapsed\"],null]],[15,6,[31,[\"#\",[34,10]]]],[15,\"aria-controls\",[31,[\"#\",[34,10]]]],[12],[2,\"\\n            \"],[10,\"span\"],[14,0,\"fa\"],[12],[13],[2,\" \"],[1,[30,[36,16],[[35,24],[30,[36,25],[[35,4]],null],[35,24]],null]],[2,\"\\n            \"],[10,\"div\"],[15,0,[31,[\"label label-pill \",[34,26]]]],[12],[2,\" \"],[1,[35,27,[\"length\"]]],[2,\" \"],[13],[2,\"\\n        \"],[13],[2,\"\\n        \"],[11,\"button\"],[16,1,[31,[[34,10],\"-btn\"]]],[24,0,\"btn btn-xs btn-info pull-right\"],[24,4,\"button\"],[4,[38,2],[[32,0],\"addItem\"],null],[12],[2,\"\\n            \"],[10,\"i\"],[14,0,\"fa fa-plus\"],[14,\"aria-hidden\",\"true\"],[12],[13],[2,\" Add\\n        \"],[13],[2,\"\\n      \"],[13],[2,\"\\n    \"],[13],[2,\"\\n\\n    \"],[10,\"div\"],[15,1,[34,10]],[15,0,[31,[\"panel-collapse \",[30,[36,8],[[35,23],\"collapse\",\"in\"],null]]]],[12],[2,\"\\n      \"],[10,\"div\"],[15,0,[31,[\"panel-body \",[30,[36,8],[[35,28],\"table-responsive\"],null]]]],[12],[2,\"\\n\"],[2,\"        \"],[10,\"table\"],[14,0,\"table table-striped table-hover fadeIn md-table-align-middle\"],[12],[2,\"\\n\"],[6,[37,8],[[35,6]],null,[[\"default\"],[{\"statements\":[[2,\"              \"],[10,\"thead\"],[12],[2,\"\\n                \"],[10,\"tr\"],[12],[2,\"\\n\"],[6,[37,16],[[35,7]],null,[[\"default\"],[{\"statements\":[[2,\"                  \"],[10,\"th\"],[12],[2,\"#\"],[13],[2,\"\\n\"]],\"parameters\":[]}]]],[6,[37,21],[[30,[36,20],[[30,[36,20],[[35,6]],null]],null]],null,[[\"default\"],[{\"statements\":[[2,\"                  \"],[10,\"th\"],[12],[1,[30,[36,19],[[32,3]],null]],[13],[2,\"\\n\"]],\"parameters\":[3]}]]],[2,\"                  \"],[10,\"th\"],[12],[13],[2,\"\\n                \"],[13],[2,\"\\n              \"],[13],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"          \"],[10,\"tbody\"],[12],[2,\"\\n\"],[6,[37,21],[[30,[36,20],[[30,[36,20],[[35,1]],null]],null]],null,[[\"default\",\"else\"],[{\"statements\":[[2,\"              \"],[10,\"tr\"],[12],[2,\"\\n\"],[6,[37,16],[[35,7]],null,[[\"default\"],[{\"statements\":[[2,\"                \"],[10,\"td\"],[12],[1,[32,2]],[13],[2,\"\\n\"]],\"parameters\":[]}]]],[6,[37,18],null,[[\"title\",\"index\",\"profilePath\",\"deleteItem\"],[\"Attribute Group\",[32,2],[30,[36,12],[[35,11],\".attributeGroup\"],null],[35,17]]],[[\"default\"],[{\"statements\":[[2,\"                  \"],[1,[30,[36,13],null,[[\"value\",\"showValidations\",\"required\",\"create\",\"tooltip\",\"icon\",\"data-spy\",\"mdCodeName\",\"closeOnSelect\",\"placeholder\",\"label\",\"profilePath\"],[[32,1,[\"attributeContentType\"]],true,true,true,true,false,false,\"coverageContentType\",false,\"Specific type of information represented in the cell\",\"Attribute Content Type\",[30,[36,12],[[35,11],\".atttributeContentType\"],null]]]]],[2,\"\\n                  \"],[1,[30,[36,15],null,[[\"attributes\",\"items\",\"header\",\"shadow\",\"buttonText\",\"ellipsis\",\"previewTemplateTable\",\"editItem\",\"profilePath\",\"verticalButtons\",\"hideIndex\",\"condensed\",\"editOnAdd\",\"data-spy\",\"routeParams\",\"scrollToId\"],[\"attributeDescription\",[32,1,[\"attribute\"]],\"Attribute\",false,\"Add Attribute\",false,\"object/md-raster/attrgroup/attribute/preview\",[35,14],[30,[36,12],[[35,11],\".attribute\"],null],true,false,false,true,false,[32,2],[30,[36,12],[\"md-raster-attrgroup-attribute-\",[32,2]],null]]]]],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"              \"],[13],[2,\"\\n\"]],\"parameters\":[1,2]},{\"statements\":[[2,\"              \"],[10,\"tr\"],[12],[2,\"\\n                \"],[10,\"td\"],[15,\"colspan\",[30,[36,9],[[30,[36,8],[[35,7],1,2],null],[35,6,[\"length\"]]],null]],[12],[2,\"\\n                  \"],[11,\"button\"],[16,1,[31,[[34,10],\"-btn\"]]],[24,0,\"btn btn-xs btn-info\"],[24,4,\"button\"],[4,[38,2],[[32,0],\"addItem\"],null],[12],[2,\"\\n                    \"],[10,\"i\"],[14,0,\"fa fa-plus\"],[14,\"aria-hidden\",\"true\"],[12],[13],[2,\" Add \"],[1,[34,4]],[2,\"\\n                  \"],[13],[2,\"\\n                \"],[13],[2,\"\\n              \"],[13],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"          \"],[13],[2,\"\\n        \"],[13],[2,\"\\n      \"],[13],[2,\"\\n    \"],[13],[2,\"\\n\"],[13],[2,\"\\n\"]],\"parameters\":[]},{\"statements\":[[2,\"  \"],[1,[30,[36,5],null,[[\"title\",\"required\",\"addItem\",\"target\",\"tipMessage\"],[[35,4],[35,3],[30,[36,2],[[32,0],\"addItem\"],null],[35,1],[35,0]]]]],[2,\"\\n\"]],\"parameters\":[]}]]]],\"hasEval\":false,\"upvars\":[\"alertTipMessage\",\"arrayValues\",\"action\",\"required\",\"title\",\"control/md-alert-table\",\"columnArray\",\"hideIndex\",\"if\",\"add-em\",\"panelId\",\"profilePath\",\"concat\",\"input/md-codelist-multi\",\"editAttribute\",\"object/md-objectroute-table\",\"unless\",\"deleteAttrGroup\",\"layout/md-object-container\",\"uc-words\",\"-track-array\",\"each\",\"shadow\",\"collapsed\",\"pluralTitle\",\"pluralize\",\"pillColor\",\"value\",\"responsive\",\"showAlert\"]}",
+    "meta": {
+      "moduleName": "mdeditor/pods/components/object/md-raster/attrgroup/template.hbs"
+    }
+  });
+
+  _exports.default = _default;
+});
+;define("mdeditor/pods/components/object/md-raster/component", ["exports", "ember-cp-validations"], function (_exports, _emberCpValidations) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.Validations = _exports.default = void 0;
+  const Validations = (0, _emberCpValidations.buildValidations)({
+    'name': [(0, _emberCpValidations.validator)('presence', {
+      presence: true,
+      ignoreBlank: true
+    })],
+    'description': [(0, _emberCpValidations.validator)('presence', {
+      presence: true,
+      ignoreBlank: true
+    })],
+    'identifier': [(0, _emberCpValidations.validator)('presence', {
+      presence: true,
+      ignoreBlank: true
+    })]
+  });
+  _exports.Validations = Validations;
+
+  var _default = Ember.Component.extend(Validations, {
+    /**
+      * mdEditor class for input and edit of mdJSON 'coverageDescription' object.
+      * The class manages the maintenance of an array of raster(coverageDescription) objects.
+      *
+      ```handlebars
+      * \{{object/md-raster
+      *     model=coverageDescription
+      *     profilePath="path"
+      * }}
+      * ```
+      * @module mdeditor
+      * @submodule components-object
+      * @class md-raster
+      * @constructor
+    */
+    didReceiveAttrs() {
+      this._super(...arguments);
+
+      let model = Ember.get(this, 'model');
+
+      if (model) {
+        Ember.run.once(this, function () {
+          Ember.set(model, 'attributeGroup', Ember.getWithDefault(model, 'attributeGroup', []));
+          Ember.set(model, 'imageDescription', Ember.getWithDefault(model, 'imageDescription', {}));
+          Ember.set(model, 'processingLevelCode', Ember.getWithDefault(model, 'processingLevelCode', {}));
+        });
+      }
+    },
+
+    tagName: 'form',
+
+    /**
+    * 'name' is the alias for 'coverageName' used in the validations for the
+    * 'raster' object.
+    *
+    * @property name
+    * @type String
+    * @requires alias
+    * @default "alias('model.coverageName')"
+    */
+    name: Ember.computed.alias('model.coverageName'),
+
+    /**
+     * 'description' is the alias for 'coverageDescripiton' used in the validations for the
+     * 'raster' object.
+     *
+     * @property description
+     * @type String
+     * @requires alias
+     * @default "alias('model.coverageDescription')"
+     */
+    description: Ember.computed.alias('model.coverageDescription'),
+
+    /**
+     * 'identifier' is the alias for 'processLevelCode.identifier' used in the validations
+     * for the 'coverageDescription.processLevelCode' object.
+     *
+     * @property identifier
+     * @type String
+     * @requires alias
+     * @default "alias('model.processLevelCode.identifier')"
+     */
+    identifier: Ember.computed.alias('model.processLevelCode.identifier')
+  });
+
+  _exports.default = _default;
+});
+;define("mdeditor/pods/components/object/md-raster/image-desc/component", ["exports", "ember-cp-validations"], function (_exports, _emberCpValidations) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  // import ImageDescription from 'mdjson-schemas/resources/js/imageDescription';
+  const Validations = (0, _emberCpValidations.buildValidations)({
+    'imgQualCodeIdentifier': [(0, _emberCpValidations.validator)('presence', {
+      presence: true,
+      ignoreBlank: true
+    })]
+  }); // const params = {
+  //   illuminationElevationAngle: 'number',
+  //   illuminationAzimuthAngle: 'number',
+  //   imagingCondition: 'string',
+  //   cloudCoverPercent: 'number',
+  //   compressionQuantity: 'number',
+  //   triangulationIndicator: 'boolean',
+  //   radiometricCalibrationAvailable: 'boolean',
+  //   cameraCalibrationAvailable: 'boolean',
+  //   filmDistortionAvailable: 'boolean',
+  //   lensDistortionAvailable: 'boolean'
+  // }
+
+  var _default = Ember.Component.extend(Validations, {
+    //Todo: work on fix for this with Josh
+    // init() {
+    //   this.params = Object.keys(params).map(p => {
+    //     return {
+    //       property: p,
+    //       label: ucWords([decamelize(p).replace(/_/g,' ')], { force: false }),
+    //       type: params[p],
+    //       description: get(ImageDescription, `properties.${p}.description`)
+    //     }
+    //   });
+    //   this._super(...arguments);
+    // },
+    didReceiveAttrs() {
+      this._super(...arguments); // let model = getWithDefault(this, 'model', {}) || {};
+
+
+      let model = Ember.get(this, 'model');
+
+      if (model) {
+        Ember.run.once(this, function () {
+          Ember.set(model, 'imageQualityCode', Ember.getWithDefault(model, 'imageQualityCode', {}));
+        });
+      }
+    },
+
+    /**
+     * The string representing the path in the profile object for the resource.
+     *
+     * @property profilePath
+     * @type {String}
+     * @default 'false'
+     * @required
+     */
+
+    /**
+     * The object to use as the data model for the resource.
+     *
+     * @property model
+     * @type {Object}
+     * @required
+     */
+    imgQualCodeIdentifier: Ember.computed.alias('model.imageQualityCode.identifier')
+  });
+
+  _exports.default = _default;
+});
+;define("mdeditor/pods/components/object/md-raster/image-desc/template", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "NG7JmVqN",
+    "block": "{\"symbols\":[],\"statements\":[[6,[37,6],null,[[\"collapsible\",\"title\",\"collapsed\",\"shadow\",\"required\",\"profilePath\",\"class\"],[true,\"Image Quality Code\",false,false,[30,[36,5],[[30,[36,5],[[32,0],\"validations\"],null],\"isInvalid\"],null],[30,[36,1],[[35,0],\".imageQualityCode\"],null],\"md-embedded\"]],[[\"default\"],[{\"statements\":[[2,\"  \"],[1,[30,[36,4],null,[[\"model\",\"profilePath\",\"collapsed\",\"collapsible\",\"data-spy\"],[[35,2,[\"imageQualityCode\"]],[30,[36,1],[[35,0],\".imageQualityCode\"],null],true,true,false]]]],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"\\n\"],[6,[37,7],null,[[\"class\"],[\"md-flex-col-275\"]],[[\"default\"],[{\"statements\":[[2,\"  \"],[1,[30,[36,3],null,[[\"value\",\"type\",\"label\",\"infotip\",\"data-spy\",\"class\",\"placeholder\",\"profilePath\"],[[35,2,[\"illuminationElevationAngle\"]],\"number\",\"Illumination Elevation Angle\",true,\"Illumination Elevation Angle\",\"md-embedded col-lg-6 col-xxxl-4\",\"Illumination elevation measured in degrees clockwise from the target plane at intersection of the optical line of sight\\n    with the Earth’s surface. For images from a scanning device, refer to the centre pixel of the image.\",[30,[36,1],[[35,0],\".illuminationElevationAngle\"],null]]]]],[2,\"\\n\\n  \"],[1,[30,[36,3],null,[[\"value\",\"type\",\"label\",\"infotip\",\"data-spy\",\"class\",\"placeholder\",\"profilePath\"],[[35,2,[\"illuminationAzimuthAngle\"]],\"number\",\"Illumination Azimuth Angle\",true,\"Illumination Azimuth Angle\",\"md-embedded col-lg-6 col-xxxl-4\",\"Illumination azimuth measured in degrees clockwise from true north at the time the image is taken. For images from a\\n    scanning device, refer to the centre pixel of the image.\",[30,[36,1],[[35,0],\".illuminationAzimuthAngle\"],null]]]]],[2,\"\\n\\n  \"],[1,[30,[36,3],null,[[\"value\",\"label\",\"infotip\",\"data-spy\",\"class\",\"placeholder\",\"profilePath\"],[[35,2,[\"imagingCondition\"]],\"Imaging Condition\",true,\"Imaging condition\",\"md-embedded col-lg-6 col-xxxl-4\",\"Code which indicates conditions which may affect the image.\",[30,[36,1],[[35,0],\".imagingCondition\"],null]]]]],[2,\"\\n\\n  \"],[1,[30,[36,3],null,[[\"value\",\"type\",\"label\",\"infotip\",\"data-spy\",\"class\",\"placeholder\",\"profilePath\"],[[35,2,[\"cloudCoverPercent\"]],\"number\",\"Cloud Cover Percent \",true,\"Cloud Cover Percent\",\"md-embedded col-lg-6 col-xxxl-4\",\"Area of the dataset obscured by clouds, expressed as a percentage of the spatial extent.\",[30,[36,1],[[35,0],\".cloudCoverPercent\"],null]]]]],[2,\"\\n\\n  \"],[1,[30,[36,3],null,[[\"value\",\"type\",\"label\",\"infotip\",\"data-spy\",\"class\",\"placeholder\",\"profilePath\"],[[35,2,[\"compressionQuantity\"]],\"number\",\"Compression Quantity\",true,\"Compression Quantity\",\"md-embedded col-lg-6 col-xxxl-4\",\"Count of the number of lossy compression cycles performed on the image.\",[30,[36,1],[[35,0],\".compressionQuantity\"],null]]]]],[2,\"\\n\\n  \"],[1,[30,[36,3],null,[[\"value\",\"type\",\"label\",\"infotip\",\"data-spy\",\"class\",\"placeholder\",\"profilePath\"],[[35,2,[\"triangulationIndicator\"]],\"boolean\",\"Triangulation Indicator\",true,\"Triangulation Indicator\",\"md-embedded col-lg-6 col-xxxl-4\",\"Indication of whether or not triangulation has been performed upon the image.\",[30,[36,1],[[35,0],\".triangulationIndicator\"],null]]]]],[2,\"\\n\\n  \"],[1,[30,[36,3],null,[[\"value\",\"type\",\"label\",\"infotip\",\"data-spy\",\"class\",\"placeholder\",\"profilePath\"],[[35,2,[\"radiometricCalibrationAvailable\"]],\"boolean\",\"Radiometric Calibration Available\",true,\"Radiometric Calibration Available\",\"md-embedded col-lg-6 col-xxxl-4\",\"Indication of whether or not the radiometric calibration information for generating the radiometrically calibrated standard data product is available.\",[30,[36,1],[[35,0],\".radiometricCalibrationAvailable\"],null]]]]],[2,\"\\n\\n  \"],[1,[30,[36,3],null,[[\"value\",\"type\",\"label\",\"infotip\",\"data-spy\",\"class\",\"placeholder\",\"profilePath\"],[[35,2,[\"cameraCalibrationAvailable\"]],\"boolean\",\"Camera Calibration Available\",true,\"Camera Calibration Available\",\"md-embedded col-lg-6 col-xxxl-4\",\"Indication of whether or not constants are available which allow for camera calibration corrections.\",[30,[36,1],[[35,0],\".cameraCalibrationAvailable\"],null]]]]],[2,\"\\n\\n  \"],[1,[30,[36,3],null,[[\"value\",\"type\",\"label\",\"infotip\",\"data-spy\",\"class\",\"placeholder\",\"profilePath\"],[[35,2,[\"filmDistortionAvailable\"]],\"boolean\",\"Film Distortion Available\",true,\"Film Distortion Available\",\"md-embedded col-lg-6 col-xxxl-4\",\"Indication of whether or not Calibration Reseau information is available.\",[30,[36,1],[[35,0],\".filmDistortionAvailable\"],null]]]]],[2,\"\\n\\n  \"],[1,[30,[36,3],null,[[\"value\",\"type\",\"label\",\"infotip\",\"data-spy\",\"class\",\"placeholder\",\"profilePath\"],[[35,2,[\"lensDistortionAvailable\"]],\"boolean\",\"Lens Distortion Available\",true,\"Lens Distortion Available\",\"md-embedded col-lg-6 col-xxxl-4\",\"Indication of whether or not lens aberration correction information is available.\",[30,[36,1],[[35,0],\".lensDistortionAvailable\"],null]]]]],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"profilePath\",\"concat\",\"model\",\"input/md-input\",\"object/md-identifier\",\"get\",\"layout/md-card\",\"layout/md-wrap\"]}",
+    "meta": {
+      "moduleName": "mdeditor/pods/components/object/md-raster/image-desc/template.hbs"
+    }
+  });
+
+  _exports.default = _default;
+});
+;define("mdeditor/pods/components/object/md-raster/preview/component", ["exports", "mdeditor/pods/components/object/md-raster/component"], function (_exports, _component) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.Component.extend(_component.Validations, {
+    /**
+     * mdEditor class for input and edit of mdJSON 'coverageDescription' object.
+     * The class manages the maintenance of an array of raster objects.
+     *
+     * @class md-raster-preview
+     * @module mdeditor
+     * @submodule components-object-md-raster
+     * @constructor
+     */
+    tagName: 'form',
+
+    /**
+     * 'name is the alias for 'coverageName' used in the validations for the
+     * 'raster/preview' object.
+     *
+     * @property name
+     * @type String
+     * @requires alias
+     * @default "alias('model.coverageName')"
+     */
+    name: Ember.computed.alias('model.coverageName'),
+
+    /**
+     * 'description' is the alias for 'coverageDescription' used in the validations for the
+     * 'raster/preview' object.
+     *
+     * @property description
+     * @type String
+     * @requires alias
+     * @default "alias('model.coverageDescription')"
+     */
+    description: Ember.computed.alias('model.coverageDescription')
+  });
+
+  _exports.default = _default;
+});
+;define("mdeditor/pods/components/object/md-raster/preview/template", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "CqqyRnfi",
+    "block": "{\"symbols\":[],\"statements\":[[10,\"form\"],[14,0,\"form-horizontal\"],[12],[2,\"\\n  \"],[10,\"div\"],[14,0,\"form-group\"],[12],[2,\"\\n    \"],[10,\"label\"],[14,0,\"col-lg-3\"],[12],[2,\"Raster Name\"],[13],[2,\"\\n    \"],[1,[30,[36,3],null,[[\"class\",\"placeholder\",\"profilePath\",\"showValidations\",\"value\"],[\"col-lg-9\",\"The name(title) of the raster.\",[30,[36,2],[[35,1],\".coverageName\"],null],true,[35,0,[\"coverageName\"]]]]]],[2,\"\\n  \"],[13],[2,\"\\n  \"],[10,\"div\"],[14,0,\"form-group\"],[12],[2,\"\\n    \"],[10,\"label\"],[14,0,\"col-lg-3\"],[12],[2,\"Raster Description\"],[13],[2,\"\\n    \"],[1,[30,[36,4],null,[[\"class\",\"placeholder\",\"profilePath\",\"showValidations\",\"value\"],[\"col-lg-9\",\"A description of the raster.\",[30,[36,2],[[35,1],\".coverageDescription\"],null],true,[35,0,[\"coverageDescription\"]]]]]],[2,\"\\n  \"],[13],[2,\"\\n\"],[13],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"model\",\"profilePath\",\"concat\",\"input/md-input\",\"input/md-textarea\"]}",
+    "meta": {
+      "moduleName": "mdeditor/pods/components/object/md-raster/preview/template.hbs"
+    }
+  });
+
+  _exports.default = _default;
+});
+;define("mdeditor/pods/components/object/md-raster/template", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "5fezX4hW",
+    "block": "{\"symbols\":[],\"statements\":[[6,[37,7],null,null,[[\"default\"],[{\"statements\":[[2,\"  \"],[1,[30,[36,5],null,[[\"label\",\"data-spy\",\"value\",\"placeholder\",\"profilePath\",\"showValidations\"],[\"Name\",\"Name\",[35,2,[\"coverageName\"]],\"The name(title) of the raster.\",[30,[36,1],[[35,0],\".coverageName\"],null],true]]]],[2,\"\\n  \"],[1,[30,[36,6],null,[[\"label\",\"data-spy\",\"value\",\"placeholder\",\"profilePath\",\"showValidations\"],[\"Description\",\"Description\",[35,2,[\"coverageDescription\"]],\"A description of the raster\",[30,[36,1],[[35,0],\".coverageDescription\"],null],true]]]],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"\\n\"],[1,[30,[36,11],null,[[\"hideIndex\",\"value\",\"title\",\"editAttribute\",\"deleteAttrGroup\",\"data-spy\",\"addAttrGroup\",\"collapsible\",\"collapsed\",\"profilePath\"],[true,[35,2,[\"attributeGroup\"]],\"Attribute Groups\",[35,10],[35,9],false,[35,8],true,false,[30,[36,1],[[35,0],\".attributeGroup\"],null]]]]],[2,\"\\n\\n\"],[6,[37,7],null,[[\"collapsible\",\"title\",\"collapsed\",\"shadow\",\"profilePath\"],[true,\"Processing Level Code\",false,true,[30,[36,1],[[35,0],\".processingLevelCode\"],null]]],[[\"default\"],[{\"statements\":[[2,\"  \"],[1,[30,[36,4],null,[[\"model\",\"profilePath\",\"collapsed\",\"collapsible\",\"data-spy\"],[[35,2,[\"processingLevelCode\"]],[30,[36,1],[[35,0],\".processingLevelCode\"],null],true,true,false]]]],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"\\n\"],[6,[37,7],null,[[\"collapsible\",\"title\",\"collapsed\",\"shadow\",\"profilePath\"],[true,\"Image Description\",false,true,[30,[36,1],[[35,0],\".imageDescription\"],null]]],[[\"default\"],[{\"statements\":[[2,\"  \"],[1,[30,[36,3],null,[[\"model\",\"profilePath\",\"data-spy\",\"collapsed\",\"collapsible\"],[[35,2,[\"imageDescription\"]],[30,[36,1],[[35,0],\".imageDescription\"],null],false,true,true]]]],[2,\"\\n\"]],\"parameters\":[]}]]]],\"hasEval\":false,\"upvars\":[\"profilePath\",\"concat\",\"model\",\"object/md-raster/image-desc\",\"object/md-identifier\",\"input/md-input\",\"input/md-textarea\",\"layout/md-card\",\"addAttrGroup\",\"deleteAttrGroup\",\"editAttribute\",\"object/md-raster/attrgroup\"]}",
+    "meta": {
+      "moduleName": "mdeditor/pods/components/object/md-raster/template.hbs"
+    }
+  });
+
+  _exports.default = _default;
+});
 ;define("mdeditor/pods/components/object/md-repository-array/component", ["exports"], function (_exports) {
   "use strict";
 
@@ -23831,23 +24718,18 @@
 
   _exports.default = _default;
 });
-;define("mdeditor/pods/record/new/id/route", ["exports", "@babel/runtime/helpers/esm/defineProperty", "@babel/runtime/helpers/esm/applyDecoratedDescriptor", "@ember-data/adapter/error"], function (_exports, _defineProperty2, _applyDecoratedDescriptor2, _error) {
+;define("mdeditor/pods/record/new/id/route", ["exports", "ember-data"], function (_exports, _emberData) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
+  const {
+    NotFoundError
+  } = _emberData.default;
 
-  var _dec, _dec2, _dec3, _dec4, _class, _class2, _temp;
-
-  const classic = __EMBER_CLASSIC_DECORATOR;
-  let IdRoute = (_dec = Ember._action, _dec2 = Ember._action, _dec3 = Ember._action, _dec4 = Ember._action, classic(_class = (_class2 = (_temp = class IdRoute extends Ember.Route {
-    constructor(...args) {
-      super(...args);
-      (0, _defineProperty2.default)(this, "breadCrumb", null);
-    }
-
+  var _default = Ember.Route.extend({
     model(params) {
       let record = this.store.peekRecord('record', params.record_id);
 
@@ -23856,7 +24738,9 @@
       }
 
       return this.store.findRecord('record', params.record_id);
-    }
+    },
+
+    breadCrumb: null,
 
     /**
      * The profile service
@@ -23873,75 +24757,93 @@
         // We call DS#unloadRecord() which removes it from the store
         this.store.unloadRecord(model);
       }
-    } //some test actions
+    },
 
-
+    //some test actions
     setupController(controller, model) {
       // Call _super for default behavior
-      super.setupController(controller, model);
+      this._super(controller, model);
+    },
+
+    // serialize: function (model) {
+    //   // If we got here without an ID (and therefore without a model)
+    //   // Ensure that we leave the route param in the URL blank (not 'undefined')
+    //   if (!model) {
+    //     let rec=this.store.createRecord('record');
+    //     return {
+    //       record_id: rec.id
+    //     };
+    //   }
+    //
+    //   // Otherwise, let Ember handle it as usual
+    //   return this._super.apply(this, arguments);
+    // },
+    actions: {
+      willTransition: function (transition) {
+        if (transition.targetName === 'record.new.index') {
+          transition.abort();
+          return true;
+        } // We grab the model loaded in this route
+
+
+        var model = this.currentRouteModel(); // If we are leaving the Route we verify if the model is in
+        // 'isNew' state, which means it wasn't saved to the backend.
+
+        if (model && model.get('isNew')) {
+          transition.abort(); //let contexts = transition.intent.contexts;
+          // We call DS#destroyRecord() which removes it from the store
+
+          model.destroyRecord().then(() => transition.retry()); //transition.abort();
+          // if(contexts && contexts.length > 0) {
+          //   //grab any models ids and apply them to transition
+          //   let ids = contexts.mapBy('id');
+          //   this.replaceWith(transition.targetName, ...ids);
+          //   return true;
+          // }
+          //this.replaceWith(transition.targetName);
+
+          return true;
+        }
+      },
+
+      saveRecord() {
+        this.currentRouteModel().save().then(model => {
+          this.replaceWith('record.show.edit', model);
+        }).catch(error => {
+          throw error;
+        });
+      },
+
+      cancelRecord() {
+        this.replaceWith('records');
+        return false;
+      },
+
+      error(error) {
+        if (error instanceof NotFoundError) {
+          this.flashMessages.warning('No record found! Re-directing to new record...'); // redirect to new
+
+          this.replaceWith('record.new');
+        } else {
+          // otherwise let the error bubble
+          return true;
+        }
+      } // /**
+      //  * Update the record profile
+      //  *
+      //  * @name   updateProfile
+      //  * @param  {String} profile The new profile.
+      //  */
+      // updateProfile(profile) {
+      //   this.profile
+      //     .set('active', profile);
+      // }
+
+
     }
+  });
 
-    willTransition(transition) {
-      if (transition.targetName === 'record.new.index') {
-        transition.abort();
-        return true;
-      } // We grab the model loaded in this route
-
-
-      var model = this.currentRouteModel(); // If we are leaving the Route we verify if the model is in
-      // 'isNew' state, which means it wasn't saved to the backend.
-
-      if (model && model.get('isNew')) {
-        transition.abort(); //let contexts = transition.intent.contexts;
-        // We call DS#destroyRecord() which removes it from the store
-
-        model.destroyRecord().then(() => transition.retry()); //transition.abort();
-        // if(contexts && contexts.length > 0) {
-        //   //grab any models ids and apply them to transition
-        //   let ids = contexts.mapBy('id');
-        //   this.replaceWith(transition.targetName, ...ids);
-        //   return true;
-        // }
-        //this.replaceWith(transition.targetName);
-
-        return true;
-      }
-    }
-
-    saveRecord() {
-      this.currentRouteModel().save().then(model => {
-        this.replaceWith('record.show.edit', model);
-      });
-    }
-
-    cancelRecord() {
-      this.replaceWith('records');
-      return false;
-    }
-
-    error(error) {
-      if (error instanceof _error.NotFoundError) {
-        this.flashMessages.warning('No record found! Re-directing to new record...'); // redirect to new
-
-        this.replaceWith('record.new');
-      } else {
-        // otherwise let the error bubble
-        return true;
-      }
-    } // /**
-    //  * Update the record profile
-    //  *
-    //  * @name   updateProfile
-    //  * @param  {String} profile The new profile.
-    //  */
-    // updateProfile(profile) {
-    //   this.profile
-    //     .set('active', profile);
-    // }
-
-
-  }, _temp), ((0, _applyDecoratedDescriptor2.default)(_class2.prototype, "willTransition", [_dec], Object.getOwnPropertyDescriptor(_class2.prototype, "willTransition"), _class2.prototype), (0, _applyDecoratedDescriptor2.default)(_class2.prototype, "saveRecord", [_dec2], Object.getOwnPropertyDescriptor(_class2.prototype, "saveRecord"), _class2.prototype), (0, _applyDecoratedDescriptor2.default)(_class2.prototype, "cancelRecord", [_dec3], Object.getOwnPropertyDescriptor(_class2.prototype, "cancelRecord"), _class2.prototype), (0, _applyDecoratedDescriptor2.default)(_class2.prototype, "error", [_dec4], Object.getOwnPropertyDescriptor(_class2.prototype, "error"), _class2.prototype)), _class2)) || _class);
-  _exports.default = IdRoute;
+  _exports.default = _default;
 });
 ;define("mdeditor/pods/record/new/id/template", ["exports"], function (_exports) {
   "use strict";
@@ -27438,6 +28340,235 @@
 
   _exports.default = _default;
 });
+;define("mdeditor/pods/record/show/edit/spatial/raster/attribute/route", ["exports", "mdeditor/mixins/scroll-to"], function (_exports, _scrollTo) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.Route.extend(_scrollTo.default, {
+    model(params) {
+      let rparams = this.paramsFor('record.show.edit.spatial.raster');
+      this.set('attrGroupId', params.attrgroup_id);
+      this.set('attributeId', params.attribute_id);
+      this.set('rasterId', rparams.raster_id);
+      return this.setupModel();
+    },
+
+    // breadCrumb: computed('distributionId', function () {
+    //   return {
+    //     title: this.distributionId
+    //     //title: `${get(this, 'distributionId')}: Distributors`
+    //   };
+    // }),
+    setupController: function () {
+      // Call _super for default behavior
+      this._super(...arguments);
+
+      this.controller.set('parentModel', this.modelFor('record.show.edit'));
+      this.controller.set('attrGroupId', this.attrGroupId);
+      this.controller.set('attributeId', this.attributeId);
+      this.controller.set('rasterId', this.rasterId);
+      this.controllerFor('record.show.edit').setProperties({
+        onCancel: this.setupModel,
+        cancelScope: this
+      });
+    },
+
+    setupModel() {
+      let rasterId = this.rasterId;
+      let attrGroupId = this.attrGroupId;
+      let attributeId = this.attributeId;
+      let model = this.modelFor('record.show.edit');
+      let rasters = model.get('json.metadata.resourceInfo.coverageDescription');
+      let raster = rasterId && Ember.isArray(rasters) ? Ember.A(rasters).objectAt(rasterId) : undefined;
+      let attrGroup = raster && attrGroupId && Ember.isArray(raster.attributeGroup) ? Ember.A(raster.attributeGroup).objectAt(attrGroupId) : undefined;
+      let attribute = attrGroup && attributeId && Ember.isArray(attrGroup.attribute) ? Ember.A(attrGroup.attribute).objectAt(attributeId) : undefined; //make sure the identifier exists
+
+      if (Ember.isEmpty(attribute)) {
+        this.flashMessages.warning('No Attributes found! Re-directing to Attribute Groups...');
+        this.replaceWith('record.show.edit.spatial.raster');
+        return;
+      }
+
+      return attribute;
+    },
+
+    actions: {
+      parentModel() {
+        return this.modelFor('record.show.edit');
+      },
+
+      deleteAttribute(id) {
+        let model = this.controller.parentModel.get('json.metadata.resourceInfo.coverageDescription')[this.controller.rasterId].attributeGroup[this.controller.attrGroupId].attribute;
+        model.removeAt(id || parseInt(this.attributeId, 0));
+        this.transitionTo('record.show.edit.spatial.raster', {
+          queryParams: {
+            scrollTo: this.controller.attrGroupId
+          }
+        });
+      },
+
+      backToAttrGroup() {
+        this.transitionTo('record.show.edit.spatial.raster');
+      }
+
+    }
+  });
+
+  _exports.default = _default;
+});
+;define("mdeditor/pods/record/show/edit/spatial/raster/attribute/template", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "wuNT6QOS",
+    "block": "{\"symbols\":[],\"statements\":[[10,\"h4\"],[14,0,\"section-header\"],[12],[2,\"\\n  Editing Attribute #\"],[1,[34,0]],[2,\" in\\n  \"],[10,\"span\"],[14,0,\"text-success\"],[12],[2,\"Attribute Group #\"],[1,[34,1]],[13],[2,\" in\\n  \"],[10,\"span\"],[14,0,\"text-primary\"],[12],[2,\"Raster Description #\"],[1,[34,2]],[13],[2,\"\\n\\n\"],[6,[37,4],null,[[\"class\",\"onConfirm\",\"tooltip\",\"tipClass\",\"tipSide\"],[\"btn btn-xs btn-danger\",[30,[36,3],[\"deleteAttribute\"],null],\"Delete Attribute?\",\"danger\",\"bottom\"]],[[\"default\"],[{\"statements\":[[2,\"    \"],[10,\"i\"],[14,0,\"fa fa-times\"],[14,\"aria-hidden\",\"true\"],[12],[13],[2,\" Delete\\n\"]],\"parameters\":[]}]]],[2,\"\\n  \"],[1,[30,[36,6],null,[[\"model\"],[[35,5]]]]],[2,\"\\n\"],[13],[2,\"\\n\\n\"],[1,[30,[36,8],null,[[\"model\",\"profilePath\"],[[35,7],\"record.spatial.coverageDescription.attributeGroup.attribute\"]]]],[2,\"\\n\\n\"],[1,[30,[36,10],null,[[\"named\",\"send\"],[\"md-subbar-buttons\",[30,[36,9],[\"control/md-button\"],[[\"text\",\"icon\",\"class\",\"click\"],[\"Back to Attribute Group\",\"arrow-left\",\"btn-primary btn-lg\",[30,[36,3],[\"backToAttrGroup\"],null]]]]]]]],[2,\"\\n\"],[1,[30,[36,10],null,[[\"named\",\"send\"],[\"md-scroll-spy-record-edit\",[30,[36,9],[\"control/md-scroll-spy\"],[[\"refresh\",\"scrollInit\",\"setScrollTo\"],[[35,12],[35,11],[30,[36,3],[\"setScrollTo\"],null]]]]]]]]],\"hasEval\":false,\"upvars\":[\"attributeId\",\"attrGroupId\",\"rasterId\",\"route-action\",\"control/md-button-confirm\",\"parentModel\",\"control/md-status\",\"model\",\"object/md-raster/attrgroup/attribute\",\"component\",\"to-elsewhere\",\"scrollTo\",\"refresh\"]}",
+    "meta": {
+      "moduleName": "mdeditor/pods/record/show/edit/spatial/raster/attribute/template.hbs"
+    }
+  });
+
+  _exports.default = _default;
+});
+;define("mdeditor/pods/record/show/edit/spatial/raster/index/route", ["exports", "mdeditor/mixins/scroll-to"], function (_exports, _scrollTo) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.Route.extend(_scrollTo.default, {
+    setupController: function () {
+      // Call _super for default behavior
+      this._super(...arguments);
+
+      this.controller.set('parentModel', this.modelFor('record.show.edit'));
+      this.controller.set('rasterId', Ember.get(this.controllerFor('record.show.edit.spatial.raster'), 'rasterId'));
+      Ember.defineProperty(this.controller, 'refreshSpy', Ember.computed.alias('model.json.metadata.resourceInfo.coverageDescription.length'));
+    },
+    actions: {
+      editAttribute(id, routeParams, scrollToId) {
+        this.setScrollTo(scrollToId);
+        this.transitionTo('record.show.edit.spatial.raster.attribute', this.controller.rasterId, routeParams, id);
+      },
+
+      deleteAttrGroup(id) {
+        let group = this.currentRouteModel()['attributeGroup'];
+        group.removeAt(id);
+      },
+
+      addAttrGroup() {
+        let group = this.currentRouteModel()['attributeGroup'];
+        group.pushObject([]);
+      }
+
+    }
+  });
+
+  _exports.default = _default;
+});
+;define("mdeditor/pods/record/show/edit/spatial/raster/index/template", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "6tbFzY+m",
+    "block": "{\"symbols\":[],\"statements\":[[10,\"h4\"],[14,0,\"section-header\"],[12],[2,\"\\n  Editing Raster Description #\"],[1,[34,0]],[2,\"\\n  \"],[1,[30,[36,2],null,[[\"model\"],[[35,1]]]]],[2,\"\\n\"],[13],[2,\"\\n\\n\"],[1,[30,[36,5],null,[[\"model\",\"editAttribute\",\"deleteAttrGroup\",\"addAttrGroup\",\"profilePath\"],[[35,4],[30,[36,3],[\"editAttribute\"],null],[30,[36,3],[\"deleteAttrGroup\"],null],[30,[36,3],[\"addAttrGroup\"],null],\"record.spatial.coverageDescription\"]]]],[2,\"\\n\\n\"],[1,[30,[36,7],null,[[\"named\",\"send\"],[\"md-subbar-extra\",[30,[36,6],[\"control/subbar-link\"],[[\"text\",\"icon\",\"route\"],[\"Back to Spatial Information\",\"arrow-left\",\"record.show.edit.spatial\"]]]]]]],[2,\"\\n\\n\"],[1,[30,[36,7],null,[[\"named\",\"send\"],[\"md-scroll-spy-record-edit\",[30,[36,6],[\"control/md-scroll-spy\"],[[\"scrollInit\",\"setScrollTo\",\"refresh\"],[[35,9],[30,[36,3],[\"setScrollTo\"],null],[35,8]]]]]]]]],\"hasEval\":false,\"upvars\":[\"rasterId\",\"parentModel\",\"control/md-status\",\"route-action\",\"model\",\"object/md-raster\",\"component\",\"to-elsewhere\",\"refresh\",\"scrollTo\"]}",
+    "meta": {
+      "moduleName": "mdeditor/pods/record/show/edit/spatial/raster/index/template.hbs"
+    }
+  });
+
+  _exports.default = _default;
+});
+;define("mdeditor/pods/record/show/edit/spatial/raster/route", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.Route.extend({
+    model(params) {
+      this.set('rasterId', params.raster_id);
+      return this.setupModel();
+    },
+
+    breadCrumb: Ember.computed('rasterId', function () {
+      return {
+        title: 'RASTER ' + this.rasterId,
+        linkable: true
+      };
+    }),
+    setupController: function () {
+      // Call _super for default behavior
+      this._super(...arguments);
+
+      this.controller.set('parentModel', this.modelFor('record.show.edit'));
+      this.controller.set('rasterId', this.rasterId);
+      this.controllerFor('record.show.edit').setProperties({
+        onCancel: this.setupModel,
+        cancelScope: this
+      });
+    },
+
+    setupModel() {
+      let rasterId = this.rasterId;
+      let model = this.modelFor('record.show.edit');
+      let rasters = model.get('json.metadata.resourceInfo.coverageDescription');
+      let raster = rasterId && Ember.isArray(rasters) ? rasters.get(rasterId) : undefined; //make sure the raster exists
+
+      if (Ember.isEmpty(raster)) {
+        this.flashMessages.warning('No Raster Description found! Re-directing...');
+        this.replaceWith('record.show.edit.spatial');
+        return;
+      }
+
+      return raster;
+    },
+
+    actions: {
+      parentModel() {
+        return this.modelFor('record.show.edit');
+      }
+
+    }
+  });
+
+  _exports.default = _default;
+});
+;define("mdeditor/pods/record/show/edit/spatial/raster/template", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "DZVWbPU8",
+    "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],[[30,[36,0],null,null]],null]]],\"hasEval\":false,\"upvars\":[\"-outlet\",\"component\"]}",
+    "meta": {
+      "moduleName": "mdeditor/pods/record/show/edit/spatial/raster/template.hbs"
+    }
+  });
+
+  _exports.default = _default;
+});
 ;define("mdeditor/pods/record/show/edit/spatial/route", ["exports"], function (_exports) {
   "use strict";
 
@@ -29059,6 +30190,141 @@
     this.route('error');
   });
 });
+;define("mdeditor/routes/application", ["exports", "jquery", "mdeditor/config/environment"], function (_exports, _jquery, _environment) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  const {
+    APP: {
+      defaultProfileId
+    }
+  } = _environment.default;
+  const console = window.console;
+
+  var _default = Ember.Route.extend({
+    init() {
+      this._super(...arguments);
+
+      (0, _jquery.default)(window).bind('beforeunload', evt => {
+        let dirty = this.currentRouteModel().filter(function (itm) {
+          return itm.filterBy('hasDirtyHash').length;
+        }).length;
+        let message = 'Are you sure you want to leave unsaved work?';
+        evt.returnValue = dirty ? message : undefined;
+        return evt.returnValue;
+      });
+    },
+
+    spotlight: Ember.inject.service(),
+    slider: Ember.inject.service(),
+    router: Ember.inject.service(),
+    settings: Ember.inject.service(),
+    localStorageMonitor: Ember.inject.service(),
+
+    /**
+     * Models for sidebar navigation
+     *
+     * @return {Ember.RSVP.hash}
+     */
+    model() {
+      let promises = [this.store.findAll('record', {
+        reload: true
+      }), this.store.findAll('contact', {
+        reload: true
+      }), this.store.findAll('dictionary', {
+        reload: true
+      })];
+      let metadata = Ember.A([Ember.Object.create({
+        type: 'record',
+        list: 'records',
+        title: 'Metadata Records',
+        icon: 'file-o'
+      }), Ember.Object.create({
+        type: 'contact',
+        list: 'contacts',
+        title: 'Contacts',
+        icon: 'users'
+      }), Ember.Object.create({
+        type: 'dictionary',
+        list: 'dictionaries',
+        title: 'Dictionaries',
+        icon: 'book'
+      })]);
+
+      let mapFn = function (item) {
+        let meta = metadata.findBy('type', item.modelName);
+        meta.set('listId', Ember.guidFor(item));
+        item.set('meta', meta);
+        return item;
+      };
+
+      return Ember.RSVP.map(promises, mapFn).then(result => {
+        let profiles = [this.store.findAll('profile', {
+          reload: true
+        }), this.store.findAll('schema', {
+          reload: true
+        }), this.store.findAll('custom-profile', {
+          reload: true
+        })];
+        return Ember.RSVP.all(profiles).then(() => result); // return result;
+      });
+    },
+
+    beforeModel() {
+      let storagePercentStatus = this.localStorageMonitor.storagePercentTracked > 100;
+
+      if (storagePercentStatus) {
+        this.router.replaceWith('error').then(route => {
+          route.controller.set('lastError', new Error('You have exceeded your local storage capacity. Your recent activity will not be saved. Please back up records and clear storage cache'));
+        });
+      }
+
+      if (!defaultProfileId) {
+        this.router.replaceWith('error').then(function (route) {
+          route.controller.set('lastError', new Error('A default profile ID is not set in "config/environment/APP"'));
+        });
+      }
+    },
+
+    setupController(controller, model) {
+      // Call _super for default behavior
+      this._super(controller, model); // Implement your custom setup after
+
+
+      controller.set('spotlight', this.spotlight);
+      controller.set('slider', this.slider);
+    },
+
+    /**
+     * The current model for the route
+     * @method currentRouteModel
+     * @return {Object}
+     */
+    actions: {
+      error(error) {
+        console.error(error);
+
+        if (error.status === 404) {
+          return this.transitionTo('not-found');
+        }
+
+        return this.replaceWith('error').then(function (route) {
+          route.controller.set('lastError', error);
+        });
+      },
+
+      didTransition() {
+        this.controller.set('currentRoute', this.router.get('currentRouteName'));
+      }
+
+    }
+  });
+
+  _exports.default = _default;
+});
 ;define("mdeditor/routes/publish/sciencebase", ["exports", "mdeditor-sciencebase/routes/publish/sciencebase"], function (_exports, _sciencebase) {
   "use strict";
 
@@ -29108,6 +30374,19 @@
     enumerable: true,
     get: function () {
       return _rest.default;
+    }
+  });
+});
+;define("mdeditor/services/-ensure-registered", ["exports", "@embroider/util/services/ensure-registered"], function (_exports, _ensureRegistered) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _ensureRegistered.default;
     }
   });
 });
@@ -30458,6 +31737,119 @@
   var _default = _transitionMap.default;
   _exports.default = _default;
 });
+;define("mdeditor/services/local-storage-monitor", ["exports", "mdeditor/utils/md-object-size"], function (_exports, _mdObjectSize) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  /**
+   * Local storage monitor service
+   *
+   * Service that provides a error messaging system if user is above,
+   * local storage capacity.
+   *
+   * @module mdeditor
+   * @submodule service
+   * @class local-storage-monitor
+   */
+  var _default = Ember.Service.extend({
+    init() {
+      this._super(...arguments);
+
+      this.storageSize();
+      this.storagePercent();
+      this.showMessage();
+    },
+
+    flashMessages: Ember.inject.service(),
+
+    /**
+     * Calculates size of current local storage.
+     *
+     * @method storageSize
+     * @return {Number}
+     */
+    storageSize() {
+      return (0, _mdObjectSize.default)(window.localStorage);
+    },
+
+    /**
+     * Sets percentage size of local storage against the "storagePercentTracked" property.
+     *
+     * @method storagePercent
+     * @requires storageSize
+     */
+    storagePercent() {
+      let p = (this.storageSize() / 5000 * 100).toFixed(2);
+      Ember.set(this, "storagePercentTracked", p);
+      return p;
+    },
+
+    /**
+     * Tracked property for changes in storagePercent
+     *
+     * @property storagePercentTracked
+     * @type {Number}
+     * @default 0
+     */
+    storagePercentTracked: Ember._tracked({
+      value: 0
+    }),
+
+    /**
+     * Show warning returns a flash message that will be displayed to user
+     * if the user is over 80% of local storage capacity.
+     *
+     * @method showWarning
+     * @returns {Object}
+     * @requires flashMessages, storagePercentTracked
+     */
+    showWarning(msg) {
+      return this.flashMessages.warning(msg || `Warning! Your local storage is at ${this.storagePercentTracked}% of your browser's local storage capacity. Please back up records and clear storage cache.`, {
+        timeout: 15000,
+        preventDuplicates: true
+      });
+    },
+
+    /**
+     * Show danger returns a flash message that will be displayed to user
+     * if the user is over 90% of local storage capacity.
+     *
+     * @method showDanger
+     * @returns {Object}
+     * @requires flashMessages, storagePercentTracked
+     */
+    showDanger(msg) {
+      return this.flashMessages.danger(msg || `Danger! Your local storage is at ${this.storagePercentTracked}% of your browser's local storage capacity. Please back up records and clear storage cache`, {
+        sticky: true,
+        preventDuplicates: true,
+        destroyOnClick: true
+      });
+    },
+
+    /**
+     * Show danger returns a flash message that will be displayed to user
+     * if the user is over 90% of local storage capacity.
+     *
+     * @method show Message
+     * @returns {Object}
+     * @requires storagePercentTracked, showWarning(), showDanger()
+     */
+    showMessage() {
+      if (this.storagePercentTracked >= 80 && this.storagePercentTracked < 90) {
+        this.showWarning();
+      } else if (this.storagePercentTracked >= 90) {
+        this.showDanger();
+      }
+    }
+
+  });
+
+  _exports.default = _default;
+});
 ;define("mdeditor/services/mdjson", ["exports", "@babel/runtime/helpers/esm/initializerDefineProperty", "@babel/runtime/helpers/esm/defineProperty", "@babel/runtime/helpers/esm/applyDecoratedDescriptor", "@babel/runtime/helpers/esm/initializerWarningHelper", "ajv", "mdjson-schemas/resources/js/schemas", "mdeditor/pods/components/object/md-citation/component", "ajv/lib/refs/json-schema-draft-04"], function (_exports, _initializerDefineProperty2, _defineProperty2, _applyDecoratedDescriptor2, _initializerWarningHelper2, _ajv, _schemas, _component, draft4) {
   "use strict";
 
@@ -31461,6 +32853,19 @@
     }
   });
 });
+;define("mdeditor/templates/components/basic-dropdown-optional-tag", ["exports", "ember-basic-dropdown/templates/components/basic-dropdown-optional-tag"], function (_exports, _basicDropdownOptionalTag) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _basicDropdownOptionalTag.default;
+    }
+  });
+});
 ;define("mdeditor/templates/components/basic-dropdown-trigger", ["exports", "ember-basic-dropdown/templates/components/basic-dropdown-trigger"], function (_exports, _basicDropdownTrigger) {
   "use strict";
 
@@ -31496,8 +32901,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "e9dAbWC4",
-    "block": "{\"symbols\":[\"&default\"],\"statements\":[[6,[37,2],[[35,1]],null,[[\"default\",\"else\"],[{\"statements\":[[2,\"  \"],[11,\"a\"],[24,6,\"#\"],[4,[38,0],[[32,0],\"acceptForDrop\"],null],[12],[2,\"\\n    \"],[18,1,null],[2,\"\\n  \"],[13],[2,\"\\n\"]],\"parameters\":[]},{\"statements\":[[2,\"  \"],[18,1,null],[2,\"\\n\"]],\"parameters\":[]}]]]],\"hasEval\":false,\"upvars\":[\"action\",\"enableClicking\",\"if\"]}",
+    "id": "1RaShFka",
+    "block": "{\"symbols\":[\"&default\",\"@enableClicking\"],\"statements\":[[6,[37,1],[[32,2]],null,[[\"default\",\"else\"],[{\"statements\":[[2,\"  \"],[11,\"a\"],[24,6,\"#\"],[4,[38,0],[[32,0,[\"acceptForDrop\"]]],null],[12],[2,\"\\n    \"],[18,1,null],[2,\"\\n  \"],[13],[2,\"\\n\"]],\"parameters\":[]},{\"statements\":[[2,\"  \"],[18,1,null],[2,\"\\n\"]],\"parameters\":[]}]]]],\"hasEval\":false,\"upvars\":[\"fn\",\"if\"]}",
     "meta": {
       "moduleName": "mdeditor/templates/components/draggable-object-target.hbs"
     }
@@ -31514,8 +32919,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "mWDPMRbL",
-    "block": "{\"symbols\":[\"&default\"],\"statements\":[[6,[37,2],[[35,1]],null,[[\"default\",\"else\"],[{\"statements\":[[2,\"  \"],[11,\"a\"],[24,6,\"#\"],[4,[38,0],[[32,0],\"selectForDrag\"],null],[12],[2,\"\\n    \"],[18,1,null],[2,\"\\n  \"],[13],[2,\"\\n\"]],\"parameters\":[]},{\"statements\":[[2,\"  \"],[18,1,null],[2,\"\\n\"]],\"parameters\":[]}]]]],\"hasEval\":false,\"upvars\":[\"action\",\"enableClicking\",\"if\"]}",
+    "id": "2rFklNr2",
+    "block": "{\"symbols\":[\"&default\",\"@enableClicking\"],\"statements\":[[6,[37,1],[[32,2]],null,[[\"default\",\"else\"],[{\"statements\":[[2,\"  \"],[11,\"a\"],[24,6,\"#\"],[4,[38,0],[[32,0,[\"selectForDrag\"]]],null],[12],[2,\"\\n    \"],[18,1,null],[2,\"\\n  \"],[13],[2,\"\\n\"]],\"parameters\":[]},{\"statements\":[[2,\"  \"],[18,1,null],[2,\"\\n\"]],\"parameters\":[]}]]]],\"hasEval\":false,\"upvars\":[\"fn\",\"if\"]}",
     "meta": {
       "moduleName": "mdeditor/templates/components/draggable-object.hbs"
     }
@@ -31572,24 +32977,6 @@
     "block": "{\"symbols\":[\"column\"],\"statements\":[[11,\"tr\"],[16,0,[34,0,[\"state\"]]],[4,[38,3],[[32,0],\"mouseEnter\",[35,0]],[[\"on\"],[\"mouseEnter\"]]],[4,[38,3],[[32,0],\"mouseLeave\",[35,0]],[[\"on\"],[\"mouseLeave\"]]],[4,[38,3],[[32,0],[30,[36,3],[[32,0],[35,4],[35,0]],null]],[[\"on\"],[\"doubleClick\"]]],[12],[2,\"\\n\"],[6,[37,7],[[30,[36,6],[[30,[36,6],[[35,5]],null]],null]],null,[[\"default\"],[{\"statements\":[[6,[37,2],[[32,1,[\"isVisible\"]]],null,[[\"default\"],[{\"statements\":[[2,\"      \"],[10,\"td\"],[15,0,[32,1,[\"className\"]]],[12],[2,\"\\n\"],[6,[37,2],[[32,1,[\"template\"]]],null,[[\"default\",\"else\"],[{\"statements\":[[2,\"          \"],[19,[32,1,[\"template\"]],[1]],[2,\"\\n\"]],\"parameters\":[]},{\"statements\":[[2,\"          \"],[1,[30,[36,1],[[35,0],[32,1,[\"propertyName\"]]],null]],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"      \"],[13],[2,\"\\n\"]],\"parameters\":[]}]]]],\"parameters\":[1]}]]],[13],[2,\"\\n\"]],\"hasEval\":true,\"upvars\":[\"record\",\"get\",\"if\",\"action\",\"showForm\",\"processedColumns\",\"-track-array\",\"each\"]}",
     "meta": {
       "moduleName": "mdeditor/templates/components/leaflet-table/row.hbs"
-    }
-  });
-
-  _exports.default = _default;
-});
-;define("mdeditor/templates/components/object-bin", ["exports"], function (_exports) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-
-  var _default = Ember.HTMLBars.template({
-    "id": "OKJdWir/",
-    "block": "{\"symbols\":[\"obj\",\"&default\"],\"statements\":[[6,[37,6],null,[[\"action\"],[[30,[36,5],[[32,0],\"handleObjectDropped\"],null]]],[[\"default\"],[{\"statements\":[[2,\"  \"],[10,\"div\"],[14,0,\"object-bin-title\"],[12],[1,[34,1]],[13],[2,\"\\n  \"],[10,\"br\"],[12],[13],[2,\"\\n\"],[6,[37,4],[[30,[36,3],[[30,[36,3],[[35,2]],null]],null]],null,[[\"default\"],[{\"statements\":[[6,[37,0],null,[[\"action\",\"content\"],[\"handleObjectDragged\",[32,1]]],[[\"default\"],[{\"statements\":[[2,\"      \"],[18,2,[[32,1]]],[2,\"\\n\"]],\"parameters\":[]}]]]],\"parameters\":[1]}]]]],\"parameters\":[]}]]]],\"hasEval\":false,\"upvars\":[\"draggable-object\",\"name\",\"model\",\"-track-array\",\"each\",\"action\",\"draggable-object-target\"]}",
-    "meta": {
-      "moduleName": "mdeditor/templates/components/object-bin.hbs"
     }
   });
 
@@ -31722,7 +33109,7 @@
     }
   });
 });
-;define("mdeditor/themes/ember-semanticui", ["exports", "ember-models-table/themes/ember-semanticui"], function (_exports, _emberSemanticui) {
+;define("mdeditor/themes/plain-html", ["exports", "ember-models-table/themes/plain-html"], function (_exports, _plainHtml) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -31731,20 +33118,7 @@
   Object.defineProperty(_exports, "default", {
     enumerable: true,
     get: function () {
-      return _emberSemanticui.default;
-    }
-  });
-});
-;define("mdeditor/themes/semanticui", ["exports", "ember-models-table/themes/ember-semanticui"], function (_exports, _emberSemanticui) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  Object.defineProperty(_exports, "default", {
-    enumerable: true,
-    get: function () {
-      return _emberSemanticui.default;
+      return _plainHtml.default;
     }
   });
 });
@@ -32156,6 +33530,41 @@
   };
 
   _exports.parseArgs = parseArgs;
+});
+;define("mdeditor/utils/md-object-size", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  let mdObjectSize = obj => {
+    let blob = new Blob([JSON.stringify(obj)]).size / 1000;
+    return blob;
+  };
+
+  var _default = mdObjectSize;
+  _exports.default = _default;
+});
+;define("mdeditor/utils/md-object", ["exports", "mdeditor/services/cleaner"], function (_exports, _cleaner) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.isEmpty = void 0;
+
+  const isEmpty = function (obj) {
+    if (obj !== null) {
+      let empty = obj ? Object.keys((0, _cleaner.clean)(obj, {
+        preserveArrays: false
+      })).length === 0 : true;
+      return empty;
+    }
+  };
+
+  _exports.isEmpty = isEmpty;
 });
 ;define("mdeditor/utils/parse-touch-data", ["exports", "ember-gesture-modifiers/utils/parse-touch-data"], function (_exports, _parseTouchData) {
   "use strict";
@@ -32581,7 +33990,7 @@ catch(err) {
 
 ;
           if (!runningTests) {
-            require("mdeditor/app")["default"].create({"repository":"https://github.com/adiwg/mdEditor","defaultProfileId":"org.adiwg.profile.full","name":"mdeditor","version":"0.11.0-dev+7816be47"});
+            require("mdeditor/app")["default"].create({"repository":"https://github.com/adiwg/mdEditor","defaultProfileId":"org.adiwg.profile.full","name":"mdeditor","version":"0.11.0-dev+f15b8932"});
           }
         
 //# sourceMappingURL=mdeditor.map

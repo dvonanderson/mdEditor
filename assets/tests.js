@@ -272,6 +272,39 @@ define("mdeditor/tests/acceptance/pods/record/new-test", ["qunit", "@ember/test-
     });
   });
 });
+define("mdeditor/tests/acceptance/pods/record/show/edit/spatial/raster-test", ["qunit", "@ember/test-helpers", "ember-qunit", "mdeditor/tests/helpers/create-record", "mdeditor/tests/helpers/create-contact", "mdeditor/tests/helpers/md-helpers"], function (_qunit, _testHelpers, _emberQunit, _createRecord, _createContact, _mdHelpers) {
+  "use strict";
+
+  (0, _qunit.module)('Acceptance | raster view', function (hooks) {
+    (0, _emberQunit.setupApplicationTest)(hooks);
+    hooks.afterEach(function () {
+      (0, _mdHelpers.lsClean)();
+    });
+    (0, _qunit.skip)('visiting /raster', async function (assert) {
+      let json = (0, _createRecord.createRecord)(1)[0];
+      let contact = (0, _createContact.default)(2);
+      json.json.contact = contact;
+      let coverageDescription = (0, _createRecord.createCoverageDescription)(1);
+      json.json.metadata.resourceInfo.coverageDescription = coverageDescription;
+      let store = this.owner.lookup('service:store');
+      let record = store.createRecord('record', json);
+      record.save();
+      await (0, _testHelpers.visit)(`/record/${record.id}/edit`);
+      assert.equal((0, _testHelpers.currentURL)(), `/record/${record.id}/edit`);
+    }); // need to figure out why the Promise is being rejected when asserting the currentURL
+    // is equal to asyny helper
+    // skip('visiting raster page', async function(assert) {
+    //     let store = this.owner.lookup('service:store');
+    //     let json = createRecord(1)[0];
+    //     let coverageDescription = createCoverageDescription(1);
+    //     json.json.metadata.resourceInfo.coverageDescription = coverageDescription;
+    //     let record = store.createRecord('record', json);
+    //     record.save();
+    //   await visit(`/record/${record.id}/edit`);
+    //   assert.equal(currentURL(), `/record/${record.id}/edit`);
+    // });
+  });
+});
 define("mdeditor/tests/helpers/create-citation", ["exports"], function (_exports) {
   "use strict";
 
@@ -1287,6 +1320,55 @@ define("mdeditor/tests/helpers/flash-message", ["ember-cli-flash/flash/object"],
 
   });
 });
+define("mdeditor/tests/helpers/md-helpers", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.parseInput = parseInput;
+  _exports.formatContent = formatContent;
+  _exports.lsClean = _exports.nestedValues = void 0;
+
+  /**
+   * The parseInput helper will query for any input, textarea, or instance of
+   * md-select and return the value(s) as a delimited string. Set delimiter to
+   * `false` to return an array of values.
+   *
+   * @method parseInput
+   * @param {Element} e The element to parse
+   * @param {String|false} delimiter The delimiter to use, Defaults to `|`. Set to `false` to
+   * return `[values]`
+   * @static
+   * @return {String|Array}
+   */
+  function parseInput(e, delimiter = '|') {
+    // TODO: Support md-toggle
+    let text = Array.from(e.querySelectorAll('input,textarea,.md-select')).map(i => (i.type === 'checkbox' ? i.checked.toString() : false) || i.value || Array.from(i.querySelectorAll('.select-value')).map(n => n.textContent).join('|'));
+    return delimiter ? text.join(delimiter) : text;
+  }
+
+  function formatContent(t) {
+    return t.textContent.replace(/[\s\n]+/g, '|').trim();
+  }
+
+  let nestedValues = obj => typeof obj === 'object' ? Object.values(obj).map(nestedValues).flat() : [obj];
+
+  _exports.nestedValues = nestedValues;
+
+  let lsClean = () => {
+    let ls = window.localStorage;
+    Object.keys(ls).forEach(k => {
+      // eslint-disable-next-line no-useless-escape
+      if (k.match(/^test\:/)) {
+        ls.removeItem(k);
+        console.info('Removed record:' + k);
+      }
+    });
+  };
+
+  _exports.lsClean = lsClean;
+});
 define("mdeditor/tests/helpers/mock-event", ["exports", "ember-drag-drop/test-support/helpers/mock-event"], function (_exports, _mockEvent) {
   "use strict";
 
@@ -2170,6 +2252,27 @@ define("mdeditor/tests/integration/components/tree-view-test", ["@ember/test-hel
     });
   });
 });
+define("mdeditor/tests/integration/helpers/object-is-empty-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
+  "use strict";
+
+  (0, _qunit.module)('Integration | Helper | object-is-empty', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks); // Replace this with your real tests.
+
+    (0, _qunit.test)('it renders', async function (assert) {
+      this.set('inputValue', '1234');
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object-is-empty inputValue}}
+      */
+      {
+        "id": "5+vGzmTL",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],[[35,0]],null]]],\"hasEval\":false,\"upvars\":[\"inputValue\",\"object-is-empty\"]}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), "false");
+    });
+  });
+});
 define("mdeditor/tests/integration/helpers/present-test", ["@ember/test-helpers", "qunit", "ember-qunit"], function (_testHelpers, _qunit, _emberQunit) {
   "use strict";
 
@@ -2958,6 +3061,42 @@ define("mdeditor/tests/integration/pods/components/control/md-indicator/related/
         contentString: `Related Indicator Test\nThe attribute attribute1 has an associated domain: codeName0.\nGo to Domain`
       });
       await (0, _testHelpers.click)('.btn');
+    });
+  });
+});
+define("mdeditor/tests/integration/pods/components/control/md-infotip/component-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
+  "use strict";
+
+  (0, _qunit.module)('Integration | Component | control/md-infotip', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      // Set any properties with this.set('myProperty', 'value');
+      // Handle any actions with this.set('myAction', function(val) { ... });
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{control/md-infotip}}
+      */
+      {
+        "id": "QCbqJNL/",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"control/md-infotip\"]}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), ''); // Template block usage:
+
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        
+            {{#control/md-infotip}}
+              template block text
+            {{/control/md-infotip}}
+          
+      */
+      {
+        "id": "d5B2VaS5",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-infotip\"]}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), 'template block text');
     });
   });
 });
@@ -4875,39 +5014,41 @@ define("mdeditor/tests/integration/pods/components/layout/md-footer/component-te
   (0, _qunit.module)('Integration | Component | layout/md footer', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', async function (assert) {
-      // Set any properties with this.set('myProperty', 'value');
-      // Handle any actions with this.on('myAction', function(val) { ... });
       this.set('settings', {
         data: {
           autoSave: false
         }
       });
+      this.set('percent', 9.02);
+      this.set('isOverThreshold', true);
       await (0, _testHelpers.render)(Ember.HTMLBars.template(
       /*
-        {{layout/md-footer settings=settings}}
+        {{layout/md-footer settings=settings percent=percent isOverThreshold=isOverThreshold}}
       */
       {
-        "id": "iISoCLBo",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"settings\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"settings\",\"layout/md-footer\"]}",
+        "id": "qxBD6xd3",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,3],null,[[\"settings\",\"percent\",\"isOverThreshold\"],[[35,2],[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"isOverThreshold\",\"percent\",\"settings\",\"layout/md-footer\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('.md-footer').textContent.replace(/[ \n]+/g, '|').trim(), '|Report|Issue|AutoSave:|Off|');
-      this.set('settings.data.autoSave', true); // Template block usage:
+      assert.equal((0, _testHelpers.find)('.md-footer').textContent.replace(/[ \n]+/g, '|').trim(), '|Report|Issue|:|9.02|%|AutoSave:|Off|');
+      this.set('settings.data.autoSave', true);
+      this.set('percent', 10.54);
+      this.set('isOverThreshold', false); // Template block usage:
 
       await (0, _testHelpers.render)(Ember.HTMLBars.template(
       /*
         
-            {{#layout/md-footer settings=settings}}
+            {{#layout/md-footer settings=settings percent=percent isOverThreshold=isOverThreshold}}
               template block text
             {{/layout/md-footer}}
           
       */
       {
-        "id": "fGeKIKUd",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"settings\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"settings\",\"layout/md-footer\"]}",
+        "id": "znj7EWFL",
+        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,3],null,[[\"settings\",\"percent\",\"isOverThreshold\"],[[35,2],[35,1],[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"isOverThreshold\",\"percent\",\"settings\",\"layout/md-footer\"]}",
         "meta": {}
       }));
-      assert.equal((0, _testHelpers.find)('.md-footer').textContent.replace(/[ \n]+/g, '|').trim(), '|Report|Issue|AutoSave:|On|template|block|text|');
+      assert.equal((0, _testHelpers.find)('.md-footer').textContent.replace(/[ \n]+/g, '|').trim(), '|Report|Issue|:|10.54|%|AutoSave:|On|template|block|text|');
     });
   });
 });
@@ -8494,6 +8635,172 @@ define("mdeditor/tests/integration/pods/components/object/md-profile/preview/com
     });
   });
 });
+define("mdeditor/tests/integration/pods/components/object/md-raster/attrgroup/attribute/component-test", ["qunit", "ember-qunit", "@ember/test-helpers", "mdeditor/tests/helpers/create-record", "mdeditor/tests/helpers/md-helpers"], function (_qunit, _emberQunit, _testHelpers, _createRecord, _mdHelpers) {
+  "use strict";
+
+  (0, _qunit.module)('Integration | Component | object/md-raster/attrgroup/attribute', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    /*
+      The searchable element in the codelist is causing extra pipe characters in the test, we need to find a solution to fix.
+    */
+
+    (0, _qunit.todo)('it renders', async function (assert) {
+      let attribute = (0, _createRecord.createAttribute)(1);
+      this.set('model', attribute[0]);
+      let input = (0, _mdHelpers.nestedValues)(attribute[0]).join('|');
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-raster/attrgroup/attribute profilePath="foobar" model=model}}
+      */
+      {
+        "id": "J8V4PDEH",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-raster/attrgroup/attribute\"]}",
+        "meta": {}
+      }));
+      assert.equal((0, _mdHelpers.formatContent)(this.element).trim(), "|Attribute|Description|Attribute|Identifier|1|Add|OK|#|Identifier|Namespace|0|identifier0|namespace0|Edit|Delete|Band|Boundary|Definition|×|bandBoundaryDefinition0|Transfer|Function|Type|×|transferFunctionType0|Transmitted|Polarization|×|transmittedPolarization0|Detected|Polarization|×|detectedPolarization0|Sequence|Identifier|Sequence|Identifier|Type|Min|Value|Max|Value|Units|Scale|Factor|Offset|Mean|Value|Number|Of|Values|Standard|Deviation|Bits|Per|Value|Bound|Min|Bound|Max|Bound|Units|Peak|Response|Tone|Gradations|Nominal|Spatial|Resolution|");
+      assert.equal((0, _mdHelpers.parseInput)(this.element), input);
+    });
+  });
+});
+define("mdeditor/tests/integration/pods/components/object/md-raster/attrgroup/component-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
+  "use strict";
+
+  (0, _qunit.module)('Integration | Component | object/md-raster/attrgroup', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-raster/attrgroup }}
+      */
+      {
+        "id": "dzhFU7SO",
+        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"object/md-raster/attrgroup\"]}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|No|Item|found.|Add|Item|', 'attrgroup component renders');
+    });
+  });
+});
+define("mdeditor/tests/integration/pods/components/object/md-raster/component-test", ["qunit", "ember-qunit", "@ember/test-helpers", "mdeditor/tests/helpers/md-helpers"], function (_qunit, _emberQunit, _testHelpers, _mdHelpers) {
+  "use strict";
+
+  (0, _qunit.module)('Integration | Component | object/md-raster', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    /*
+      The searchable element in the codelist is causing extra pipe characters in the test, we need to find a solution to fix.
+    */
+
+    (0, _emberQunit.todo)('it renders', async function (assert) {
+      this.model = {
+        "coverageName": "coverageName",
+        "coverageDescription": "coverageDescription",
+        "attributeGroup": [{
+          "attributeContentType": ["attributeContentType1", "attributeContentType2"],
+          "attribute": [{
+            "attributeDescription": "attributeDescription"
+          }]
+        }],
+        "processingLevelCode": {
+          "identifier": "identifier1",
+          "namespace": "namespace1"
+        },
+        "imageDescription": {
+          "imageQualityCode": {
+            "identifier": "identifier2",
+            "namespace": "namespace2"
+          },
+          "illuminationElevationAngle": 45,
+          "illuminationAzimuthAngle": 90,
+          "imagingCondition": "imageCondition",
+          "cloudCoverPercent": 88,
+          "compressionQuantity": 23,
+          "triangulationIndicator": "true",
+          "radiometricCalibrationAvailable": "true",
+          "cameraCalibrationAvailable": "false",
+          "filmDistortionAvailable": "false",
+          "lensDistortionAvailable": "true"
+        }
+      };
+
+      let nestedValues = obj => typeof obj === 'object' ? Object.values(obj).map(nestedValues).flat() : [obj];
+
+      let input = nestedValues(this.model).join('|');
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-raster profilePath="foobar" model=model}}
+      */
+      {
+        "id": "hxB/l/bZ",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-raster\"]}",
+        "meta": {}
+      }));
+      assert.equal((0, _mdHelpers.formatContent)(this.element).trim(), '|Name|Description|Attribute|Groups|1|Add|Attribute|Group|#0|Attribute|Content|Type|×|attributeContentType1|×|attributeContentType2|Attribute|1|Add|OK|#|Attribute|Description|0|More...|Delete|Processing|Level|Code|Identifier|Namespace|namespace1|×|More|Image|Description|Image|Quality|Code|Identifier|Namespace|namespace2|×|More|Illumination|Elevation|Angle|Illumination|Azimuth|Angle|Imaging|Condition|Cloud|Cover|Percent|Compression|Quantity|Triangulation|Indicator|Radiometric|Calibration|Available|Camera|Calibration|Available|Film|Distortion|Available|Lens|Distortion|Available|');
+      assert.equal((0, _mdHelpers.parseInput)(this.element), input, 'input renders');
+    });
+  });
+});
+define("mdeditor/tests/integration/pods/components/object/md-raster/image-desc/component-test", ["qunit", "ember-qunit", "@ember/test-helpers", "mdeditor/tests/helpers/md-helpers"], function (_qunit, _emberQunit, _testHelpers, _mdHelpers) {
+  "use strict";
+
+  (0, _qunit.module)('Integration | Component | object/md-raster/image-desc', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      this.model = {
+        "imageQualityCode": {
+          "identifier": "identifier",
+          "namespace": "namespace"
+        },
+        "illuminationElevationAngle": 45,
+        "illuminationAzimuthAngle": 90,
+        "imagingCondition": "imageCondition",
+        "cloudCoverPercent": 88,
+        "compressionQuantity": 23,
+        "triangulationIndicator": "true",
+        "radiometricCalibrationAvailable": "true",
+        "cameraCalibrationAvailable": "false",
+        "filmDistortionAvailable": "false",
+        "lensDistortionAvailable": "true"
+      };
+      let input = (0, _mdHelpers.nestedValues)(this.model).join('|');
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-raster/image-desc profilePath="foobar" model=model}}
+      */
+      {
+        "id": "qSywwJ3V",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-raster/image-desc\"]}",
+        "meta": {}
+      }));
+      assert.equal((0, _mdHelpers.formatContent)(this.element).trim(), '|Image|Quality|Code|Identifier|Namespace|namespace|×|More|Illumination|Elevation|Angle|Illumination|Azimuth|Angle|Imaging|Condition|Cloud|Cover|Percent|Compression|Quantity|Triangulation|Indicator|Radiometric|Calibration|Available|Camera|Calibration|Available|Film|Distortion|Available|Lens|Distortion|Available|', 'md-raster/image-desc component renders');
+      assert.equal((0, _mdHelpers.parseInput)(this.element), input, 'md-raster/image-desc inputs render');
+    });
+  });
+});
+define("mdeditor/tests/integration/pods/components/object/md-raster/preview/component-test", ["qunit", "ember-qunit", "@ember/test-helpers", "mdeditor/tests/helpers/md-helpers"], function (_qunit, _emberQunit, _testHelpers, _mdHelpers) {
+  "use strict";
+
+  (0, _qunit.module)('Integration | Component | object/md-raster/preview', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      this.model = {
+        "coverageName": "coverageName",
+        "coverageDescription": "coverageDescription"
+      };
+      let input = Object.values(this.model).join('|');
+      await (0, _testHelpers.render)(Ember.HTMLBars.template(
+      /*
+        {{object/md-raster/preview profilePath="foobar" model=model}}
+      */
+      {
+        "id": "/zmRoR3w",
+        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-raster/preview\"]}",
+        "meta": {}
+      }));
+      assert.equal((0, _mdHelpers.formatContent)(this.element).trim(), '|Raster|Name|Raster|Description|', 'md-raster-preview component renders');
+      assert.equal((0, _mdHelpers.parseInput)(this.element), input, 'md-raster-preview inputs renders');
+    });
+  });
+});
 define("mdeditor/tests/integration/pods/components/object/md-repository-array/component-test", ["@ember/test-helpers", "qunit", "ember-qunit"], function (_testHelpers, _qunit, _emberQunit) {
   "use strict";
 
@@ -11176,6 +11483,28 @@ define("mdeditor/tests/unit/pods/record/show/edit/spatial/index/route-test", ["q
     });
   });
 });
+define("mdeditor/tests/unit/pods/record/show/edit/spatial/raster/attribute/route-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
+  "use strict";
+
+  (0, _qunit.module)('Unit | Route | record/show/edit/spatial/raster/attribute', function (hooks) {
+    (0, _emberQunit.setupTest)(hooks);
+    (0, _qunit.test)('it exists', function (assert) {
+      let route = this.owner.lookup('route:record/show/edit/spatial/raster/attribute');
+      assert.ok(route);
+    });
+  });
+});
+define("mdeditor/tests/unit/pods/record/show/edit/spatial/raster/route-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
+  "use strict";
+
+  (0, _qunit.module)('Unit | Route | record/show/edit/spatial/raster', function (hooks) {
+    (0, _emberQunit.setupTest)(hooks);
+    (0, _qunit.test)('it exists', function (assert) {
+      let route = this.owner.lookup('route:record/show/edit/spatial/raster');
+      assert.ok(route);
+    });
+  });
+});
 define("mdeditor/tests/unit/pods/record/show/edit/spatial/route-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
   "use strict";
 
@@ -11650,6 +11979,17 @@ define("mdeditor/tests/unit/services/keyword-test", ["qunit", "ember-qunit"], fu
     });
   });
 });
+define("mdeditor/tests/unit/services/local-storage-monitor-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
+  "use strict";
+
+  (0, _qunit.module)('Unit | Service | localStorageMonitor', function (hooks) {
+    (0, _emberQunit.setupTest)(hooks);
+    (0, _qunit.test)('it exists', function (assert) {
+      const localStorageMonitor = this.owner.lookup('service:local-storage-monitor');
+      assert.ok(localStorageMonitor);
+    });
+  });
+});
 define("mdeditor/tests/unit/services/mdjson-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
   "use strict";
 
@@ -11792,6 +12132,44 @@ define("mdeditor/tests/unit/utils/md-interpolate-test", ["mdeditor/utils/md-inte
       assert.equal(result, 'The attribute <em>foo</em> has an associated domain: <strong>bar</strong>.');
       let result2 = (0, _mdInterpolate.parseArgs)(note);
       assert.deepEqual(result2, ['value1', 'value2']);
+    });
+  });
+});
+define("mdeditor/tests/unit/utils/md-object-size-test", ["mdeditor/utils/md-object-size", "qunit"], function (_mdObjectSize, _qunit) {
+  "use strict";
+
+  (0, _qunit.module)('Unit | Utility | md-object-size', function () {
+    // Replace this with your real tests.
+    (0, _qunit.test)('calculates size of object and percent', function (assert) {
+      //set up a before hook that mimics local storage and use it to calculate storage
+      assert.ok((0, _mdObjectSize.default)());
+    });
+  });
+});
+define("mdeditor/tests/unit/utils/md-object-test", ["mdeditor/utils/md-object", "qunit"], function (_mdObject, _qunit) {
+  "use strict";
+
+  (0, _qunit.module)('Unit | Utility | md-object', function () {
+    // Replace this with your real tests.
+    (0, _qunit.test)('it works', function (assert) {
+      assert.equal(_mdObject.default.isEmpty({}), true);
+      assert.equal(_mdObject.default.isEmpty({
+        foo: ''
+      }), true);
+      assert.equal(_mdObject.default.isEmpty({
+        foo: []
+      }), true);
+      assert.equal(_mdObject.default.isEmpty({
+        foo: 'bar'
+      }), false);
+      assert.equal(_mdObject.default.isEmpty({
+        foo: {
+          bar: {}
+        }
+      }), true);
+      assert.equal(_mdObject.default.isEmpty({
+        foo: false
+      }), false);
     });
   });
 });

@@ -9827,7 +9827,7 @@ label .x-toggle-form.x-toggle-btn::after {
 }
 
 /**
- * easymde v2.13.0
+ * easymde v2.15.0
  * Copyright Jeroen Akkerman
  * @link https://github.com/ionaru/easy-markdown-editor
  * @license MIT
@@ -10345,7 +10345,7 @@ span.CodeMirror-selectedtext {
   width: 50% !important;
 }
 
-.EasyMDEContainer .CodeMirror-sided.sided--no-fullscreen {
+.EasyMDEContainer.sided--no-fullscreen .CodeMirror-sided {
   border-right: none !important;
   border-bottom-right-radius: 0;
   position: relative;
@@ -10367,26 +10367,12 @@ span.CodeMirror-selectedtext {
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-  padding: 0 10px;
+  padding: 9px 10px;
   border-top: 1px solid #bbb;
   border-left: 1px solid #bbb;
   border-right: 1px solid #bbb;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-}
-
-.editor-toolbar:after, .editor-toolbar:before {
-  display: block;
-  content: " ";
-  height: 1px;
-}
-
-.editor-toolbar:before {
-  margin-bottom: 8px;
-}
-
-.editor-toolbar:after {
-  margin-top: 8px;
 }
 
 .editor-toolbar.fullscreen {
@@ -10436,7 +10422,7 @@ span.CodeMirror-selectedtext {
   padding: 0;
 }
 
-.editor-toolbar.sided--no-fullscreen {
+.EasyMDEContainer.sided--no-fullscreen .editor-toolbar {
   width: 100%;
 }
 
@@ -10517,7 +10503,7 @@ span.CodeMirror-selectedtext {
   text-align: right;
 }
 
-.editor-statusbar.sided--no-fullscreen {
+.EasyMDEContainer.sided--no-fullscreen .editor-statusbar {
   width: 100%;
 }
 
@@ -10569,7 +10555,7 @@ span.CodeMirror-selectedtext {
   display: block;
 }
 
-.editor-preview-active-side.sided--no-fullscreen {
+.EasyMDEContainer.sided--no-fullscreen .editor-preview-active-side {
   flex: 1 1 auto;
   height: auto;
   position: static;
@@ -10660,7 +10646,8 @@ span.CodeMirror-selectedtext {
 }
 
 .easymde-dropdown-content {
-  display: none;
+  display: block;
+  visibility: hidden;
   position: absolute;
   background-color: #f9f9f9;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
@@ -10670,10 +10657,10 @@ span.CodeMirror-selectedtext {
 }
 
 .easymde-dropdown:active .easymde-dropdown-content, .easymde-dropdown:focus .easymde-dropdown-content {
-  display: block;
+  visibility: visible;
 }
 
-span[data-img-src]::before {
+span[data-img-src]::after {
   content: "";
   background-image: var(--bg-image);
   display: block;

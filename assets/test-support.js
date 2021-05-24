@@ -14884,6 +14884,566 @@ define("ember-macro-helpers/test-support/index", ["exports", "ember-macro-helper
     }
   });
 });
+define("ember-models-table/test-support/index", ["exports", "ember-models-table/test-support/pages/models-table-bs", "ember-models-table/test-support/pages/models-table-ebs3", "ember-models-table/test-support/pages/models-table-bs4", "ember-models-table/test-support/pages/models-table-paper", "ember-models-table/test-support/pages/models-table-plain-html"], function (_exports, _modelsTableBs, _modelsTableEbs, _modelsTableBs2, _modelsTablePaper, _modelsTablePlainHtml) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "ModelsTableBs3", {
+    enumerable: true,
+    get: function () {
+      return _modelsTableBs.default;
+    }
+  });
+  Object.defineProperty(_exports, "ModelsTableEmberBs3", {
+    enumerable: true,
+    get: function () {
+      return _modelsTableEbs.default;
+    }
+  });
+  Object.defineProperty(_exports, "ModelsTableBs4", {
+    enumerable: true,
+    get: function () {
+      return _modelsTableBs2.default;
+    }
+  });
+  Object.defineProperty(_exports, "ModelsTablePaper", {
+    enumerable: true,
+    get: function () {
+      return _modelsTablePaper.default;
+    }
+  });
+  Object.defineProperty(_exports, "ModelsTablePlainHtml", {
+    enumerable: true,
+    get: function () {
+      return _modelsTablePlainHtml.default;
+    }
+  });
+});
+define("ember-models-table/test-support/pages/models-table-bs", ["exports", "ember-cli-page-object", "ember-cli-page-object/extend", "ember-cli-page-object/macros"], function (_exports, _emberCliPageObject, _extend, _macros) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.definition = void 0;
+  const definition = {
+    scope: '.models-table-wrapper',
+    tablesCount: (0, _emberCliPageObject.count)('table'),
+    summary: (0, _emberCliPageObject.text)('.table-summary'),
+    globalFilterLabel: (0, _emberCliPageObject.text)('.globalSearch label'),
+    globalFilterFocused: (0, _macros.getter)(function () {
+      return document.activeElement === (0, _extend.findOne)(document, '.globalSearch input');
+    }),
+    clickGlobalFilterLabel: (0, _emberCliPageObject.clickable)('.globalSearch label'),
+    doGlobalFilter: (0, _emberCliPageObject.fillable)('.filterString'),
+    clearGlobalFilter: (0, _emberCliPageObject.clickable)('.globalSearch .clearFilterIcon'),
+    clearGlobalFilterExists: (0, _emberCliPageObject.isPresent)('.globalSearch .clearFilterIcon'),
+    clearGlobalFilterDisabled: (0, _emberCliPageObject.attribute)('disabled', '.globalSearch .clearFilterIcon'),
+    tableFooterCount: (0, _emberCliPageObject.count)('.table-footer'),
+    clearAllFilters: (0, _emberCliPageObject.clickable)('.clearFilters'),
+    clearAllFiltersExists: (0, _emberCliPageObject.isPresent)('.clearFilters'),
+    clearAllFiltersDisabled: (0, _emberCliPageObject.attribute)('disabled', '.clearFilters'),
+    changePageSize: (0, _emberCliPageObject.fillable)('select.changePageSize'),
+    pageSize: (0, _emberCliPageObject.value)('select.changePageSize'),
+    expandAllRows: (0, _emberCliPageObject.clickable)('thead .expand-all-rows'),
+    collapseAllRows: (0, _emberCliPageObject.clickable)('thead .collapse-all-rows'),
+    toggleAllSelection: (0, _emberCliPageObject.clickable)('thead .toggle-all'),
+    expandRowButtons: (0, _emberCliPageObject.count)('button.expand-row'),
+    collapseRowButtons: (0, _emberCliPageObject.count)('button.collapse-row'),
+    filters: (0, _emberCliPageObject.collection)('table thead tr:eq(1) th', {
+      content: (0, _emberCliPageObject.text)(),
+      inputFilter: (0, _emberCliPageObject.fillable)('input'),
+      inputValue: (0, _emberCliPageObject.value)('input'),
+      inputPlaceholder: (0, _emberCliPageObject.attribute)('placeholder', 'input'),
+      inputFilterExists: (0, _emberCliPageObject.isPresent)('input'),
+      clearFilter: (0, _emberCliPageObject.clickable)('.clearFilterIcon'),
+      clearFilterExists: (0, _emberCliPageObject.isPresent)('.clearFilterIcon'),
+      clearFilterDisabled: (0, _emberCliPageObject.attribute)('disabled', '.clearFilterIcon'),
+      selectFilter: (0, _emberCliPageObject.fillable)('select'),
+      focusSelectFilter: (0, _emberCliPageObject.clickable)('select'),
+      selectFilterExists: (0, _emberCliPageObject.isPresent)('select'),
+      selectPlaceholder: (0, _emberCliPageObject.text)('select option:eq(0)'),
+      selectValue: (0, _emberCliPageObject.value)('select'),
+      selectOptions: (0, _emberCliPageObject.collection)('select option', {
+        text: (0, _emberCliPageObject.text)()
+      }),
+      colspan: (0, _emberCliPageObject.attribute)('colspan'),
+      label: (0, _emberCliPageObject.text)('label.emt-sr-only')
+    }),
+    sorting: (0, _emberCliPageObject.collection)('table thead tr:eq(0) th', {
+      title: (0, _emberCliPageObject.text)(),
+      hasSortMarker: (0, _emberCliPageObject.isPresent)('i'),
+      isSorted: (0, _emberCliPageObject.hasClass)('glyphicon', 'i'),
+      colspan: (0, _emberCliPageObject.attribute)('colspan')
+    }),
+    headers: (0, _emberCliPageObject.collection)('thead tr', {
+      cells: (0, _emberCliPageObject.collection)('th', {
+        text: (0, _emberCliPageObject.text)(),
+        colspan: (0, _emberCliPageObject.attribute)('colspan')
+      })
+    }),
+    footer: {
+      scope: 'tfoot',
+      cells: (0, _emberCliPageObject.collection)('tr td', {
+        isComponent: (0, _emberCliPageObject.hasClass)('ember-view')
+      })
+    },
+    navigation: {
+      scope: '.table-nav',
+      text: (0, _emberCliPageObject.text)(''),
+      selectPageNumberExists: (0, _emberCliPageObject.isPresent)('select'),
+      selectPageNumber: (0, _emberCliPageObject.fillable)('select'),
+      selectPageNumberDisabled: (0, _emberCliPageObject.property)('disabled', 'select'),
+      selectedPageNumber: (0, _emberCliPageObject.value)('select'),
+      goToLastPage: (0, _emberCliPageObject.clickable)('button:eq(3)'),
+      goToLastPageDisabled: (0, _emberCliPageObject.hasClass)('disabled', 'button:eq(3)'),
+      goToNextPage: (0, _emberCliPageObject.clickable)('button:eq(2)'),
+      goToNextPageDisabled: (0, _emberCliPageObject.hasClass)('disabled', 'button:eq(2)'),
+      goToPrevPage: (0, _emberCliPageObject.clickable)('button:eq(1)'),
+      goToPrevPageDisabled: (0, _emberCliPageObject.hasClass)('disabled', 'button:eq(1)'),
+      goToFirstPage: (0, _emberCliPageObject.clickable)('button:eq(0)'),
+      goToFirstPageDisabled: (0, _emberCliPageObject.hasClass)('disabled', 'button:eq(0)'),
+      navigationButtons: (0, _emberCliPageObject.collection)('button', {
+        text: (0, _emberCliPageObject.text)()
+      }),
+      btns: (0, _emberCliPageObject.collection)('button', {
+        icon: (0, _emberCliPageObject.attribute)('class', 'i')
+      }),
+      disabledNavigationLinksCount: (0, _emberCliPageObject.count)('button.disabled')
+    },
+    numericNavigation: (0, _emberCliPageObject.collection)('.table-nav button', {
+      label: (0, _emberCliPageObject.text)()
+    }),
+    allRows: (0, _emberCliPageObject.collection)('tbody tr:not(.expand-row)', {
+      isGroupingRow: (0, _macros.getter)(function () {
+        return !!this.cells.toArray().find(c => c.isGroupingRowCell);
+      }),
+      cells: (0, _emberCliPageObject.collection)('td', {
+        isGroupingRowCell: (0, _emberCliPageObject.hasClass)('grouping-cell')
+      })
+    }),
+    rows: (0, _emberCliPageObject.collection)('tbody tr:not(.expand-row):not(.grouping-row)', {
+      expand: (0, _emberCliPageObject.clickable)('button.expand-row'),
+      collapse: (0, _emberCliPageObject.clickable)('button.collapse-row'),
+      expanded: (0, _emberCliPageObject.hasClass)('expanded-row'),
+      collapsed: (0, _emberCliPageObject.notHasClass)('expanded-row'),
+      selected: (0, _emberCliPageObject.hasClass)('selected-row'),
+      dbClick: (0, _emberCliPageObject.triggerable)('dblclick'),
+      hover: (0, _emberCliPageObject.triggerable)('mouseenter'),
+      out: (0, _emberCliPageObject.triggerable)('mouseleave'),
+
+      getSelf() {
+        return (0, _extend.findOne)(document, this.scope);
+      },
+
+      getCellColspans() {
+        return this.cells.mapBy('colspan');
+      },
+
+      cells: (0, _emberCliPageObject.collection)('td', {
+        content: (0, _emberCliPageObject.text)(),
+        colspan: (0, _emberCliPageObject.attribute)('colspan'),
+        groupSummaryVisible: (0, _emberCliPageObject.text)('.visible'),
+        groupSummaryExpanded: (0, _emberCliPageObject.text)('.expanded'),
+        groupSummarySelected: (0, _emberCliPageObject.text)('.selected')
+      })
+    }),
+    rowExpands: (0, _emberCliPageObject.collection)('tbody tr.expand-row', {
+      selected: (0, _emberCliPageObject.hasClass)('selected-expand'),
+      id: (0, _emberCliPageObject.text)('.id')
+    }),
+    groupByFieldExists: (0, _emberCliPageObject.isPresent)('.change-group-by-field'),
+    focusGroupByField: (0, _emberCliPageObject.clickable)('.change-group-by-field'),
+    changeGroupByField: (0, _emberCliPageObject.fillable)('.change-group-by-field'),
+    groupByFieldOptions: (0, _emberCliPageObject.collection)('.change-group-by-field option', {
+      label: (0, _emberCliPageObject.text)()
+    }),
+    sortByGroupedBy: (0, _emberCliPageObject.clickable)('.data-group-by-wrapper button'),
+
+    /**
+     * Use only when group-value is shown in the separated row!
+     */
+    groupingRowsByRow: (0, _emberCliPageObject.collection)('tbody tr.grouping-row', {
+      cell: {
+        scope: 'td:eq(0)',
+        content: (0, _emberCliPageObject.text)(),
+        colspan: (0, _emberCliPageObject.attribute)('colspan'),
+        toggleGroup: (0, _emberCliPageObject.clickable)('a'),
+        toggleSelection: (0, _emberCliPageObject.clickable)('.toggle-selection-group'),
+        toggleExpands: (0, _emberCliPageObject.clickable)('.toggle-expands-group'),
+        toggleText: (0, _emberCliPageObject.text)('a'),
+        expandedCountText: (0, _emberCliPageObject.text)('.expanded-count'),
+        selectedCountText: (0, _emberCliPageObject.text)('.selected-count')
+      }
+    }),
+
+    getIndexOfFirstRowGroupedByRow(groupIndex) {
+      let index = 0;
+      let groupedCount = 0;
+      this.allRows.forEach((row, i) => {
+        if (row.isGroupingRow) {
+          groupedCount++;
+        }
+
+        if (groupedCount === groupIndex) {
+          index = i + 1;
+        }
+      });
+      return index;
+    },
+
+    /*
+     * Use only when group-value is shown in the separated row!
+     */
+    getRowsIndexesFromGroupRow(groupIndex) {
+      const first = this.getIndexOfFirstRowGroupedByRow(groupIndex) - groupIndex;
+      let last = 0;
+
+      if (this.groupingRowsByRow.length > groupIndex + 1) {
+        last = this.getIndexOfFirstRowGroupedByRow(groupIndex + 1) - groupIndex - 1;
+      } else {
+        last = this.rows.length;
+      }
+
+      return {
+        first: parseInt(first, 10),
+        last: parseInt(last, 10)
+      };
+    },
+
+    /*
+     * Use only when group-value is shown in the separated row!
+     */
+    getRowsFromGroupRow(groupIndex) {
+      const {
+        first,
+        last
+      } = this.getRowsIndexesFromGroupRow(groupIndex);
+      return this.rows.toArray().slice(first, last);
+    },
+
+    /**
+     * Use only when group-value is shown in the separated column!
+     */
+    groupingRowsByColumn: (0, _emberCliPageObject.collection)('tbody td.grouping-cell', {
+      content: (0, _emberCliPageObject.text)(),
+      rowspan: (0, _emberCliPageObject.attribute)('rowspan'),
+      toggleGroup: (0, _emberCliPageObject.clickable)('a'),
+      toggleSelection: (0, _emberCliPageObject.clickable)('.toggle-selection-group'),
+      toggleExpands: (0, _emberCliPageObject.clickable)('.toggle-expands-group'),
+      toggleText: (0, _emberCliPageObject.text)('a'),
+      expandedCountText: (0, _emberCliPageObject.text)('.expanded-count'),
+      selectedCountText: (0, _emberCliPageObject.text)('.selected-count')
+    }),
+
+    getIndexOfFirstRowGroupedByColumn(groupIndex) {
+      let index = 0;
+      let groupedCount = 0;
+      this.allRows.forEach((row, i) => {
+        if (row.isGroupingRow) {
+          groupedCount++;
+        }
+
+        if (groupedCount === groupIndex) {
+          index = i + 1;
+        }
+      });
+      return index;
+    },
+
+    /*
+     * Use only when group-value is shown in the separated column!
+     */
+    getRowsIndexesFromGroupColumn(groupIndex) {
+      const first = this.getIndexOfFirstRowGroupedByColumn(groupIndex);
+      let last = 0;
+
+      if (this.groupingRowsByColumn.length > groupIndex + 1) {
+        last = this.getIndexOfFirstRowGroupedByColumn(groupIndex + 1) - 1;
+      } else {
+        last = this.rows.length - 1;
+      }
+
+      return {
+        first: parseInt(first, 10),
+        last: parseInt(last, 10)
+      };
+    },
+
+    /*
+     * Use only when group-value is shown in the separated column!
+     */
+    getRowsFromGroupColumn(groupIndex) {
+      const {
+        first,
+        last
+      } = this.getRowsIndexesFromGroupColumn(groupIndex);
+      return this.rows.toArray().slice(first, last);
+    },
+
+    getCellsCount() {
+      return this.rows.map(row => row.cells.length).reduce((a, b) => a + b, 0);
+    },
+
+    getColumnCells(columnIndex, startRow = 0, endRow = Number.POSITIVE_INFINITY) {
+      return this.rows.toArray().slice(startRow, endRow).map(row => {
+        const index = columnIndex < 0 ? row.cells.length + columnIndex : columnIndex;
+        return row.cells.objectAt(index).content;
+      });
+    },
+
+    columnsDropdownLabel: (0, _emberCliPageObject.text)('.columns-dropdown .btn'),
+    toggleColumnDropDown: (0, _emberCliPageObject.clickable)('.columns-dropdown .dropdown-toggle'),
+    columnsDropdownListExists: (0, _emberCliPageObject.isPresent)('.columns-dropdown .dropdown-menu'),
+    columnsDropDown: (0, _emberCliPageObject.collection)('.columns-dropdown li a', {
+      toggleLabel: (0, _emberCliPageObject.text)('button'),
+      label: (0, _emberCliPageObject.text)()
+    }),
+
+    async openColumnsDropDown() {
+      if (!this.columnsDropdownListExists) {
+        return await this.toggleColumnDropDown();
+      }
+    },
+
+    firstColumnIconSelector: (0, _macros.getter)(function () {
+      return '.columns-dropdown li:nth-child(5) a i';
+    }),
+    secondColumnIconSelector: (0, _macros.getter)(function () {
+      return '.columns-dropdown li:nth-child(6) a i';
+    }),
+    checkedIconClass: (0, _macros.getter)(function () {
+      return 'glyphicon-check';
+    }),
+    uncheckedIconClass: (0, _macros.getter)(function () {
+      return 'glyphicon-unchecked';
+    })
+  };
+  _exports.definition = definition;
+
+  var _default = (0, _emberCliPageObject.create)(definition);
+
+  _exports.default = _default;
+});
+define("ember-models-table/test-support/pages/models-table-bs4", ["exports", "ember-cli-page-object", "ember-cli-page-object/macros", "ember-models-table/test-support/pages/models-table-bs"], function (_exports, _emberCliPageObject, _macros, _modelsTableBs) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.definition = void 0;
+  const definition = Object.assign({}, _modelsTableBs.definition, {
+    globalFilterLabel: (0, _emberCliPageObject.text)('.globalSearch .input-group-text'),
+    sorting: (0, _emberCliPageObject.collection)('table thead tr:eq(0) th', {
+      title: (0, _emberCliPageObject.text)(),
+      hasSortMarker: (0, _emberCliPageObject.isPresent)('i'),
+      isSorted: (0, _emberCliPageObject.hasClass)('fa', 'i'),
+      colspan: (0, _emberCliPageObject.attribute)('colspan')
+    }),
+    columnsDropDown: (0, _emberCliPageObject.collection)('.columns-dropdown a', {
+      toggleLabel: (0, _emberCliPageObject.text)('button'),
+      label: (0, _emberCliPageObject.text)()
+    }),
+    firstColumnIconSelector: (0, _macros.getter)(function () {
+      return '.columns-dropdown a:nth-child(5) i';
+    }),
+    secondColumnIconSelector: (0, _macros.getter)(function () {
+      return '.columns-dropdown a:nth-child(6) i';
+    }),
+    checkedIconClass: (0, _macros.getter)(function () {
+      return 'fa fa-check-square-o';
+    }),
+    uncheckedIconClass: (0, _macros.getter)(function () {
+      return 'fa fa-square-o';
+    })
+  });
+  _exports.definition = definition;
+
+  var _default = (0, _emberCliPageObject.create)(definition);
+
+  _exports.default = _default;
+});
+define("ember-models-table/test-support/pages/models-table-ebs3", ["exports", "ember-cli-page-object", "ember-models-table/test-support/pages/models-table-bs"], function (_exports, _emberCliPageObject, _modelsTableBs) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.definition = void 0;
+  const definition = Object.assign({}, _modelsTableBs.definition, {
+    globalFilterLabel: (0, _emberCliPageObject.text)('.globalSearch .input-group-addon')
+  });
+  _exports.definition = definition;
+
+  var _default = (0, _emberCliPageObject.create)(definition);
+
+  _exports.default = _default;
+});
+define("ember-models-table/test-support/pages/models-table-paper", ["exports", "ember-cli-page-object", "ember-cli-page-object/extend", "ember-cli-page-object/macros", "ember-models-table/test-support/pages/models-table-bs", "ember-power-select/test-support/helpers"], function (_exports, _emberCliPageObject, _extend, _macros, _modelsTableBs, _helpers) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.definition = void 0;
+
+  const getValueToUse = (value, cnt, opts) => opts && 'valueToUse' in opts ? opts.valueToUse : value;
+
+  function textWithoutIcon() {
+    const icon = (0, _extend.findMany)(document, `${this.scope} md-icon`)[0];
+    const textToReplace = icon ? icon.innerText : '';
+    return this.text.replace(textToReplace, '').trim();
+  }
+
+  const definition = Object.assign({}, _modelsTableBs.definition, {
+    doGlobalFilter: (0, _emberCliPageObject.fillable)('.filterString input'),
+    filters: (0, _emberCliPageObject.collection)('table thead tr:eq(1) th', {
+      content: (0, _emberCliPageObject.text)(),
+      inputFilter: (0, _emberCliPageObject.fillable)('input'),
+      inputValue: (0, _emberCliPageObject.value)('input'),
+      inputPlaceholder: (0, _emberCliPageObject.attribute)('placeholder', 'input'),
+      inputFilterExists: (0, _emberCliPageObject.isPresent)('input'),
+      clearFilter: (0, _emberCliPageObject.clickable)('.clearFilterIcon'),
+      clearFilterExists: (0, _emberCliPageObject.isPresent)('.clearFilterIcon'),
+      clearFilterDisabled: (0, _emberCliPageObject.attribute)('disabled', '.clearFilterIcon'),
+
+      async selectFilter() {
+        return await (0, _helpers.selectChoose)((0, _extend.findOne)(document, `${this.scope} md-select`), getValueToUse(...arguments));
+      },
+
+      selectFilterExists: (0, _emberCliPageObject.isPresent)('md-select'),
+      focusSelectFilter: (0, _emberCliPageObject.clickable)('md-select'),
+      selectPlaceholder: (0, _emberCliPageObject.text)('.ember-power-select-placeholder'),
+      selectValue: (0, _emberCliPageObject.text)('.ember-power-select-selected-item'),
+      selectValueExists: (0, _emberCliPageObject.isPresent)('.ember-power-select-selected-item'),
+      selectOptions: (0, _macros.getter)(function () {
+        return Ember.A((0, _extend.findMany)(document, 'md-option').map(node => ({
+          text: node.innerText.trim()
+        })));
+      }),
+      colspan: (0, _emberCliPageObject.attribute)('colspan'),
+      label: (0, _emberCliPageObject.text)('label.emt-sr-only')
+    }),
+    navigation: {
+      scope: '.table-nav',
+      text: (0, _emberCliPageObject.text)(''),
+      selectPageNumberExists: (0, _emberCliPageObject.isPresent)('md-select'),
+
+      async selectPageNumber(value) {
+        return await (0, _helpers.selectChoose)((0, _extend.findOne)(document, `${this.scope} md-select`), value);
+      },
+
+      selectPageNumberDisabled: (0, _emberCliPageObject.attribute)('aria-disabled', 'md-select'),
+      selectedPageNumber: (0, _emberCliPageObject.text)('md-select-value'),
+      goToLastPage: (0, _emberCliPageObject.clickable)('button:eq(3)'),
+      goToLastPageDisabled: (0, _emberCliPageObject.hasClass)('disabled', 'button:eq(3)'),
+      goToNextPage: (0, _emberCliPageObject.clickable)('button:eq(2)'),
+      goToNextPageDisabled: (0, _emberCliPageObject.hasClass)('disabled', 'button:eq(2)'),
+      goToPrevPage: (0, _emberCliPageObject.clickable)('button:eq(1)'),
+      goToPrevPageDisabled: (0, _emberCliPageObject.hasClass)('disabled', 'button:eq(1)'),
+      goToFirstPage: (0, _emberCliPageObject.clickable)('button:eq(0)'),
+      goToFirstPageDisabled: (0, _emberCliPageObject.hasClass)('disabled', 'button:eq(0)'),
+      navigationButtons: (0, _emberCliPageObject.collection)('button', {
+        text: (0, _emberCliPageObject.text)()
+      }),
+      btns: (0, _emberCliPageObject.collection)('button', {
+        icon: (0, _emberCliPageObject.attribute)('class', 'md-icon')
+      }),
+      disabledNavigationLinksCount: (0, _emberCliPageObject.count)('button.disabled')
+    },
+
+    async changePageSize(pageSize) {
+      return await (0, _helpers.selectChoose)('.changePageSize md-select', pageSize);
+    },
+
+    pageSize: (0, _emberCliPageObject.text)('.changePageSize .ember-power-select-selected-item'),
+    toggleColumnDropDown: (0, _emberCliPageObject.clickable)('.columns-dropdown button'),
+    columnsDropdownLabel: (0, _emberCliPageObject.text)('.columns-dropdown .ember-basic-dropdown-trigger'),
+    columnsDropdownListExists: (0, _emberCliPageObject.isPresent)('md-menu-content', {
+      resetScope: true
+    }),
+    columnsDropDown: (0, _emberCliPageObject.collection)('md-menu-item button', {
+      resetScope: true,
+      label: (0, _macros.getter)(textWithoutIcon)
+    }),
+    firstColumnIconSelector: (0, _macros.getter)(function () {
+      return 'md-menu-item:nth-child(5) md-icon';
+    }),
+    secondColumnIconSelector: (0, _macros.getter)(function () {
+      return 'md-menu-item:nth-child(6) md-icon';
+    }),
+    checkedIconClass: (0, _macros.getter)(function () {
+      return 'check_box';
+    }),
+    uncheckedIconClass: (0, _macros.getter)(function () {
+      return 'check_box_outline_blank';
+    }),
+    sorting: (0, _emberCliPageObject.collection)('table thead tr:eq(0) th', {
+      title: (0, _macros.getter)(textWithoutIcon),
+      hasSortMarker: (0, _emberCliPageObject.isPresent)('md-icon'),
+      isSorted: (0, _macros.getter)(function () {
+        return this.hasSortMarker && !!(0, _extend.findOne)(document, `${this.scope} md-icon`).innerText;
+      }),
+      colspan: (0, _emberCliPageObject.attribute)('colspan')
+    }),
+
+    async changeGroupByField() {
+      return await (0, _helpers.selectChoose)((0, _extend.findOne)(document, `${this.scope} .data-group-by-wrapper md-select`), getValueToUse(...arguments));
+    },
+
+    focusGroupByField: (0, _emberCliPageObject.clickable)('.change-group-by-field md-select'),
+    groupByFieldOptions: (0, _macros.getter)(function () {
+      return (0, _extend.findMany)(document, 'md-option').map(node => ({
+        label: node.innerText.trim()
+      }));
+    })
+  });
+  _exports.definition = definition;
+
+  var _default = (0, _emberCliPageObject.create)(definition);
+
+  _exports.default = _default;
+});
+define("ember-models-table/test-support/pages/models-table-plain-html", ["exports", "ember-cli-page-object", "ember-models-table/test-support/pages/models-table-bs", "ember-cli-page-object/macros"], function (_exports, _emberCliPageObject, _modelsTableBs, _macros) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.definition = void 0;
+  const definition = Object.assign({}, _modelsTableBs.definition, {
+    columnsDropdownLabel: (0, _emberCliPageObject.text)('.columns-dropdown button'),
+    columnsDropDown: (0, _emberCliPageObject.collection)('.columns-dropdown a', {
+      toggleLabel: (0, _emberCliPageObject.text)('button'),
+      label: (0, _emberCliPageObject.text)()
+    }),
+    sorting: (0, _emberCliPageObject.collection)('table thead tr:eq(0) th', {
+      title: (0, _emberCliPageObject.text)(),
+      hasSortMarker: (0, _emberCliPageObject.isPresent)('i'),
+      isSorted: (0, _emberCliPageObject.hasClass)('fa', 'i'),
+      colspan: (0, _emberCliPageObject.attribute)('colspan')
+    }),
+    firstColumnIconSelector: (0, _macros.getter)(function () {
+      return '.columns-dropdown a:nth-child(5) i';
+    }),
+    secondColumnIconSelector: (0, _macros.getter)(function () {
+      return '.columns-dropdown a:nth-child(6) i';
+    }),
+    checkedIconClass: (0, _macros.getter)(function () {
+      return 'fa fa-check-square-o';
+    }),
+    uncheckedIconClass: (0, _macros.getter)(function () {
+      return 'fa fa-square-o';
+    })
+  });
+  _exports.definition = definition;
+
+  var _default = (0, _emberCliPageObject.create)(definition);
+
+  _exports.default = _default;
+});
 define("ember-power-select/test-support/helpers", ["exports", "@ember/test-helpers", "ember-power-select/test-support/index"], function (_exports, _testHelpers, _index) {
   "use strict";
 
@@ -17694,6 +18254,7 @@ define("ember-tooltips/test-support/index", ["exports", "ember-tooltips/test-sup
   });
   Object.keys(_jquery).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
+    if (key in _exports && _exports[key] === _jquery[key]) return;
     Object.defineProperty(_exports, key, {
       enumerable: true,
       get: function () {
@@ -18328,36 +18889,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../private/var/folders/d_/fqqmm3ds14x71yct204_4pgr0000gn/T/broccoli-87474IGAgR8yc9bwQ/cache-844-bundler/staging/l.js":
-/*!**************************************************************************************************************************!*\
-  !*** /private/var/folders/d_/fqqmm3ds14x71yct204_4pgr0000gn/T/broccoli-87474IGAgR8yc9bwQ/cache-844-bundler/staging/l.js ***!
-  \**************************************************************************************************************************/
+/***/ "../../../../private/var/folders/wb/5lmgpkf52j39xsdtp064s_rw0000gn/T/broccoli-41031h27HZXAI53Ln/cache-0972-bundler/staging/l.js":
+/*!***************************************************************************************************************************!*\
+  !*** /private/var/folders/wb/5lmgpkf52j39xsdtp064s_rw0000gn/T/broccoli-41031h27HZXAI53Ln/cache-0972-bundler/staging/l.js ***!
+  \***************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//private/var/folders/d_/fqqmm3ds14x71yct204_4pgr0000gn/T/broccoli-87474IGAgR8yc9bwQ/cache-844-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//private/var/folders/wb/5lmgpkf52j39xsdtp064s_rw0000gn/T/broccoli-41031h27HZXAI53Ln/cache-0972-bundler/staging/l.js?");
 
 /***/ }),
 
-/***/ "../../../../../private/var/folders/d_/fqqmm3ds14x71yct204_4pgr0000gn/T/broccoli-87474IGAgR8yc9bwQ/cache-844-bundler/staging/tests.js":
-/*!******************************************************************************************************************************!*\
-  !*** /private/var/folders/d_/fqqmm3ds14x71yct204_4pgr0000gn/T/broccoli-87474IGAgR8yc9bwQ/cache-844-bundler/staging/tests.js ***!
-  \******************************************************************************************************************************/
+/***/ "../../../../private/var/folders/wb/5lmgpkf52j39xsdtp064s_rw0000gn/T/broccoli-41031h27HZXAI53Ln/cache-0972-bundler/staging/tests.js":
+/*!*******************************************************************************************************************************!*\
+  !*** /private/var/folders/wb/5lmgpkf52j39xsdtp064s_rw0000gn/T/broccoli-41031h27HZXAI53Ln/cache-0972-bundler/staging/tests.js ***!
+  \*******************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//private/var/folders/d_/fqqmm3ds14x71yct204_4pgr0000gn/T/broccoli-87474IGAgR8yc9bwQ/cache-844-bundler/staging/tests.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//private/var/folders/wb/5lmgpkf52j39xsdtp064s_rw0000gn/T/broccoli-41031h27HZXAI53Ln/cache-0972-bundler/staging/tests.js?");
 
 /***/ }),
 
 /***/ 6:
-/*!*******************************************************************************************************************************************************************************************************************************************************!*\
-  !*** multi /private/var/folders/d_/fqqmm3ds14x71yct204_4pgr0000gn/T/broccoli-87474IGAgR8yc9bwQ/cache-844-bundler/staging/l.js /private/var/folders/d_/fqqmm3ds14x71yct204_4pgr0000gn/T/broccoli-87474IGAgR8yc9bwQ/cache-844-bundler/staging/tests.js ***!
-  \*******************************************************************************************************************************************************************************************************************************************************/
+/*!*********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi /private/var/folders/wb/5lmgpkf52j39xsdtp064s_rw0000gn/T/broccoli-41031h27HZXAI53Ln/cache-0972-bundler/staging/l.js /private/var/folders/wb/5lmgpkf52j39xsdtp064s_rw0000gn/T/broccoli-41031h27HZXAI53Ln/cache-0972-bundler/staging/tests.js ***!
+  \*********************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /private/var/folders/d_/fqqmm3ds14x71yct204_4pgr0000gn/T/broccoli-87474IGAgR8yc9bwQ/cache-844-bundler/staging/l.js */\"../../../../../private/var/folders/d_/fqqmm3ds14x71yct204_4pgr0000gn/T/broccoli-87474IGAgR8yc9bwQ/cache-844-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /private/var/folders/d_/fqqmm3ds14x71yct204_4pgr0000gn/T/broccoli-87474IGAgR8yc9bwQ/cache-844-bundler/staging/tests.js */\"../../../../../private/var/folders/d_/fqqmm3ds14x71yct204_4pgr0000gn/T/broccoli-87474IGAgR8yc9bwQ/cache-844-bundler/staging/tests.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/private/var/folders/d_/fqqmm3ds14x71yct204_4pgr0000gn/T/broccoli-87474IGAgR8yc9bwQ/cache-844-bundler/staging/l.js_/private/var/folders/d_/fqqmm3ds14x71yct204_4pgr0000gn/T/broccoli-87474IGAgR8yc9bwQ/cache-844-bundler/staging/tests.js?");
+eval("__webpack_require__(/*! /private/var/folders/wb/5lmgpkf52j39xsdtp064s_rw0000gn/T/broccoli-41031h27HZXAI53Ln/cache-0972-bundler/staging/l.js */\"../../../../private/var/folders/wb/5lmgpkf52j39xsdtp064s_rw0000gn/T/broccoli-41031h27HZXAI53Ln/cache-0972-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /private/var/folders/wb/5lmgpkf52j39xsdtp064s_rw0000gn/T/broccoli-41031h27HZXAI53Ln/cache-0972-bundler/staging/tests.js */\"../../../../private/var/folders/wb/5lmgpkf52j39xsdtp064s_rw0000gn/T/broccoli-41031h27HZXAI53Ln/cache-0972-bundler/staging/tests.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/private/var/folders/wb/5lmgpkf52j39xsdtp064s_rw0000gn/T/broccoli-41031h27HZXAI53Ln/cache-0972-bundler/staging/l.js_/private/var/folders/wb/5lmgpkf52j39xsdtp064s_rw0000gn/T/broccoli-41031h27HZXAI53Ln/cache-0972-bundler/staging/tests.js?");
 
 /***/ })
 

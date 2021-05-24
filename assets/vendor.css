@@ -3368,6 +3368,36 @@ svg.leaflet-image-layer.leaflet-interactive path {
   clear: both;
 }
 
+.table-nav .inline.fields {
+  justify-content: flex-end;
+}
+.table-nav .inline.fields .field:last-child {
+  padding-right: 0 !important;
+}
+
+.emt-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.emt-icons-stack {
+  position: relative;
+}
+
+.emt-icons-stack .glyphicon {
+  position: absolute;
+}
+
+.toggle-all {
+  text-decoration: none;
+}
+
 .x-toggle {
   display: none;
 }
@@ -3625,7 +3655,6 @@ label > .x-toggle-btn::before {
     background: var(--ios-thumb-checked-dark);
   }
 }
-
 label > .x-toggle-default.x-toggle-btn {
   padding: 0.16em 0.1em;
   background-color: #e7e7e7;
@@ -3742,7 +3771,6 @@ label > .x-toggle-default.large {
     border: var(--flat-border-checked-dark);
   }
 }
-
 .x-toggle-skewed.x-toggle-btn {
   overflow: hidden;
   -webkit-transform: skew(-10deg);
@@ -4048,7 +4076,6 @@ label > .x-toggle-default.large {
     background-color: var(--material-track-dark);
   } 
 }
-
 #ember-welcome-page-id-selector {
   padding: 2em;
   box-shadow: 0 0 0px 10px #FFFBF5;
@@ -4416,24 +4443,6 @@ input.bs-disable[readonly] {
 .map-file-picker .feature-table .remove {
   background-color: #fae7e6;
 }
-.table-nav .inline.fields {
-  justify-content: flex-end;
-}
-.table-nav .inline.fields .field:last-child {
-  padding-right: 0 !important;
-}
-
-.emt-sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
 .ember-tooltip-base {
   display: none;
   height: 0;
