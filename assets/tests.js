@@ -1492,9 +1492,10 @@ define("mdeditor/tests/integration/components/feature-form-test", ["@ember/test-
         {{feature-form model=model}}
       */
       {
-        "id": "axo9oJLQ",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"feature-form\"]}",
-        "meta": {}
+        "id": "7g4WJgts",
+        "block": "[[[1,[28,[35,0],null,[[\"model\"],[[33,1]]]]]],[],false,[\"feature-form\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.ember-view').textContent.replace(/[ \n]+/g, '|').trim(), '|Feature|ID|Name|Description|Other|Properties|read-only|Name|Value|None|found.|'); // Template block usage:
 
@@ -1507,9 +1508,10 @@ define("mdeditor/tests/integration/components/feature-form-test", ["@ember/test-
           
       */
       {
-        "id": "GSum4Rv2",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"feature-form\"]}",
-        "meta": {}
+        "id": "6U/+GIky",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"model\"],[[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"feature-form\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.ember-view').textContent.replace(/[ \n]+/g, '|').trim(), '|Feature|ID|Name|Description|Other|Properties|read-only|Name|Value|None|found.|template|block|text|');
     });
@@ -1545,9 +1547,10 @@ define("mdeditor/tests/integration/components/feature-group-test", ["@ember/test
           
       */
       {
-        "id": "h09n+A9t",
-        "block": "{\"symbols\":[\"l\"],\"statements\":[[2,\"\\n\"],[6,[37,9],null,[[\"lat\",\"lng\",\"zoom\"],[0,0,2]],[[\"default\"],[{\"statements\":[[6,[37,6],null,[[\"name\",\"baselayer\",\"default\"],[\"Terrain\",true,true]],[[\"default\"],[{\"statements\":[[2,\"          \"],[1,[30,[36,5],null,[[\"url\",\"attribution\"],[\"http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png\",[35,4]]]]],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"\\n\"],[6,[37,7],null,[[\"name\",\"default\"],[\"Extents\",true]],[[\"default\"],[{\"statements\":[[6,[37,3],[[30,[36,2],[[30,[36,2],[[35,1]],null]],null]],null,[[\"default\"],[{\"statements\":[[2,\"            \"],[1,[30,[36,0],null,[[\"geoJSON\",\"draw\"],[[32,1],true]]]],[2,\"\\n\"]],\"parameters\":[1]}]]]],\"parameters\":[]}]]],[2,\"\\n        \"],[1,[34,8]],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"geojson-layer\",\"layers\",\"-track-array\",\"each\",\"mapAttribution\",\"tile-layer\",\"layer-group\",\"feature-group\",\"layer-control\",\"leaflet-draw\"]}",
-        "meta": {}
+        "id": "r4+SMLX/",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"lat\",\"lng\",\"zoom\"],[0,0,2]],[[\"default\"],[[[[6,[39,1],null,[[\"name\",\"baselayer\",\"default\"],[\"Terrain\",true,true]],[[\"default\"],[[[[1,\"          \"],[1,[28,[35,2],null,[[\"url\",\"attribution\"],[\"http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png\",[33,3]]]]],[1,\"\\n\"]],[]]]]],[1,\"\\n\"],[6,[39,4],null,[[\"name\",\"default\"],[\"Extents\",true]],[[\"default\"],[[[[42,[28,[37,6],[[28,[37,6],[[33,7]],null]],null],null,[[[1,\"            \"],[1,[28,[35,8],null,[[\"geoJSON\",\"draw\"],[[30,1],true]]]],[1,\"\\n\"]],[1]],null]],[]]]]],[1,\"\\n        \"],[1,[34,9]],[1,\"\\n\"]],[]]]]],[1,\"    \"]],[\"l\"],false,[\"leaflet-draw\",\"layer-group\",\"tile-layer\",\"mapAttribution\",\"feature-group\",\"each\",\"-track-array\",\"layers\",\"geojson-layer\",\"layer-control\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.leaflet-container').innerText.trim().replace(/\n/g, '|'), '+|−|Draw a polyline|Draw a polygon|Draw a rectangle|Draw a marker|3000 km|2000 mi|Leaflet');
     });
@@ -1587,9 +1590,10 @@ define("mdeditor/tests/integration/components/feature-table-test", ["@ember/test
           }}
       */
       {
-        "id": "FjpGw4XW",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,6],null,[[\"data\",\"columnComponents\"],[[35,5,[\"features\"]],[30,[36,4],null,[[\"leaflet-table-row-actions\"],[[30,[36,3],[\"leaflet-table-row-actions\"],[[\"showForm\",\"zoomTo\",\"deleteFeature\"],[[35,2],[35,1],[35,0]]]]]]]]]]]],\"hasEval\":false,\"upvars\":[\"deleteFeature\",\"zoomTo\",\"showForm\",\"component\",\"hash\",\"data\",\"feature-table\"]}",
-        "meta": {}
+        "id": "atR5tGUl",
+        "block": "[[[1,[28,[35,0],null,[[\"data\",\"columnComponents\"],[[33,1,[\"features\"]],[28,[37,2],null,[[\"leaflet-table-row-actions\"],[[50,\"leaflet-table-row-actions\",0,null,[[\"showForm\",\"zoomTo\",\"deleteFeature\"],[[33,4],[33,5],[33,6]]]]]]]]]]]],[],false,[\"feature-table\",\"data\",\"hash\",\"component\",\"showForm\",\"zoomTo\",\"deleteFeature\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.feature-table').textContent.replace(/[\s, \t]/g, '\n').trim().replace(/[ +\n]+/g, '|'), 'Search:|Columns|Show|All|Hide|All|Restore|Defaults|ID|Name|Description|ID|Name|Description|ID|Name|Description|1|Feature|1|2|Feature|2|Show|1|-|2|of|2|Clear|all|filters|Rows:|10|25|50|500|Page:|1');
       await (0, _testHelpers.click)((0, _testHelpers.find)('td .btn-success'));
@@ -1628,9 +1632,10 @@ define("mdeditor/tests/integration/components/geojson-layer-test", ["@ember/test
           
       */
       {
-        "id": "coCU0Pd4",
-        "block": "{\"symbols\":[\"l\"],\"statements\":[[2,\"\\n\"],[6,[37,9],null,[[\"lat\",\"lng\",\"zoom\"],[0,0,2]],[[\"default\"],[{\"statements\":[[6,[37,6],null,[[\"name\",\"baselayer\",\"default\"],[\"Terrain\",true,true]],[[\"default\"],[{\"statements\":[[2,\"          \"],[1,[30,[36,5],null,[[\"url\",\"attribution\"],[\"http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png\",[35,4]]]]],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"\\n\"],[6,[37,7],null,[[\"name\",\"default\"],[\"Extents\",true]],[[\"default\"],[{\"statements\":[[6,[37,3],[[30,[36,2],[[30,[36,2],[[35,0]],null]],null]],null,[[\"default\"],[{\"statements\":[[2,\"            \"],[1,[30,[36,1],null,[[\"geoJSON\",\"draw\",\"editLayers\"],[[32,1],true,[35,0]]]]],[2,\"\\n\"]],\"parameters\":[1]}]]]],\"parameters\":[]}]]],[2,\"\\n        \"],[1,[34,8]],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"layers\",\"geojson-layer\",\"-track-array\",\"each\",\"mapAttribution\",\"tile-layer\",\"layer-group\",\"feature-group\",\"layer-control\",\"leaflet-draw\"]}",
-        "meta": {}
+        "id": "zBjEOjZS",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"lat\",\"lng\",\"zoom\"],[0,0,2]],[[\"default\"],[[[[6,[39,1],null,[[\"name\",\"baselayer\",\"default\"],[\"Terrain\",true,true]],[[\"default\"],[[[[1,\"          \"],[1,[28,[35,2],null,[[\"url\",\"attribution\"],[\"http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png\",[33,3]]]]],[1,\"\\n\"]],[]]]]],[1,\"\\n\"],[6,[39,4],null,[[\"name\",\"default\"],[\"Extents\",true]],[[\"default\"],[[[[42,[28,[37,6],[[28,[37,6],[[33,7]],null]],null],null,[[[1,\"            \"],[1,[28,[35,8],null,[[\"geoJSON\",\"draw\",\"editLayers\"],[[30,1],true,[33,7]]]]],[1,\"\\n\"]],[1]],null]],[]]]]],[1,\"\\n        \"],[1,[34,9]],[1,\"\\n\"]],[]]]]],[1,\"    \"]],[\"l\"],false,[\"leaflet-draw\",\"layer-group\",\"tile-layer\",\"mapAttribution\",\"feature-group\",\"each\",\"-track-array\",\"layers\",\"geojson-layer\",\"layer-control\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.leaflet-container').innerText.trim().replace(/\n/g, '|'), '+|−|Draw a polyline|Draw a polygon|Draw a rectangle|Draw a marker|3000 km|2000 mi|Leaflet');
     });
@@ -1660,9 +1665,10 @@ define("mdeditor/tests/integration/components/leaflet-draw-test", ["@ember/test-
           
       */
       {
-        "id": "KWvsyNAa",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,4],null,[[\"lat\",\"lng\",\"zoom\"],[0,0,2]],[[\"default\"],[{\"statements\":[[6,[37,2],null,[[\"name\",\"baselayer\",\"default\"],[\"Terrain\",true,true]],[[\"default\"],[{\"statements\":[[2,\"          \"],[1,[30,[36,1],null,[[\"url\",\"attribution\"],[\"http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png\",[35,0]]]]],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"\\n        \"],[1,[34,3]],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"mapAttribution\",\"tile-layer\",\"layer-group\",\"layer-control\",\"leaflet-draw\"]}",
-        "meta": {}
+        "id": "Ekkq/whS",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"lat\",\"lng\",\"zoom\"],[0,0,2]],[[\"default\"],[[[[6,[39,1],null,[[\"name\",\"baselayer\",\"default\"],[\"Terrain\",true,true]],[[\"default\"],[[[[1,\"          \"],[1,[28,[35,2],null,[[\"url\",\"attribution\"],[\"http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png\",[33,3]]]]],[1,\"\\n\"]],[]]]]],[1,\"\\n        \"],[1,[34,4]],[1,\"\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"leaflet-draw\",\"layer-group\",\"tile-layer\",\"mapAttribution\",\"layer-control\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.leaflet-container').innerText.trim().replace(/\n/g, '|'), '+|−|Draw a polyline|Draw a polygon|Draw a rectangle|Draw a marker|3000 km|2000 mi|Leaflet');
     });
@@ -1691,9 +1697,10 @@ define("mdeditor/tests/integration/components/leaflet-table-row-actions-test", [
           }}
       */
       {
-        "id": "tb7O7Uuy",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,3],null,[[\"zoomTo\",\"showForm\",\"deleteFeature\"],[[35,2],[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"deleteFeature\",\"showForm\",\"zoomTo\",\"leaflet-table-row-actions\"]}",
-        "meta": {}
+        "id": "GJK7uD+f",
+        "block": "[[[1,[28,[35,0],null,[[\"zoomTo\",\"showForm\",\"deleteFeature\"],[[33,1],[33,2],[33,3]]]]]],[],false,[\"leaflet-table-row-actions\",\"zoomTo\",\"showForm\",\"deleteFeature\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('button').exists({
         count: 3
@@ -1714,9 +1721,10 @@ define("mdeditor/tests/integration/components/leaflet-table-row-test", ["@ember/
         {{leaflet-table-row}}
       */
       {
-        "id": "KbmpM+Fp",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"leaflet-table-row\"]}",
-        "meta": {}
+        "id": "8oW3Xl1S",
+        "block": "[[[1,[34,0]]],[],false,[\"leaflet-table-row\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('tr').exists({
         count: 1
@@ -1739,9 +1747,10 @@ define("mdeditor/tests/integration/components/leaflet-table-test", ["@ember/test
             resizeDebouncedEventsEnabled=true}}
       */
       {
-        "id": "U73mcPbv",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"layers\",\"resizeDebouncedEventsEnabled\"],[[35,0,[\"features\"]],true]]]]],\"hasEval\":false,\"upvars\":[\"layers\",\"leaflet-table\"]}",
-        "meta": {}
+        "id": "z5Ijg1wD",
+        "block": "[[[1,[28,[35,0],null,[[\"layers\",\"resizeDebouncedEventsEnabled\"],[[33,1,[\"features\"]],true]]]]],[],false,[\"leaflet-table\",\"layers\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.feature-table').textContent.replace(/[\s\t]/g, '\n').trim().replace(/[ \n]+/g, '|'), 'ID|Name|Description|ID|Name|Description|1|Feature|1|2|Feature|2|Show|1|-|2|of|2|Clear|all|filters|Rows:|10|25|50|500|Page:|1');
     });
@@ -1778,9 +1787,10 @@ define("mdeditor/tests/integration/components/sb-publisher-test", ["@ember/test-
         {{sb-publisher config=config settings=settings records=records}}
       */
       {
-        "id": "KN/a1uRU",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,3],null,[[\"config\",\"settings\",\"records\"],[[35,2],[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"records\",\"settings\",\"config\",\"sb-publisher\"]}",
-        "meta": {}
+        "id": "QQbUz8QA",
+        "block": "[[[1,[28,[35,0],null,[[\"config\",\"settings\",\"records\"],[[33,1],[33,2],[33,3]]]]]],[],false,[\"sb-publisher\",\"config\",\"settings\",\"records\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.tree-leaf').exists({
         count: 4
@@ -1801,9 +1811,10 @@ define("mdeditor/tests/integration/components/sb-settings-test", ["@ember/test-h
         {{sb-settings}}
       */
       {
-        "id": "MNqa/APK",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"sb-settings\"]}",
-        "meta": {}
+        "id": "9YV9vU8B",
+        "block": "[[[1,[34,0]]],[],false,[\"sb-settings\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('input').exists({
         count: 1
@@ -1842,9 +1853,10 @@ define("mdeditor/tests/integration/components/sb-tree-label-test", ["@ember/test
         {{sb-tree-label model=model}}
       */
       {
-        "id": "gxBfNF8r",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"sb-tree-label\"]}",
-        "meta": {}
+        "id": "MD0H2Qm6",
+        "block": "[[[1,[28,[35,0],null,[[\"model\"],[[33,1]]]]]],[],false,[\"sb-tree-label\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.tree-cell').innerText.trim(), 'Data Management Strategy : test Parent Id: None --');
     });
@@ -1901,9 +1913,10 @@ define("mdeditor/tests/integration/components/sb-tree-test", ["@ember/test-helpe
         {{sb-tree model=model labelComponent="sb-tree-label"}}
       */
       {
-        "id": "KggtoQtm",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"labelComponent\"],[[35,0],\"sb-tree-label\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"sb-tree\"]}",
-        "meta": {}
+        "id": "L9stbjss",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"labelComponent\"],[[33,1],\"sb-tree-label\"]]]]],[],false,[\"sb-tree\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.tree-trunk').innerText.replace(/[\s\t]/g, '\n').trim().replace(/[ \n]+/g, '|'), 'Data|Management|Strategy|:|test|?|Child|1|:|test1|Parent|Id:|None|--|?');
       assert.equal((0, _testHelpers.findAll)('.tree-branch')[1].innerText.replace(/[\s\t]/g, '\n').trim().replace(/[ \n]+/g, '|'), 'Child|1|:|test1|Parent|Id:|None|--|?');
@@ -1956,9 +1969,10 @@ define("mdeditor/tests/integration/components/tree-branch-test", ["@ember/test-h
             }}
       */
       {
-        "id": "eAw3JjkA",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n      \"],[1,[30,[36,4],null,[[\"model\",\"select\",\"selected\",\"nodeDepth\",\"path\"],[[35,3],[35,2],[35,1],3,[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"path\",\"selected\",\"select\",\"model\",\"tree-branch\"]}",
-        "meta": {}
+        "id": "T/zWEoEa",
+        "block": "[[[1,\"\\n      \"],[1,[28,[35,0],null,[[\"model\",\"select\",\"selected\",\"nodeDepth\",\"path\"],[[33,1],[33,2],[33,3],3,[33,4]]]]]],[],false,[\"tree-branch\",\"model\",\"select\",\"selected\",\"path\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.expect(3);
       assert.equal((0, _testHelpers.find)('.tree-branch').innerText.trim(), 'foo1label'); // Template block usage:
@@ -1977,9 +1991,10 @@ define("mdeditor/tests/integration/components/tree-branch-test", ["@ember/test-h
           
       */
       {
-        "id": "Ifzz7czP",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,4],null,[[\"model\",\"select\",\"selected\",\"nodeDepth\",\"path\"],[[35,3],[35,2],[35,1],3,[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"path\",\"selected\",\"select\",\"model\",\"tree-branch\"]}",
-        "meta": {}
+        "id": "olyCkhbz",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"model\",\"select\",\"selected\",\"nodeDepth\",\"path\"],[[33,1],[33,2],[33,3],3,[33,4]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"tree-branch\",\"model\",\"select\",\"selected\",\"path\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       await (0, _testHelpers.click)('.tree-leaf .toggle-icon');
       assert.equal((0, _testHelpers.find)('.tree-branch').innerText.replace(/[\s\n]+/g, '|'), '|foo1label|foo2label');
@@ -2011,9 +2026,10 @@ define("mdeditor/tests/integration/components/tree-label-test", ["@ember/test-he
         {{tree-label model=model}}
       */
       {
-        "id": "DKW/F/8i",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"tree-label\"]}",
-        "meta": {}
+        "id": "fdry4LFo",
+        "block": "[[[1,[28,[35,0],null,[[\"model\"],[[33,1]]]]]],[],false,[\"tree-label\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.tree-label-text').innerText.trim(), 'foo1label'); // Template block usage:
 
@@ -2026,9 +2042,10 @@ define("mdeditor/tests/integration/components/tree-label-test", ["@ember/test-he
           
       */
       {
-        "id": "Rsk6LM4w",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"tree-label\"]}",
-        "meta": {}
+        "id": "AlmDD608",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"model\"],[[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"tree-label\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.tree-label-text').innerText.trim(), 'foo1label');
     });
@@ -2080,9 +2097,10 @@ define("mdeditor/tests/integration/components/tree-leaf-test", ["@ember/test-hel
           }}
       */
       {
-        "id": "bns0zg2f",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,4],null,[[\"model\",\"inTree\",\"select\",\"selected\",\"nodeDepth\",\"nodePath\"],[[35,3],true,[35,2],[35,1],3,[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"nodePath\",\"selected\",\"select\",\"model\",\"tree-leaf\"]}",
-        "meta": {}
+        "id": "J8Z/58l4",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"inTree\",\"select\",\"selected\",\"nodeDepth\",\"nodePath\"],[[33,1],true,[33,2],[33,3],3,[33,4]]]]]],[],false,[\"tree-leaf\",\"model\",\"select\",\"selected\",\"nodePath\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       await (0, _testHelpers.click)('.toggle-icon');
       assert.equal((0, _testHelpers.find)('.tree-leaf').innerText.trim(), 'foo1label'); // Template block usage:
@@ -2100,9 +2118,10 @@ define("mdeditor/tests/integration/components/tree-leaf-test", ["@ember/test-hel
           
       */
       {
-        "id": "cc1XJvU5",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,3],null,[[\"model\",\"inTree\",\"select\",\"selected\"],[[35,2],false,[35,1],[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"selected\",\"select\",\"model\",\"tree-leaf\"]}",
-        "meta": {}
+        "id": "kPTtvjOd",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"model\",\"inTree\",\"select\",\"selected\"],[[33,1],false,[33,2],[33,3]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"tree-leaf\",\"model\",\"select\",\"selected\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.tree-leaf').innerText.trim(), 'foo1label');
       assert.dom('.tree-indent').doesNotExist('not in tree');
@@ -2152,9 +2171,10 @@ define("mdeditor/tests/integration/components/tree-search-test", ["@ember/test-h
             }}
       */
       {
-        "id": "mGVn+CPi",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n      \"],[1,[30,[36,5],null,[[\"model\",\"selected\",\"select\",\"searchString\",\"exactMatch\"],[[35,4],[35,3],[35,2],[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"exactMatch\",\"searchString\",\"select\",\"selected\",\"model\",\"tree-search\"]}",
-        "meta": {}
+        "id": "9vlaP6IR",
+        "block": "[[[1,\"\\n      \"],[1,[28,[35,0],null,[[\"model\",\"selected\",\"select\",\"searchString\",\"exactMatch\"],[[33,1],[33,2],[33,3],[33,4],[33,5]]]]]],[],false,[\"tree-search\",\"model\",\"selected\",\"select\",\"searchString\",\"exactMatch\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.tree-search').innerText.replace(/[ \n]+/g, '|'), 'Search|Tree:|Exact|Match|3|matches|found.|barfoo1label|foo1label|foo2label', 'search OK');
       this.set('exactMatch', true);
@@ -2173,9 +2193,10 @@ define("mdeditor/tests/integration/components/tree-search-test", ["@ember/test-h
           
       */
       {
-        "id": "glxnrfT5",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,3],null,[[\"model\",\"selected\",\"select\"],[[35,2],[35,1],[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"select\",\"selected\",\"model\",\"tree-search\"]}",
-        "meta": {}
+        "id": "Enml9au0",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"model\",\"selected\",\"select\"],[[33,1],[33,2],[33,3]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"tree-search\",\"model\",\"selected\",\"select\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.tree-search').innerText.replace(/[ \n]+/g, '|'), 'Search|Tree:|Exact|Match|template|block|text', 'block');
     });
@@ -2217,9 +2238,10 @@ define("mdeditor/tests/integration/components/tree-view-test", ["@ember/test-hel
         {{tree-view model=model selected=selected}}
       */
       {
-        "id": "Rckdh0yQ",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"model\",\"selected\"],[[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"selected\",\"model\",\"tree-view\"]}",
-        "meta": {}
+        "id": "/vTUWHcG",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"selected\"],[[33,1],[33,2]]]]]],[],false,[\"tree-view\",\"model\",\"selected\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.tree-trunk').innerText.replace(/[\s\n]+/g, '|'), '|bar1label|foo1label');
       assert.dom('.tree-leaf').hasClass('tree-highlight', 'selected leaf highlighted');
@@ -2240,9 +2262,10 @@ define("mdeditor/tests/integration/components/tree-view-test", ["@ember/test-hel
           
       */
       {
-        "id": "tD9QrX9X",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,2],null,[[\"model\",\"select\"],[[35,1],[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"select\",\"model\",\"tree-view\"]}",
-        "meta": {}
+        "id": "G622DizZ",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"model\",\"select\"],[[33,1],[33,2]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"tree-view\",\"model\",\"select\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.tree-trunk').innerText.replace(/[\s\n]+/g, '|'), '|bar1label|foo1label|foo2label');
       await (0, _testHelpers.click)((0, _testHelpers.findAll)('.tree-leaf')[1]);
@@ -2265,9 +2288,10 @@ define("mdeditor/tests/integration/helpers/object-is-empty-test", ["qunit", "emb
         {{object-is-empty inputValue}}
       */
       {
-        "id": "5+vGzmTL",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],[[35,0]],null]]],\"hasEval\":false,\"upvars\":[\"inputValue\",\"object-is-empty\"]}",
-        "meta": {}
+        "id": "NRarIBPJ",
+        "block": "[[[1,[28,[35,0],[[33,1]],null]]],[],false,[\"object-is-empty\",\"inputValue\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.trim(), "false");
     });
@@ -2286,9 +2310,10 @@ define("mdeditor/tests/integration/helpers/present-test", ["@ember/test-helpers"
         <section>{{present inputValue}}</section>
       */
       {
-        "id": "OL2BH1DQ",
-        "block": "{\"symbols\":[],\"statements\":[[10,\"section\"],[12],[1,[30,[36,1],[[35,0]],null]],[13]],\"hasEval\":false,\"upvars\":[\"inputValue\",\"present\"]}",
-        "meta": {}
+        "id": "JwEH4ZHt",
+        "block": "[[[10,\"section\"],[12],[1,[28,[35,0],[[33,1]],null]],[13]],[],false,[\"present\",\"inputValue\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('section').hasText('true');
     });
@@ -2309,9 +2334,10 @@ define("mdeditor/tests/integration/helpers/word-limit-test", ["@ember/test-helpe
         <section>{{word-limit inputValue limit=20 wordLength=10}}</section>
       */
       {
-        "id": "/o4FWcrT",
-        "block": "{\"symbols\":[],\"statements\":[[10,\"section\"],[12],[1,[30,[36,1],[[35,0]],[[\"limit\",\"wordLength\"],[20,10]]]],[13]],\"hasEval\":false,\"upvars\":[\"inputValue\",\"word-limit\"]}",
-        "meta": {}
+        "id": "OWO2irMk",
+        "block": "[[[10,\"section\"],[12],[1,[28,[35,0],[[33,1]],[[\"limit\",\"wordLength\"],[20,10]]]],[13]],[],false,[\"word-limit\",\"inputValue\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('section').hasText(`Lorem ipsum dolor sit amet,  consectetu... adipiscing...elit. Etiam rutrum, neque nec sagittis maximus, lacus lectus placerat libero, finibus varius ...`);
     });
@@ -2334,9 +2360,10 @@ define("mdeditor/tests/integration/pods/components/control/md-alert-table/compon
           }}
       */
       {
-        "id": "KuSRJ3SK",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"title\",\"required\",\"tipMessage\"],[\"Foos\",true,\"Biz is baz.\"]]]]],\"hasEval\":false,\"upvars\":[\"control/md-alert-table\"]}",
-        "meta": {}
+        "id": "vtqfCig9",
+        "block": "[[[1,[28,[35,0],null,[[\"title\",\"required\",\"tipMessage\"],[\"Foos\",true,\"Biz is baz.\"]]]]],[],false,[\"control/md-alert-table\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), 'No|Foos|found.|Add|Foo|');
       await (0, _testHelpers.triggerEvent)('.md-danger.ember-tooltip-target', 'mouseenter');
@@ -2354,9 +2381,10 @@ define("mdeditor/tests/integration/pods/components/control/md-alert-table/compon
           
       */
       {
-        "id": "deyHWvPN",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"title\"],[\"Bars\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-alert-table\"]}",
-        "meta": {}
+        "id": "IExny986",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"title\"],[\"Bars\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/md-alert-table\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|No|Bars|found.|Add|Bar|template|block|text|');
     });
@@ -2375,9 +2403,10 @@ define("mdeditor/tests/integration/pods/components/control/md-button-confirm/com
         {{control/md-button-confirm}}
       */
       {
-        "id": "vqyLJr0w",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"control/md-button-confirm\"]}",
-        "meta": {}
+        "id": "jg3ahzQE",
+        "block": "[[[1,[34,0]]],[],false,[\"control/md-button-confirm\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('button').innerText.trim(), ''); // Template block usage:" + EOL +
 
@@ -2390,9 +2419,10 @@ define("mdeditor/tests/integration/pods/components/control/md-button-confirm/com
           
       */
       {
-        "id": "Nqy3o4dA",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-button-confirm\"]}",
-        "meta": {}
+        "id": "DVDZ7c7g",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/md-button-confirm\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('button').innerText.trim(), 'template block text');
     });
@@ -2410,9 +2440,10 @@ define("mdeditor/tests/integration/pods/components/control/md-button-confirm/com
           
       */
       {
-        "id": "SXnqJKu1",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n      \"],[10,\"a\"],[14,6,\"#\"],[12],[2,\"Test\"],[13],[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        Test\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-button-confirm\"]}",
-        "meta": {}
+        "id": "awBXpA86",
+        "block": "[[[1,\"\\n      \"],[10,3],[14,6,\"#\"],[12],[1,\"Test\"],[13],[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        Test\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/md-button-confirm\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('button').innerText.trim(), 'Test', 'renders button');
       await (0, _testHelpers.click)('button');
@@ -2436,9 +2467,10 @@ define("mdeditor/tests/integration/pods/components/control/md-button-confirm/com
           
       */
       {
-        "id": "8WdiqB0S",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,2],null,[[\"onConfirm\"],[[30,[36,1],[[32,0],[35,0],\"onConfirm\"],null]]],[[\"default\"],[{\"statements\":[[2,\"        Test\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"externalAction\",\"action\",\"control/md-button-confirm\"]}",
-        "meta": {}
+        "id": "MSpOYrC1",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"onConfirm\"],[[28,[37,1],[[30,0],[33,2],\"onConfirm\"],null]]],[[\"default\"],[[[[1,\"        Test\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/md-button-confirm\",\"action\",\"externalAction\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       await (0, _testHelpers.click)('button');
       await (0, _testHelpers.click)('button');
@@ -2459,9 +2491,10 @@ define("mdeditor/tests/integration/pods/components/control/md-button-modal/compo
         {{control/md-button-modal}}
       */
       {
-        "id": "co3jhzPw",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"control/md-button-modal\"]}",
-        "meta": {}
+        "id": "VqlfJ2ig",
+        "block": "[[[1,[34,0]]],[],false,[\"control/md-button-modal\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-button-modal').innerText.trim(), ''); // Template block usage:" + EOL +
 
@@ -2474,9 +2507,10 @@ define("mdeditor/tests/integration/pods/components/control/md-button-modal/compo
           
       */
       {
-        "id": "4CFZa0yj",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-button-modal\"]}",
-        "meta": {}
+        "id": "KDVBXhht",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/md-button-modal\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-button-modal').innerText.trim(), 'template block text', 'block');
     });
@@ -2499,9 +2533,10 @@ define("mdeditor/tests/integration/pods/components/control/md-button-modal/compo
           
       */
       {
-        "id": "GyekW9N+",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n      \"],[10,\"div\"],[14,1,\"test-div\"],[12],[13],[2,\"\\n      \"],[6,[37,2],null,[[\"message\",\"onConfirm\",\"onCancel\"],[\"Hello\",[30,[36,1],[[32,0],[35,0],\"confirm\"],null],[30,[36,1],[[32,0],[35,0],\"cancel\"],null]]],[[\"default\"],[{\"statements\":[[2,\" Test\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"externalAction\",\"action\",\"control/md-button-modal\"]}",
-        "meta": {}
+        "id": "3Bp1lVEE",
+        "block": "[[[1,\"\\n      \"],[10,0],[14,1,\"test-div\"],[12],[13],[1,\"\\n      \"],[6,[39,0],null,[[\"message\",\"onConfirm\",\"onCancel\"],[\"Hello\",[28,[37,1],[[30,0],[33,2],\"confirm\"],null],[28,[37,1],[[30,0],[33,2],\"cancel\"],null]]],[[\"default\"],[[[[1,\" Test\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/md-button-modal\",\"action\",\"externalAction\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       })); // click the button
 
       await (0, _testHelpers.click)('.md-button-modal');
@@ -2519,9 +2554,10 @@ define("mdeditor/tests/integration/pods/components/control/md-button-modal/compo
           
       */
       {
-        "id": "uFVo2FHw",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n      \"],[10,\"div\"],[14,1,\"test-div\"],[12],[13],[2,\"\\n      \"],[6,[37,2],null,[[\"renderInPlace\",\"message\",\"onConfirm\",\"onCancel\"],[true,\"Hello\",[30,[36,1],[[32,0],[35,0],\"confirm\"],null],[30,[36,1],[[32,0],[35,0],\"cancel\"],null]]],[[\"default\"],[{\"statements\":[[2,\" Test\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"externalAction\",\"action\",\"control/md-button-modal\"]}",
-        "meta": {}
+        "id": "rGsaVwd3",
+        "block": "[[[1,\"\\n      \"],[10,0],[14,1,\"test-div\"],[12],[13],[1,\"\\n      \"],[6,[39,0],null,[[\"renderInPlace\",\"message\",\"onConfirm\",\"onCancel\"],[true,\"Hello\",[28,[37,1],[[30,0],[33,2],\"confirm\"],null],[28,[37,1],[[30,0],[33,2],\"cancel\"],null]]],[[\"default\"],[[[[1,\" Test\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/md-button-modal\",\"action\",\"externalAction\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       })); // click the button
 
       await (0, _testHelpers.click)('.md-button-modal');
@@ -2555,9 +2591,10 @@ define("mdeditor/tests/integration/pods/components/control/md-button/component-t
         {{control/md-button text="Click me" click=(action myAction true)}}
       */
       {
-        "id": "pwcakXNu",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"text\",\"click\"],[\"Click me\",[30,[36,1],[[32,0],[35,0],true],null]]]]]],\"hasEval\":false,\"upvars\":[\"myAction\",\"action\",\"control/md-button\"]}",
-        "meta": {}
+        "id": "WqPYNPsR",
+        "block": "[[[1,[28,[35,0],null,[[\"text\",\"click\"],[\"Click me\",[28,[37,1],[[30,0],[33,2],true],null]]]]]],[],false,[\"control/md-button\",\"action\",\"myAction\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom(this.element).hasText('Click me');
       (0, _testHelpers.click)('.md-button'); // Template block usage:
@@ -2571,9 +2608,10 @@ define("mdeditor/tests/integration/pods/components/control/md-button/component-t
           
       */
       {
-        "id": "SEsCy4S9",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-button\"]}",
-        "meta": {}
+        "id": "CBq93UWt",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/md-button\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom(this.element).hasText('template block text');
     });
@@ -2595,9 +2633,10 @@ define("mdeditor/tests/integration/pods/components/control/md-contact-link/compo
         {{control/md-contact-link contacts=contacts contactId=0}}
       */
       {
-        "id": "+1yGk/JO",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"contacts\",\"contactId\"],[[35,0],0]]]]],\"hasEval\":false,\"upvars\":[\"contacts\",\"control/md-contact-link\"]}",
-        "meta": {}
+        "id": "+7ZP4cJv",
+        "block": "[[[1,[28,[35,0],null,[[\"contacts\",\"contactId\"],[[33,1],0]]]]],[],false,[\"control/md-contact-link\",\"contacts\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('a').innerText.trim(), 'Contact0', 'renders link'); // Template block usage:
 
@@ -2610,9 +2649,10 @@ define("mdeditor/tests/integration/pods/components/control/md-contact-link/compo
           
       */
       {
-        "id": "V1+BLCAc",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"contacts\",\"contactId\",\"block\"],[[35,0],0,true]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"contacts\",\"control/md-contact-link\"]}",
-        "meta": {}
+        "id": "bCOJZvYo",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"contacts\",\"contactId\",\"block\"],[[33,1],0,true]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/md-contact-link\",\"contacts\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('a').hasText('template block text', 'renders as block');
     });
@@ -2633,9 +2673,10 @@ define("mdeditor/tests/integration/pods/components/control/md-contact-title/comp
         <span>{{control/md-contact-title contactId=0}}</span>
       */
       {
-        "id": "LpqqepmU",
-        "block": "{\"symbols\":[],\"statements\":[[10,\"span\"],[12],[1,[30,[36,0],null,[[\"contactId\"],[0]]]],[13]],\"hasEval\":false,\"upvars\":[\"control/md-contact-title\"]}",
-        "meta": {}
+        "id": "tWOURiaG",
+        "block": "[[[10,1],[12],[1,[28,[35,0],null,[[\"contactId\"],[0]]]],[13]],[],false,[\"control/md-contact-title\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('span').hasText('Contact0'); // Template block usage:
 
@@ -2649,9 +2690,10 @@ define("mdeditor/tests/integration/pods/components/control/md-contact-title/comp
           
       */
       {
-        "id": "K9XzQ57C",
-        "block": "{\"symbols\":[\"c\"],\"statements\":[[10,\"div\"],[14,0,\"test1\"],[12],[2,\"\\n\"],[6,[37,0],null,[[\"contactId\"],[0]],[[\"default\"],[{\"statements\":[[2,\"        template block text \"],[1,[32,1,[\"title\"]]],[2,\"\\n\"]],\"parameters\":[1]}]]],[2,\"      \"],[13],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"control/md-contact-title\"]}",
-        "meta": {}
+        "id": "uu8InvZ9",
+        "block": "[[[10,0],[14,0,\"test1\"],[12],[1,\"\\n\"],[6,[39,0],null,[[\"contactId\"],[0]],[[\"default\"],[[[[1,\"        template block text \"],[1,[30,1,[\"title\"]]],[1,\"\\n\"]],[1]]]]],[1,\"      \"],[13],[1,\"\\n    \"]],[\"c\"],false,[\"control/md-contact-title\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.test1').hasText('template block text Contact0');
     });
@@ -2671,9 +2713,10 @@ define("mdeditor/tests/integration/pods/components/control/md-crud-buttons/compo
         {{control/md-crud-buttons allowCopy=true allowDelete=true}}
       */
       {
-        "id": "fBnFcHmd",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"allowCopy\",\"allowDelete\"],[true,true]]]]],\"hasEval\":false,\"upvars\":[\"control/md-crud-buttons\"]}",
-        "meta": {}
+        "id": "aF5RXqgG",
+        "block": "[[[1,[28,[35,0],null,[[\"allowCopy\",\"allowDelete\"],[true,true]]]]],[],false,[\"control/md-crud-buttons\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       await (0, _testHelpers.triggerEvent)('.md-crud-buttons', 'mouseenter');
       assert.equal((0, _testHelpers.find)('.md-crud-buttons').textContent.replace(/[ \n]+/g, '|'), '|Copy|Delete|'); // Template block usage:" + EOL +
@@ -2687,9 +2730,10 @@ define("mdeditor/tests/integration/pods/components/control/md-crud-buttons/compo
           
       */
       {
-        "id": "Xd8+3zHP",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"doSave\",\"allowCopy\"],[true,true]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-crud-buttons\"]}",
-        "meta": {}
+        "id": "gk4MdhEP",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"doSave\",\"allowCopy\"],[true,true]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/md-crud-buttons\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-crud-buttons').textContent.replace(/[ \n]+/g, '|'), '|Save|Cancel|Copy|template|block|text|', 'block, doSave');
       assert.dom('.md-crud-buttons .btn-success').isDisabled('save disabled');
@@ -2712,9 +2756,10 @@ define("mdeditor/tests/integration/pods/components/control/md-crud-buttons/compo
         externalAction 'doCopy') doDelete=(action externalAction 'doDelete') allowCopy=true allowDelete=true}}
       */
       {
-        "id": "Z9iR+VWB",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,3],null,[[\"model\",\"doSave\",\"doCancel\",\"doCopy\",\"doDelete\",\"allowCopy\",\"allowDelete\"],[[35,2],[30,[36,1],[[32,0],[35,0],\"doSave\"],null],[30,[36,1],[[32,0],[35,0],\"doCancel\"],null],[30,[36,1],[[32,0],[35,0],\"doCopy\"],null],[30,[36,1],[[32,0],[35,0],\"doDelete\"],null],true,true]]]]],\"hasEval\":false,\"upvars\":[\"externalAction\",\"action\",\"model\",\"control/md-crud-buttons\"]}",
-        "meta": {}
+        "id": "PlJnCB+u",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"doSave\",\"doCancel\",\"doCopy\",\"doDelete\",\"allowCopy\",\"allowDelete\"],[[33,1],[28,[37,2],[[30,0],[33,3],\"doSave\"],null],[28,[37,2],[[30,0],[33,3],\"doCancel\"],null],[28,[37,2],[[30,0],[33,3],\"doCopy\"],null],[28,[37,2],[[30,0],[33,3],\"doDelete\"],null],true,true]]]]],[],false,[\"control/md-crud-buttons\",\"model\",\"action\",\"externalAction\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       })); // click the buttons
 
       await (0, _testHelpers.click)('.md-crud-buttons .btn-success');
@@ -2739,9 +2784,10 @@ define("mdeditor/tests/integration/pods/components/control/md-definition/compone
         {{control/md-definition title="foobar" text="bizbaz"}}
       */
       {
-        "id": "xkG7D5jx",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"title\",\"text\"],[\"foobar\",\"bizbaz\"]]]]],\"hasEval\":false,\"upvars\":[\"control/md-definition\"]}",
-        "meta": {}
+        "id": "+7gG0/BJ",
+        "block": "[[[1,[28,[35,0],null,[[\"title\",\"text\"],[\"foobar\",\"bizbaz\"]]]]],[],false,[\"control/md-definition\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.ember-view').textContent.replace(/[ \n]+/g, '|').trim(), 'foobar|bizbaz|');
       await (0, _testHelpers.render)(Ember.HTMLBars.template(
@@ -2749,9 +2795,10 @@ define("mdeditor/tests/integration/pods/components/control/md-definition/compone
         {{control/md-definition title="foobar"}}
       */
       {
-        "id": "pgwVkw2E",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"title\"],[\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"control/md-definition\"]}",
-        "meta": {}
+        "id": "I5pMjPrO",
+        "block": "[[[1,[28,[35,0],null,[[\"title\"],[\"foobar\"]]]]],[],false,[\"control/md-definition\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.ember-view').textContent.replace(/[ \n]+/g, '|').trim(), 'foobar|Not|Defined|', 'no text'); // Template block usage:
 
@@ -2764,9 +2811,10 @@ define("mdeditor/tests/integration/pods/components/control/md-definition/compone
           
       */
       {
-        "id": "NDd2xLhU",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"title\"],[\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-definition\"]}",
-        "meta": {}
+        "id": "PBYkVw/p",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"title\"],[\"foobar\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/md-definition\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.ember-view').textContent.replace(/[ \n]+/g, '|').trim(), '|foobar|template|block|text|');
     });
@@ -2799,9 +2847,10 @@ define("mdeditor/tests/integration/pods/components/control/md-edit-table/compone
         {{control/md-edit-table data=data dataColumns=columns rowBodyComponent="object/md-schema"}}
       */
       {
-        "id": "13KX0aa6",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"data\",\"dataColumns\",\"rowBodyComponent\"],[[35,1],[35,0],\"object/md-schema\"]]]]],\"hasEval\":false,\"upvars\":[\"columns\",\"data\",\"control/md-edit-table\"]}",
-        "meta": {}
+        "id": "pIptU+Lo",
+        "block": "[[[1,[28,[35,0],null,[[\"data\",\"dataColumns\",\"rowBodyComponent\"],[[33,1],[33,2],\"object/md-schema\"]]]]],[],false,[\"control/md-edit-table\",\"data\",\"columns\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[ \s\n]+/g, '|').trim(), '|Search:|Columns|Show|All|Hide|All|Restore|Defaults|Title|Type|Title|Type|Title|Type|foo|bar|Edit|Delete|biz|baz|Edit|Delete|Show|1|-|2|of|2|Clear|all|filters|Rows:|10|25|50|500|Page:|1|');
       await (0, _testHelpers.click)('.md-row-buttons .btn-success');
@@ -2836,9 +2885,10 @@ define("mdeditor/tests/integration/pods/components/control/md-errors/component-t
         {{control/md-errors errors=errors}}
       */
       {
-        "id": "keVMS5Sb",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"errors\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"errors\",\"control/md-errors\"]}",
-        "meta": {}
+        "id": "aFOuF2za",
+        "block": "[[[1,[28,[35,0],null,[[\"errors\"],[[33,1]]]]]],[],false,[\"control/md-errors\",\"errors\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-error-list').textContent.replace(/[ \n]+/g, '|').trim(), '|Test|0|message1|/foo/biz|1|message2|Test2|');
       assert.dom((0, _testHelpers.findAll)('.md-error-list .label')[1]).hasClass('label-danger', 'class applied'); // Template block usage:
@@ -2852,9 +2902,10 @@ define("mdeditor/tests/integration/pods/components/control/md-errors/component-t
           
       */
       {
-        "id": "W5QWEchW",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"errors\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"errors\",\"control/md-errors\"]}",
-        "meta": {}
+        "id": "MnPpGYLR",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"errors\"],[[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/md-errors\",\"errors\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-error-list').textContent.replace(/[ \n]+/g, '|').trim(), '|Test|0|message1|/foo/biz|1|message2|Test2|template|block|text|', 'block');
     });
@@ -2873,9 +2924,10 @@ define("mdeditor/tests/integration/pods/components/control/md-fiscalyear/compone
         {{control/md-fiscalyear context=this}}
       */
       {
-        "id": "0cGcq+rD",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"context\"],[[32,0]]]]]],\"hasEval\":false,\"upvars\":[\"control/md-fiscalyear\"]}",
-        "meta": {}
+        "id": "9E+5IRcF",
+        "block": "[[[1,[28,[35,0],null,[[\"context\"],[[30,0]]]]]],[],false,[\"control/md-fiscalyear\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-select.md-fiscalyear').innerText.replace(/[\n]+/g, '|').trim(), 'Pick Fiscal Year|Pick a Fiscal Year');
     });
@@ -2910,9 +2962,10 @@ define("mdeditor/tests/integration/pods/components/control/md-fiscalyear/compone
             {{control/md-fiscalyear context=this settings=settings}}
       */
       {
-        "id": "QOTwSp+m",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n      \"],[1,[30,[36,0],null,[[\"class\",\"valuePath\",\"model\",\"label\",\"placeholder\"],[\"start\",\"start\",[32,0],\"Start Date\",\"Enter start dateTime\"]]]],[2,\"\\n      \"],[1,[30,[36,0],null,[[\"class\",\"valuePath\",\"model\",\"label\"],[\"end\",\"end\",[32,0],\"End Date\"]]]],[2,\"\\n      \"],[1,[30,[36,2],null,[[\"context\",\"settings\"],[[32,0],[35,1]]]]]],\"hasEval\":false,\"upvars\":[\"input/md-datetime\",\"settings\",\"control/md-fiscalyear\"]}",
-        "meta": {}
+        "id": "M2XirI2r",
+        "block": "[[[1,\"\\n      \"],[1,[28,[35,0],null,[[\"class\",\"valuePath\",\"model\",\"label\",\"placeholder\"],[\"start\",\"start\",[30,0],\"Start Date\",\"Enter start dateTime\"]]]],[1,\"\\n      \"],[1,[28,[35,0],null,[[\"class\",\"valuePath\",\"model\",\"label\"],[\"end\",\"end\",[30,0],\"End Date\"]]]],[1,\"\\n      \"],[1,[28,[35,1],null,[[\"context\",\"settings\"],[[30,0],[33,2]]]]]],[],false,[\"input/md-datetime\",\"control/md-fiscalyear\",\"settings\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       await (0, _helpers.clickTrigger)('.md-fiscalyear');
       await (0, _testSupport.selectChoose)('.md-fiscalyear', year);
@@ -2938,9 +2991,10 @@ define("mdeditor/tests/integration/pods/components/control/md-import-csv/compone
         {{control/md-import-csv}}
       */
       {
-        "id": "2hxUG3xN",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"control/md-import-csv\"]}",
-        "meta": {}
+        "id": "MSsOFkkr",
+        "block": "[[[1,[34,0]]],[],false,[\"control/md-import-csv\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.md-import-picker').hasText('Click or Drop a CSV here.');
       await (0, _testHelpers.render)(Ember.HTMLBars.template(
@@ -2948,9 +3002,10 @@ define("mdeditor/tests/integration/pods/components/control/md-import-csv/compone
         {{control/md-import-csv isProcessing=true progress=progress}}
       */
       {
-        "id": "dv0SLLhV",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"isProcessing\",\"progress\"],[true,[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"progress\",\"control/md-import-csv\"]}",
-        "meta": {}
+        "id": "ZcK3PeF4",
+        "block": "[[[1,[28,[35,0],null,[[\"isProcessing\",\"progress\"],[true,[33,1]]]]]],[],false,[\"control/md-import-csv\",\"progress\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.ember-view').textContent.replace(/[ \n]+/g, '|').trim(), '|Processing...|Stop|0%|Complete|', 'renders progressbar');
       this.set('progress', 57);
@@ -2985,9 +3040,10 @@ define("mdeditor/tests/integration/pods/components/control/md-indicator/componen
             
       */
       {
-        "id": "dL6hIQtT",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"icon\",\"title\",\"note\",\"values\",\"type\"],[\"sticky-note\",\"Hello\",\"${foo} is a ${bar}\",[35,0],\"danger\"]]]],[2,\"\\n      \"]],\"hasEval\":false,\"upvars\":[\"values\",\"control/md-indicator\"]}",
-        "meta": {}
+        "id": "FpjjGUEw",
+        "block": "[[[1,[28,[35,0],null,[[\"icon\",\"title\",\"note\",\"values\",\"type\"],[\"sticky-note\",\"Hello\",\"${foo} is a ${bar}\",[33,1],\"danger\"]]]],[1,\"\\n      \"]],[],false,[\"control/md-indicator\",\"values\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.md-indicator').isVisible({
         count: 1
@@ -3048,9 +3104,10 @@ define("mdeditor/tests/integration/pods/components/control/md-indicator/related/
           }}
       */
       {
-        "id": "+8y7Vuxm",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,4],null,[[\"model\",\"route\",\"icon\",\"note\",\"route\",\"values\",\"parent\",\"relatedId\",\"path\",\"title\",\"linkText\",\"type\",\"popperContainer\",\"routeIdPaths\"],[[35,3],true,\"cog\",\"The attribute ${foo} has an associated domain: ${bar}.\",\"dictionary.show.edit.entity\",[35,2],[35,1],\"domainId\",\"domain\",\"Related Indicator Test\",\"Go to Domain\",\"warning\",\"#ember-testing\",[30,[36,0],[\"values.foo\"],null]]]]]],\"hasEval\":false,\"upvars\":[\"array\",\"dictionary\",\"values\",\"model\",\"control/md-indicator/related\"]}",
-        "meta": {}
+        "id": "mvHBu6Bx",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"route\",\"icon\",\"note\",\"route\",\"values\",\"parent\",\"relatedId\",\"path\",\"title\",\"linkText\",\"type\",\"popperContainer\",\"routeIdPaths\"],[[33,1],true,\"cog\",\"The attribute ${foo} has an associated domain: ${bar}.\",\"dictionary.show.edit.entity\",[33,2],[33,3],\"domainId\",\"domain\",\"Related Indicator Test\",\"Go to Domain\",\"warning\",\"#ember-testing\",[28,[37,4],[\"values.foo\"],null]]]]]],[],false,[\"control/md-indicator/related\",\"model\",\"values\",\"dictionary\",\"array\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.md-indicator-related .md-indicator').isVisible({
         count: 1
@@ -3077,9 +3134,10 @@ define("mdeditor/tests/integration/pods/components/control/md-infotip/component-
         {{control/md-infotip}}
       */
       {
-        "id": "QCbqJNL/",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"control/md-infotip\"]}",
-        "meta": {}
+        "id": "bd83AGPX",
+        "block": "[[[1,[34,0]]],[],false,[\"control/md-infotip\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.trim(), ''); // Template block usage:
 
@@ -3092,9 +3150,10 @@ define("mdeditor/tests/integration/pods/components/control/md-infotip/component-
           
       */
       {
-        "id": "d5B2VaS5",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-infotip\"]}",
-        "meta": {}
+        "id": "axCLMdaA",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/md-infotip\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.trim(), 'template block text');
     });
@@ -3153,9 +3212,10 @@ define("mdeditor/tests/integration/pods/components/control/md-itis/component-tes
         {{control/md-itis taxonomy=taxonomy}}
       */
       {
-        "id": "q5AY9bE8",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"taxonomy\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"taxonomy\",\"control/md-itis\"]}",
-        "meta": {}
+        "id": "hpIO+AGl",
+        "block": "[[[1,[28,[35,0],null,[[\"taxonomy\"],[[33,1]]]]]],[],false,[\"control/md-itis\",\"taxonomy\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-itis').textContent.replace(/[ \n]+/g, '|').trim(), '|Search|Value|Kingdom|(optional)|Select|a|kingdom.|Search|'); // await fillIn('.md-input-input input.ember-text-field', 'shark');
       // await click('button[type=submit]');
@@ -3166,9 +3226,10 @@ define("mdeditor/tests/integration/pods/components/control/md-itis/component-tes
         {{control/md-itis taxonomy=taxonomy searchResult=taxa found=true}}
       */
       {
-        "id": "WsJN0mDc",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"taxonomy\",\"searchResult\",\"found\"],[[35,1],[35,0],true]]]]],\"hasEval\":false,\"upvars\":[\"taxa\",\"taxonomy\",\"control/md-itis\"]}",
-        "meta": {}
+        "id": "AH1woV7R",
+        "block": "[[[1,[28,[35,0],null,[[\"taxonomy\",\"searchResult\",\"found\"],[[33,1],[33,2],true]]]]],[],false,[\"control/md-itis\",\"taxonomy\",\"taxa\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.md-itis-taxalist').exists('renders search result');
       await (0, _testHelpers.click)('.md-itis-taxalist .list-group-item .btn-success');
@@ -3192,9 +3253,10 @@ define("mdeditor/tests/integration/pods/components/control/md-json-button/compon
         {{control/md-json-button}}
       */
       {
-        "id": "AC1r9M2m",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"control/md-json-button\"]}",
-        "meta": {}
+        "id": "Bkh+36cf",
+        "block": "[[[1,[34,0]]],[],false,[\"control/md-json-button\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('button').hasText('Preview JSON'); // Template block usage:
 
@@ -3207,9 +3269,10 @@ define("mdeditor/tests/integration/pods/components/control/md-json-button/compon
           
       */
       {
-        "id": "Iv6sA0B/",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-json-button\"]}",
-        "meta": {}
+        "id": "ZfaNNAyx",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/md-json-button\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('button').hasText('template block text');
     });
@@ -3224,9 +3287,10 @@ define("mdeditor/tests/integration/pods/components/control/md-json-button/compon
         {{control/md-json-button json=json preview=true}}
       */
       {
-        "id": "PRsH8m9/",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"json\",\"preview\"],[[35,0],true]]]]],\"hasEval\":false,\"upvars\":[\"json\",\"control/md-json-button\"]}",
-        "meta": {}
+        "id": "SITVNmDT",
+        "block": "[[[1,[28,[35,0],null,[[\"json\",\"preview\"],[[33,1],true]]]]],[],false,[\"control/md-json-button\",\"json\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       await (0, _testHelpers.click)('button.btn');
       assert.dom(document.querySelector('.md-jsmodal-container')).hasText('{"foo": "bar"}');
@@ -3249,9 +3313,10 @@ define("mdeditor/tests/integration/pods/components/control/md-json-button/compon
             </div>
       */
       {
-        "id": "nFj0IQQS",
-        "block": "{\"symbols\":[\"slider\"],\"statements\":[[1,[30,[36,2],null,[[\"json\",\"title\"],[[35,1],\"foobar\"]]]],[2,\"\\n      \"],[10,\"div\"],[14,0,\"slider\"],[12],[2,\"\\n\"],[6,[37,3],null,[[\"name\"],[\"md-slider-json\"]],[[\"default\"],[{\"statements\":[[2,\"          \"],[10,\"h3\"],[14,0,\"text-info\"],[12],[1,[32,1,[\"title\"]]],[13],[2,\"\\n          \"],[10,\"hr\"],[12],[13],[2,\"\\n          \"],[1,[30,[36,0],[[32,1,[\"body\"]]],null]],[2,\"\\n\"]],\"parameters\":[1]}]]],[2,\"      \"],[13]],\"hasEval\":false,\"upvars\":[\"component\",\"json\",\"control/md-json-button\",\"from-elsewhere\"]}",
-        "meta": {}
+        "id": "r8516kJn",
+        "block": "[[[1,[28,[35,0],null,[[\"json\",\"title\"],[[33,1],\"foobar\"]]]],[1,\"\\n      \"],[10,0],[14,0,\"slider\"],[12],[1,\"\\n\"],[6,[39,2],null,[[\"name\"],[\"md-slider-json\"]],[[\"default\"],[[[[1,\"          \"],[10,\"h3\"],[14,0,\"text-info\"],[12],[1,[30,1,[\"title\"]]],[13],[1,\"\\n          \"],[10,\"hr\"],[12],[13],[1,\"\\n          \"],[46,[30,1,[\"body\"]],null,null,null],[1,\"\\n\"]],[1]]]]],[1,\"      \"],[13]],[\"slider\"],false,[\"control/md-json-button\",\"json\",\"from-elsewhere\",\"component\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       await (0, _testHelpers.click)('button.btn');
       assert.equal((0, _testHelpers.find)('.slider').textContent.replace(/[ \n]+/g, '|').trim(), '|Viewing|JSON|for:|foobar|{"foo":|"bar"}|');
@@ -3274,9 +3339,10 @@ define("mdeditor/tests/integration/pods/components/control/md-json-viewer/compon
         {{control/md-json-viewer json=json}}
       */
       {
-        "id": "tSgX0ZYb",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"json\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"json\",\"control/md-json-viewer\"]}",
-        "meta": {}
+        "id": "OK8gjCMC",
+        "block": "[[[1,[28,[35,0],null,[[\"json\"],[[33,1]]]]]],[],false,[\"control/md-json-viewer\",\"json\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _jquery.default)('.md-jsmodal-container').text().trim(), '{"foo": "bar"}');
     });
@@ -3291,9 +3357,10 @@ define("mdeditor/tests/integration/pods/components/control/md-json-viewer/compon
         {{control/md-json-viewer json=json modal=false}}
       */
       {
-        "id": "ePFDCj9z",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"json\",\"modal\"],[[35,0],false]]]]],\"hasEval\":false,\"upvars\":[\"json\",\"control/md-json-viewer\"]}",
-        "meta": {}
+        "id": "RNdP+sqz",
+        "block": "[[[1,[28,[35,0],null,[[\"json\",\"modal\"],[[33,1],false]]]]],[],false,[\"control/md-json-viewer\",\"json\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.md-json-viewer').hasText('{"foo": "bar"}');
     });
@@ -3313,9 +3380,10 @@ define("mdeditor/tests/integration/pods/components/control/md-modal/component-te
         {{control/md-modal isShowing=true message="The message."}}
       */
       {
-        "id": "/RTDHqMI",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"isShowing\",\"message\"],[true,\"The message.\"]]]]],\"hasEval\":false,\"upvars\":[\"control/md-modal\"]}",
-        "meta": {}
+        "id": "wOPz1xCg",
+        "block": "[[[1,[28,[35,0],null,[[\"isShowing\",\"message\"],[true,\"The message.\"]]]]],[],false,[\"control/md-modal\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.ok(document.querySelector('.md-modal-container'));
       assert.dom(document.querySelector('.md-modal-container')).hasText('The message.'); // Template block usage:
@@ -3329,9 +3397,10 @@ define("mdeditor/tests/integration/pods/components/control/md-modal/component-te
           
       */
       {
-        "id": "d8k1wKkE",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"isShowing\"],[true]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-modal\"]}",
-        "meta": {}
+        "id": "gyaLbe42",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"isShowing\"],[true]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/md-modal\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.isPresentOnce('.md-modal-overlay');
       assert.dom(document.querySelector('.md-modal-container')).hasText('template block text');
@@ -3367,9 +3436,10 @@ define("mdeditor/tests/integration/pods/components/control/md-modal/component-te
             
       */
       {
-        "id": "fPSNHYkn",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n        \"],[1,[30,[36,3],null,[[\"class\",\"icon\",\"text\",\"click\"],[\"btn btn-danger\",\"times\",\"Test\",[30,[36,2],[[32,0],[30,[36,1],[[35,0]],null],true],null]]]]],[2,\"\\n        \"],[1,[30,[36,5],null,[[\"message\",\"confirm\",\"showCancel\",\"cancelType\",\"showConfirm\",\"confirmLabel\",\"confirmType\",\"isShowing\",\"renderInPlace\"],[\"The modal message.\",[30,[36,2],[[32,0],[35,4],\"confirm\"],null],true,\"primary\",true,\"Confirm\",\"danger\",[35,0],true]]]],[2,\"\\n      \"]],\"hasEval\":false,\"upvars\":[\"showModal\",\"mut\",\"action\",\"control/md-button\",\"externalAction\",\"control/md-modal\"]}",
-        "meta": {}
+        "id": "P32hgNeg",
+        "block": "[[[1,\"\\n        \"],[1,[28,[35,0],null,[[\"class\",\"icon\",\"text\",\"click\"],[\"btn btn-danger\",\"times\",\"Test\",[28,[37,1],[[30,0],[28,[37,2],[[33,3]],null],true],null]]]]],[1,\"\\n        \"],[1,[28,[35,4],null,[[\"message\",\"confirm\",\"showCancel\",\"cancelType\",\"showConfirm\",\"confirmLabel\",\"confirmType\",\"isShowing\",\"renderInPlace\"],[\"The modal message.\",[28,[37,1],[[30,0],[33,5],\"confirm\"],null],true,\"primary\",true,\"Confirm\",\"danger\",[33,3],true]]]],[1,\"\\n      \"]],[],false,[\"control/md-button\",\"action\",\"mut\",\"showModal\",\"control/md-modal\",\"externalAction\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       await (0, _testHelpers.click)('.md-button');
       assert.isAbsent('.md-modal-overlay');
@@ -3404,9 +3474,10 @@ define("mdeditor/tests/integration/pods/components/control/md-record-table/butto
         {{control/md-record-table/buttons record=model}}
       */
       {
-        "id": "yHrBH/dk",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"record\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"control/md-record-table/buttons\"]}",
-        "meta": {}
+        "id": "1RH58l2S",
+        "block": "[[[1,[28,[35,0],null,[[\"record\"],[[33,1]]]]]],[],false,[\"control/md-record-table/buttons\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-dashboard-buttons').textContent.replace(/[ \n]+/g, '|').trim(), '|Show|Edit|Delete|Preview|JSON|');
       assert.dom('.md-status-icon .btn-danger').isVisible();
@@ -3419,9 +3490,10 @@ define("mdeditor/tests/integration/pods/components/control/md-record-table/butto
               {{/control/md-record-table/buttons}}
       */
       {
-        "id": "a6ef80Qi",
-        "block": "{\"symbols\":[],\"statements\":[[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"          template block text\\n\"]],\"parameters\":[]}]]]],\"hasEval\":false,\"upvars\":[\"control/md-record-table/buttons\"]}",
-        "meta": {}
+        "id": "Td0i/bxR",
+        "block": "[[[6,[39,0],null,null,[[\"default\"],[[[[1,\"          template block text\\n\"]],[]]]]]],[],false,[\"control/md-record-table/buttons\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-dashboard-buttons').textContent.replace(/[ \n]+/g, '|').trim(), '|Show|Edit|Delete|Preview|JSON|template|block|text|', 'block');
     });
@@ -3452,9 +3524,10 @@ define("mdeditor/tests/integration/pods/components/control/md-record-table/butto
         {{control/md-record-table/buttons/custom column=column record=rec}}
       */
       {
-        "id": "YhnbWCF0",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"column\",\"record\"],[[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"rec\",\"column\",\"control/md-record-table/buttons/custom\"]}",
-        "meta": {}
+        "id": "PNPCLno1",
+        "block": "[[[1,[28,[35,0],null,[[\"column\",\"record\"],[[33,1],[33,2]]]]]],[],false,[\"control/md-record-table/buttons/custom\",\"column\",\"rec\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('button.btn-warning').hasText('foobar');
       (0, _testHelpers.click)('button.btn-warning');
@@ -3480,9 +3553,10 @@ define("mdeditor/tests/integration/pods/components/control/md-record-table/butto
         {{control/md-record-table/buttons/filter deleteSelected=deleteSelected selectedItems=selectedItems}}
       */
       {
-        "id": "Ct89GsC4",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"deleteSelected\",\"selectedItems\"],[[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"selectedItems\",\"deleteSelected\",\"control/md-record-table/buttons/filter\"]}",
-        "meta": {}
+        "id": "jdwUnuui",
+        "block": "[[[1,[28,[35,0],null,[[\"deleteSelected\",\"selectedItems\"],[[33,1],[33,2]]]]]],[],false,[\"control/md-record-table/buttons/filter\",\"deleteSelected\",\"selectedItems\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('button.btn-danger').hasText('Delete Selected');
       (0, _testHelpers.doubleClick)('button.btn-danger');
@@ -3502,9 +3576,10 @@ define("mdeditor/tests/integration/pods/components/control/md-record-table/butto
         {{control/md-record-table/buttons/show}}
       */
       {
-        "id": "NzxKsf5a",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"control/md-record-table/buttons/show\"]}",
-        "meta": {}
+        "id": "c+dlENyT",
+        "block": "[[[1,[34,0]]],[],false,[\"control/md-record-table/buttons/show\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.btn-info').hasText('Show');
     });
@@ -3537,9 +3612,10 @@ define("mdeditor/tests/integration/pods/components/control/md-record-table/compo
         {{control/md-record-table dataColumns=columns data=data}}
       */
       {
-        "id": "NRTaunNK",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"dataColumns\",\"data\"],[[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"data\",\"columns\",\"control/md-record-table\"]}",
-        "meta": {}
+        "id": "x2iZT0e2",
+        "block": "[[[1,[28,[35,0],null,[[\"dataColumns\",\"data\"],[[33,1],[33,2]]]]]],[],false,[\"control/md-record-table\",\"columns\",\"data\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-record-table').textContent.replace(/[ \n\t\s]+/g, '|').trim(), '|Search:|Columns|Show|All|Hide|All|Restore|Defaults|Title|Type|Actions|Title|Type|Actions|Title|Type|foo|bar|Show|biz|baz|Show|Show|1|-|2|of|2|Clear|all|filters|Rows:|10|25|50|500|Page:|1|'); // Template block usage:
 
@@ -3552,9 +3628,10 @@ define("mdeditor/tests/integration/pods/components/control/md-record-table/compo
           
       */
       {
-        "id": "mZ9HrsaD",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,2],null,[[\"dataColumns\",\"data\"],[[35,1],[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"data\",\"columns\",\"control/md-record-table\"]}",
-        "meta": {}
+        "id": "0xBcf6XG",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"dataColumns\",\"data\"],[[33,1],[33,2]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/md-record-table\",\"columns\",\"data\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.md-record-table').hasText('template block text');
     });
@@ -3579,9 +3656,10 @@ define("mdeditor/tests/integration/pods/components/control/md-repo-link/componen
         {{control/md-repo-link}}
       */
       {
-        "id": "A1w5Bcpn",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"control/md-repo-link\"]}",
-        "meta": {}
+        "id": "qA4Or2hP",
+        "block": "[[[1,[34,0]]],[],false,[\"control/md-repo-link\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('a').hasText(version);
       assert.dom('a').hasAttribute('href', `${repository}/tree/${version.substring(version.indexOf('+') + 1)}`, 'link ok'); // Template block usage:
@@ -3595,9 +3673,10 @@ define("mdeditor/tests/integration/pods/components/control/md-repo-link/componen
           
       */
       {
-        "id": "jzqehUw9",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-repo-link\"]}",
-        "meta": {}
+        "id": "ekcN5Qc4",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/md-repo-link\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('a').hasText('template block text', 'block ok');
     });
@@ -3616,9 +3695,10 @@ define("mdeditor/tests/integration/pods/components/control/md-scroll-into-view/c
         {{control/md-scroll-into-view}}
       */
       {
-        "id": "O0lWm2Dy",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"control/md-scroll-into-view\"]}",
-        "meta": {}
+        "id": "jPkmQaCc",
+        "block": "[[[1,[34,0]]],[],false,[\"control/md-scroll-into-view\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom(this.element).hasText(''); // Template block usage:
 
@@ -3631,9 +3711,10 @@ define("mdeditor/tests/integration/pods/components/control/md-scroll-into-view/c
           
       */
       {
-        "id": "Hckq5UXN",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-scroll-into-view\"]}",
-        "meta": {}
+        "id": "sIsVX5JR",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/md-scroll-into-view\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom(this.element).hasText('template block text');
     });
@@ -3660,9 +3741,10 @@ define("mdeditor/tests/integration/pods/components/control/md-scroll-spy/compone
             {{control/md-scroll-spy setScrollTo=setScrollTo}}
       */
       {
-        "id": "hMIum6tl",
-        "block": "{\"symbols\":[],\"statements\":[[10,\"div\"],[14,\"data-spy\",\"Foo\"],[14,1,\"foo1\"],[12],[2,\"Foo\"],[13],[2,\"\\n      \"],[10,\"div\"],[14,\"data-spy\",\"Bar\"],[14,1,\"bar1\"],[12],[2,\"Bar\"],[13],[2,\"\\n      \"],[1,[30,[36,1],null,[[\"setScrollTo\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"setScrollTo\",\"control/md-scroll-spy\"]}",
-        "meta": {}
+        "id": "L8z1fM3l",
+        "block": "[[[10,0],[14,\"data-spy\",\"Foo\"],[14,1,\"foo1\"],[12],[1,\"Foo\"],[13],[1,\"\\n      \"],[10,0],[14,\"data-spy\",\"Bar\"],[14,1,\"bar1\"],[12],[1,\"Bar\"],[13],[1,\"\\n      \"],[1,[28,[35,0],null,[[\"setScrollTo\"],[[33,1]]]]]],[],false,[\"control/md-scroll-spy\",\"setScrollTo\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('ul').textContent.replace(/[ \n\t\s]+/g, '|').trim(), '|Foo|Bar|');
       await (0, _testHelpers.click)('ul a'); // Template block usage:
@@ -3676,9 +3758,10 @@ define("mdeditor/tests/integration/pods/components/control/md-scroll-spy/compone
           
       */
       {
-        "id": "SrVymBuX",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"setScrollTo\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"setScrollTo\",\"control/md-scroll-spy\"]}",
-        "meta": {}
+        "id": "Kef1vvrV",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"setScrollTo\"],[[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/md-scroll-spy\",\"setScrollTo\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('ul').hasText('template block text');
     });
@@ -3714,9 +3797,10 @@ define("mdeditor/tests/integration/pods/components/control/md-select-table/compo
         {{control/md-select-table columns=columns data=data select=select}}
       */
       {
-        "id": "KZMNRPlY",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,3],null,[[\"columns\",\"data\",\"select\"],[[35,2],[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"select\",\"data\",\"columns\",\"control/md-select-table\"]}",
-        "meta": {}
+        "id": "yKrcKaMl",
+        "block": "[[[1,[28,[35,0],null,[[\"columns\",\"data\",\"select\"],[[33,1],[33,2],[33,3]]]]]],[],false,[\"control/md-select-table\",\"columns\",\"data\",\"select\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-select-table').textContent.replace(/[ \n\t\s]+/g, '|').trim(), '|Search:|Columns|Show|All|Hide|All|Restore|Defaults|Title|Type|Title|Type|Title|Type|foo|bar|biz|baz|Show|1|-|2|of|2|Clear|all|filters|Rows:|10|25|50|500|Page:|1|');
       (0, _testHelpers.click)('.md-select-table tbody tr'); // Template block usage:
@@ -3730,9 +3814,10 @@ define("mdeditor/tests/integration/pods/components/control/md-select-table/compo
           
       */
       {
-        "id": "YIwmBaw9",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-select-table\"]}",
-        "meta": {}
+        "id": "OPfTSiwx",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/md-select-table\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-select-table').textContent.replace(/[ \n\t\s]+/g, '|').trim(), '|template|block|text|', 'block ok');
     });
@@ -3751,9 +3836,10 @@ define("mdeditor/tests/integration/pods/components/control/md-spinner/component-
         {{control/md-spinner text="foobar" size="5"}}
       */
       {
-        "id": "IIVqJxjV",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"text\",\"size\"],[\"foobar\",\"5\"]]]]],\"hasEval\":false,\"upvars\":[\"control/md-spinner\"]}",
-        "meta": {}
+        "id": "sSGrImXH",
+        "block": "[[[1,[28,[35,0],null,[[\"text\",\"size\"],[\"foobar\",\"5\"]]]]],[],false,[\"control/md-spinner\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.md-spinner').hasText('foobar');
       assert.dom('.md-spinner .md-spinner-text').hasClass('size-5', 'adds class'); // Template block usage:
@@ -3767,9 +3853,10 @@ define("mdeditor/tests/integration/pods/components/control/md-spinner/component-
           
       */
       {
-        "id": "difjAsmy",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/md-spinner\"]}",
-        "meta": {}
+        "id": "Z7Xxn3MQ",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/md-spinner\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.md-spinner').hasText('template block text', 'block ok');
     });
@@ -3799,9 +3886,10 @@ define("mdeditor/tests/integration/pods/components/control/md-spotlight/componen
             {{control/md-spotlight}}
       */
       {
-        "id": "vRmkyBxI",
-        "block": "{\"symbols\":[],\"statements\":[[10,\"div\"],[14,1,\"foo\"],[12],[2,\"foobar\"],[13],[2,\"\\n      \"],[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"control/md-spotlight\"]}",
-        "meta": {}
+        "id": "Na2r8n9D",
+        "block": "[[[10,0],[14,1,\"foo\"],[12],[1,\"foobar\"],[13],[1,\"\\n      \"],[1,[34,0]]],[],false,[\"control/md-spotlight\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       spotlight.setTarget('foo', close, scope);
       assert.ok(document.querySelector('.md-modal-overlay'), 'render overlay');
@@ -3828,9 +3916,10 @@ define("mdeditor/tests/integration/pods/components/control/md-status/component-t
         {{control/md-status model=model}}
       */
       {
-        "id": "PmpXCTqi",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"control/md-status\"]}",
-        "meta": {}
+        "id": "aIfw8Mub",
+        "block": "[[[1,[28,[35,0],null,[[\"model\"],[[33,1]]]]]],[],false,[\"control/md-status\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.md-status-icon .md-error').isVisible();
       this.set('model.hasDirtyHash', false);
@@ -3846,9 +3935,10 @@ define("mdeditor/tests/integration/pods/components/control/md-status/component-t
           
       */
       {
-        "id": "TpwoLiCQ",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"control/md-status\"]}",
-        "meta": {}
+        "id": "o6mohTMw",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"model\"],[[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/md-status\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.md-status-icon .md-warning').isVisible();
     });
@@ -3867,9 +3957,10 @@ define("mdeditor/tests/integration/pods/components/control/subbar-citation/compo
         {{control/subbar-citation text="foobar"}}
       */
       {
-        "id": "zJ4LrSQ6",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"text\"],[\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"control/subbar-citation\"]}",
-        "meta": {}
+        "id": "VXpSWujS",
+        "block": "[[[1,[28,[35,0],null,[[\"text\"],[\"foobar\"]]]]],[],false,[\"control/subbar-citation\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.btn-group-vertical').textContent.replace(/[ \n\t\s]+/g, '|').trim(), '|Select|a|Record|foobar|'); // Template block usage:
 
@@ -3882,9 +3973,10 @@ define("mdeditor/tests/integration/pods/components/control/subbar-citation/compo
           
       */
       {
-        "id": "Tqdf+O2c",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/subbar-citation\"]}",
-        "meta": {}
+        "id": "W5/IAfMV",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/subbar-citation\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.btn-group-vertical').textContent.replace(/[ \n\t\s]+/g, '|').trim(), '|Select|a|Record|template|block|text|');
     });
@@ -3913,9 +4005,10 @@ define("mdeditor/tests/integration/pods/components/control/subbar-importcsv/comp
         {{control/subbar-importcsv class="importcsv" actionContext=foo}}
       */
       {
-        "id": "hMihdqyQ",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"class\",\"actionContext\"],[\"importcsv\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"foo\",\"control/subbar-importcsv\"]}",
-        "meta": {}
+        "id": "qhhtVFj0",
+        "block": "[[[1,[28,[35,0],null,[[\"class\",\"actionContext\"],[\"importcsv\",[33,1]]]]]],[],false,[\"control/subbar-importcsv\",\"foo\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.importcsv').textContent.replace(/[ \n]+/g, '|').trim(), '|Do|Import|Cancel|Import|');
       (0, _testHelpers.click)('.importcsv .btn-info'); // Template block usage:
@@ -3929,9 +4022,10 @@ define("mdeditor/tests/integration/pods/components/control/subbar-importcsv/comp
           
       */
       {
-        "id": "ktesIorx",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"class\"],[\"importcsv\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/subbar-importcsv\"]}",
-        "meta": {}
+        "id": "Ee59fzsp",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"class\"],[\"importcsv\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/subbar-importcsv\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.importcsv').textContent.replace(/[ \n]+/g, '|').trim(), '|Do|Import|Cancel|Import|template|block|text|', 'block');
     });
@@ -3954,9 +4048,10 @@ define("mdeditor/tests/integration/pods/components/control/subbar-link/component
         {{control/subbar-link  text="foo" click=test}}
       */
       {
-        "id": "WSv22BG7",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"text\",\"click\"],[\"foo\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"test\",\"control/subbar-link\"]}",
-        "meta": {}
+        "id": "fFaJMXVd",
+        "block": "[[[1,[28,[35,0],null,[[\"text\",\"click\"],[\"foo\",[33,1]]]]]],[],false,[\"control/subbar-link\",\"test\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('button').hasText('foo');
       await (0, _testHelpers.click)('button'); // Template block usage:
@@ -3970,9 +4065,10 @@ define("mdeditor/tests/integration/pods/components/control/subbar-link/component
           
       */
       {
-        "id": "RIbR2g6O",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"text\",\"click\"],[\"foo\",[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        \"],[10,\"section\"],[12],[2,\"template block text\"],[13],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"test\",\"control/subbar-link\"]}",
-        "meta": {}
+        "id": "H33NgUq3",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"text\",\"click\"],[\"foo\",[33,1]]],[[\"default\"],[[[[1,\"        \"],[10,\"section\"],[12],[1,\"template block text\"],[13],[1,\"\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/subbar-link\",\"test\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('section').hasText('template block text');
     });
@@ -3991,9 +4087,10 @@ define("mdeditor/tests/integration/pods/components/control/subbar-spatial/compon
         {{control/subbar-spatial class="testme"}}
       */
       {
-        "id": "Ut9nkk44",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"class\"],[\"testme\"]]]]],\"hasEval\":false,\"upvars\":[\"control/subbar-spatial\"]}",
-        "meta": {}
+        "id": "5hHE3INZ",
+        "block": "[[[1,[28,[35,0],null,[[\"class\"],[\"testme\"]]]]],[],false,[\"control/subbar-spatial\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.testme').textContent.replace(/[ \n]+/g, '|').trim(), '|Zoom|All|Import|Features|Export|Features|Delete|All|Back|to|List|'); // Template block usage:
 
@@ -4006,9 +4103,10 @@ define("mdeditor/tests/integration/pods/components/control/subbar-spatial/compon
           
       */
       {
-        "id": "6yMbWtS1",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"class\"],[\"testme\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"control/subbar-spatial\"]}",
-        "meta": {}
+        "id": "8LUib/jP",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"class\"],[\"testme\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"control/subbar-spatial\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.testme').textContent.replace(/[ \n]+/g, '|').trim(), '|Zoom|All|Import|Features|Export|Features|Delete|All|Back|to|List|template|block|text|');
     });
@@ -4044,9 +4142,10 @@ define("mdeditor/tests/integration/pods/components/control/subbar-spatial/compon
           }}
       */
       {
-        "id": "iyWW7I59",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,5],null,[[\"zoomAll\",\"uploadData\",\"exportGeoJSON\",\"deleteAllFeatures\",\"toList\"],[[35,4],[35,3],[35,2],[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"test5\",\"test4\",\"test3\",\"test2\",\"test1\",\"control/subbar-spatial\"]}",
-        "meta": {}
+        "id": "HrQM5Rj7",
+        "block": "[[[1,[28,[35,0],null,[[\"zoomAll\",\"uploadData\",\"exportGeoJSON\",\"deleteAllFeatures\",\"toList\"],[[33,1],[33,2],[33,3],[33,4],[33,5]]]]]],[],false,[\"control/subbar-spatial\",\"test1\",\"test2\",\"test3\",\"test4\",\"test5\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       (0, _testHelpers.findAll)('button').forEach(async btn => await (0, _testHelpers.click)(btn));
       await (0, _testHelpers.doubleClick)('.btn-danger');
@@ -4066,9 +4165,10 @@ define("mdeditor/tests/integration/pods/components/ember-tooltip/component-test"
         {{ember-tooltip}}
       */
       {
-        "id": "h4ORIMuG",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"ember-tooltip\"]}",
-        "meta": {}
+        "id": "nrmQcEt7",
+        "block": "[[[1,[34,0]]],[],false,[\"ember-tooltip\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom(this.element).hasText(''); // Template block usage:
 
@@ -4081,9 +4181,10 @@ define("mdeditor/tests/integration/pods/components/ember-tooltip/component-test"
           
       */
       {
-        "id": "e4hXBXzi",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"isShown\"],[\"true\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"ember-tooltip\"]}",
-        "meta": {}
+        "id": "w6woqk06",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"isShown\"],[\"true\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"ember-tooltip\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       (0, _testSupport.assertTooltipContent)(assert, {
         contentString: 'template block text'
@@ -4104,9 +4205,10 @@ define("mdeditor/tests/integration/pods/components/input/md-boolean/component-te
         {{input/md-boolean value=false text="Foo Bar" label="Baz" }}
       */
       {
-        "id": "akrJXcXS",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"value\",\"text\",\"label\"],[false,\"Foo Bar\",\"Baz\"]]]]],\"hasEval\":false,\"upvars\":[\"input/md-boolean\"]}",
-        "meta": {}
+        "id": "YNMLhSZ4",
+        "block": "[[[1,[28,[35,0],null,[[\"value\",\"text\",\"label\"],[false,\"Foo Bar\",\"Baz\"]]]]],[],false,[\"input/md-boolean\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.form-group').textContent.replace(/[ \n]+/g, '|'), '|Baz|Foo|Bar|'); // Template block usage:" + EOL +
 
@@ -4119,9 +4221,10 @@ define("mdeditor/tests/integration/pods/components/input/md-boolean/component-te
           
       */
       {
-        "id": "z+ZIJx+G",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"value\",\"text\",\"label\"],[true,\"Foo Bar\",\"Baz\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"input/md-boolean\"]}",
-        "meta": {}
+        "id": "l3S4K2sA",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"value\",\"text\",\"label\"],[true,\"Foo Bar\",\"Baz\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"input/md-boolean\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.form-group').textContent.replace(/[ \n]+/g, '|'), '|Baz|Foo|Bar|template|block|text|');
       assert.dom('input').isChecked();
@@ -4173,9 +4276,10 @@ define("mdeditor/tests/integration/pods/components/input/md-codelist-multi/compo
           
       */
       {
-        "id": "tqhhvoha",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"mdCodeName\",\"value\"],[\"foobar\",[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        \"],[10,\"p\"],[12],[2,\"template block text\"],[13],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"fooVal\",\"input/md-codelist-multi\"]}",
-        "meta": {}
+        "id": "z2yTnRiJ",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"mdCodeName\",\"value\"],[\"foobar\",[33,1]]],[[\"default\"],[[[[1,\"        \"],[10,2],[12],[1,\"template block text\"],[13],[1,\"\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"input/md-codelist-multi\",\"fooVal\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-select').textContent.replace(/[ \n]+/g, '|'), '|×|bar|×|foo|', 'renders block with array value');
     });
@@ -4197,9 +4301,10 @@ define("mdeditor/tests/integration/pods/components/input/md-codelist-multi/compo
             change=(action "update" value)}}
       */
       {
-        "id": "gY9n7xz7",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"create\",\"value\",\"mdCodeName\",\"change\"],[false,[35,0],\"foobar\",[30,[36,1],[[32,0],\"update\",[35,0]],null]]]]]],\"hasEval\":false,\"upvars\":[\"value\",\"action\",\"input/md-codelist-multi\"]}",
-        "meta": {}
+        "id": "f/n13isQ",
+        "block": "[[[1,[28,[35,0],null,[[\"create\",\"value\",\"mdCodeName\",\"change\"],[false,[33,1],\"foobar\",[28,[37,2],[[30,0],\"update\",[33,1]],null]]]]]],[],false,[\"input/md-codelist-multi\",\"value\",\"action\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       await (0, _helpers.clickTrigger)();
       await (0, _testHelpers.triggerEvent)((0, _testHelpers.find)('.ember-power-select-option'), 'mouseup');
@@ -4222,9 +4327,10 @@ define("mdeditor/tests/integration/pods/components/input/md-codelist-multi/compo
             change=(action "update" value)}}
       */
       {
-        "id": "LRiSNcK3",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"create\",\"value\",\"mdCodeName\",\"change\"],[true,[35,0],\"foobar\",[30,[36,1],[[32,0],\"update\",[35,0]],null]]]]]],\"hasEval\":false,\"upvars\":[\"value\",\"action\",\"input/md-codelist-multi\"]}",
-        "meta": {}
+        "id": "BFCBc/Es",
+        "block": "[[[1,[28,[35,0],null,[[\"create\",\"value\",\"mdCodeName\",\"change\"],[true,[33,1],\"foobar\",[28,[37,2],[[30,0],\"update\",[33,1]],null]]]]]],[],false,[\"input/md-codelist-multi\",\"value\",\"action\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       await (0, _helpers.clickTrigger)();
       await (0, _helpers.typeInSearch)('biz');
@@ -4271,9 +4377,10 @@ define("mdeditor/tests/integration/pods/components/input/md-codelist/component-t
             value='foo' mdCodeName="foobar"}}
       */
       {
-        "id": "m3Z167J1",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"value\",\"mdCodeName\"],[\"foo\",\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"input/md-codelist\"]}",
-        "meta": {}
+        "id": "B4wdJ7II",
+        "block": "[[[1,[28,[35,0],null,[[\"value\",\"mdCodeName\"],[\"foo\",\"foobar\"]]]]],[],false,[\"input/md-codelist\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-select').textContent.replace(/[ \n]+/g, '|'), '|foo|×|');
     });
@@ -4292,9 +4399,10 @@ define("mdeditor/tests/integration/pods/components/input/md-codelist/component-t
             change=(action "update" value)}}
       */
       {
-        "id": "6/3Q7KGc",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"value\",\"mdCodeName\",\"change\"],[[35,0],\"foobar\",[30,[36,1],[[32,0],\"update\",[35,0]],null]]]]]],\"hasEval\":false,\"upvars\":[\"value\",\"action\",\"input/md-codelist\"]}",
-        "meta": {}
+        "id": "SXwZHn2j",
+        "block": "[[[1,[28,[35,0],null,[[\"value\",\"mdCodeName\",\"change\"],[[33,1],\"foobar\",[28,[37,2],[[30,0],\"update\",[33,1]],null]]]]]],[],false,[\"input/md-codelist\",\"value\",\"action\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       await (0, _testSupport.selectChoose)('.md-select', 'bar'); // return settled().then(() => {
 
@@ -4317,9 +4425,10 @@ define("mdeditor/tests/integration/pods/components/input/md-codelist/component-t
             change=(action "update" value)}}
       */
       {
-        "id": "c0iYf9Ez",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"create\",\"value\",\"mdCodeName\",\"change\"],[true,[35,0],\"foobar\",[30,[36,1],[[32,0],\"update\",[35,0]],null]]]]]],\"hasEval\":false,\"upvars\":[\"value\",\"action\",\"input/md-codelist\"]}",
-        "meta": {}
+        "id": "VRrjNwPt",
+        "block": "[[[1,[28,[35,0],null,[[\"create\",\"value\",\"mdCodeName\",\"change\"],[true,[33,1],\"foobar\",[28,[37,2],[[30,0],\"update\",[33,1]],null]]]]]],[],false,[\"input/md-codelist\",\"value\",\"action\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       await (0, _helpers.clickTrigger)();
       await (0, _helpers.typeInSearch)('biz');
@@ -4344,9 +4453,10 @@ define("mdeditor/tests/integration/pods/components/input/md-date-range/component
         {{input/md-date-range class="testme" startDateTime=start endDateTime=end profilePath="foobar"}}
       */
       {
-        "id": "Pf98gLUS",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"class\",\"startDateTime\",\"endDateTime\",\"profilePath\"],[\"testme\",[35,1],[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"end\",\"start\",\"input/md-date-range\"]}",
-        "meta": {}
+        "id": "feiV0rkH",
+        "block": "[[[1,[28,[35,0],null,[[\"class\",\"startDateTime\",\"endDateTime\",\"profilePath\"],[\"testme\",[33,1],[33,2],\"foobar\"]]]]],[],false,[\"input/md-date-range\",\"start\",\"end\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.testme').textContent.replace(/[ \n]+/g, '|').trim(), 'Dates|Start|Date|End|Date|Pick|Fiscal|Year|Pick|a|Fiscal|Year|');
       assert.equal(new Date((0, _testHelpers.findAll)('.date input')[0].value).toISOString(), this.start.toISOString(), 'set start');
@@ -4361,9 +4471,10 @@ define("mdeditor/tests/integration/pods/components/input/md-date-range/component
           
       */
       {
-        "id": "CVIDheIQ",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,2],null,[[\"class\",\"startDateTime\",\"endDateTime\",\"profilePath\"],[\"testme\",[35,1],[35,0],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"end\",\"start\",\"input/md-date-range\"]}",
-        "meta": {}
+        "id": "EXPH/wK8",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"class\",\"startDateTime\",\"endDateTime\",\"profilePath\"],[\"testme\",[33,1],[33,2],\"foobar\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"input/md-date-range\",\"start\",\"end\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.testme').textContent.replace(/[ \n]+/g, '|').trim(), 'Dates|Start|Date|End|Date|Pick|Fiscal|Year|Pick|a|Fiscal|Year|template|block|text|', 'block');
     });
@@ -4386,9 +4497,10 @@ define("mdeditor/tests/integration/pods/components/input/md-datetime/component-t
                             placeholder="Enter date"}}
       */
       {
-        "id": "vRM8p2HI",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"date\",\"format\",\"placeholder\"],[[35,0],\"YYYY-MM-DD\",\"Enter date\"]]]]],\"hasEval\":false,\"upvars\":[\"mydate\",\"input/md-datetime\"]}",
-        "meta": {}
+        "id": "eqCSamux",
+        "block": "[[[1,[28,[35,0],null,[[\"date\",\"format\",\"placeholder\"],[[33,1],\"YYYY-MM-DD\",\"Enter date\"]]]]],[],false,[\"input/md-datetime\",\"mydate\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('input').hasValue('1999-12-31', 'binding works');
     });
@@ -4407,9 +4519,10 @@ define("mdeditor/tests/integration/pods/components/input/md-input-confirm/compon
         {{input/md-input-confirm}}
       */
       {
-        "id": "FqkEhXru",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"input/md-input-confirm\"]}",
-        "meta": {}
+        "id": "AqeIuKIF",
+        "block": "[[[1,[34,0]]],[],false,[\"input/md-input-confirm\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.md-input').hasText('Edit');
       assert.dom('.md-input input[disabled]').exists('input disabled');
@@ -4427,9 +4540,10 @@ define("mdeditor/tests/integration/pods/components/input/md-input-confirm/compon
           
       */
       {
-        "id": "tg6N6ap7",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"input/md-input-confirm\"]}",
-        "meta": {}
+        "id": "F87pjnTn",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"input/md-input-confirm\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-input').textContent.replace(/[ \n]+/g, '|').trim(), '|Edit|template|block|text|', 'block');
     });
@@ -4456,9 +4570,10 @@ define("mdeditor/tests/integration/pods/components/input/md-input/component-test
           
       */
       {
-        "id": "LPikmntu",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n      \"],[1,[30,[36,0],null,[[\"label\",\"value\",\"maxlength\",\"required\",\"inputClass\",\"placeholder\"],[\"Foo\",\"Bar\",100,\"true\",\"test\",\"Enter FooBar\"]]]],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"input/md-input\"]}",
-        "meta": {}
+        "id": "DRssF96K",
+        "block": "[[[1,\"\\n      \"],[1,[28,[35,0],null,[[\"label\",\"value\",\"maxlength\",\"required\",\"inputClass\",\"placeholder\"],[\"Foo\",\"Bar\",100,\"true\",\"test\",\"Enter FooBar\"]]]],[1,\"\\n    \"]],[],false,[\"input/md-input\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('label').hasText('Foo', 'labeled OK');
       const input = this.$('input');
@@ -4474,9 +4589,10 @@ define("mdeditor/tests/integration/pods/components/input/md-input/component-test
           
       */
       {
-        "id": "TmtlG1tf",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        \"],[10,\"p\"],[14,0,\"help-block\"],[12],[2,\"help text\"],[13],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"input/md-input\"]}",
-        "meta": {}
+        "id": "nvhgrtMD",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        \"],[10,2],[14,0,\"help-block\"],[12],[1,\"help text\"],[13],[1,\"\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"input/md-input\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.help-block').hasText('help text', 'block renders');
     });
@@ -4496,9 +4612,10 @@ define("mdeditor/tests/integration/pods/components/input/md-markdown-area/compon
         {{input/md-markdown-area required=true}}
       */
       {
-        "id": "qHIhqxzJ",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"required\"],[true]]]]],\"hasEval\":false,\"upvars\":[\"input/md-markdown-area\"]}",
-        "meta": {}
+        "id": "qALBMkWn",
+        "block": "[[[1,[28,[35,0],null,[[\"required\"],[true]]]]],[],false,[\"input/md-markdown-area\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-markdown-editor').innerText.replace(/[ \n\s]+/g, '').trim(), '||||Entertext,Markdownissupported.​length:010');
       assert.dom('.md-markdown-editor .length.md-error').exists('required ok');
@@ -4516,9 +4633,10 @@ define("mdeditor/tests/integration/pods/components/input/md-markdown-area/compon
               }}
       */
       {
-        "id": "ccxsHdLR",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,3],null,[[\"value\",\"maxlength\",\"required\",\"change\"],[[35,0],10,false,[30,[36,2],[[32,0],[35,1],[35,0]],null]]]]]],\"hasEval\":false,\"upvars\":[\"markdownValue\",\"change\",\"action\",\"input/md-markdown-area\"]}",
-        "meta": {}
+        "id": "AoS5wzR/",
+        "block": "[[[1,[28,[35,0],null,[[\"value\",\"maxlength\",\"required\",\"change\"],[[33,1],10,false,[28,[37,2],[[30,0],[33,3],[33,1]],null]]]]]],[],false,[\"input/md-markdown-area\",\"markdownValue\",\"action\",\"change\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.md-markdown-editor .length.md-error').hasText('length: 15', 'maxlength ok');
       this.set('markdownValue', 'This is binbash.'); // Template block usage:
@@ -4532,9 +4650,10 @@ define("mdeditor/tests/integration/pods/components/input/md-markdown-area/compon
           
       */
       {
-        "id": "/V4v/NMC",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"input/md-markdown-area\"]}",
-        "meta": {}
+        "id": "6nC2L8YM",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"input/md-markdown-area\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-markdown-editor').innerText.replace(/[ \n\s]+/g, '').trim(), '||||Entertext,Markdownissupported.​length:010templateblocktext', 'block');
     });
@@ -4553,9 +4672,10 @@ define("mdeditor/tests/integration/pods/components/input/md-month/component-test
         {{input/md-month date="10"}}
       */
       {
-        "id": "QXO1yAHG",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"date\"],[\"10\"]]]]],\"hasEval\":false,\"upvars\":[\"input/md-month\"]}",
-        "meta": {}
+        "id": "alGA4JNz",
+        "block": "[[[1,[28,[35,0],null,[[\"date\"],[\"10\"]]]]],[],false,[\"input/md-month\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('input').hasValue('October'); // Template block usage:
 
@@ -4568,9 +4688,10 @@ define("mdeditor/tests/integration/pods/components/input/md-month/component-test
           
       */
       {
-        "id": "UVjEuC06",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"class\",\"date\"],[\"testme\",\"10\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"input/md-month\"]}",
-        "meta": {}
+        "id": "+PY+H1Vw",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"class\",\"date\"],[\"testme\",\"10\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"input/md-month\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.testme').hasText('', 'no block');
     });
@@ -4591,9 +4712,10 @@ define("mdeditor/tests/integration/pods/components/input/md-select-contact/compo
         {{input/md-select-contact value=1}}
       */
       {
-        "id": "CNy0PYpO",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"value\"],[1]]]]],\"hasEval\":false,\"upvars\":[\"input/md-select-contact\"]}",
-        "meta": {}
+        "id": "bIy9L0HJ",
+        "block": "[[[1,[28,[35,0],null,[[\"value\"],[1]]]]],[],false,[\"input/md-select-contact\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-select-contact').textContent.replace(/[ \n]+/g, '|').trim(), '|Contact1|×|'); // Template block usage:
 
@@ -4606,9 +4728,10 @@ define("mdeditor/tests/integration/pods/components/input/md-select-contact/compo
           
       */
       {
-        "id": "LKaS5G8y",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"input/md-select-contact\"]}",
-        "meta": {}
+        "id": "pMxbumZl",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"input/md-select-contact\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.md-select-contact').hasText('Select one option');
     });
@@ -4627,9 +4750,10 @@ define("mdeditor/tests/integration/pods/components/input/md-select-contacts/comp
         {{input/md-select-contacts}}
       */
       {
-        "id": "rzPSksyB",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"input/md-select-contacts\"]}",
-        "meta": {}
+        "id": "vvFAhTN1",
+        "block": "[[[1,[34,0]]],[],false,[\"input/md-select-contacts\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.md-select-contact').exists();
     });
@@ -4648,9 +4772,10 @@ define("mdeditor/tests/integration/pods/components/input/md-select-contacts/comp
         {{input/md-select-contacts}}
       */
       {
-        "id": "rzPSksyB",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"input/md-select-contacts\"]}",
-        "meta": {}
+        "id": "vvFAhTN1",
+        "block": "[[[1,[34,0]]],[],false,[\"input/md-select-contacts\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       await (0, _testSupport.selectChoose)('.md-select-contact', 'Contact0');
       await (0, _testSupport.selectChoose)('.md-select-contact', 'Contact1');
@@ -4677,9 +4802,10 @@ define("mdeditor/tests/integration/pods/components/input/md-select-profile/compo
           }}
       */
       {
-        "id": "RaQcQhba",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"value\",\"updateProfile\",\"class\"],[[35,1],[35,0],\"testme\"]]]]],\"hasEval\":false,\"upvars\":[\"updateProfile\",\"profileId\",\"input/md-select-profile\"]}",
-        "meta": {}
+        "id": "09x36xj+",
+        "block": "[[[1,[28,[35,0],null,[[\"value\",\"updateProfile\",\"class\"],[[33,1],[33,2],\"testme\"]]]]],[],false,[\"input/md-select-profile\",\"profileId\",\"updateProfile\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.testme').textContent.replace(/[ \n]+/g, '|'), '|Profile|Full|?|');
     });
@@ -4695,9 +4821,10 @@ define("mdeditor/tests/integration/pods/components/input/md-select-profile/compo
         {{input/md-select-profile value=null updateProfile=(action updateProfile)}}
       */
       {
-        "id": "XjM87Mmv",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"value\",\"updateProfile\"],[null,[30,[36,1],[[32,0],[35,0]],null]]]]]],\"hasEval\":false,\"upvars\":[\"updateProfile\",\"action\",\"input/md-select-profile\"]}",
-        "meta": {}
+        "id": "NaSwD3aD",
+        "block": "[[[1,[28,[35,0],null,[[\"value\",\"updateProfile\"],[null,[28,[37,1],[[30,0],[33,2]],null]]]]]],[],false,[\"input/md-select-profile\",\"action\",\"updateProfile\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       })); // select a value and force an onchange
 
       await (0, _helpers.clickTrigger)();
@@ -4718,9 +4845,10 @@ define("mdeditor/tests/integration/pods/components/input/md-select-thesaurus/com
         {{input/md-select-thesaurus}}
       */
       {
-        "id": "FQF6aOTH",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"input/md-select-thesaurus\"]}",
-        "meta": {}
+        "id": "ZRM0UKj8",
+        "block": "[[[1,[34,0]]],[],false,[\"input/md-select-thesaurus\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-select').textContent.replace(/[ \n]+/g, '|'), '|Pick|a|thesaurus|'); // Template block usage:
 
@@ -4733,9 +4861,10 @@ define("mdeditor/tests/integration/pods/components/input/md-select-thesaurus/com
           
       */
       {
-        "id": "GCiQWYNK",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"input/md-select-thesaurus\"]}",
-        "meta": {}
+        "id": "bqJ8txro",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"input/md-select-thesaurus\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-select').textContent.replace(/[ \n]+/g, '|'), '|Pick|a|thesaurus|');
     });
@@ -4751,9 +4880,10 @@ define("mdeditor/tests/integration/pods/components/input/md-select-thesaurus/com
         {{input/md-select-thesaurus selectThesaurus=selectThesaurus}}
       */
       {
-        "id": "km1GDQDz",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"selectThesaurus\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"selectThesaurus\",\"input/md-select-thesaurus\"]}",
-        "meta": {}
+        "id": "t0AeZaEN",
+        "block": "[[[1,[28,[35,0],null,[[\"selectThesaurus\"],[[33,1]]]]]],[],false,[\"input/md-select-thesaurus\",\"selectThesaurus\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       })); // select a value and force an onchange
 
       await (0, _helpers.clickTrigger)();
@@ -4787,9 +4917,10 @@ define("mdeditor/tests/integration/pods/components/input/md-select/component-tes
           
       */
       {
-        "id": "Ai8wqy4R",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n      \"],[1,[30,[36,1],null,[[\"value\",\"objectArray\",\"valuePath\",\"namePath\",\"tooltipPath\",\"placeholder\"],[1,[35,0],\"id\",\"name\",\"tip\",\"Select one\"]]]],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"objArray\",\"input/md-select\"]}",
-        "meta": {}
+        "id": "LqXapWQh",
+        "block": "[[[1,\"\\n      \"],[1,[28,[35,0],null,[[\"value\",\"objectArray\",\"valuePath\",\"namePath\",\"tooltipPath\",\"placeholder\"],[1,[33,1],\"id\",\"name\",\"tip\",\"Select one\"]]]],[1,\"\\n    \"]],[],false,[\"input/md-select\",\"objArray\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-select').textContent.replace(/[ \n]+/g, '|'), '|foo|', 'renders ok');
     });
@@ -4818,9 +4949,10 @@ define("mdeditor/tests/integration/pods/components/input/md-select/component-tes
           
       */
       {
-        "id": "LuWkF+9X",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n      \"],[1,[30,[36,2],null,[[\"value\",\"objectArray\",\"valuePath\",\"namePath\"],[[35,1],[35,0],\"id\",\"name\"]]]],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"objArray\",\"value\",\"input/md-select\"]}",
-        "meta": {}
+        "id": "YxlQxi/m",
+        "block": "[[[1,\"\\n      \"],[1,[28,[35,0],null,[[\"value\",\"objectArray\",\"valuePath\",\"namePath\"],[[33,1],[33,2],\"id\",\"name\"]]]],[1,\"\\n    \"]],[],false,[\"input/md-select\",\"value\",\"objArray\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-select').textContent.replace(/[ \n]+/g, '|'), '|foo|', 'value set');
       await (0, _helpers.clickTrigger)();
@@ -4854,9 +4986,10 @@ define("mdeditor/tests/integration/pods/components/input/md-select/component-tes
           
       */
       {
-        "id": "VBP+LpgX",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n      \"],[1,[30,[36,2],null,[[\"value\",\"create\",\"objectArray\",\"valuePath\",\"namePath\"],[[35,1],true,[35,0],\"id\",\"name\"]]]],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"objArray\",\"value\",\"input/md-select\"]}",
-        "meta": {}
+        "id": "na3ZdRLU",
+        "block": "[[[1,\"\\n      \"],[1,[28,[35,0],null,[[\"value\",\"create\",\"objectArray\",\"valuePath\",\"namePath\"],[[33,1],true,[33,2],\"id\",\"name\"]]]],[1,\"\\n    \"]],[],false,[\"input/md-select\",\"value\",\"objArray\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-select').textContent.replace(/[ \n]+/g, '|'), '|foo|', 'value set');
       await (0, _helpers.clickTrigger)();
@@ -4886,9 +5019,10 @@ define("mdeditor/tests/integration/pods/components/input/md-textarea/component-t
             
       */
       {
-        "id": "7s+MiF0h",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n      \"],[1,[30,[36,0],null,[[\"value\",\"label\",\"placeholder\",\"rows\"],[\"Foo bar baz\",\"FooBar\",\"placeholder\",10]]]],[2,\"\\n      \"]],\"hasEval\":false,\"upvars\":[\"input/md-textarea\"]}",
-        "meta": {}
+        "id": "cImgQzjd",
+        "block": "[[[1,\"\\n      \"],[1,[28,[35,0],null,[[\"value\",\"label\",\"placeholder\",\"rows\"],[\"Foo bar baz\",\"FooBar\",\"placeholder\",10]]]],[1,\"\\n      \"]],[],false,[\"input/md-textarea\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('textarea').hasValue('Foo bar baz');
       assert.dom('label').hasText('FooBar', 'label renders'); // Template block usage:" + EOL +
@@ -4902,9 +5036,10 @@ define("mdeditor/tests/integration/pods/components/input/md-textarea/component-t
           
       */
       {
-        "id": "yCtJkNNA",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"class\"],[\"testme\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"input/md-textarea\"]}",
-        "meta": {}
+        "id": "mfRxTyJB",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"class\"],[\"testme\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"input/md-textarea\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.testme').hasText('template block text', 'block renders');
     });
@@ -4930,9 +5065,10 @@ define("mdeditor/tests/integration/pods/components/input/md-toggle/component-tes
           }}
       */
       {
-        "id": "uEs1nIoh",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"value\",\"showLabels\",\"onToggle\",\"offLabel\",\"onLabel\"],[[32,0,[\"value\"]],true,[30,[36,1],[[32,0],[30,[36,0],[[32,0,[\"value\"]]],null]],null],\"No\",\"Yes\"]]]]],\"hasEval\":false,\"upvars\":[\"mut\",\"action\",\"input/md-toggle\"]}",
-        "meta": {}
+        "id": "i2eCVYMg",
+        "block": "[[[1,[28,[35,0],null,[[\"value\",\"showLabels\",\"onToggle\",\"offLabel\",\"onLabel\"],[[30,0,[\"value\"]],true,[28,[37,1],[[30,0],[28,[37,2],[[30,0,[\"value\"]]],null]],null],\"No\",\"Yes\"]]]]],[],false,[\"input/md-toggle\",\"action\",\"mut\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.x-toggle-component').textContent.replace(/[ \n]+/g, '|').trim(), '|No|Yes|');
       await (0, _testHelpers.click)('.x-toggle-btn');
@@ -4947,9 +5083,10 @@ define("mdeditor/tests/integration/pods/components/input/md-toggle/component-tes
           
       */
       {
-        "id": "uyxsFFe5",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"class\"],[\"testme\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"input/md-toggle\"]}",
-        "meta": {}
+        "id": "Il7yhhPb",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"class\"],[\"testme\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"input/md-toggle\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.testme').hasText('template block text');
     });
@@ -4968,9 +5105,10 @@ define("mdeditor/tests/integration/pods/components/layout/md-card/component-test
         {{layout/md-card title="foo"}}
       */
       {
-        "id": "U6MD5ruM",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"title\"],[\"foo\"]]]]],\"hasEval\":false,\"upvars\":[\"layout/md-card\"]}",
-        "meta": {}
+        "id": "5nSg2rkr",
+        "block": "[[[1,[28,[35,0],null,[[\"title\"],[\"foo\"]]]]],[],false,[\"layout/md-card\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.md-card').hasText('foo'); // await render(hbs`{{layout/md-card title="foo" collasped="true"}}`);
       // assert.equal(find('.md-card').textContent.trim(), 'foo');
@@ -4985,9 +5123,10 @@ define("mdeditor/tests/integration/pods/components/layout/md-card/component-test
           
       */
       {
-        "id": "fRPYX80K",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"layout/md-card\"]}",
-        "meta": {}
+        "id": "qwUN2hyo",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"layout/md-card\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.md-card').hasText('template block text', 'block');
       await (0, _testHelpers.render)(Ember.HTMLBars.template(
@@ -4999,9 +5138,10 @@ define("mdeditor/tests/integration/pods/components/layout/md-card/component-test
           
       */
       {
-        "id": "Tpdi6RdR",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"title\",\"collapsed\",\"collapsible\"],[\"foo\",true,true]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"layout/md-card\"]}",
-        "meta": {}
+        "id": "OLMQOF1V",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"title\",\"collapsed\",\"collapsible\"],[\"foo\",true,true]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"layout/md-card\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-card').innerText.trim(), 'foo', 'collapsed');
       assert.dom('.md-card .card-block:not(.in)').exists('class ok');
@@ -5026,9 +5166,10 @@ define("mdeditor/tests/integration/pods/components/layout/md-footer/component-te
         {{layout/md-footer settings=settings percent=percent isOverThreshold=isOverThreshold}}
       */
       {
-        "id": "qxBD6xd3",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,3],null,[[\"settings\",\"percent\",\"isOverThreshold\"],[[35,2],[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"isOverThreshold\",\"percent\",\"settings\",\"layout/md-footer\"]}",
-        "meta": {}
+        "id": "1035CDOD",
+        "block": "[[[1,[28,[35,0],null,[[\"settings\",\"percent\",\"isOverThreshold\"],[[33,1],[33,2],[33,3]]]]]],[],false,[\"layout/md-footer\",\"settings\",\"percent\",\"isOverThreshold\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-footer').textContent.replace(/[ \n]+/g, '|').trim(), '|Report|Issue|:|9.02|%|AutoSave:|Off|');
       this.set('settings.data.autoSave', true);
@@ -5044,9 +5185,10 @@ define("mdeditor/tests/integration/pods/components/layout/md-footer/component-te
           
       */
       {
-        "id": "znj7EWFL",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,3],null,[[\"settings\",\"percent\",\"isOverThreshold\"],[[35,2],[35,1],[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"isOverThreshold\",\"percent\",\"settings\",\"layout/md-footer\"]}",
-        "meta": {}
+        "id": "2MJsCKMG",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"settings\",\"percent\",\"isOverThreshold\"],[[33,1],[33,2],[33,3]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"layout/md-footer\",\"settings\",\"percent\",\"isOverThreshold\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-footer').textContent.replace(/[ \n]+/g, '|').trim(), '|Report|Issue|:|10.54|%|AutoSave:|On|template|block|text|');
     });
@@ -5066,9 +5208,10 @@ define("mdeditor/tests/integration/pods/components/layout/md-nav-main/component-
         {{layout/md-nav-main}}
       */
       {
-        "id": "+DaIXbMk",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"layout/md-nav-main\"]}",
-        "meta": {}
+        "id": "0ohV0eST",
+        "block": "[[[1,[34,0]]],[],false,[\"layout/md-nav-main\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('nav').innerText.replace(/[ \n]+/g, '|'), '|Dashboard|Export|Import|Publish|Settings'); // Template block usage:
 
@@ -5081,9 +5224,10 @@ define("mdeditor/tests/integration/pods/components/layout/md-nav-main/component-
           
       */
       {
-        "id": "l2eUIkFn",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"layout/md-nav-main\"]}",
-        "meta": {}
+        "id": "PdmrwEHI",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"layout/md-nav-main\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('nav').innerText.replace(/[ \n]+/g, '|'), '|Dashboard|Export|Import|Publish|template|block|text|Settings');
     });
@@ -5150,9 +5294,10 @@ define("mdeditor/tests/integration/pods/components/layout/md-nav-secondary/compo
         {{layout/md-nav-secondary model=model}}
       */
       {
-        "id": "PY1SYRxZ",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"layout/md-nav-secondary\"]}",
-        "meta": {}
+        "id": "EXVqm2L1",
+        "block": "[[[1,[28,[35,0],null,[[\"model\"],[[33,1]]]]]],[],false,[\"layout/md-nav-secondary\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       var more = (0, _testHelpers.findAll)('.overflow-nav').length ? '|More' : '';
       assert.equal((0, _testHelpers.find)('.nav').textContent.replace(/[ \n]+/g, '|'), more + '|Foo|Bar|'); // Template block usage:
@@ -5166,9 +5311,10 @@ define("mdeditor/tests/integration/pods/components/layout/md-nav-secondary/compo
           
       */
       {
-        "id": "Gy72XLPm",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        \"],[10,\"li\"],[12],[2,\"template block text\"],[13],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"layout/md-nav-secondary\"]}",
-        "meta": {}
+        "id": "mJIRphxY",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"model\"],[[33,1]]],[[\"default\"],[[[[1,\"        \"],[10,\"li\"],[12],[1,\"template block text\"],[13],[1,\"\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"layout/md-nav-secondary\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       more = (0, _testHelpers.findAll)('.overflow-nav').length ? '|More' : '';
       assert.equal((0, _testHelpers.find)('.nav').textContent.replace(/[ \n]+/g, '|'), more + '|Foo|Bar|');
@@ -5183,9 +5329,10 @@ define("mdeditor/tests/integration/pods/components/layout/md-nav-secondary/compo
         {{layout/md-nav-secondary model=model}}
       */
       {
-        "id": "PY1SYRxZ",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"layout/md-nav-secondary\"]}",
-        "meta": {}
+        "id": "EXVqm2L1",
+        "block": "[[[1,[28,[35,0],null,[[\"model\"],[[33,1]]]]]],[],false,[\"layout/md-nav-secondary\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       var more = (0, _testHelpers.findAll)('.overflow-nav').length ? '|More' : '';
       assert.equal((0, _testHelpers.find)('.nav').textContent.replace(/[ \n]+/g, '|'), more + '|FooBar|BarFoo|FooBar1|BarFoo2|');
@@ -5194,9 +5341,10 @@ define("mdeditor/tests/integration/pods/components/layout/md-nav-secondary/compo
         <div style="width:100px;">{{layout/md-nav-secondary model=model}}</div>
       */
       {
-        "id": "OWI/PvzN",
-        "block": "{\"symbols\":[],\"statements\":[[10,\"div\"],[14,5,\"width:100px;\"],[12],[1,[30,[36,1],null,[[\"model\"],[[35,0]]]]],[13]],\"hasEval\":false,\"upvars\":[\"model\",\"layout/md-nav-secondary\"]}",
-        "meta": {}
+        "id": "DGR5OHcT",
+        "block": "[[[10,0],[14,5,\"width:100px;\"],[12],[1,[28,[35,0],null,[[\"model\"],[[33,1]]]]],[13]],[],false,[\"layout/md-nav-secondary\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.ok((0, _testHelpers.findAll)('.dropdown .dropdown-menu').length, 'render more dropdown');
     });
@@ -5226,9 +5374,10 @@ define("mdeditor/tests/integration/pods/components/layout/md-nav-secondary/link/
         {{layout/md-nav-secondary/link link=links.firstObject nav=nav}}
       */
       {
-        "id": "LCnErCKN",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"link\",\"nav\"],[[35,1,[\"firstObject\"]],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"nav\",\"links\",\"layout/md-nav-secondary/link\"]}",
-        "meta": {}
+        "id": "tc15JCbP",
+        "block": "[[[1,[28,[35,0],null,[[\"link\",\"nav\"],[[33,1,[\"firstObject\"]],[33,2]]]]]],[],false,[\"layout/md-nav-secondary/link\",\"links\",\"nav\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom(this.element).hasText('Foo'); // Template block usage:
 
@@ -5241,9 +5390,10 @@ define("mdeditor/tests/integration/pods/components/layout/md-nav-secondary/link/
           
       */
       {
-        "id": "wiHx4Nel",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,2],null,[[\"link\",\"nav\"],[[35,1,[\"lastObject\"]],[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"nav\",\"links\",\"layout/md-nav-secondary/link\"]}",
-        "meta": {}
+        "id": "8Kgeil8j",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"link\",\"nav\"],[[33,1,[\"lastObject\"]],[33,2]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"layout/md-nav-secondary/link\",\"links\",\"nav\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom(this.element).hasText('Bar');
     });
@@ -5282,9 +5432,10 @@ define("mdeditor/tests/integration/pods/components/layout/md-nav-sidebar/compone
         {{layout/md-nav-sidebar items=model version="test"}}
       */
       {
-        "id": "sL7pb9lE",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"items\",\"version\"],[[35,0],\"test\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"layout/md-nav-sidebar\"]}",
-        "meta": {}
+        "id": "mg4Xasl3",
+        "block": "[[[1,[28,[35,0],null,[[\"items\",\"version\"],[[33,1],\"test\"]]]]],[],false,[\"layout/md-nav-sidebar\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.sidebar-nav').textContent.replace(/[ \n]+/g, '|'), '|mdditorvtest|Records|(2)|My|Record0|My|Record1|Contacts|(2)|Contact0|Contact1|Dictionaries|(2)|My|Dictionary0|My|Dictionary1|');
     });
@@ -5294,9 +5445,10 @@ define("mdeditor/tests/integration/pods/components/layout/md-nav-sidebar/compone
         {{layout/md-nav-sidebar}}
       */
       {
-        "id": "YFgcAh+p",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"layout/md-nav-sidebar\"]}",
-        "meta": {}
+        "id": "LsAkzxAP",
+        "block": "[[[1,[34,0]]],[],false,[\"layout/md-nav-sidebar\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       await (0, _testHelpers.click)('.md-btn-help');
       assert.dom('.md-sidebar-wrapper').hasClass('help');
@@ -5307,9 +5459,10 @@ define("mdeditor/tests/integration/pods/components/layout/md-nav-sidebar/compone
         <div id="md-wrapper">{{layout/md-nav-sidebar}}</div>
       */
       {
-        "id": "5mhyCIra",
-        "block": "{\"symbols\":[],\"statements\":[[10,\"div\"],[14,1,\"md-wrapper\"],[12],[1,[34,0]],[13]],\"hasEval\":false,\"upvars\":[\"layout/md-nav-sidebar\"]}",
-        "meta": {}
+        "id": "FQo3VzJw",
+        "block": "[[[10,0],[14,1,\"md-wrapper\"],[12],[1,[34,0]],[13]],[],false,[\"layout/md-nav-sidebar\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       await (0, _testHelpers.click)('.sidebar-brand-link');
       assert.dom('#md-wrapper').hasClass('toggled');
@@ -5333,9 +5486,10 @@ define("mdeditor/tests/integration/pods/components/layout/md-object-container/co
           }}
       */
       {
-        "id": "NiqBtvPZ",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"title\",\"isCollapsible\",\"index\"],[\"Foo\",true,\"1\"]]]]],\"hasEval\":false,\"upvars\":[\"layout/md-object-container\"]}",
-        "meta": {}
+        "id": "CQFtwZBW",
+        "block": "[[[1,[28,[35,0],null,[[\"title\",\"isCollapsible\",\"index\"],[\"Foo\",true,\"1\"]]]]],[],false,[\"layout/md-object-container\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom(this.element).hasText('Foo #1');
       assert.dom('.md-object-container').hasClass('even');
@@ -5351,9 +5505,10 @@ define("mdeditor/tests/integration/pods/components/layout/md-object-container/co
           
       */
       {
-        "id": "ST1QrR+0",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"layout/md-object-container\"]}",
-        "meta": {}
+        "id": "DlmfCrt2",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"layout/md-object-container\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom(this.element).hasText('template block text', 'block renders');
     });
@@ -5372,9 +5527,10 @@ define("mdeditor/tests/integration/pods/components/layout/md-slider/component-te
         {{layout/md-slider}}
       */
       {
-        "id": "ZljuUWee",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"layout/md-slider\"]}",
-        "meta": {}
+        "id": "cMD49a7h",
+        "block": "[[[1,[34,0]]],[],false,[\"layout/md-slider\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.md-slider').hasText('Close'); // Template block usage:
 
@@ -5392,9 +5548,10 @@ define("mdeditor/tests/integration/pods/components/layout/md-slider/component-te
           
       */
       {
-        "id": "bikw2yGT",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"fromName\"],[\"slider\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"      \"],[1,[30,[36,3],null,[[\"named\",\"send\"],[\"slider\",[30,[36,2],null,[[\"title\",\"body\"],[\"biz\",[30,[36,1],[\"layout/md-card\"],[[\"title\"],[\"foobar\"]]]]]]]]]],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"layout/md-slider\",\"component\",\"hash\",\"to-elsewhere\"]}",
-        "meta": {}
+        "id": "oqWX27EI",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"fromName\"],[\"slider\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"      \"],[1,[28,[35,1],null,[[\"named\",\"send\"],[\"slider\",[28,[37,2],null,[[\"title\",\"body\"],[\"biz\",[50,\"layout/md-card\",0,null,[[\"title\"],[\"foobar\"]]]]]]]]]],[1,\"\\n    \"]],[],false,[\"layout/md-slider\",\"to-elsewhere\",\"hash\",\"component\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-slider').textContent.replace(/[ \n]+/g, '|').trim(), '|Close|biz|foobar|template|block|text|');
       assert.dom('.md-card').exists('rendered slider content');
@@ -5414,9 +5571,10 @@ define("mdeditor/tests/integration/pods/components/layout/md-wrap/component-test
         {{layout/md-wrap class="testme"}}
       */
       {
-        "id": "XM99w4Nf",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"class\"],[\"testme\"]]]]],\"hasEval\":false,\"upvars\":[\"layout/md-wrap\"]}",
-        "meta": {}
+        "id": "yGVZdjSn",
+        "block": "[[[1,[28,[35,0],null,[[\"class\"],[\"testme\"]]]]],[],false,[\"layout/md-wrap\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.testme').hasText(''); // Template block usage:
 
@@ -5429,9 +5587,10 @@ define("mdeditor/tests/integration/pods/components/layout/md-wrap/component-test
           
       */
       {
-        "id": "H/8bpurQ",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"class\"],[\"testme\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"layout/md-wrap\"]}",
-        "meta": {}
+        "id": "95wHNTZp",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"class\"],[\"testme\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"layout/md-wrap\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.testme').hasText('template block text');
     });
@@ -5500,9 +5659,10 @@ define("mdeditor/tests/integration/pods/components/layout/nav/dictionary/nav-mai
             
       */
       {
-        "id": "qr4S9Ie4",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\"],[[35,0]]]]],[2,\"\\n      \"],[1,[30,[36,3],null,[[\"named\",\"send\"],[\"dictionary-nav\",[30,[36,2],[\"control/md-button\"],[[\"text\"],[\"testme\"]]]]]]],[2,\"\\n      \"]],\"hasEval\":false,\"upvars\":[\"model\",\"layout/nav/dictionary/nav-main\",\"component\",\"to-elsewhere\"]}",
-        "meta": {}
+        "id": "DlIgCc5Y",
+        "block": "[[[1,[28,[35,0],null,[[\"model\"],[[33,1]]]]],[1,\"\\n      \"],[1,[28,[35,2],null,[[\"named\",\"send\"],[\"dictionary-nav\",[50,\"control/md-button\",0,null,[[\"text\"],[\"testme\"]]]]]]],[1,\"\\n      \"]],[],false,[\"layout/nav/dictionary/nav-main\",\"model\",\"to-elsewhere\",\"component\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom(this.element).hasText('testme'); // Template block usage:
 
@@ -5516,9 +5676,10 @@ define("mdeditor/tests/integration/pods/components/layout/nav/dictionary/nav-mai
           
       */
       {
-        "id": "+a8mDtmP",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"      \"],[1,[30,[36,3],null,[[\"named\",\"send\"],[\"dictionary-nav\",[30,[36,2],[\"control/md-button\"],[[\"text\"],[\"testme\"]]]]]]],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"layout/nav/dictionary/nav-main\",\"component\",\"to-elsewhere\"]}",
-        "meta": {}
+        "id": "7Hh3LEn0",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"model\"],[[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"      \"],[1,[28,[35,2],null,[[\"named\",\"send\"],[\"dictionary-nav\",[50,\"control/md-button\",0,null,[[\"text\"],[\"testme\"]]]]]]],[1,\"\\n    \"]],[],false,[\"layout/nav/dictionary/nav-main\",\"model\",\"to-elsewhere\",\"component\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom(this.element).hasText('testme');
     });
@@ -5542,9 +5703,10 @@ define("mdeditor/tests/integration/pods/components/layout/nav/record/nav-main/co
           
       */
       {
-        "id": "6qLgWQ79",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]],[2,\"\\n    \"],[1,[30,[36,3],null,[[\"named\",\"send\"],[\"record-nav\",[30,[36,2],[\"input/md-select-profile\"],[[\"value\",\"updateProfile\"],[[35,1],[32,0,[\"foo\"]]]]]]]]],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"layout/nav/record/nav-main\",\"profileId\",\"component\",\"to-elsewhere\"]}",
-        "meta": {}
+        "id": "32q1Yg/q",
+        "block": "[[[1,[34,0]],[1,\"\\n    \"],[1,[28,[35,1],null,[[\"named\",\"send\"],[\"record-nav\",[50,\"input/md-select-profile\",0,null,[[\"value\",\"updateProfile\"],[[33,3],[30,0,[\"foo\"]]]]]]]]],[1,\"\\n    \"]],[],false,[\"layout/nav/record/nav-main\",\"to-elsewhere\",\"component\",\"profileId\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Translate|Profile|Full|?|'); // Template block usage:
 
@@ -5557,9 +5719,10 @@ define("mdeditor/tests/integration/pods/components/layout/nav/record/nav-main/co
           
       */
       {
-        "id": "QSgNWTuH",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"layout/nav/record/nav-main\"]}",
-        "meta": {}
+        "id": "QX0xYo1v",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"layout/nav/record/nav-main\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom(this.element).hasText('Translate');
     });
@@ -5579,9 +5742,10 @@ define("mdeditor/tests/integration/pods/components/md-help/component-test", ["@e
         {{md-help}}
       */
       {
-        "id": "xyh0wVHr",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"md-help\"]}",
-        "meta": {}
+        "id": "gMYfY6qL",
+        "block": "[[[1,[34,0]]],[],false,[\"md-help\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Help|Main|Tour|The|mdEditor|is|a|web|application|that|allows|users|to|author|and|edit|metadata|for|projects|and|datasets.|The|primary|design|goal|is|to|develop|an|editor|that|will|allow|creation|and|management|of|archival|quality|metadata|without|requiring|extensive|knowledge|of|metadata|standards.|A|comprehensive|User|Manual|is|available.|The|manual|includes|a|tutorial,|reference,|and|best|practices.|View|User|Manual|If|you|would|like|to|receive|announcements|regarding|the|mdEditor,|join|our|email|list!|Join|Email|list|'); // Template block usage:
 
@@ -5594,9 +5758,10 @@ define("mdeditor/tests/integration/pods/components/md-help/component-test", ["@e
           
       */
       {
-        "id": "32xioHmZ",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"md-help\"]}",
-        "meta": {}
+        "id": "CQ0r67dn",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"md-help\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.ok(this.element.textContent.trim().indexOf('template block text') > 0);
     });
@@ -5629,9 +5794,10 @@ define("mdeditor/tests/integration/pods/components/md-models-table/component-tes
         {{md-models-table data=data columns=columns}}
       */
       {
-        "id": "hK8PkSh2",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"data\",\"columns\"],[[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"columns\",\"data\",\"md-models-table\"]}",
-        "meta": {}
+        "id": "T+nLeEri",
+        "block": "[[[1,[28,[35,0],null,[[\"data\",\"columns\"],[[33,1],[33,2]]]]]],[],false,[\"md-models-table\",\"data\",\"columns\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Search:|Columns|Show|All|Hide|All|Restore|Defaults|Title|Type|Title|Type|Title|Type|foo|bar|biz|baz|Show|1|-|2|of|2|Clear|all|filters|Rows:|10|25|50|500|Page:|1|'); // Template block usage:
 
@@ -5644,9 +5810,10 @@ define("mdeditor/tests/integration/pods/components/md-models-table/component-tes
           
       */
       {
-        "id": "dP/T9gL5",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"md-models-table\"]}",
-        "meta": {}
+        "id": "1ZmTnRrd",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"md-models-table\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|template|block|text|');
     });
@@ -5682,9 +5849,10 @@ define("mdeditor/tests/integration/pods/components/md-models-table/components/ch
         {{md-models-table/components/check-all data=data selectedItems=data.selectedItems themeInstance=data.themeInstance toggleAllSelection=toggleAllSelection}}
       */
       {
-        "id": "iw3MgI1s",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"data\",\"selectedItems\",\"themeInstance\",\"toggleAllSelection\"],[[35,1],[35,1,[\"selectedItems\"]],[35,1,[\"themeInstance\"]],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"toggleAllSelection\",\"data\",\"md-models-table/components/check-all\"]}",
-        "meta": {}
+        "id": "I3sNlHu+",
+        "block": "[[[1,[28,[35,0],null,[[\"data\",\"selectedItems\",\"themeInstance\",\"toggleAllSelection\"],[[33,1],[33,1,[\"selectedItems\"]],[33,1,[\"themeInstance\"]],[33,2]]]]]],[],false,[\"md-models-table/components/check-all\",\"data\",\"toggleAllSelection\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('span').hasClass('deselect', 'add class');
       await (0, _testHelpers.click)('span'); // await render(hbs`{{md-models-table/components/check-all data=data themeInstance=data.themeInstance toggleAllSelection=toggleAllSelection}}`);
@@ -5700,9 +5868,10 @@ define("mdeditor/tests/integration/pods/components/md-models-table/components/ch
           
       */
       {
-        "id": "AWZKDqh/",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"md-models-table/components/check-all\"]}",
-        "meta": {}
+        "id": "wsJ3qPWp",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"md-models-table/components/check-all\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom(this.element).hasText('');
     });
@@ -5726,9 +5895,10 @@ define("mdeditor/tests/integration/pods/components/md-models-table/components/ch
         {{md-models-table/components/check isSelected=isSelected themeInstance=themeInstance}}
       */
       {
-        "id": "AhX63/WA",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"isSelected\",\"themeInstance\"],[[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"themeInstance\",\"isSelected\",\"md-models-table/components/check\"]}",
-        "meta": {}
+        "id": "rSFyzHU8",
+        "block": "[[[1,[28,[35,0],null,[[\"isSelected\",\"themeInstance\"],[[33,1],[33,2]]]]]],[],false,[\"md-models-table/components/check\",\"isSelected\",\"themeInstance\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('span').hasClass('deselect', 'add class');
       this.set('isSelected', true);
@@ -5743,9 +5913,10 @@ define("mdeditor/tests/integration/pods/components/md-models-table/components/ch
           
       */
       {
-        "id": "YtICXwQ+",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"md-models-table/components/check\"]}",
-        "meta": {}
+        "id": "srXvZXCZ",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"md-models-table/components/check\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom(this.element).hasText('');
     });
@@ -5768,9 +5939,10 @@ define("mdeditor/tests/integration/pods/components/md-models-table/components/ro
         {{md-models-table/components/row-body collapseRow=myAction}}
       */
       {
-        "id": "8n7mqOxU",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"collapseRow\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"myAction\",\"md-models-table/components/row-body\"]}",
-        "meta": {}
+        "id": "ctpduY6+",
+        "block": "[[[1,[28,[35,0],null,[[\"collapseRow\"],[[33,1]]]]]],[],false,[\"md-models-table/components/row-body\",\"myAction\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
     });
   });
@@ -5793,9 +5965,10 @@ define("mdeditor/tests/integration/pods/components/md-models-table/components/ro
         {{md-models-table/components/row-buttons}}
       */
       {
-        "id": "T12/tRqf",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"md-models-table/components/row-buttons\"]}",
-        "meta": {}
+        "id": "+6McqsG4",
+        "block": "[[[1,[34,0]]],[],false,[\"md-models-table/components/row-buttons\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       this.set('data', [{
         title: 'foo',
@@ -5834,9 +6007,10 @@ define("mdeditor/tests/integration/pods/components/md-models-table/components/ro
         {{md-models-table data=data columns=columns expandedRowComponent=(component "md-models-table/components/row-body" spotlighted=true)}}
       */
       {
-        "id": "lPRiO4Ay",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,3],null,[[\"data\",\"columns\",\"expandedRowComponent\"],[[35,2],[35,1],[30,[36,0],[\"md-models-table/components/row-body\"],[[\"spotlighted\"],[true]]]]]]]],\"hasEval\":false,\"upvars\":[\"component\",\"columns\",\"data\",\"md-models-table\"]}",
-        "meta": {}
+        "id": "rJgXWMJ7",
+        "block": "[[[1,[28,[35,0],null,[[\"data\",\"columns\",\"expandedRowComponent\"],[[33,1],[33,2],[50,\"md-models-table/components/row-body\",0,null,[[\"spotlighted\"],[true]]]]]]]],[],false,[\"md-models-table\",\"data\",\"columns\",\"component\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('.md-row-buttons .btn').exists({
         count: 4
@@ -5865,9 +6039,10 @@ define("mdeditor/tests/integration/pods/components/md-title/component-test", ["@
         {{md-title}}
       */
       {
-        "id": "he2fztQe",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"md-title\"]}",
-        "meta": {}
+        "id": "rOdq0uvJ",
+        "block": "[[[1,[34,0]]],[],false,[\"md-title\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom(this.element).hasText(''); // Template block usage:
 
@@ -5880,9 +6055,10 @@ define("mdeditor/tests/integration/pods/components/md-title/component-test", ["@
           
       */
       {
-        "id": "tUq68J8q",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"md-title\"]}",
-        "meta": {}
+        "id": "/vI9tmhW",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"md-title\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom(this.element).hasText('template block text');
     });
@@ -5922,9 +6098,10 @@ define("mdeditor/tests/integration/pods/components/md-translate/component-test",
           }}
       */
       {
-        "id": "iVzT47MG",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,5],null,[[\"model\",\"isLoading\",\"messages\",\"result\",\"errorLevel\",\"isJson\",\"writeObj\"],[[35,4],[35,3],[35,2],[35,1],2,true,[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"writer\",\"result\",\"messages\",\"isLoading\",\"model\",\"md-translate\"]}",
-        "meta": {}
+        "id": "sXeHgxyF",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"isLoading\",\"messages\",\"result\",\"errorLevel\",\"isJson\",\"writeObj\"],[[33,1],[33,2],[33,3],[33,4],2,true,[33,5]]]]]],[],false,[\"md-translate\",\"model\",\"isLoading\",\"messages\",\"result\",\"writer\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Options|Choose|Format|Select|one|option|Force|Valid|Ouput?|No|Yes|Show|Empty|Tags?|No|Yes|Translate|');
       this.set('isLoading', true);
@@ -5945,9 +6122,10 @@ define("mdeditor/tests/integration/pods/components/md-translate/component-test",
           
       */
       {
-        "id": "6vwKZl/Q",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"md-translate\"]}",
-        "meta": {}
+        "id": "E4mO46VO",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"md-translate\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Options|Choose|Format|Select|one|option|Force|Valid|Ouput?|No|Yes|Show|Empty|Tags?|No|Yes|Translate|template|block|text|', 'block');
     });
@@ -5973,9 +6151,10 @@ define("mdeditor/tests/integration/pods/components/models-table/cell-content-dis
         {{models-table/cell-content-display column=column record=data}}
       */
       {
-        "id": "wK0pxt37",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"column\",\"record\"],[[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"data\",\"column\",\"models-table/cell-content-display\"]}",
-        "meta": {}
+        "id": "P5cx+e4J",
+        "block": "[[[1,[28,[35,0],null,[[\"column\",\"record\"],[[33,1],[33,2]]]]]],[],false,[\"models-table/cell-content-display\",\"column\",\"data\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom(this.element).hasText('foo biz baz');
       this.set('column1', {
@@ -5988,9 +6167,10 @@ define("mdeditor/tests/integration/pods/components/models-table/cell-content-dis
         {{models-table/cell-content-display column=column1 record=data}}
       */
       {
-        "id": "Vo6La+L8",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"column\",\"record\"],[[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"data\",\"column1\",\"models-table/cell-content-display\"]}",
-        "meta": {}
+        "id": "bdxbOH51",
+        "block": "[[[1,[28,[35,0],null,[[\"column\",\"record\"],[[33,1],[33,2]]]]]],[],false,[\"models-table/cell-content-display\",\"column1\",\"data\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom(this.element).hasText('foo biz ...');
     });
@@ -6009,9 +6189,10 @@ define("mdeditor/tests/integration/pods/components/models-table/row-expand/compo
         {{models-table/row-expand}}
       */
       {
-        "id": "F8cDIePn",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"models-table/row-expand\"]}",
-        "meta": {}
+        "id": "a0Pxa9B1",
+        "block": "[[[1,[34,0]]],[],false,[\"models-table/row-expand\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom(this.element).hasText(''); // Template block usage:
 
@@ -6024,9 +6205,10 @@ define("mdeditor/tests/integration/pods/components/models-table/row-expand/compo
           
       */
       {
-        "id": "OFN6T65k",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"models-table/row-expand\"]}",
-        "meta": {}
+        "id": "4UxOMHsP",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"models-table/row-expand\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom(this.element).hasText('template block text');
     });
@@ -6045,9 +6227,10 @@ define("mdeditor/tests/integration/pods/components/models-table/table-body/compo
         {{models-table/table-body}}
       */
       {
-        "id": "dSAKCqiD",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"models-table/table-body\"]}",
-        "meta": {}
+        "id": "NpLJWDUT",
+        "block": "[[[1,[34,0]]],[],false,[\"models-table/table-body\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom(this.element).hasText(''); // Template block usage:
 
@@ -6060,9 +6243,10 @@ define("mdeditor/tests/integration/pods/components/models-table/table-body/compo
           
       */
       {
-        "id": "5bGBJcp6",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"models-table/table-body\"]}",
-        "meta": {}
+        "id": "o6yHnvRP",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"models-table/table-body\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom(this.element).hasText('template block text');
     });
@@ -6089,9 +6273,10 @@ define("mdeditor/tests/integration/pods/components/object/md-address/md-address-
         {{object/md-address/md-address-block item=address}}
       */
       {
-        "id": "zIWvkTMJ",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"item\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"address\",\"object/md-address/md-address-block\"]}",
-        "meta": {}
+        "id": "vB02o6wJ",
+        "block": "[[[1,[28,[35,0],null,[[\"item\"],[[33,1]]]]]],[],false,[\"object/md-address/md-address-block\",\"address\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('address').textContent.replace(/[ \n]+/g, '|').trim(), '|deliveryPoint0|deliveryPoint1|city,|administrativeArea|postalCode|country|mailing,|physical|'); // Template block usage:
 
@@ -6104,9 +6289,10 @@ define("mdeditor/tests/integration/pods/components/object/md-address/md-address-
           
       */
       {
-        "id": "d7vrtub4",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"item\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"address\",\"object/md-address/md-address-block\"]}",
-        "meta": {}
+        "id": "oTKw0gJi",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"item\"],[[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-address/md-address-block\",\"address\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('address').textContent.replace(/[ \n]+/g, '|').trim(), '|deliveryPoint0|deliveryPoint1|city,|administrativeArea|postalCode|country|mailing,|physical|');
     });
@@ -6133,9 +6319,10 @@ define("mdeditor/tests/integration/pods/components/object/md-allocation/componen
         {{object/md-allocation profilePath="test" model=allocation}}
       */
       {
-        "id": "VEa4T97T",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"test\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"allocation\",\"object/md-allocation\"]}",
-        "meta": {}
+        "id": "fD11YamN",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"test\",[33,1]]]]]],[],false,[\"object/md-allocation\",\"allocation\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-card').textContent.replace(/[ \n]+/g, '|').trim(), '|Amount|Amount|Currency|Choose|unit|of|currency|Award|ID|Source|Pick|contact|that|supplied|funds|Recipient|Pick|contact|that|received|funds|No|Other|Contacts|found.|Add|Other|Contact|Matching|Matching|funds|or|in-kind|services|Comment|No|Online|Resource|found.|Add|Online|Resource|'); // Template block usage:
 
@@ -6148,9 +6335,10 @@ define("mdeditor/tests/integration/pods/components/object/md-allocation/componen
           
       */
       {
-        "id": "peFNUYF3",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\",\"class\"],[\"test\",[35,0],\"testme\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"allocation\",\"object/md-allocation\"]}",
-        "meta": {}
+        "id": "m+9mI29d",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\",\"model\",\"class\"],[\"test\",[33,1],\"testme\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-allocation\",\"allocation\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.testme').textContent.replace(/[ \n]+/g, '|').trim(), '|Amount|Amount|Currency|Choose|unit|of|currency|Award|ID|Source|Pick|contact|that|supplied|funds|Recipient|Pick|contact|that|received|funds|No|Other|Contacts|found.|Add|Other|Contact|Matching|Matching|funds|or|in-kind|services|Comment|No|Online|Resource|found.|Add|Online|Resource|template|block|text|');
     });
@@ -6189,9 +6377,10 @@ define("mdeditor/tests/integration/pods/components/object/md-array-table/compone
             
       */
       {
-        "id": "FWUbVu4E",
-        "block": "{\"symbols\":[\"f\"],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"columns\",\"value\",\"title\",\"data-spy\"],[\"biz,baz\",[35,0],\"FooBar\",\"FooBar\"]],[[\"default\"],[{\"statements\":[[2,\"        \"],[10,\"td\"],[12],[2,\"\\n          \"],[1,[32,1,[\"item\",\"biz\"]]],[2,\"\\n        \"],[13],[2,\"\\n        \"],[10,\"td\"],[12],[2,\"\\n          \"],[1,[32,1,[\"item\",\"baz\"]]],[2,\"\\n        \"],[13],[2,\"\\n\"]],\"parameters\":[1]}]]],[2,\"      \"]],\"hasEval\":false,\"upvars\":[\"data\",\"object/md-array-table\"]}",
-        "meta": {}
+        "id": "nMffDxRV",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"columns\",\"value\",\"title\",\"data-spy\"],[\"biz,baz\",[33,1],\"FooBar\",\"FooBar\"]],[[\"default\"],[[[[1,\"        \"],[10,\"td\"],[12],[1,\"\\n          \"],[1,[30,1,[\"item\",\"biz\"]]],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,\"td\"],[12],[1,\"\\n          \"],[1,[30,1,[\"item\",\"baz\"]]],[1,\"\\n        \"],[13],[1,\"\\n\"]],[1]]]]],[1,\"      \"]],[\"f\"],false,[\"object/md-array-table\",\"data\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.panel').textContent.replace(/[ \n]+/g, '|').trim(), '|FooBars|2|Add|#|Biz|Baz|0|biz1|baz1|Delete|1|biz2|baz2|Delete|'); // Template block usage:
 
@@ -6208,9 +6397,10 @@ define("mdeditor/tests/integration/pods/components/object/md-array-table/compone
           
       */
       {
-        "id": "T1ysv6Oa",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"columns\",\"value\",\"title\"],[\"biz,baz\",[35,0],\"FooBar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"data\",\"object/md-array-table\"]}",
-        "meta": {}
+        "id": "TZ2Dd2oA",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"columns\",\"value\",\"title\"],[\"biz,baz\",[33,1],\"FooBar\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-array-table\",\"data\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.panel').textContent.replace(/[ \n]+/g, '|').trim(), '|FooBars|2|Add|#|Biz|Baz|0|template|block|text|Delete|1|template|block|text|Delete|', 'block');
     });
@@ -6269,9 +6459,10 @@ define("mdeditor/tests/integration/pods/components/object/md-associated/componen
         {{object/md-associated profilePath="foobar" model=model}}
       */
       {
-        "id": "GaQMjill",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-associated\"]}",
-        "meta": {}
+        "id": "3yKWmws4",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]]]]],[],false,[\"object/md-associated\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[ \n]+/g, '|').trim(), '|Association|Type|product|?|×|Initiative|Type|Choose|Type|of|Initiative|Resource|Types|2|Add|#|Type|Name|0|website|?|×|Delete|1|product|?|×|Delete|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|Dates|1|Add|Date|#|Date|Date|Type|Description|0|publication|?|×|Delete|Edition|Presentation|Form|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|Identifier|1|Add|OK|#|Identifier|Namespace|Description|0|5a70c2dee4b0a9a2e9dafbe7|gov.sciencebase.catalog|Identifier|imported|from|ScienceBase|during|publication|More...|Delete|Identifier|1|Add|OK|#|Identifier|Namespace|0|5a70c2dee4b0a9a2e9dafbe7|gov.sciencebase.catalog|Edit|Delete|Identifier|1|Add|OK|#|Identifier|Namespace|0|5a70c2dee4b0a9a2e9dafbe7|gov.sciencebase.catalog|Edit|Delete|Series|Name|Issue|Page|No|Other|Details|found.|Add|Other|Detail|No|Graphic|found.|Add|Graphic|Metadata|Citation|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|Responsible|Parties|1|Add|#|Role|Contacts|0|author|?|×|Delete|No|Online|Resource|found.|Add|Online|Resource|Identifier|1|Add|OK|#|Identifier|Namespace|Description|0|f4abb4e0-a3d6-450f-adca-6d07eac19b0b|urn:uuid|Not|Defined|More...|Delete|Identifier|1|Add|OK|#|Identifier|Namespace|0|f4abb4e0-a3d6-450f-adca-6d07eac19b0b|urn:uuid|Edit|Delete|Identifier|1|Add|OK|#|Identifier|Namespace|0|f4abb4e0-a3d6-450f-adca-6d07eac19b0b|urn:uuid|Edit|Delete|'); // Template block usage:
 
@@ -6284,9 +6475,10 @@ define("mdeditor/tests/integration/pods/components/object/md-associated/componen
           
       */
       {
-        "id": "y4KFtzjY",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-associated\"]}",
-        "meta": {}
+        "id": "YDfxju21",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-associated\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[ \n]+/g, '|').trim(), '|Association|Type|product|?|×|Initiative|Type|Choose|Type|of|Initiative|Resource|Types|2|Add|#|Type|Name|0|website|?|×|Delete|1|product|?|×|Delete|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|Dates|1|Add|Date|#|Date|Date|Type|Description|0|publication|?|×|Delete|Edition|Presentation|Form|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|Identifier|1|Add|OK|#|Identifier|Namespace|Description|0|5a70c2dee4b0a9a2e9dafbe7|gov.sciencebase.catalog|Identifier|imported|from|ScienceBase|during|publication|More...|Delete|Identifier|1|Add|OK|#|Identifier|Namespace|0|5a70c2dee4b0a9a2e9dafbe7|gov.sciencebase.catalog|Edit|Delete|Identifier|1|Add|OK|#|Identifier|Namespace|0|5a70c2dee4b0a9a2e9dafbe7|gov.sciencebase.catalog|Edit|Delete|Series|Name|Issue|Page|No|Other|Details|found.|Add|Other|Detail|No|Graphic|found.|Add|Graphic|Metadata|Citation|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|Responsible|Parties|1|Add|#|Role|Contacts|0|author|?|×|Delete|No|Online|Resource|found.|Add|Online|Resource|Identifier|1|Add|OK|#|Identifier|Namespace|Description|0|f4abb4e0-a3d6-450f-adca-6d07eac19b0b|urn:uuid|Not|Defined|More...|Delete|Identifier|1|Add|OK|#|Identifier|Namespace|0|f4abb4e0-a3d6-450f-adca-6d07eac19b0b|urn:uuid|Edit|Delete|Identifier|1|Add|OK|#|Identifier|Namespace|0|f4abb4e0-a3d6-450f-adca-6d07eac19b0b|urn:uuid|Edit|Delete|template|block|text|', 'block');
     });
@@ -6345,9 +6537,10 @@ define("mdeditor/tests/integration/pods/components/object/md-associated/preview/
         {{object/md-associated/preview item=model class="testme"}}
       */
       {
-        "id": "ZHuO+Laj",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"item\",\"class\"],[[35,0],\"testme\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-associated/preview\"]}",
-        "meta": {}
+        "id": "smUOuUk3",
+        "block": "[[[1,[28,[35,0],null,[[\"item\",\"class\"],[[33,1],\"testme\"]]]]],[],false,[\"object/md-associated/preview\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.testme').textContent.replace(/[ \n]+/g, '|').trim(), '|Resource|#|Association|Type|product|Initiative|Type|Not|Defined|Title|Pacific|Connectivity|Website|Alternate|Titles|No|alternate|titles|assigned.|Dates|September|30th|2015|(publication)|Identifier|5a70c2dee4b0a9a2e9dafbe7|(gov.sciencebase.catalog)|Responsible|Party|No|responsibility|assigned.|Metadata|Identifier|f4abb4e0-a3d6-450f-adca-6d07eac19b0b|(urn:uuid)|'); // Template block usage:
 
@@ -6360,9 +6553,10 @@ define("mdeditor/tests/integration/pods/components/object/md-associated/preview/
           
       */
       {
-        "id": "IUpt9rJ/",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"item\",\"class\"],[[35,0],\"testme\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-associated/preview\"]}",
-        "meta": {}
+        "id": "rRkxIW6r",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"item\",\"class\"],[[33,1],\"testme\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-associated/preview\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.testme').textContent.replace(/[ \n]+/g, '|').trim(), '|Resource|#|Association|Type|product|Initiative|Type|Not|Defined|Title|Pacific|Connectivity|Website|Alternate|Titles|No|alternate|titles|assigned.|Dates|September|30th|2015|(publication)|Identifier|5a70c2dee4b0a9a2e9dafbe7|(gov.sciencebase.catalog)|Responsible|Party|No|responsibility|assigned.|Metadata|Identifier|f4abb4e0-a3d6-450f-adca-6d07eac19b0b|(urn:uuid)|');
     });
@@ -6381,9 +6575,10 @@ define("mdeditor/tests/integration/pods/components/object/md-attribute/component
         {{object/md-attribute model=model profilePath="foobar"}}
       */
       {
-        "id": "SBVjcVw6",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-attribute\"]}",
-        "meta": {}
+        "id": "/k6Wib4X",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"profilePath\"],[[33,1],\"foobar\"]]]]],[],false,[\"object/md-attribute\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-card').textContent.replace(/[ \n]+/g, '|').trim(), '|Attribute|Information|Code|Name|Definition|Data|Type|dataType0|×|Allow|Null?|Allow|null|values|Common|Name|Domain|Select|or|enter|the|domain|for|this|attribute.|Aliases|1|Add|Alias|0|Delete|Units|Units|Resolution|Case|Sensitive?|Is|the|attribute|content|case|sensitive?|Field|Width|Missing|Value|Minimum|Value|Maximum|Value|'); // Template block usage:
 
@@ -6396,9 +6591,10 @@ define("mdeditor/tests/integration/pods/components/object/md-attribute/component
           
       */
       {
-        "id": "w5lm1Jt/",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-attribute\"]}",
-        "meta": {}
+        "id": "XR9t5uLO",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"model\",\"profilePath\"],[[33,1],\"foobar\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-attribute\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-card').textContent.replace(/[ \n]+/g, '|').trim(), '|Attribute|Information|Code|Name|Definition|Data|Type|dataType0|×|Allow|Null?|Allow|null|values|Common|Name|Domain|Select|or|enter|the|domain|for|this|attribute.|Aliases|1|Add|Alias|0|Delete|Units|Units|Resolution|Case|Sensitive?|Is|the|attribute|content|case|sensitive?|Field|Width|Missing|Value|Minimum|Value|Maximum|Value|', 'block');
     });
@@ -6417,9 +6613,10 @@ define("mdeditor/tests/integration/pods/components/object/md-attribute/preview/c
         <div class="testme">{{object/md-attribute/preview model=model profilePath="foobar"}}</div>
       */
       {
-        "id": "yrYxy+wt",
-        "block": "{\"symbols\":[],\"statements\":[[10,\"div\"],[14,0,\"testme\"],[12],[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]],[13]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-attribute/preview\"]}",
-        "meta": {}
+        "id": "V3sFuPja",
+        "block": "[[[10,0],[14,0,\"testme\"],[12],[1,[28,[35,0],null,[[\"model\",\"profilePath\"],[[33,1],\"foobar\"]]]],[13]],[],false,[\"object/md-attribute/preview\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.testme').textContent.replace(/[ \n]+/g, '|').trim(), '|dataType0|×|');
       assert.dom('.testme input').exists({
@@ -6447,9 +6644,10 @@ define("mdeditor/tests/integration/pods/components/object/md-bbox/component-test
         {{object/md-bbox profilePath="foobar" model=model}}
       */
       {
-        "id": "BdhPif1c",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-bbox\"]}",
-        "meta": {}
+        "id": "1eCS0RTZ",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]]]]],[],false,[\"object/md-bbox\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.form').textContent.replace(/[ \n]+/g, '|').trim(), '|North|East|South|West|');
       var inputs = (0, _testHelpers.findAll)('input');
@@ -6467,9 +6665,10 @@ define("mdeditor/tests/integration/pods/components/object/md-bbox/component-test
           
       */
       {
-        "id": "Znm5bpz7",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-bbox\"]}",
-        "meta": {}
+        "id": "g4wVPnRd",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-bbox\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.form').textContent.replace(/[ \n]+/g, '|').trim(), '|North|East|South|West|template|block|text|', 'block');
     });
@@ -6488,9 +6687,10 @@ define("mdeditor/tests/integration/pods/components/object/md-citation-array/comp
         {{object/md-citation-array}}
       */
       {
-        "id": "N8RUwbQX",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"object/md-citation-array\"]}",
-        "meta": {}
+        "id": "7+IoKked",
+        "block": "[[[1,[34,0]]],[],false,[\"object/md-citation-array\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-object-table').textContent.replace(/[ \n]+/g, '|').trim(), '|No|Citation|found.|Add|Citation|');
       await (0, _testHelpers.render)(Ember.HTMLBars.template(
@@ -6498,9 +6698,10 @@ define("mdeditor/tests/integration/pods/components/object/md-citation-array/comp
         {{object/md-citation-array model=citation}}
       */
       {
-        "id": "ARVu5wAp",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"citation\",\"object/md-citation-array\"]}",
-        "meta": {}
+        "id": "ugwFb5U/",
+        "block": "[[[1,[28,[35,0],null,[[\"model\"],[[33,1]]]]]],[],false,[\"object/md-citation-array\",\"citation\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-object-table').textContent.replace(/[ \n]+/g, '|').trim(), '|Citation|3|Add|OK|#|Title|0|title0|More...|Delete|1|title1|More...|Delete|2|title2|More...|Delete|', 'renders rows'); // Template block usage:
 
@@ -6513,9 +6714,10 @@ define("mdeditor/tests/integration/pods/components/object/md-citation-array/comp
           
       */
       {
-        "id": "W8UVWvLo",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"object/md-citation-array\"]}",
-        "meta": {}
+        "id": "zhMLLmXY",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-citation-array\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-object-table').textContent.replace(/[ \n]+/g, '|').trim(), '|No|Citation|found.|Add|Citation|');
     });
@@ -6534,9 +6736,10 @@ define("mdeditor/tests/integration/pods/components/object/md-citation/component-
         {{object/md-citation profilePath="foobar" model=citation}}
       */
       {
-        "id": "lAppvf5s",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"citation\",\"object/md-citation\"]}",
-        "meta": {}
+        "id": "ZcsRRMVr",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]]]]],[],false,[\"object/md-citation\",\"citation\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[ \n]+/g, '|').trim(), '|Basic|Information|Title|Alternate|Titles|2|Add|Alternate|Title|0|Delete|1|Delete|Dates|2|Add|Date|#|Date|Date|Type|Description|0|dateType|×|Delete|1|dateType|×|Delete|Edition|Presentation|Form|×|presentationForm0|×|presentationForm1|Responsible|Parties|2|Add|#|Role|Contacts|0|role|×|Delete|1|role|×|Delete|Online|Resource|2|Add|OK|#|Name|Uri|0|Not|Defined|http://adiwg.org|Edit|Delete|1|Not|Defined|http://mdeditor.org|Edit|Delete|Identifier|2|Add|OK|#|Identifier|Namespace|Description|0|identifier0|Not|Defined|Not|Defined|More...|Delete|1|identifier-0|Not|Defined|Not|Defined|More...|Delete|Identifier|2|Add|OK|#|Identifier|Namespace|0|identifier0|Not|Defined|Edit|Delete|1|identifier-0|Not|Defined|Edit|Delete|Identifier|2|Add|OK|#|Identifier|Namespace|0|identifier0|Not|Defined|Edit|Delete|1|identifier-0|Not|Defined|Edit|Delete|Series|Name|Issue|Page|Other|Details|2|Add|0|Delete|1|Delete|Graphic|2|Add|OK|0|fileName:|Edit|Delete|1|fileName:|Edit|Delete|'); // Template block usage:
 
@@ -6549,9 +6752,10 @@ define("mdeditor/tests/integration/pods/components/object/md-citation/component-
           
       */
       {
-        "id": "PlvHvf/v",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"profilePath\"],[\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"object/md-citation\"]}",
-        "meta": {}
+        "id": "EbeO5VZ+",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\"],[\"foobar\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-citation\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[ \n]+/g, '|').trim(), '|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|Edition|Presentation|Form|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|Series|Name|Issue|Page|No|Other|Details|found.|Add|Other|Detail|No|Graphic|found.|Add|Graphic|template|block|text|', 'block');
     });
@@ -6570,9 +6774,10 @@ define("mdeditor/tests/integration/pods/components/object/md-citation/preview/bo
         {{object/md-citation/preview/body citation=citation}}
       */
       {
-        "id": "luGQwXox",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"citation\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"citation\",\"object/md-citation/preview/body\"]}",
-        "meta": {}
+        "id": "Cm5w5tAD",
+        "block": "[[[1,[28,[35,0],null,[[\"citation\"],[[33,1]]]]]],[],false,[\"object/md-citation/preview/body\",\"citation\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.row').textContent.replace(/[ \n]+/g, '|').trim(), '|Title|title0|Alternate|Titles|alternateTitle0|alternateTitle1|Dates|October|13th|2016|(dateType)|October|22nd|2016|(dateType)|Identifier|identifier0|identifier-0|Responsible|Party|role|(|)|role|(|)|'); // Template block usage:
 
@@ -6585,9 +6790,10 @@ define("mdeditor/tests/integration/pods/components/object/md-citation/preview/bo
           
       */
       {
-        "id": "VhPlte47",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"object/md-citation/preview/body\"]}",
-        "meta": {}
+        "id": "yhDlvekb",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-citation/preview/body\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.row').textContent.replace(/[ \n]+/g, '|').trim(), '|Title|Not|Defined|Alternate|Titles|No|alternate|titles|assigned.|Dates|No|dates|assigned.|Identifier|No|identifiers|assigned.|Responsible|Party|No|responsibility|assigned.|template|block|text|', 'block');
     });
@@ -6610,9 +6816,10 @@ define("mdeditor/tests/integration/pods/components/object/md-citation/preview/co
         {{object/md-citation/preview editCitation=editCitation citation=citation}}
       */
       {
-        "id": "VFHUr0j2",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"editCitation\",\"citation\"],[[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"citation\",\"editCitation\",\"object/md-citation/preview\"]}",
-        "meta": {}
+        "id": "OzpCKHzN",
+        "block": "[[[1,[28,[35,0],null,[[\"editCitation\",\"citation\"],[[33,1],[33,2]]]]]],[],false,[\"object/md-citation/preview\",\"editCitation\",\"citation\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-card').textContent.replace(/[ \n]+/g, '|').trim(), '|Citation|Edit|Title|title0|Alternate|Titles|alternateTitle0|alternateTitle1|Dates|October|13th|2016|(dateType)|October|22nd|2016|(dateType)|Identifier|identifier0|identifier-0|Responsible|Party|role|(|)|role|(|)|Edit|Citation|');
       await (0, _testHelpers.click)('.btn-success'); // Template block usage:
@@ -6626,9 +6833,10 @@ define("mdeditor/tests/integration/pods/components/object/md-citation/preview/co
           
       */
       {
-        "id": "awiX/FJZ",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"editCitation\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"editCitation\",\"object/md-citation/preview\"]}",
-        "meta": {}
+        "id": "FXokZbMm",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"editCitation\"],[[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-citation/preview\",\"editCitation\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-card').textContent.replace(/[ \n]+/g, '|').trim(), '|Citation|Edit|Title|Not|Defined|Alternate|Titles|No|alternate|titles|assigned.|Dates|No|dates|assigned.|Identifier|No|identifiers|assigned.|Responsible|Party|No|responsibility|assigned.|template|block|text|Edit|Citation|', 'block');
     });
@@ -6647,9 +6855,10 @@ define("mdeditor/tests/integration/pods/components/object/md-constraint/componen
         {{object/md-constraint profilePath="foobar" model=model}}
       */
       {
-        "id": "yFxAaTz7",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-constraint\"]}",
-        "meta": {}
+        "id": "pnPGhCkb",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]]]]],[],false,[\"object/md-constraint\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[ \n]+/g, '|').trim(), '|Constraint|Type|The|type|of|constraint.|No|Use|Limitations|found.|Add|Use|Limitation|Legal|Access|Constraints|Use|Constraints|No|Other|Constraint|found.|Add|Other|Constraint|Security|Classification|Name|of|the|handling|restrictions|on|the|resource|or|metadata.|Classification|System|Name|Note|Handling|Description|No|Responsible|Party|found.|Add|Responsible|Party|No|Graphic|or|Logo|found.|Add|Graphic|or|Logo|'); // Template block usage:
 
@@ -6662,9 +6871,10 @@ define("mdeditor/tests/integration/pods/components/object/md-constraint/componen
           
       */
       {
-        "id": "xZDNNVUF",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-constraint\"]}",
-        "meta": {}
+        "id": "nZvs0PMN",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-constraint\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[ \n]+/g, '|').trim(), '|Constraint|Type|The|type|of|constraint.|No|Use|Limitations|found.|Add|Use|Limitation|Legal|Access|Constraints|Use|Constraints|No|Other|Constraint|found.|Add|Other|Constraint|Security|Classification|Name|of|the|handling|restrictions|on|the|resource|or|metadata.|Classification|System|Name|Note|Handling|Description|No|Responsible|Party|found.|Add|Responsible|Party|No|Graphic|or|Logo|found.|Add|Graphic|or|Logo|template|block|text|', 'block');
     });
@@ -6683,9 +6893,10 @@ define("mdeditor/tests/integration/pods/components/object/md-date-array/componen
         {{object/md-date-array value=model profilePath="foobar"}}
       */
       {
-        "id": "BFGuGO1f",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"value\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-date-array\"]}",
-        "meta": {}
+        "id": "CqFnUlIp",
+        "block": "[[[1,[28,[35,0],null,[[\"value\",\"profilePath\"],[[33,1],\"foobar\"]]]]],[],false,[\"object/md-date-array\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[ \n]+/g, '|').trim(), '|No|Date|found.|Add|Date|');
       this.set('model', [{
@@ -6704,9 +6915,10 @@ define("mdeditor/tests/integration/pods/components/object/md-date-array/componen
           
       */
       {
-        "id": "Tc7P0rrK",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"value\",\"profilePath\"],[[35,0],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-date-array\"]}",
-        "meta": {}
+        "id": "OeWigU6a",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"value\",\"profilePath\"],[[33,1],\"foobar\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-date-array\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.panel').textContent.replace(/[ \n]+/g, '|').trim(), '|Dates|1|Add|#|Date|Date|Type|Description|0|dateType|×|template|block|text|Delete|', 'block');
     });
@@ -6724,9 +6936,10 @@ define("mdeditor/tests/integration/pods/components/object/md-date/component-test
         <table><tr>{{object/md-date model=model profilePath="foobar"}}</tr></table>
       */
       {
-        "id": "NP0Uy4eC",
-        "block": "{\"symbols\":[],\"statements\":[[10,\"table\"],[12],[10,\"tr\"],[12],[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]],[13],[13]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-date\"]}",
-        "meta": {}
+        "id": "UPCYu/ZX",
+        "block": "[[[10,\"table\"],[12],[10,\"tr\"],[12],[1,[28,[35,0],null,[[\"model\",\"profilePath\"],[[33,1],\"foobar\"]]]],[13],[13]],[],false,[\"object/md-date\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('table').textContent.replace(/[ \n]+/g, '|').trim(), "|Choose|date|type|");
       this.set('model', {
@@ -6745,9 +6958,10 @@ define("mdeditor/tests/integration/pods/components/object/md-date/component-test
           </tr></table>
       */
       {
-        "id": "OaHUDko9",
-        "block": "{\"symbols\":[],\"statements\":[[10,\"table\"],[12],[10,\"tr\"],[12],[2,\"\\n\"],[6,[37,0],null,[[\"profilePath\"],[\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"],[13],[13]],\"hasEval\":false,\"upvars\":[\"object/md-date\"]}",
-        "meta": {}
+        "id": "h3a+Xk1w",
+        "block": "[[[10,\"table\"],[12],[10,\"tr\"],[12],[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\"],[\"foobar\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"],[13],[13]],[],false,[\"object/md-date\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('table').textContent.replace(/[ \n]+/g, '|').trim(), "|Choose|date|type|template|block|text|");
     });
@@ -6791,9 +7005,10 @@ define("mdeditor/tests/integration/pods/components/object/md-distribution/compon
         {{object/md-distribution model=model profilePath="foobar"}}
       */
       {
-        "id": "Ng8Z84R8",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-distribution\"]}",
-        "meta": {}
+        "id": "tyOo36Db",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"profilePath\"],[[33,1],\"foobar\"]]]]],[],false,[\"object/md-distribution\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('section').textContent.replace(/[\s\n]+/g, '|').trim(), '|Distribution|#|Delete|Description|Liablity|Statement|Distributors|2|Add|OK|#|Contacts|0|role|(|)|More...|Delete|1|role|(|)|More...|Delete|'); // Template block usage:
 
@@ -6806,9 +7021,10 @@ define("mdeditor/tests/integration/pods/components/object/md-distribution/compon
           
       */
       {
-        "id": "u37ISDfu",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-distribution\"]}",
-        "meta": {}
+        "id": "DFfruxby",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"model\",\"profilePath\"],[[33,1],\"foobar\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-distribution\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('section').textContent.replace(/[\s\n]+/g, '|').trim(), '|Distribution|#|Delete|Description|Liablity|Statement|Distributors|2|Add|OK|#|Contacts|0|role|(|)|More...|Delete|1|role|(|)|More...|Delete|', 'block and list');
     });
@@ -6854,9 +7070,10 @@ define("mdeditor/tests/integration/pods/components/object/md-distributor/compone
         {{object/md-distributor model=distributor profilePath="foobar"}}
       */
       {
-        "id": "uBoM5LdZ",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"distributor\",\"object/md-distributor\"]}",
-        "meta": {}
+        "id": "0vUtz+Ou",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"profilePath\"],[[33,1],\"foobar\"]]]]],[],false,[\"object/md-distributor\",\"distributor\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|Contacts|Role|role|×|Transfer|Options|2|Add|OK|#|Size(mb)|Online?|Offline?|Format?|0|9.9|no|no|no|More...|Delete|1|10.9|no|no|no|More...|Delete|Order|Process|Fees|Planned|Availability|Ordering|Instructions|Turnaround|'); // Template block usage:
 
@@ -6869,9 +7086,10 @@ define("mdeditor/tests/integration/pods/components/object/md-distributor/compone
           
       */
       {
-        "id": "ZiygAYPx",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"distributor\",\"object/md-distributor\"]}",
-        "meta": {}
+        "id": "Q6IF1lBq",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"model\",\"profilePath\"],[[33,1],\"foobar\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-distributor\",\"distributor\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|Contacts|Role|role|×|Transfer|Options|2|Add|OK|#|Size(mb)|Online?|Offline?|Format?|0|9.9|no|no|no|More...|Delete|1|10.9|no|no|no|More...|Delete|Order|Process|Fees|Planned|Availability|Ordering|Instructions|Turnaround|template|block|text|', 'block');
     });
@@ -6917,9 +7135,10 @@ define("mdeditor/tests/integration/pods/components/object/md-distributor/preview
         {{object/md-distributor/preview item=distributor}}
       */
       {
-        "id": "KYgZCtcs",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"item\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"distributor\",\"object/md-distributor/preview\"]}",
-        "meta": {}
+        "id": "OIGU3wOH",
+        "block": "[[[1,[28,[35,0],null,[[\"item\"],[[33,1]]]]]],[],false,[\"object/md-distributor/preview\",\"distributor\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|role|(|Contact0|)|'); // Template block usage:
 
@@ -6932,9 +7151,10 @@ define("mdeditor/tests/integration/pods/components/object/md-distributor/preview
           
       */
       {
-        "id": "l3ppSKqK",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"class\",\"item\"],[\"testme\",[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"distributor\",\"object/md-distributor/preview\"]}",
-        "meta": {}
+        "id": "U8BApLHR",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"class\",\"item\"],[\"testme\",[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-distributor/preview\",\"distributor\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.testme').textContent.replace(/[\s\n]+/g, '|').trim(), '|role|(|Contact0|)|template|block|text|');
     });
@@ -6959,9 +7179,10 @@ define("mdeditor/tests/integration/pods/components/object/md-documentation/compo
         {{object/md-documentation profilePath="foobar" model=doc}}
       */
       {
-        "id": "a7j4+XFn",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"doc\",\"object/md-documentation\"]}",
-        "meta": {}
+        "id": "V8kmLhIm",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]]]]],[],false,[\"object/md-documentation\",\"doc\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|Resource|Types|1|Add|#|Type|Name|0|foo|×|Delete|Basic|Information|Title|Alternate|Titles|2|Add|Alternate|Title|0|Delete|1|Delete|Dates|2|Add|Date|#|Date|Date|Type|Description|0|dateType|×|Delete|1|dateType|×|Delete|Edition|Presentation|Form|×|presentationForm0|×|presentationForm1|Responsible|Parties|2|Add|#|Role|Contacts|0|role|×|Delete|1|role|×|Delete|Online|Resource|2|Add|OK|#|Name|Uri|0|Not|Defined|http://adiwg.org|Edit|Delete|1|Not|Defined|http://mdeditor.org|Edit|Delete|Identifier|2|Add|OK|#|Identifier|Namespace|Description|0|identifier0|Not|Defined|Not|Defined|More...|Delete|1|identifier-0|Not|Defined|Not|Defined|More...|Delete|Identifier|2|Add|OK|#|Identifier|Namespace|0|identifier0|Not|Defined|Edit|Delete|1|identifier-0|Not|Defined|Edit|Delete|Identifier|2|Add|OK|#|Identifier|Namespace|0|identifier0|Not|Defined|Edit|Delete|1|identifier-0|Not|Defined|Edit|Delete|Series|Name|Issue|Page|Other|Details|2|Add|0|Delete|1|Delete|Graphic|2|Add|OK|0|fileName:|Edit|Delete|1|fileName:|Edit|Delete|'); // Template block usage:
 
@@ -6974,9 +7195,10 @@ define("mdeditor/tests/integration/pods/components/object/md-documentation/compo
           
       */
       {
-        "id": "zzHGNytB",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"doc\",\"object/md-documentation\"]}",
-        "meta": {}
+        "id": "+Z28un1a",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-documentation\",\"doc\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|Resource|Types|1|Add|#|Type|Name|0|foo|×|Delete|Basic|Information|Title|Alternate|Titles|2|Add|Alternate|Title|0|Delete|1|Delete|Dates|2|Add|Date|#|Date|Date|Type|Description|0|dateType|×|Delete|1|dateType|×|Delete|Edition|Presentation|Form|×|presentationForm0|×|presentationForm1|Responsible|Parties|2|Add|#|Role|Contacts|0|role|×|Delete|1|role|×|Delete|Online|Resource|2|Add|OK|#|Name|Uri|0|Not|Defined|http://adiwg.org|Edit|Delete|1|Not|Defined|http://mdeditor.org|Edit|Delete|Identifier|2|Add|OK|#|Identifier|Namespace|Description|0|identifier0|Not|Defined|Not|Defined|More...|Delete|1|identifier-0|Not|Defined|Not|Defined|More...|Delete|Identifier|2|Add|OK|#|Identifier|Namespace|0|identifier0|Not|Defined|Edit|Delete|1|identifier-0|Not|Defined|Edit|Delete|Identifier|2|Add|OK|#|Identifier|Namespace|0|identifier0|Not|Defined|Edit|Delete|1|identifier-0|Not|Defined|Edit|Delete|Series|Name|Issue|Page|Other|Details|2|Add|0|Delete|1|Delete|Graphic|2|Add|OK|0|fileName:|Edit|Delete|1|fileName:|Edit|Delete|template|block|text|', 'block');
     });
@@ -7001,9 +7223,10 @@ define("mdeditor/tests/integration/pods/components/object/md-documentation/previ
         {{object/md-documentation/preview item=doc}}
       */
       {
-        "id": "waRXwSEx",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"item\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"doc\",\"object/md-documentation/preview\"]}",
-        "meta": {}
+        "id": "Vx0BE+3C",
+        "block": "[[[1,[28,[35,0],null,[[\"item\"],[[33,1]]]]]],[],false,[\"object/md-documentation/preview\",\"doc\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.text-muted').textContent.replace(/[\s\n]+/g, '|').trim(), '|Document|#|Resource|Type(s)|foo:|bar|Title|title0|Alternate|Titles|alternateTitle0|alternateTitle1|Dates|October|13th|2016|(dateType)|October|22nd|2016|(dateType)|Identifier|identifier0|identifier-0|Responsible|Party|role|(|)|role|(|)|'); // Template block usage:
 
@@ -7016,9 +7239,10 @@ define("mdeditor/tests/integration/pods/components/object/md-documentation/previ
           
       */
       {
-        "id": "xyYQaqiC",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"class\",\"item\"],[\"testme\",[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"doc\",\"object/md-documentation/preview\"]}",
-        "meta": {}
+        "id": "eFVOkTkK",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"class\",\"item\"],[\"testme\",[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-documentation/preview\",\"doc\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.testme').textContent.replace(/[\s\n]+/g, '|').trim(), '|Document|#|Resource|Type(s)|foo:|bar|Title|title0|Alternate|Titles|alternateTitle0|alternateTitle1|Dates|October|13th|2016|(dateType)|October|22nd|2016|(dateType)|Identifier|identifier0|identifier-0|Responsible|Party|role|(|)|role|(|)|', 'block');
     });
@@ -7037,9 +7261,10 @@ define("mdeditor/tests/integration/pods/components/object/md-domain/component-te
         {{object/md-domain profilePath="foobar" model=domain}}
       */
       {
-        "id": "Qixb3pZb",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"domain\",\"object/md-domain\"]}",
-        "meta": {}
+        "id": "9QBcgNHc",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]]]]],[],false,[\"object/md-domain\",\"domain\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|Domain|Information|Domain|Identifier|Code|Name|Common|Name|Description|Domain|Items|1|Add|OK|#|Domain|Item|Name|Value|Definition|0|More...|Delete|Domain|Reference|Edit|Title|Not|Defined|Alternate|Titles|No|alternate|titles|assigned.|Dates|No|dates|assigned.|Identifier|No|identifiers|assigned.|Responsible|Party|No|responsibility|assigned.|Edit|Citation|'); // Template block usage:
 
@@ -7052,9 +7277,10 @@ define("mdeditor/tests/integration/pods/components/object/md-domain/component-te
           
       */
       {
-        "id": "0+9HoZys",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"domain\",\"object/md-domain\"]}",
-        "meta": {}
+        "id": "QBQ3zw0L",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-domain\",\"domain\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|Domain|Information|Domain|Identifier|Code|Name|Common|Name|Description|Domain|Items|1|Add|OK|#|Domain|Item|Name|Value|Definition|0|More...|Delete|Domain|Reference|Edit|Title|Not|Defined|Alternate|Titles|No|alternate|titles|assigned.|Dates|No|dates|assigned.|Identifier|No|identifiers|assigned.|Responsible|Party|No|responsibility|assigned.|Edit|Citation|', 'block');
     });
@@ -7080,9 +7306,10 @@ define("mdeditor/tests/integration/pods/components/object/md-domainitem/componen
         {{object/md-domainitem profilePath="foobar" model=item}}
       */
       {
-        "id": "mzgmPIiN",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"item\",\"object/md-domainitem\"]}",
-        "meta": {}
+        "id": "qWtpBNF6",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]]]]],[],false,[\"object/md-domainitem\",\"item\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), 'Name|Value|Definition|Item|Reference|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|'); // Template block usage:
 
@@ -7095,9 +7322,10 @@ define("mdeditor/tests/integration/pods/components/object/md-domainitem/componen
           
       */
       {
-        "id": "QFdCM861",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[30,[36,0],null,null]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-domainitem\"]}",
-        "meta": {}
+        "id": "x7LlKIvC",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[28,[37,1],null,null]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-domainitem\",\"hash\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), 'Name|Value|Definition|Item|Reference|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|', 'block');
     });
@@ -7123,9 +7351,10 @@ define("mdeditor/tests/integration/pods/components/object/md-domainitem/preview/
         {{object/md-domainitem/preview profilePath="foobar" model=item tagName="table"}}
       */
       {
-        "id": "akAZYwJ3",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\",\"tagName\"],[\"foobar\",[35,0],\"table\"]]]]],\"hasEval\":false,\"upvars\":[\"item\",\"object/md-domainitem/preview\"]}",
-        "meta": {}
+        "id": "6DH1MTp0",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\",\"tagName\"],[\"foobar\",[33,1],\"table\"]]]]],[],false,[\"object/md-domainitem/preview\",\"item\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('input').exists({
         count: 3
@@ -7143,9 +7372,10 @@ define("mdeditor/tests/integration/pods/components/object/md-domainitem/preview/
           
       */
       {
-        "id": "opRhn+HS",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\",\"tagName\"],[\"foobar\",[35,0],\"table\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"item\",\"object/md-domainitem/preview\"]}",
-        "meta": {}
+        "id": "+/MPSkA4",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\",\"model\",\"tagName\"],[\"foobar\",[33,1],\"table\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-domainitem/preview\",\"item\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('table').textContent.replace(/[\s\n]+/g, '|').trim(), '|', 'block');
     });
@@ -7165,9 +7395,10 @@ define("mdeditor/tests/integration/pods/components/object/md-entity/component-te
         {{object/md-entity dictionary=dictionary profilePath="foobar" model=entity}}
       */
       {
-        "id": "vr9l4Blt",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"dictionary\",\"profilePath\",\"model\"],[[35,1],\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"entity\",\"dictionary\",\"object/md-entity\"]}",
-        "meta": {}
+        "id": "rUrBjWNN",
+        "block": "[[[1,[28,[35,0],null,[[\"dictionary\",\"profilePath\",\"model\"],[[33,1],\"foobar\",[33,2]]]]]],[],false,[\"object/md-entity\",\"dictionary\",\"entity\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|Entity|Information|Entity|Identifier|Code|Name|Definition|Common|Name|Aliases|2|Add|Alias|0|Delete|1|Delete|Attributes|3|Add|OK|#|Attribute|Name|Data|Type|Definition|Allow|Null?|0|dataType0|×|More...|Delete|1|dataType1|×|More...|Delete|2|dataType2|×|More...|Delete|Entity|Structure|Field|Separator|Character|#|Header|Lines|Quote|Character|Entity|Keys|Primary|Key|Attributes|×|primaryKeyAttributeCodeName0-0|×|primaryKeyAttributeCodeName1-0|Foreign|Keys|1|Add|Foreign|Key|#|Local|Attributes|Referenced|Entity|Referenced|Attributes|0|×|attributeCommonName0-0|referencedEntityCodeName00|×|×|referencedAttributeCodeName0-0|Delete|Entity|Indices|1|Add|#|Name|Attributes|Duplicates?|0|×|attributeCodeName0-0|?|Delete|No|Entity|Reference|found.|Add|Entity|Reference|');
       assert.dom('.md-indicator-related').isVisible({
@@ -7183,9 +7414,10 @@ define("mdeditor/tests/integration/pods/components/object/md-entity/component-te
           
       */
       {
-        "id": "WIJa1bHJ",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"dictionary\",\"profilePath\",\"model\"],[[30,[36,0],null,null],\"foobar\",[30,[36,0],null,null]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-entity\"]}",
-        "meta": {}
+        "id": "UaS/nbcf",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"dictionary\",\"profilePath\",\"model\"],[[28,[37,1],null,null],\"foobar\",[28,[37,1],null,null]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-entity\",\"hash\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|Entity|Information|Entity|Identifier|Code|Name|Definition|Common|Name|No|Alias|found.|Add|Alias|No|Attributes|found.|Add|Attribute|Entity|Structure|Field|Separator|Character|#|Header|Lines|Quote|Character|Entity|Keys|Primary|Key|Attributes|No|Foreign|Key|found.|Add|Foreign|Key|No|Entity|Index|found.|Add|Entity|Index|No|Entity|Reference|found.|Add|Entity|Reference|', 'block');
     });
@@ -7205,9 +7437,10 @@ define("mdeditor/tests/integration/pods/components/object/md-extent/component-te
         {{object/md-extent profilePath="foobar" extent=model}}
       */
       {
-        "id": "GZzHskFS",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"extent\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-extent\"]}",
-        "meta": {}
+        "id": "F/+hJCqR",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"extent\"],[\"foobar\",[33,1]]]]]],[],false,[\"object/md-extent\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Extent|Description|Geographic|Extent|Bounding|Box|North|East|South|West|Calculate|Clear|Description|Contains|Data|The|geographic|extent|contains|some|or|all|of|the|data|Edit|Features|Clear|Features|+−|Terrain|Features|Bounding|BoxLeaflet|');
       const inputs = (0, _testHelpers.findAll)('.form-group input, .form-group textarea');
@@ -7224,9 +7457,10 @@ define("mdeditor/tests/integration/pods/components/object/md-extent/component-te
           
       */
       {
-        "id": "cwcmjBEh",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"extent\"],[\"foobar\",[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-extent\"]}",
-        "meta": {}
+        "id": "ARY3lWkF",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\",\"extent\"],[\"foobar\",[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-extent\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Extent|Description|Geographic|Extent|Bounding|Box|North|East|South|West|Calculate|Clear|Description|Contains|Data|The|geographic|extent|contains|some|or|all|of|the|data|No|Features|to|display.|Add|Features|');
     });
@@ -7281,9 +7515,10 @@ define("mdeditor/tests/integration/pods/components/object/md-extent/spatial/comp
           }}
       */
       {
-        "id": "CROtDKo8",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,3],null,[[\"extent\",\"index\",\"deleteFeatures\",\"editFeatures\",\"profilePath\"],[[35,2],9,[35,1],[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"editFeatures\",\"deleteFeatures\",\"extent\",\"object/md-extent/spatial\"]}",
-        "meta": {}
+        "id": "NKPwne/n",
+        "block": "[[[1,[28,[35,0],null,[[\"extent\",\"index\",\"deleteFeatures\",\"editFeatures\",\"profilePath\"],[[33,1],9,[33,2],[33,3],\"foobar\"]]]]],[],false,[\"object/md-extent/spatial\",\"extent\",\"deleteFeatures\",\"editFeatures\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Geographic|Extent|Bounding|Box|North|East|South|West|Calculate|Clear|Description|Contains|Data|The|geographic|extent|contains|some|or|all|of|the|data|Edit|Features|Clear|Features|+−|Terrain|FeaturesLeaflet|');
       await (0, _testHelpers.click)('.btn-primary');
@@ -7316,9 +7551,10 @@ define("mdeditor/tests/integration/pods/components/object/md-extent/spatial/comp
           
       */
       {
-        "id": "BqvMvCHw",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"extent\",\"profilePath\"],[[35,0],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"empty\",\"object/md-extent/spatial\"]}",
-        "meta": {}
+        "id": "yOm6jQrB",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"extent\",\"profilePath\"],[[33,1],\"foobar\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-extent/spatial\",\"empty\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Geographic|Extent|Bounding|Box|North|East|South|West|Calculate|Clear|Description|Contains|Data|The|geographic|extent|contains|some|or|all|of|the|data|No|Features|to|display.|Add|Features|', 'block');
     });
@@ -7368,9 +7604,10 @@ define("mdeditor/tests/integration/pods/components/object/md-funding/component-t
         {{object/md-funding model=funding profilePath="foobar"}}
       */
       {
-        "id": "GHf0uQ/9",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"funding\",\"object/md-funding\"]}",
-        "meta": {}
+        "id": "YTw/oJqc",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"profilePath\"],[[33,1],\"foobar\"]]]]],[],false,[\"object/md-funding\",\"funding\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|Allocation|1|Add|OK|#|Amount|Currency|Matching|0|9.9|currency|Not|Defined|Edit|Delete|Time|Period|Dates|Start|Date|End|Date|Pick|Fiscal|Year|Pick|a|Fiscal|Year|Identifier|Description|Time|Period|Names|2|Add|Time|Period|Name|0|Delete|1|Delete|Interval|Interval|Amount|Time|Unit|year|×|Duration|Years|Months|Days|Hours|Minutes|Seconds|Description|'); // Template block usage:
 
@@ -7383,9 +7620,10 @@ define("mdeditor/tests/integration/pods/components/object/md-funding/component-t
           
       */
       {
-        "id": "ldA4kpK2",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\",\"profilePath\"],[[30,[36,0],null,null],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-funding\"]}",
-        "meta": {}
+        "id": "RW0f7Eq2",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"model\",\"profilePath\"],[[28,[37,1],null,null],\"foobar\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-funding\",\"hash\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|No|Allocation|found.|Add|Allocation|Time|Period|Dates|Start|Date|End|Date|Pick|Fiscal|Year|Pick|a|Fiscal|Year|Identifier|Description|No|Time|Period|Name|found.|Add|Time|Period|Name|Interval|Interval|Amount|Time|Unit|Choose|unit|of|time|Duration|Years|Months|Days|Hours|Minutes|Seconds|Description|', 'block');
     });
@@ -7412,9 +7650,10 @@ define("mdeditor/tests/integration/pods/components/object/md-funding/preview/com
         <section>{{object/md-funding/preview item=funding}}</section>
       */
       {
-        "id": "P9acy/mZ",
-        "block": "{\"symbols\":[],\"statements\":[[10,\"section\"],[12],[1,[30,[36,1],null,[[\"item\"],[[35,0]]]]],[13]],\"hasEval\":false,\"upvars\":[\"funding\",\"object/md-funding/preview\"]}",
-        "meta": {}
+        "id": "bjC7dTU/",
+        "block": "[[[10,\"section\"],[12],[1,[28,[35,0],null,[[\"item\"],[[33,1]]]]],[13]],[],false,[\"object/md-funding/preview\",\"funding\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('section').textContent.replace(/[\s\n]+/g, '|').trim(), '|Start|Date:|Not|defined|End|Date:|12-31-2016|Allocations|Amount|Currency|Source|Recipient|Match?|9.9|currency|--|--|--|'); // Template block usage:
 
@@ -7427,9 +7666,10 @@ define("mdeditor/tests/integration/pods/components/object/md-funding/preview/com
           
       */
       {
-        "id": "u5YnIJjM",
-        "block": "{\"symbols\":[],\"statements\":[[10,\"section\"],[12],[2,\"\\n\"],[6,[37,1],null,[[\"item\"],[[30,[36,0],null,null]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n      \"]],\"parameters\":[]}]]],[13],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-funding/preview\"]}",
-        "meta": {}
+        "id": "qHMH2fYi",
+        "block": "[[[10,\"section\"],[12],[1,\"\\n\"],[6,[39,0],null,[[\"item\"],[[28,[37,1],null,null]]],[[\"default\"],[[[[1,\"        template block text\\n      \"]],[]]]]],[13],[1,\"\\n    \"]],[],false,[\"object/md-funding/preview\",\"hash\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('section').textContent.replace(/[\s\n]+/g, '|').trim(), '|Start|Date:|Not|defined|End|Date:|Not|defined|Allocations|Amount|Currency|Source|Recipient|Match?|No|allocations|found.|', 'block');
     });
@@ -7462,9 +7702,10 @@ define("mdeditor/tests/integration/pods/components/object/md-graphic-array/compo
         {{object/md-graphic-array model=graphic}}
       */
       {
-        "id": "awMJ9MGZ",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"graphic\",\"object/md-graphic-array\"]}",
-        "meta": {}
+        "id": "YHWDqLXW",
+        "block": "[[[1,[28,[35,0],null,[[\"model\"],[[33,1]]]]]],[],false,[\"object/md-graphic-array\",\"graphic\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-object-table').textContent.replace(/[\s\n]+/g, '|').trim(), '|Graphic|2|Add|OK|0|fileName:|Edit|Delete|1|fileName1:|Edit|Delete|');
       assert.ok((0, _testHelpers.find)('.md-logo-preview').complete, 'loaded image'); // Template block usage:
@@ -7478,9 +7719,10 @@ define("mdeditor/tests/integration/pods/components/object/md-graphic-array/compo
           
       */
       {
-        "id": "tJeTnJ9/",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"graphic\",\"object/md-graphic-array\"]}",
-        "meta": {}
+        "id": "hh59JVVm",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"model\"],[[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-graphic-array\",\"graphic\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-object-table').textContent.replace(/[\s\n]+/g, '|').trim(), '|Graphic|2|Add|OK|0|fileName:|Edit|Delete|1|fileName1:|Edit|Delete|', 'block');
     });
@@ -7513,9 +7755,10 @@ define("mdeditor/tests/integration/pods/components/object/md-identifier-array/co
         {{object/md-identifier-array model=id editItem=edit}}
       */
       {
-        "id": "jbJNiPPM",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,2],null,[[\"model\",\"editItem\"],[[35,1],[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"edit\",\"id\",\"object/md-identifier-array\"]}",
-        "meta": {}
+        "id": "j2WNsczY",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"editItem\"],[[33,1],[33,2]]]]]],[],false,[\"object/md-identifier-array\",\"id\",\"edit\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-object-table').textContent.replace(/[\s\n]+/g, '|').trim(), '|Identifier|2|Add|OK|#|Identifier|Namespace|Description|0|identifier|Not|Defined|Not|Defined|More...|Delete|1|identifier1|Not|Defined|Not|Defined|More...|Delete|');
       await (0, _testHelpers.click)('.btn-info');
@@ -7533,9 +7776,10 @@ define("mdeditor/tests/integration/pods/components/object/md-identifier-array/co
           
       */
       {
-        "id": "fqjiwIDs",
-        "block": "{\"symbols\":[],\"statements\":[[10,\"section\"],[12],[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"      \"],[13],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"object/md-identifier-array\"]}",
-        "meta": {}
+        "id": "ujmZrVxH",
+        "block": "[[[10,\"section\"],[12],[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"      \"],[13],[1,\"\\n    \"]],[],false,[\"object/md-identifier-array\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('section').textContent.replace(/[\s\n]+/g, '|').trim(), '|No|Identifier|found.|Add|Identifier|template|block|text|', 'block');
     });
@@ -7554,9 +7798,10 @@ define("mdeditor/tests/integration/pods/components/object/md-identifier-object-t
         {{object/md-identifier-object-table model=id}}
       */
       {
-        "id": "RX3+0rHF",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"id\",\"object/md-identifier-object-table\"]}",
-        "meta": {}
+        "id": "o4/UO+Z2",
+        "block": "[[[1,[28,[35,0],null,[[\"model\"],[[33,1]]]]]],[],false,[\"object/md-identifier-object-table\",\"id\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-object-table').textContent.replace(/[\s\n]+/g, '|').trim(), '|Identifier|2|Add|OK|#|Identifier|Namespace|0|identifier0|namespace0|Edit|Delete|1|identifier1|namespace1|Edit|Delete|'); // Template block usage:
 
@@ -7569,9 +7814,10 @@ define("mdeditor/tests/integration/pods/components/object/md-identifier-object-t
           
       */
       {
-        "id": "RWjlmQEi",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"object/md-identifier-object-table\"]}",
-        "meta": {}
+        "id": "2HpRR9pK",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-identifier-object-table\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-object-table').textContent.replace(/[\s\n]+/g, '|').trim(), '|No|Identifier|found.|Add|Identifier|', 'block');
     });
@@ -7590,9 +7836,10 @@ define("mdeditor/tests/integration/pods/components/object/md-identifier/componen
         {{object/md-identifier model=id profilePath="foobar"}}
       */
       {
-        "id": "36roWv/X",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"id\",\"object/md-identifier\"]}",
-        "meta": {}
+        "id": "OGnzQJZo",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"profilePath\"],[[33,1],\"foobar\"]]]]],[],false,[\"object/md-identifier\",\"id\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-identifier').textContent.replace(/[\s\n]+/g, '|').trim(), 'Identifier|Namespace|namespace0|×|Version|Description|Authority|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|');
       assert.dom('input').hasValue('identifier0', 'assign value'); // Template block usage:
@@ -7606,9 +7853,10 @@ define("mdeditor/tests/integration/pods/components/object/md-identifier/componen
           
       */
       {
-        "id": "p5Mynaui",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[30,[36,0],null,null]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-identifier\"]}",
-        "meta": {}
+        "id": "LKJ2tjIN",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[28,[37,1],null,null]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-identifier\",\"hash\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.md-identifier').textContent.replace(/[\s\n]+/g, '|').trim(), "Identifier|Namespace|Select|or|type|a|namespace|for|the|identifier.|Version|Description|Authority|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|template|block|text|", 'block');
     });
@@ -7630,9 +7878,10 @@ define("mdeditor/tests/integration/pods/components/object/md-keyword-citation/co
         {{object/md-keyword-citation model=keyword profilePath="foobar"}}
       */
       {
-        "id": "sjth2048",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"keyword\",\"object/md-keyword-citation\"]}",
-        "meta": {}
+        "id": "eLsaM//z",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"profilePath\"],[[33,1],\"foobar\"]]]]],[],false,[\"object/md-keyword-citation\",\"keyword\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|Title|Date|Date|Type|Choose|date|type|Type|theme|?|Edition|URL|');
       var input = (0, _testHelpers.findAll)('form input').mapBy('value').join('|');
@@ -7647,9 +7896,10 @@ define("mdeditor/tests/integration/pods/components/object/md-keyword-citation/co
           
       */
       {
-        "id": "AKc/2GEO",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\",\"profilePath\"],[[30,[36,0],null,[[\"thesaurus\"],[[30,[36,0],null,null]]]],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-keyword-citation\"]}",
-        "meta": {}
+        "id": "7B+QhYOy",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"model\",\"profilePath\"],[[28,[37,1],null,[[\"thesaurus\"],[[28,[37,1],null,null]]]],\"foobar\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-keyword-citation\",\"hash\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), "|Title|Date|Date|Type|Choose|date|type|Type|Choose|keyword|type|Edition|URL|", 'block');
     });
@@ -7678,9 +7928,10 @@ define("mdeditor/tests/integration/pods/components/object/md-keyword-list/compon
         {{object/md-keyword-list model=model profilePath="foobar"}}
       */
       {
-        "id": "MWF+OsCP",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-keyword-list\"]}",
-        "meta": {}
+        "id": "1E6EKRGO",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"profilePath\"],[[33,1],\"foobar\"]]]]],[],false,[\"object/md-keyword-list\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('ul').textContent.replace(/[ \n]+/g, '|').trim(), '|Delete|foo1|Delete|bar1|');
       await (0, _testHelpers.render)(Ember.HTMLBars.template(
@@ -7688,9 +7939,10 @@ define("mdeditor/tests/integration/pods/components/object/md-keyword-list/compon
         {{object/md-keyword-list model=model readOnly=false profilePath="foobar"}}
       */
       {
-        "id": "scT4U9f+",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"readOnly\",\"profilePath\"],[[35,0],false,\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-keyword-list\"]}",
-        "meta": {}
+        "id": "eKN3HIsK",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"readOnly\",\"profilePath\"],[[33,1],false,\"foobar\"]]]]],[],false,[\"object/md-keyword-list\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('tr').exists({
         count: 4
@@ -7711,9 +7963,10 @@ define("mdeditor/tests/integration/pods/components/object/md-keyword-list/compon
           
       */
       {
-        "id": "l+RvqXwY",
-        "block": "{\"symbols\":[],\"statements\":[[10,\"section\"],[12],[2,\"\\n\"],[6,[37,0],null,[[\"profilePath\"],[\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n      \"]],\"parameters\":[]}]]],[13],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"object/md-keyword-list\"]}",
-        "meta": {}
+        "id": "UCUHOBHf",
+        "block": "[[[10,\"section\"],[12],[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\"],[\"foobar\"]],[[\"default\"],[[[[1,\"        template block text\\n      \"]],[]]]]],[13],[1,\"\\n    \"]],[],false,[\"object/md-keyword-list\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('section').textContent.replace(/[ \n]+/g, '|').trim(), '|Add|some|keywords.|template|block|text|', 'Block form renders.');
     });
@@ -7752,9 +8005,10 @@ define("mdeditor/tests/integration/pods/components/object/md-lineage/component-t
         <section>{{object/md-lineage profilePath="foobar" model=lineage}}</section>
       */
       {
-        "id": "WUVCTcic",
-        "block": "{\"symbols\":[],\"statements\":[[10,\"section\"],[12],[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]],[13]],\"hasEval\":false,\"upvars\":[\"lineage\",\"object/md-lineage\"]}",
-        "meta": {}
+        "id": "9f7IQHoo",
+        "block": "[[[10,\"section\"],[12],[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]]]],[13]],[],false,[\"object/md-lineage\",\"lineage\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('section').textContent.replace(/[\s\n]+/g, '|').trim(), '|Statement|No|Process|Step|found.|Add|Process|Step|Source|2|Add|OK|#|Description|0|More...|Delete|1|More...|Delete|Citation|2|Add|OK|#|Title|0|title|More...|Delete|1|title|More...|Delete|Scope|scopeCode|×|'); // Template block usage:
 
@@ -7767,9 +8021,10 @@ define("mdeditor/tests/integration/pods/components/object/md-lineage/component-t
           
       */
       {
-        "id": "hJ5SGx5p",
-        "block": "{\"symbols\":[],\"statements\":[[10,\"section\"],[12],[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[30,[36,0],null,null]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n      \"]],\"parameters\":[]}]]],[13],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-lineage\"]}",
-        "meta": {}
+        "id": "xpmphkvm",
+        "block": "[[[10,\"section\"],[12],[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[28,[37,1],null,null]]],[[\"default\"],[[[[1,\"        template block text\\n      \"]],[]]]]],[13],[1,\"\\n    \"]],[],false,[\"object/md-lineage\",\"hash\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('section').textContent.replace(/[\s\n]+/g, '|').trim(), '|Statement|No|Process|Step|found.|Add|Process|Step|No|Source|found.|Add|Source|No|Citation|found.|Add|Citation|Scope|Select|type|of|resource.|template|block|text|', 'block');
     });
@@ -7809,9 +8064,10 @@ define("mdeditor/tests/integration/pods/components/object/md-lineage/preview/com
         <section>{{object/md-lineage/preview item=lineage}}</section>
       */
       {
-        "id": "F2vVxa2y",
-        "block": "{\"symbols\":[],\"statements\":[[10,\"section\"],[12],[1,[30,[36,1],null,[[\"item\"],[[35,0]]]]],[13]],\"hasEval\":false,\"upvars\":[\"lineage\",\"object/md-lineage/preview\"]}",
-        "meta": {}
+        "id": "8hlX0hQs",
+        "block": "[[[10,\"section\"],[12],[1,[28,[35,0],null,[[\"item\"],[[33,1]]]]],[13]],[],false,[\"object/md-lineage/preview\",\"lineage\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('section').textContent.replace(/[\s\n]+/g, '|').trim(), '|Lineage|#|Statement|statement|Process|Step|No|process|steps|assigned.|'); // Template block usage:
 
@@ -7824,9 +8080,10 @@ define("mdeditor/tests/integration/pods/components/object/md-lineage/preview/com
           
       */
       {
-        "id": "opDX7pN6",
-        "block": "{\"symbols\":[],\"statements\":[[10,\"section\"],[12],[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n      \"]],\"parameters\":[]}]]],[13],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"object/md-lineage/preview\"]}",
-        "meta": {}
+        "id": "kZJl3vfx",
+        "block": "[[[10,\"section\"],[12],[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n      \"]],[]]]]],[13],[1,\"\\n    \"]],[],false,[\"object/md-lineage/preview\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('section').textContent.replace(/[\s\n]+/g, '|').trim(), '|Lineage|#|Statement|Not|Defined|Process|Step|No|process|steps|assigned.|', 'template block');
     });
@@ -7853,9 +8110,10 @@ define("mdeditor/tests/integration/pods/components/object/md-locale-array/compon
         {{object/md-locale-array value=locales}}
       */
       {
-        "id": "lbgcQLTm",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"value\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"locales\",\"object/md-locale-array\"]}",
-        "meta": {}
+        "id": "lyNw8PXC",
+        "block": "[[[1,[28,[35,0],null,[[\"value\"],[[33,1]]]]]],[],false,[\"object/md-locale-array\",\"locales\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.panel').textContent.replace(/[\s\n]+/g, '|').trim(), '|2|Add|#|Language|Character|Set|Country|0|eng|?|×|UTF-8|?|×|USA|?|×|Delete|1|spa|?|×|UTF-32|?|×|BDI|?|×|Delete|'); // Template block usage:
 
@@ -7868,9 +8126,10 @@ define("mdeditor/tests/integration/pods/components/object/md-locale-array/compon
           
       */
       {
-        "id": "E0I2vsc2",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"object/md-locale-array\"]}",
-        "meta": {}
+        "id": "g1bT9NWZ",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-locale-array\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('.panel').textContent.replace(/[\s\n]+/g, '|').trim(), '|Add|#|Language|Character|Set|Country|Add|', 'block');
     });
@@ -7895,9 +8154,10 @@ define("mdeditor/tests/integration/pods/components/object/md-locale/component-te
         <section>{{object/md-locale settings=settings model=(hash) profilePath="foobar"}}</section>
       */
       {
-        "id": "akF4+Jw4",
-        "block": "{\"symbols\":[],\"statements\":[[10,\"section\"],[12],[1,[30,[36,2],null,[[\"settings\",\"model\",\"profilePath\"],[[35,1],[30,[36,0],null,null],\"foobar\"]]]],[13]],\"hasEval\":false,\"upvars\":[\"hash\",\"settings\",\"object/md-locale\"]}",
-        "meta": {}
+        "id": "kuwaHHMg",
+        "block": "[[[10,\"section\"],[12],[1,[28,[35,0],null,[[\"settings\",\"model\",\"profilePath\"],[[33,1],[28,[37,2],null,null],\"foobar\"]]]],[13]],[],false,[\"object/md-locale\",\"settings\",\"hash\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('section').textContent.replace(/[\s\n]+/g, '|').trim(), '|Language|eng|?|×|Character|Set|UTF-8|?|×|Country|USA|?|×|'); // Template block usage:
 
@@ -7910,9 +8170,10 @@ define("mdeditor/tests/integration/pods/components/object/md-locale/component-te
           
       */
       {
-        "id": "R4cZd0Mm",
-        "block": "{\"symbols\":[],\"statements\":[[10,\"section\"],[12],[2,\"\\n\"],[6,[37,2],null,[[\"settings\",\"model\",\"profilePath\"],[[35,1],[30,[36,0],null,null],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n      \"]],\"parameters\":[]}]]],[13],[2,\"\\n    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"settings\",\"object/md-locale\"]}",
-        "meta": {}
+        "id": "xzIcIc5X",
+        "block": "[[[10,\"section\"],[12],[1,\"\\n\"],[6,[39,0],null,[[\"settings\",\"model\",\"profilePath\"],[[33,1],[28,[37,2],null,null],\"foobar\"]],[[\"default\"],[[[[1,\"        template block text\\n      \"]],[]]]]],[13],[1,\"\\n    \"]],[],false,[\"object/md-locale\",\"settings\",\"hash\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('section').textContent.replace(/[\s\n]+/g, '|').trim(), '|Language|eng|?|×|Character|Set|UTF-8|?|×|Country|USA|?|×|template|block|text|', 'template block');
     });
@@ -7971,9 +8232,10 @@ define("mdeditor/tests/integration/pods/components/object/md-maintenance/compone
         {{object/md-maintenance profilePath="foobar" model=model}}
       */
       {
-        "id": "wqW4gVjy",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-maintenance\"]}",
-        "meta": {}
+        "id": "dj8JdVVg",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]]]]],[],false,[\"object/md-maintenance\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|Frequency|frequency|×|Dates|2|Add|Date|#|Date|Date|Type|Description|0|creation|?|×|Delete|1|publication|?|×|Delete|Contacts|2|Add|Contact|#|Role|Contacts|0|author|?|×|Delete|1|publisher|?|×|Delete|Notes|2|Add|Notes|0|Delete|1|Delete|Scope|×|scopeCode0|×|scopeCode1|'); // Template block usage:
 
@@ -7986,9 +8248,10 @@ define("mdeditor/tests/integration/pods/components/object/md-maintenance/compone
           
       */
       {
-        "id": "UpcZMzhm",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"profilePath\"],[\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"object/md-maintenance\"]}",
-        "meta": {}
+        "id": "GQ2cBt5j",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\"],[\"foobar\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-maintenance\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), '|Frequency|Choose|a|value.|No|Date|found.|Add|Date|No|Contact|found.|Add|Contact|No|Notes|found.|Add|Note|Scope|template|block|text|', 'block');
     });
@@ -8019,9 +8282,10 @@ define("mdeditor/tests/integration/pods/components/object/md-medium/component-te
         {{object/md-medium profilePath="foobar" model=model}}
       */
       {
-        "id": "zadm3Hi6",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-medium\"]}",
-        "meta": {}
+        "id": "TLZPuo3+",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]]]]],[],false,[\"object/md-medium\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), 'Medium|Title|Storage|Density|Density|Units|Number|Of|Volumes|Storage|Format|×|mediumFormat0|×|mediumFormat1|Identifier|Namespace|Select|or|type|a|namespace|for|the|identifier.|Version|Description|Note|'); // Template block usage:
 
@@ -8034,9 +8298,10 @@ define("mdeditor/tests/integration/pods/components/object/md-medium/component-te
           
       */
       {
-        "id": "fcXjux+b",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[30,[36,0],null,null]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-medium\"]}",
-        "meta": {}
+        "id": "CFhrvR+7",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[28,[37,1],null,null]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-medium\",\"hash\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.find)('form').textContent.replace(/[\s\n]+/g, '|').trim(), "Medium|Title|Storage|Density|Density|Units|Number|Of|Volumes|Storage|Format|Identifier|Namespace|Select|or|type|a|namespace|for|the|identifier.|Version|Description|Note|template|block|text|", 'block');
     });
@@ -8062,9 +8327,10 @@ define("mdeditor/tests/integration/pods/components/object/md-object-table/compon
         {{object/md-object-table header="Foo Bars" attributes="biz,baz"}}
       */
       {
-        "id": "AwbScY+A",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"header\",\"attributes\"],[\"Foo Bars\",\"biz,baz\"]]]]],\"hasEval\":false,\"upvars\":[\"object/md-object-table\"]}",
-        "meta": {}
+        "id": "L8An+XMQ",
+        "block": "[[[1,[28,[35,0],null,[[\"header\",\"attributes\"],[\"Foo Bars\",\"biz,baz\"]]]]],[],false,[\"object/md-object-table\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|No|Foo|Bars|found.|Add|Foo|Bar|'); // Template block usage:
 
@@ -8085,9 +8351,10 @@ define("mdeditor/tests/integration/pods/components/object/md-object-table/compon
           
       */
       {
-        "id": "quh/Pht5",
-        "block": "{\"symbols\":[\"foo\"],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"items\",\"header\",\"buttonText\",\"ellipsis\",\"profilePath\",\"attributes\"],[[35,0],\"FooBar\",\"Add FooBar\",true,\"foobar\",\"biz,baz\"]],[[\"default\"],[{\"statements\":[[2,\"        \"],[10,\"span\"],[12],[2,\"Biz:\"],[1,[32,1,[\"biz\"]]],[13],[2,\"\\n        \"],[10,\"span\"],[12],[2,\"Baz:\"],[1,[32,1,[\"baz\"]]],[13],[2,\"\\n\"]],\"parameters\":[1]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-object-table\"]}",
-        "meta": {}
+        "id": "t3jAilqI",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"items\",\"header\",\"buttonText\",\"ellipsis\",\"profilePath\",\"attributes\"],[[33,1],\"FooBar\",\"Add FooBar\",true,\"foobar\",\"biz,baz\"]],[[\"default\"],[[[[1,\"        \"],[10,1],[12],[1,\"Biz:\"],[1,[30,1,[\"biz\"]]],[13],[1,\"\\n        \"],[10,1],[12],[1,\"Baz:\"],[1,[30,1,[\"baz\"]]],[13],[1,\"\\n\"]],[1]]]]],[1,\"    \"]],[\"foo\"],false,[\"object/md-object-table\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|FooBar|2|Add|OK|#|Biz|Baz|0|biz0|baz0|Edit|Delete|1|biz1|baz1|Edit|Delete|', 'block');
     });
@@ -8113,9 +8380,10 @@ define("mdeditor/tests/integration/pods/components/object/md-objectroute-table/c
         {{object/md-objectroute-table attributes="biz,baz" header="FooBar"}}
       */
       {
-        "id": "A75WjSg7",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,0],null,[[\"attributes\",\"header\"],[\"biz,baz\",\"FooBar\"]]]]],\"hasEval\":false,\"upvars\":[\"object/md-objectroute-table\"]}",
-        "meta": {}
+        "id": "KPQTA2IQ",
+        "block": "[[[1,[28,[35,0],null,[[\"attributes\",\"header\"],[\"biz,baz\",\"FooBar\"]]]]],[],false,[\"object/md-objectroute-table\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|No|FooBar|found.|Add|FooBar|'); // Template block usage:
 
@@ -8136,9 +8404,10 @@ define("mdeditor/tests/integration/pods/components/object/md-objectroute-table/c
           
       */
       {
-        "id": "vh3Fq5h+",
-        "block": "{\"symbols\":[\"foo\"],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"items\",\"header\",\"buttonText\",\"ellipsis\",\"profilePath\",\"attributes\"],[[35,0],\"FooBar\",\"Add FooBar\",true,\"foobar\",\"biz,baz\"]],[[\"default\"],[{\"statements\":[[2,\"        \"],[10,\"span\"],[12],[2,\"Biz:\"],[1,[32,1,[\"biz\"]]],[13],[2,\"\\n        \"],[10,\"span\"],[12],[2,\"Baz:\"],[1,[32,1,[\"baz\"]]],[13],[2,\"\\n\"]],\"parameters\":[1]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-objectroute-table\"]}",
-        "meta": {}
+        "id": "iG7jTjpc",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"items\",\"header\",\"buttonText\",\"ellipsis\",\"profilePath\",\"attributes\"],[[33,1],\"FooBar\",\"Add FooBar\",true,\"foobar\",\"biz,baz\"]],[[\"default\"],[[[[1,\"        \"],[10,1],[12],[1,\"Biz:\"],[1,[30,1,[\"biz\"]]],[13],[1,\"\\n        \"],[10,1],[12],[1,\"Baz:\"],[1,[30,1,[\"baz\"]]],[13],[1,\"\\n\"]],[1]]]]],[1,\"    \"]],[\"foo\"],false,[\"object/md-objectroute-table\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|FooBar|2|Add|OK|#|Biz|Baz|0|biz0|baz0|More...|Delete|1|biz1|baz1|More...|Delete|', 'block');
     });
@@ -8166,9 +8435,10 @@ define("mdeditor/tests/integration/pods/components/object/md-online-resource/com
         {{object/md-online-resource model=model profilePath="foobar"}}
       */
       {
-        "id": "oSJqh5j/",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-online-resource\"]}",
-        "meta": {}
+        "id": "3TyVevF2",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"profilePath\"],[[33,1],\"foobar\"]]]]],[],false,[\"object/md-online-resource\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), 'Name|URI|Protocol|Description|Function|download|?|×|Application|Profile|applicationProfile|×|Protocol|Request|'); // Template block usage:
 
@@ -8181,9 +8451,10 @@ define("mdeditor/tests/integration/pods/components/object/md-online-resource/com
           
       */
       {
-        "id": "PySVGstf",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-online-resource\"]}",
-        "meta": {}
+        "id": "yP2FQQc3",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-online-resource\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Name|URI|Protocol|Description|Function|download|?|×|Application|Profile|applicationProfile|×|Protocol|Request|template|block|text|', 'block');
     });
@@ -8223,9 +8494,10 @@ define("mdeditor/tests/integration/pods/components/object/md-party-array/compone
         {{object/md-party-array value=party profilePath="foobar"}}
       */
       {
-        "id": "2YK7jbov",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"value\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"party\",\"object/md-party-array\"]}",
-        "meta": {}
+        "id": "SA3rvQ3J",
+        "block": "[[[1,[28,[35,0],null,[[\"value\",\"profilePath\"],[[33,1],\"foobar\"]]]]],[],false,[\"object/md-party-array\",\"party\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|2|Add|#|Role|Contacts|0|author|?|×|×|Contact0|Delete|1|publisher|?|×|×|Contact1|Delete|'); // Template block usage:
 
@@ -8238,9 +8510,10 @@ define("mdeditor/tests/integration/pods/components/object/md-party-array/compone
           
       */
       {
-        "id": "672TylOc",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\",\"profilePath\"],[[30,[36,0],null,null],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-party-array\"]}",
-        "meta": {}
+        "id": "VDolTJDd",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"model\",\"profilePath\"],[[28,[37,1],null,null],\"foobar\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-party-array\",\"hash\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Add|#|Role|Contacts|Add|', 'block');
     });
@@ -8274,9 +8547,10 @@ define("mdeditor/tests/integration/pods/components/object/md-party/component-tes
         {{object/md-party model=party}}
       */
       {
-        "id": "8b3chPDH",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"party\",\"object/md-party\"]}",
-        "meta": {}
+        "id": "gePEMMKf",
+        "block": "[[[1,[28,[35,0],null,[[\"model\"],[[33,1]]]]]],[],false,[\"object/md-party\",\"party\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Role|author|?|×|Contacts|×|Contact0|'); // Template block usage:
 
@@ -8289,9 +8563,10 @@ define("mdeditor/tests/integration/pods/components/object/md-party/component-tes
           
       */
       {
-        "id": "tQRKZFQv",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\"],[[30,[36,0],null,null]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-party\"]}",
-        "meta": {}
+        "id": "risnBsCg",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"model\"],[[28,[37,1],null,null]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-party\",\"hash\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), "|Role|Select|or|enter|a|role|Contacts|", 'block');
     });
@@ -8396,9 +8671,10 @@ define("mdeditor/tests/integration/pods/components/object/md-process-step/compon
         {{object/md-process-step profilePath="foobar" model=step}}
       */
       {
-        "id": "wp1epR63",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"step\",\"object/md-process-step\"]}",
-        "meta": {}
+        "id": "m4PQJ63K",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]]]]],[],false,[\"object/md-process-step\",\"step\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), "Step|ID|Description|Step|Sources|1|Add|#|Description|0|Delete|Step|Products|1|Add|#|Description|0|Delete|Processors|2|Add|#|Role|Contacts|0|role|×|Delete|1|role|×|Delete|Step|Reference|2|Add|OK|#|Title|0|title0|More...|Delete|1|title1|More...|Delete|Time|Period|Dates|Start|Date|End|Date|Pick|Fiscal|Year|Pick|a|Fiscal|Year|Identifier|Description|No|Time|Period|Name|found.|Add|Time|Period|Name|Interval|Interval|Amount|Time|Unit|Choose|unit|of|time|Duration|Years|Months|Days|Hours|Minutes|Seconds|Scope|Select|type|of|resource.|"); // Template block usage:
 
@@ -8411,9 +8687,10 @@ define("mdeditor/tests/integration/pods/components/object/md-process-step/compon
           
       */
       {
-        "id": "0FJyA4Xx",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"step\",\"object/md-process-step\"]}",
-        "meta": {}
+        "id": "siJgBpS0",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-process-step\",\"step\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), "|Step|ID|Description|Step|Sources|1|Add|#|Description|0|Delete|Step|Products|1|Add|#|Description|0|Delete|Processors|2|Add|#|Role|Contacts|0|role|×|Delete|1|role|×|Delete|Step|Reference|2|Add|OK|#|Title|0|title0|More...|Delete|1|title1|More...|Delete|Time|Period|Dates|Start|Date|End|Date|Pick|Fiscal|Year|Pick|a|Fiscal|Year|Identifier|Description|No|Time|Period|Name|found.|Add|Time|Period|Name|Interval|Interval|Amount|Time|Unit|Choose|unit|of|time|Duration|Years|Months|Days|Hours|Minutes|Seconds|Scope|Select|type|of|resource.|template|block|text|", 'block');
     });
@@ -8461,9 +8738,10 @@ define("mdeditor/tests/integration/pods/components/object/md-process-step/previe
         {{object/md-process-step/preview model=source profilePath="foobar"}}
       */
       {
-        "id": "t+ezhZci",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"source\",\"object/md-process-step/preview\"]}",
-        "meta": {}
+        "id": "mm1pGoQo",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"profilePath\"],[[33,1],\"foobar\"]]]]],[],false,[\"object/md-process-step/preview\",\"source\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('textarea').hasValue('description'); // Template block usage:
 
@@ -8476,9 +8754,10 @@ define("mdeditor/tests/integration/pods/components/object/md-process-step/previe
           
       */
       {
-        "id": "gxSiRSSq",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"source\",\"object/md-process-step/preview\"]}",
-        "meta": {}
+        "id": "lM8Pk1tj",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"model\",\"profilePath\"],[[33,1],\"foobar\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-process-step/preview\",\"source\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('textarea').hasValue('description');
     });
@@ -8498,9 +8777,10 @@ define("mdeditor/tests/integration/pods/components/object/md-profile/component-t
         {{object/md-profile record=model}}
       */
       {
-        "id": "qyHgvxy5",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"record\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-profile\"]}",
-        "meta": {}
+        "id": "THDMyqso",
+        "block": "[[[1,[28,[35,0],null,[[\"record\"],[[33,1]]]]]],[],false,[\"object/md-profile\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[ \n]+/g, '|').trim(), '|URL|Alias|Version|0.0.0|Update|Available|(0.0.1)|Title|Minimal|Description|A|Minimalist|Profile|Identifier|minimal|Namespace|org.adiwg.profile|'); // Template block usage:
 
@@ -8513,9 +8793,10 @@ define("mdeditor/tests/integration/pods/components/object/md-profile/component-t
           
       */
       {
-        "id": "H67THDTC",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"record\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-profile\"]}",
-        "meta": {}
+        "id": "3SCsL2Uh",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"record\"],[[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-profile\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[ \n]+/g, '|').trim(), '|URL|Alias|Version|0.0.0|Update|Available|(0.0.1)|Title|Minimal|Description|A|Minimalist|Profile|Identifier|minimal|Namespace|org.adiwg.profile|');
     });
@@ -8538,9 +8819,10 @@ define("mdeditor/tests/integration/pods/components/object/md-profile/custom/comp
         {{object/md-profile/custom record=model}}
       */
       {
-        "id": "eP6ZzTzU",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"record\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-profile/custom\"]}",
-        "meta": {}
+        "id": "u1BolMbK",
+        "block": "[[[1,[28,[35,0],null,[[\"record\"],[[33,1]]]]]],[],false,[\"object/md-profile/custom\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[ \n]+/g, '|').trim(), 'Title|Description|Profile|Definition|Select|the|profile|definition.|Select|Schemas|No|schemas|avialable.|Schemas|Selected|Select|schemas|from|the|list.|'); // Template block usage:
 
@@ -8553,9 +8835,10 @@ define("mdeditor/tests/integration/pods/components/object/md-profile/custom/comp
           
       */
       {
-        "id": "XXuXtyKq",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"record\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-profile/custom\"]}",
-        "meta": {}
+        "id": "9T/5T0Em",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"record\"],[[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-profile/custom\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[ \n]+/g, '|').trim(), '|Title|Description|Profile|Definition|Select|the|profile|definition.|Select|Schemas|No|schemas|avialable.|Schemas|Selected|Select|schemas|from|the|list.|template|block|text|');
     });
@@ -8575,9 +8858,10 @@ define("mdeditor/tests/integration/pods/components/object/md-profile/form/compon
         {{object/md-profile/form record=model}}
       */
       {
-        "id": "WvoO0JRc",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"record\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-profile/form\"]}",
-        "meta": {}
+        "id": "qpvAGFhP",
+        "block": "[[[1,[28,[35,0],null,[[\"record\"],[[33,1]]]]]],[],false,[\"object/md-profile/form\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[ \n]+/g, '|').trim(), 'URL|Alias|Version|0.0.0|Update|Available|(0.0.1)|Title|Minimal|Description|A|Minimalist|Profile|Identifier|minimal|Namespace|org.adiwg.profile|'); // Template block usage:
 
@@ -8590,9 +8874,10 @@ define("mdeditor/tests/integration/pods/components/object/md-profile/form/compon
           
       */
       {
-        "id": "WYJBhn+P",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"record\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-profile/form\"]}",
-        "meta": {}
+        "id": "JbRzsNpJ",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"record\"],[[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-profile/form\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[ \n]+/g, '|').trim(), '|URL|Alias|Version|0.0.0|Update|Available|(0.0.1)|Title|Minimal|Description|A|Minimalist|Profile|Identifier|minimal|Namespace|org.adiwg.profile|template|block|text|');
     });
@@ -8612,9 +8897,10 @@ define("mdeditor/tests/integration/pods/components/object/md-profile/preview/com
         {{object/md-profile/preview  record=model}}
       */
       {
-        "id": "FmnIK2vN",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"record\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-profile/preview\"]}",
-        "meta": {}
+        "id": "1cNCGDyR",
+        "block": "[[[1,[28,[35,0],null,[[\"record\"],[[33,1]]]]]],[],false,[\"object/md-profile/preview\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[ \n]+/g, '|').trim(), '|Title|Minimal|Description|A|Minimalist|Profile|Identifier|minimal|Namespace|org.adiwg.profile|'); // Template block usage:
 
@@ -8627,9 +8913,10 @@ define("mdeditor/tests/integration/pods/components/object/md-profile/preview/com
           
       */
       {
-        "id": "lNE51O/H",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"record\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-profile/preview\"]}",
-        "meta": {}
+        "id": "HA+HeyEN",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"record\"],[[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-profile/preview\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[ \n]+/g, '|').trim(), '|Title|Minimal|Description|A|Minimalist|Profile|Identifier|minimal|Namespace|org.adiwg.profile|template|block|text|');
     });
@@ -8653,9 +8940,10 @@ define("mdeditor/tests/integration/pods/components/object/md-raster/attrgroup/at
         {{object/md-raster/attrgroup/attribute profilePath="foobar" model=model}}
       */
       {
-        "id": "J8V4PDEH",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-raster/attrgroup/attribute\"]}",
-        "meta": {}
+        "id": "vfPwzRpx",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]]]]],[],false,[\"object/md-raster/attrgroup/attribute\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _mdHelpers.formatContent)(this.element).trim(), "|Attribute|Description|Attribute|Identifier|1|Add|OK|#|Identifier|Namespace|0|identifier0|namespace0|Edit|Delete|Band|Boundary|Definition|×|bandBoundaryDefinition0|Transfer|Function|Type|×|transferFunctionType0|Transmitted|Polarization|×|transmittedPolarization0|Detected|Polarization|×|detectedPolarization0|Sequence|Identifier|Sequence|Identifier|Type|Min|Value|Max|Value|Units|Scale|Factor|Offset|Mean|Value|Number|Of|Values|Standard|Deviation|Bits|Per|Value|Bound|Min|Bound|Max|Bound|Units|Peak|Response|Tone|Gradations|Nominal|Spatial|Resolution|");
       assert.equal((0, _mdHelpers.parseInput)(this.element), input);
@@ -8673,9 +8961,10 @@ define("mdeditor/tests/integration/pods/components/object/md-raster/attrgroup/co
         {{object/md-raster/attrgroup }}
       */
       {
-        "id": "dzhFU7SO",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"object/md-raster/attrgroup\"]}",
-        "meta": {}
+        "id": "TFH8Z7DA",
+        "block": "[[[1,[34,0]]],[],false,[\"object/md-raster/attrgroup\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|No|Item|found.|Add|Item|', 'attrgroup component renders');
     });
@@ -8730,9 +9019,10 @@ define("mdeditor/tests/integration/pods/components/object/md-raster/component-te
         {{object/md-raster profilePath="foobar" model=model}}
       */
       {
-        "id": "hxB/l/bZ",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-raster\"]}",
-        "meta": {}
+        "id": "hx0kxqPy",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]]]]],[],false,[\"object/md-raster\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _mdHelpers.formatContent)(this.element).trim(), '|Name|Description|Attribute|Groups|1|Add|Attribute|Group|#0|Attribute|Content|Type|×|attributeContentType1|×|attributeContentType2|Attribute|1|Add|OK|#|Attribute|Description|0|More...|Delete|Processing|Level|Code|Identifier|Namespace|namespace1|×|More|Image|Description|Image|Quality|Code|Identifier|Namespace|namespace2|×|More|Illumination|Elevation|Angle|Illumination|Azimuth|Angle|Imaging|Condition|Cloud|Cover|Percent|Compression|Quantity|Triangulation|Indicator|Radiometric|Calibration|Available|Camera|Calibration|Available|Film|Distortion|Available|Lens|Distortion|Available|');
       assert.equal((0, _mdHelpers.parseInput)(this.element), input, 'input renders');
@@ -8767,9 +9057,10 @@ define("mdeditor/tests/integration/pods/components/object/md-raster/image-desc/c
         {{object/md-raster/image-desc profilePath="foobar" model=model}}
       */
       {
-        "id": "qSywwJ3V",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-raster/image-desc\"]}",
-        "meta": {}
+        "id": "nqgMV7n/",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]]]]],[],false,[\"object/md-raster/image-desc\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _mdHelpers.formatContent)(this.element).trim(), '|Image|Quality|Code|Identifier|Namespace|namespace|×|More|Illumination|Elevation|Angle|Illumination|Azimuth|Angle|Imaging|Condition|Cloud|Cover|Percent|Compression|Quantity|Triangulation|Indicator|Radiometric|Calibration|Available|Camera|Calibration|Available|Film|Distortion|Available|Lens|Distortion|Available|', 'md-raster/image-desc component renders');
       assert.equal((0, _mdHelpers.parseInput)(this.element), input, 'md-raster/image-desc inputs render');
@@ -8792,9 +9083,10 @@ define("mdeditor/tests/integration/pods/components/object/md-raster/preview/comp
         {{object/md-raster/preview profilePath="foobar" model=model}}
       */
       {
-        "id": "/zmRoR3w",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-raster/preview\"]}",
-        "meta": {}
+        "id": "5BO9Gc6o",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]]]]],[],false,[\"object/md-raster/preview\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _mdHelpers.formatContent)(this.element).trim(), '|Raster|Name|Raster|Description|', 'md-raster-preview component renders');
       assert.equal((0, _mdHelpers.parseInput)(this.element), input, 'md-raster-preview inputs renders');
@@ -8825,9 +9117,10 @@ define("mdeditor/tests/integration/pods/components/object/md-repository-array/co
         {{object/md-repository-array value=repo profilePath="foo"}}
       */
       {
-        "id": "l/M+ZClh",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"value\",\"profilePath\"],[[35,0],\"foo\"]]]]],\"hasEval\":false,\"upvars\":[\"repo\",\"object/md-repository-array\"]}",
-        "meta": {}
+        "id": "oD1hlfuQ",
+        "block": "[[[1,[28,[35,0],null,[[\"value\",\"profilePath\"],[[33,1],\"foo\"]]]]],[],false,[\"object/md-repository-array\",\"repo\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Metadata|Repositories|2|Add|#|Repository|Collection|Title|0|data.gov|?|×|Delete|1|data.gov|?|×|Delete|');
       assert.dom('.md-input input').hasValue('Arctic LCC data.gov');
@@ -8842,9 +9135,10 @@ define("mdeditor/tests/integration/pods/components/object/md-repository-array/co
           
       */
       {
-        "id": "8PAp/eXu",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"profilePath\"],[\"foo\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"object/md-repository-array\"]}",
-        "meta": {}
+        "id": "JuUijKkX",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\"],[\"foo\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-repository-array\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Metadata|Repositories|Add|#|Repository|Collection|Title|Add|Metadata|Repository|', 'block');
     });
@@ -8869,9 +9163,10 @@ define("mdeditor/tests/integration/pods/components/object/md-resource-type-array
         {{object/md-resource-type-array value=rt profilePath="foobar"}}
       */
       {
-        "id": "s61s8NLi",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"value\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"rt\",\"object/md-resource-type-array\"]}",
-        "meta": {}
+        "id": "z5fBw/jv",
+        "block": "[[[1,[28,[35,0],null,[[\"value\",\"profilePath\"],[[33,1],\"foobar\"]]]]],[],false,[\"object/md-resource-type-array\",\"rt\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Resource|Types|2|Add|#|Type|Name|0|project|?|×|Delete|1|map|?|×|Delete|'); // Template block usage:
 
@@ -8884,9 +9179,10 @@ define("mdeditor/tests/integration/pods/components/object/md-resource-type-array
           
       */
       {
-        "id": "VyqusENP",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"profilePath\"],[\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"object/md-resource-type-array\"]}",
-        "meta": {}
+        "id": "026wm7U/",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\"],[\"foobar\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-resource-type-array\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Resource|Types|Add|#|Type|Name|Add|Resource|Type|', 'block');
     });
@@ -8912,9 +9208,10 @@ define("mdeditor/tests/integration/pods/components/object/md-schema/component-te
         {{object/md-schema record=data}}
       */
       {
-        "id": "71xKqOml",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"record\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"data\",\"object/md-schema\"]}",
-        "meta": {}
+        "id": "DjZNp6pR",
+        "block": "[[[1,[28,[35,0],null,[[\"record\"],[[33,1]]]]]],[],false,[\"object/md-schema\",\"data\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[ \s\n]+/g, '|').trim(), '|Info|Schemas|Title|URL|Version|1.0|Update|Available|(1.1)|Description|Type|Select|the|record|type|for|schema.|Apply|Globally?|No|Yes|');
       assert.dom('.md-schema input').hasValue('foo', 'render form'); // Template block usage:
@@ -8928,9 +9225,10 @@ define("mdeditor/tests/integration/pods/components/object/md-schema/component-te
           
       */
       {
-        "id": "t+eUPNHP",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"record\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"data\",\"object/md-schema\"]}",
-        "meta": {}
+        "id": "8QIUaF9K",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"record\"],[[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-schema\",\"data\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[ \s\n]+/g, '|').trim(), '|Info|Schemas|Title|URL|Version|1.0|Update|Available|(1.1)|Description|Type|Select|the|record|type|for|schema.|Apply|Globally?|No|Yes|');
     });
@@ -8956,9 +9254,10 @@ define("mdeditor/tests/integration/pods/components/object/md-schema/form/compone
         {{object/md-schema/form record=data}}
       */
       {
-        "id": "cc8ZZvMb",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"record\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"data\",\"object/md-schema/form\"]}",
-        "meta": {}
+        "id": "RcZYyoU/",
+        "block": "[[[1,[28,[35,0],null,[[\"record\"],[[33,1]]]]]],[],false,[\"object/md-schema/form\",\"data\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[ \s\n]+/g, '|').trim(), 'Title|URL|Version|1.0|Update|Available|(1.1)|Description|Type|Select|the|record|type|for|schema.|Apply|Globally?|No|Yes|');
       assert.dom('input').hasValue('foo', 'render form'); // Template block usage:
@@ -8972,9 +9271,10 @@ define("mdeditor/tests/integration/pods/components/object/md-schema/form/compone
           
       */
       {
-        "id": "9mUTX/7O",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"record\"],[[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"data\",\"object/md-schema/form\"]}",
-        "meta": {}
+        "id": "GlzYG1cj",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"record\"],[[33,1]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-schema/form\",\"data\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[ \s\n]+/g, '|').trim(), '|Title|URL|Version|1.0|Update|Available|(1.1)|Description|Type|Select|the|record|type|for|schema.|Apply|Globally?|No|Yes|template|block|text|');
     });
@@ -9000,9 +9300,10 @@ define("mdeditor/tests/integration/pods/components/object/md-simple-array-table/
         {{object/md-simple-array-table}}
       */
       {
-        "id": "GyqrCRDv",
-        "block": "{\"symbols\":[],\"statements\":[[1,[34,0]]],\"hasEval\":false,\"upvars\":[\"object/md-simple-array-table\"]}",
-        "meta": {}
+        "id": "zvPm+TCP",
+        "block": "[[[1,[34,0]]],[],false,[\"object/md-simple-array-table\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|No|Item|found.|Add|Item|'); // Template block usage:
 
@@ -9022,9 +9323,10 @@ define("mdeditor/tests/integration/pods/components/object/md-simple-array-table/
           
       */
       {
-        "id": "MHoKcUIB",
-        "block": "{\"symbols\":[\"foo\"],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"title\",\"required\",\"plain\",\"value\"],[\"FooBar\",false,true,[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        \"],[10,\"td\"],[12],[2,\"\\n            \"],[1,[32,1,[\"item\",\"value\"]]],[2,\"\\n        \"],[13],[2,\"\\n\"]],\"parameters\":[1]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-simple-array-table\"]}",
-        "meta": {}
+        "id": "1FPsOUh2",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"title\",\"required\",\"plain\",\"value\"],[\"FooBar\",false,true,[33,1]]],[[\"default\"],[[[[1,\"        \"],[10,\"td\"],[12],[1,\"\\n            \"],[1,[30,1,[\"item\",\"value\"]]],[1,\"\\n        \"],[13],[1,\"\\n\"]],[1]]]]],[1,\"    \"]],[\"foo\"],false,[\"object/md-simple-array-table\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|FooBars|2|Add|FooBar|0|biz|Delete|1|baz|Delete|');
       await (0, _testHelpers.click)('.btn-info');
@@ -9078,9 +9380,10 @@ define("mdeditor/tests/integration/pods/components/object/md-source/component-te
         {{object/md-source profilePath="foobar" model=source}}
       */
       {
-        "id": "SeTmDmV7",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"source\",\"object/md-source\"]}",
-        "meta": {}
+        "id": "pwDkP/eo",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]]]]],[],false,[\"object/md-source\",\"source\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), 'Source|ID|Description|Scope|Select|type|of|resource.|Source|Citation|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|Metadata|Citation|2|Add|OK|#|Title|0|title0|Edit|Delete|1|title1|Edit|Delete|Spatial|Reference|System|Reference|System|Type|referenceSystemType|×|Reference|System|Identifier|Identifier|Namespace|Select|or|type|a|namespace|for|the|identifier.|Version|Description|Authority|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|Spatial|Resolution|Scale|Factor|Level|Of|Detail|Measure|Measure|Type|distance|Value|Units|'); // Template block usage:
 
@@ -9093,9 +9396,10 @@ define("mdeditor/tests/integration/pods/components/object/md-source/component-te
           
       */
       {
-        "id": "VyiJ+dYt",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[30,[36,0],null,null]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-source\"]}",
-        "meta": {}
+        "id": "OcVTI+zW",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[28,[37,1],null,null]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-source\",\"hash\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), "|Source|ID|Description|Scope|Select|type|of|resource.|Source|Citation|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Metadata|Citation|found.|Add|Metadata|Citation|Spatial|Reference|System|Reference|System|Type|Select|type|of|reference|system|used.|Reference|System|Identifier|Identifier|Namespace|Select|or|type|a|namespace|for|the|identifier.|Version|Description|Authority|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|Spatial|Resolution|Scale|Factor|Level|Of|Detail|Measure|Measure|Type|The|type|of|measurement.|Value|Units|", 'block');
     });
@@ -9143,9 +9447,10 @@ define("mdeditor/tests/integration/pods/components/object/md-source/preview/comp
         {{object/md-source/preview model=source profilePath="foobar"}}
       */
       {
-        "id": "99OLtH6s",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"source\",\"object/md-source/preview\"]}",
-        "meta": {}
+        "id": "Cb7tw0U9",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"profilePath\"],[[33,1],\"foobar\"]]]]],[],false,[\"object/md-source/preview\",\"source\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('textarea').hasValue('description'); // Template block usage:
 
@@ -9158,9 +9463,10 @@ define("mdeditor/tests/integration/pods/components/object/md-source/preview/comp
           
       */
       {
-        "id": "Qa4k1Ksu",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"source\",\"object/md-source/preview\"]}",
-        "meta": {}
+        "id": "4x2AS5O+",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"model\",\"profilePath\"],[[33,1],\"foobar\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-source/preview\",\"source\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.dom('textarea').hasValue('description');
     });
@@ -9255,9 +9561,10 @@ define("mdeditor/tests/integration/pods/components/object/md-spatial-info/compon
         {{object/md-spatial-info profilePath="foobar" model=model}}
       */
       {
-        "id": "/Q4bnxCS",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-spatial-info\"]}",
-        "meta": {}
+        "id": "W8F+0eP8",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]]]]],[],false,[\"object/md-spatial-info\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Spatial|Representation|Type|×|stereoModel|?|×|vector|?|Spatial|Reference|System|5|Add|OK|#|Reference|System|Type|Identifier|0|referenceSystemType|identifier|Edit|Delete|1|projected|Zone|10|Edit|Delete|2|geodeticGeographic2D|4326|Edit|Delete|3|projected|Not|Defined|Edit|Delete|4|geodeticGeographic2D|Not|Defined|Edit|Delete|Spatial|Resolution|6|Add|OK|#|Scale|Factor|Level|Of|Detail|Type|0|99999|Not|Defined|Not|Defined|Edit|Delete|1|Not|Defined|Not|Defined|distance|Edit|Delete|2|Not|Defined|levelOfDetail|Not|Defined|Edit|Delete|3|Not|Defined|Not|Defined|Not|Defined|Edit|Delete|4|Not|Defined|Not|Defined|Not|Defined|Edit|Delete|5|Not|Defined|Not|Defined|Not|Defined|Edit|Delete|Add|Spatial|Resolution|'); // Template block usage:
 
@@ -9270,9 +9577,10 @@ define("mdeditor/tests/integration/pods/components/object/md-spatial-info/compon
           
       */
       {
-        "id": "9ofHfvVM",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[30,[36,0],null,null]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-spatial-info\"]}",
-        "meta": {}
+        "id": "rG+owg2L",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[28,[37,1],null,null]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-spatial-info\",\"hash\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Spatial|Representation|Type|No|Spatial|Reference|System|found.|Add|Spatial|Reference|System|No|Spatial|Resolution|found.|Add|Spatial|Resolution|template|block|text|', 'block');
     });
@@ -9334,9 +9642,10 @@ define("mdeditor/tests/integration/pods/components/object/md-spatial-resolution/
         {{object/md-spatial-resolution profilePath="foobar" model=model.scaleFactor}}
       */
       {
-        "id": "Uy7S9jZ+",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0,[\"scaleFactor\"]]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-spatial-resolution\"]}",
-        "meta": {}
+        "id": "6DoQD4E5",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1,[\"scaleFactor\"]]]]]]],[],false,[\"object/md-spatial-resolution\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.findAll)('.md-input-input input')[0].value, this.model.scaleFactor.scaleFactor, 'scaleFactor');
       assert.ok((0, _testHelpers.findAll)('.md-input-input input')[1].disabled, 'level disabled');
@@ -9346,9 +9655,10 @@ define("mdeditor/tests/integration/pods/components/object/md-spatial-resolution/
         {{object/md-spatial-resolution profilePath="foobar" model=model.measure}}
       */
       {
-        "id": "cBpLqP7N",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0,[\"measure\"]]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-spatial-resolution\"]}",
-        "meta": {}
+        "id": "+lemnlMP",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1,[\"measure\"]]]]]]],[],false,[\"object/md-spatial-resolution\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.findAll)('.md-input-input input')[2].value, this.model.measure.measure.value, 'measure');
       assert.ok((0, _testHelpers.findAll)('.md-input-input input')[1].disabled, 'level disabled');
@@ -9358,9 +9668,10 @@ define("mdeditor/tests/integration/pods/components/object/md-spatial-resolution/
         {{object/md-spatial-resolution profilePath="foobar" model=model.levelOfDetail}}
       */
       {
-        "id": "FrLa5op1",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0,[\"levelOfDetail\"]]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-spatial-resolution\"]}",
-        "meta": {}
+        "id": "k3AHcRT8",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1,[\"levelOfDetail\"]]]]]]],[],false,[\"object/md-spatial-resolution\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal((0, _testHelpers.findAll)('.md-input-input input')[1].value, this.model.levelOfDetail.levelOfDetail, 'levelOfDetail');
       assert.ok((0, _testHelpers.findAll)('.md-input-input input')[2].disabled, 'measure disabled');
@@ -9370,9 +9681,10 @@ define("mdeditor/tests/integration/pods/components/object/md-spatial-resolution/
         {{object/md-spatial-resolution profilePath="foobar" model=model.geographicResolution}}
       */
       {
-        "id": "5YKCZpAr",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0,[\"geographicResolution\"]]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-spatial-resolution\"]}",
-        "meta": {}
+        "id": "/pg74F5F",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1,[\"geographicResolution\"]]]]]]],[],false,[\"object/md-spatial-resolution\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), empty, 'geographicResolution');
       await (0, _testHelpers.render)(Ember.HTMLBars.template(
@@ -9380,9 +9692,10 @@ define("mdeditor/tests/integration/pods/components/object/md-spatial-resolution/
         {{object/md-spatial-resolution profilePath="foobar" model=model.bearingDistanceResolution}}
       */
       {
-        "id": "8kAd0KZR",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0,[\"bearingDistanceResolution\"]]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-spatial-resolution\"]}",
-        "meta": {}
+        "id": "bLBUo9AP",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1,[\"bearingDistanceResolution\"]]]]]]],[],false,[\"object/md-spatial-resolution\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), empty, 'bearingDistanceResolution');
       await (0, _testHelpers.render)(Ember.HTMLBars.template(
@@ -9390,9 +9703,10 @@ define("mdeditor/tests/integration/pods/components/object/md-spatial-resolution/
         {{object/md-spatial-resolution profilePath="foobar" model=model.coordinateResolution}}
       */
       {
-        "id": "CRgnDOb6",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0,[\"coordinateResolution\"]]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-spatial-resolution\"]}",
-        "meta": {}
+        "id": "zfI5qX1t",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1,[\"coordinateResolution\"]]]]]]],[],false,[\"object/md-spatial-resolution\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), empty, 'coordinateResolution'); // Template block usage:
 
@@ -9405,9 +9719,10 @@ define("mdeditor/tests/integration/pods/components/object/md-spatial-resolution/
           
       */
       {
-        "id": "iScH6Ao4",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\",\"profilePath\"],[[30,[36,0],null,null],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-spatial-resolution\"]}",
-        "meta": {}
+        "id": "IGeNQUDM",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"model\",\"profilePath\"],[[28,[37,1],null,null],\"foobar\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-spatial-resolution\",\"hash\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|' + empty + 'template|block|text|', 'block');
     });
@@ -9434,9 +9749,10 @@ define("mdeditor/tests/integration/pods/components/object/md-srs/component-test"
         {{object/md-srs profilePath="foobar" model=srs}}
       */
       {
-        "id": "sQ+gc2OA",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"srs\",\"object/md-srs\"]}",
-        "meta": {}
+        "id": "Unx92OnJ",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]]]]],[],false,[\"object/md-srs\",\"srs\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Reference|System|Type|projected|?|×|Reference|System|Identifier|Identifier|Namespace|Select|or|type|a|namespace|for|the|identifier.|Version|Description|Authority|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|');
       var input = (0, _testHelpers.findAll)('input, textarea').mapBy('value').join('|');
@@ -9451,9 +9767,10 @@ define("mdeditor/tests/integration/pods/components/object/md-srs/component-test"
           
       */
       {
-        "id": "76G1wxx3",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"profilePath\"],[\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"object/md-srs\"]}",
-        "meta": {}
+        "id": "h58aXh73",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\"],[\"foobar\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-srs\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), "|Reference|System|Type|Select|type|of|reference|system|used.|template|block|text|", 'block');
     });
@@ -9473,9 +9790,10 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/classifica
         {{object/md-taxonomy/classification model=model profilePath="foobar"}}
       */
       {
-        "id": "smZaqasn",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-taxonomy/classification\"]}",
-        "meta": {}
+        "id": "SaJ8lDIy",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"profilePath\"],[[33,1],\"foobar\"]]]]],[],false,[\"object/md-taxonomy/classification\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Kingdom|Fungi|(555705)|Kingdom|Edit|Delete|Add|Child|Subkingdom|Dikarya|(936287)|Edit|Delete|Add|Child|Division|Basidiomycota|(623881)|Edit|Delete|Add|Child|Kingdom|Animalia|(202423)|Edit|Delete|Add|Child|Subkingdom|Radiata|(914153)|Edit|Delete|Add|Child|Phylum|Cnidaria|(48738)|Edit|Delete|Add|Child|Subphylum|Medusozoa|(718920)|Edit|Delete|Add|Child|Class|Scyphozoa|(51483)|Edit|Delete|Add|Child|Subclass|Discomedusae|(718923)|Edit|Delete|Add|Child|Order|Rhizostomeae|(51756)|Edit|Delete|Add|Child|Family|Rhizostomatidae|(51911)|Edit|Delete|Add|Child|Genus|Rhopilema|(51919)|Edit|Delete|Add|Child|Species|Rhopilema|verrilli|(51920)|mushroom|jellyfish|Edit|Delete|Add|Child|');
       await (0, _testHelpers.render)(Ember.HTMLBars.template(
@@ -9483,9 +9801,10 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/classifica
         {{object/md-taxonomy/classification model=model preview=true profilePath="foobar"}}
       */
       {
-        "id": "GPudaZlE",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"preview\",\"profilePath\"],[[35,0],true,\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-taxonomy/classification\"]}",
-        "meta": {}
+        "id": "6JK/U/7E",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"preview\",\"profilePath\"],[[33,1],true,\"foobar\"]]]]],[],false,[\"object/md-taxonomy/classification\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Kingdom|Fungi|(555705)|Kingdom|Kingdom|Animalia|(202423)|'); // Template block usage:
 
@@ -9498,9 +9817,10 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/classifica
           
       */
       {
-        "id": "l5799c+e",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,[[\"profilePath\"],[\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"object/md-taxonomy/classification\"]}",
-        "meta": {}
+        "id": "5HiaFYWr",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\"],[\"foobar\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-taxonomy/classification\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|No|Classification|found.|', 'block');
     });
@@ -9524,9 +9844,10 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/classifica
         {{object/md-taxonomy/classification/taxon model=model deleteTaxa=delete top=top profilePath="foobar"}}
       */
       {
-        "id": "0etNkTjA",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,3],null,[[\"model\",\"deleteTaxa\",\"top\",\"profilePath\"],[[35,2],[35,1],[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"top\",\"delete\",\"model\",\"object/md-taxonomy/classification/taxon\"]}",
-        "meta": {}
+        "id": "mJlIOw4h",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"deleteTaxa\",\"top\",\"profilePath\"],[[33,1],[33,2],[33,3],\"foobar\"]]]]],[],false,[\"object/md-taxonomy/classification/taxon\",\"model\",\"delete\",\"top\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Kingdom|Fungi|(555705)|Kingdom|Edit|Delete|Add|Child|Subkingdom|Dikarya|(936287)|Edit|Delete|Add|Child|Division|Basidiomycota|(623881)|Edit|Delete|Add|Child|'); // await click('.btn-info');
 
@@ -9544,9 +9865,10 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/classifica
           </ul>
       */
       {
-        "id": "XiBREr4r",
-        "block": "{\"symbols\":[],\"statements\":[[10,\"ul\"],[14,0,\"list-group md-classification\"],[12],[2,\"\\n      \"],[1,[30,[36,2],null,[[\"model\",\"preview\",\"top\",\"profilePath\"],[[35,1],false,[35,0],\"foobar\"]]]],[2,\"\\n    \"],[13]],\"hasEval\":false,\"upvars\":[\"top\",\"model\",\"object/md-taxonomy/classification/taxon\"]}",
-        "meta": {}
+        "id": "DRlvFk6l",
+        "block": "[[[10,\"ul\"],[14,0,\"list-group md-classification\"],[12],[1,\"\\n      \"],[1,[28,[35,0],null,[[\"model\",\"preview\",\"top\",\"profilePath\"],[[33,1],false,[33,2],\"foobar\"]]]],[1,\"\\n    \"],[13]],[],false,[\"object/md-taxonomy/classification/taxon\",\"model\",\"top\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       await (0, _testHelpers.waitFor)('.md-taxon-form', {
         timeout: 2000,
@@ -9570,9 +9892,10 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/classifica
           
       */
       {
-        "id": "tl/3Bitm",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-taxonomy/classification/taxon\"]}",
-        "meta": {}
+        "id": "rYEifmGc",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"model\",\"profilePath\"],[[33,1],\"foobar\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-taxonomy/classification/taxon\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Kingdom|Fungi|(555705)|Kingdom|Edit|Delete|Add|Child|Subkingdom|Dikarya|(936287)|Edit|Delete|Add|Child|Division|Basidiomycota|(623881)|Edit|Delete|Add|Child|', 'block');
     });
@@ -9592,9 +9915,10 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/collection
         {{object/md-taxonomy/collection model=model profilePath="foobar"}}
       */
       {
-        "id": "aNR7/pG3",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-taxonomy/collection\"]}",
-        "meta": {}
+        "id": "2PgLDgN6",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"profilePath\"],[[33,1],\"foobar\"]]]]],[],false,[\"object/md-taxonomy/collection\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Taxonomic|System|1|Add|OK|#|Title|Modifications|0|More...|Delete|Classification|Kingdom|Fungi|(555705)|Kingdom|Edit|Delete|Add|Child|Subkingdom|Dikarya|(936287)|Edit|Delete|Add|Child|Division|Basidiomycota|(623881)|Edit|Delete|Add|Child|Kingdom|Animalia|(202423)|Edit|Delete|Add|Child|Subkingdom|Radiata|(914153)|Edit|Delete|Add|Child|Phylum|Cnidaria|(48738)|Edit|Delete|Add|Child|Subphylum|Medusozoa|(718920)|Edit|Delete|Add|Child|Class|Scyphozoa|(51483)|Edit|Delete|Add|Child|Subclass|Discomedusae|(718923)|Edit|Delete|Add|Child|Order|Rhizostomeae|(51756)|Edit|Delete|Add|Child|Family|Rhizostomatidae|(51911)|Edit|Delete|Add|Child|Genus|Rhopilema|(51919)|Edit|Delete|Add|Child|Species|Rhopilema|verrilli|(51920)|mushroom|jellyfish|Edit|Delete|Add|Child|Observers|1|Add|#|Role|Contacts|0|pointOfContact|?|×|Delete|General|Scope|Identification|Procedure|Identification|Completeness|Voucher|1|Add|OK|#|Specimen|0|Specimen|Edit|Delete|');
       var input = (0, _testHelpers.findAll)('form input, form textarea').mapBy('value').join('|');
@@ -9609,9 +9933,10 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/collection
           
       */
       {
-        "id": "6/N8CFh/",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[30,[36,0],null,null]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-taxonomy/collection\"]}",
-        "meta": {}
+        "id": "/B6fqKbv",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[28,[37,1],null,null]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-taxonomy/collection\",\"hash\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|No|Taxonomic|System|found.|Add|Taxonomic|System|Classification|No|Classification|found.|No|Observer|found.|Add|Observer|General|Scope|Identification|Procedure|Identification|Completeness|No|Voucher|found.|Add|Voucher|', 'block');
     });
@@ -9631,9 +9956,10 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/collection
         {{object/md-taxonomy/collection/system model=model profilePath="foobar"}}
       */
       {
-        "id": "nJQOnzZ5",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-taxonomy/collection/system\"]}",
-        "meta": {}
+        "id": "TruY+BaO",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"profilePath\"],[[33,1],\"foobar\"]]]]],[],false,[\"object/md-taxonomy/collection/system\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Modifications|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|Dates|1|Add|Date|#|Date|Date|Type|Description|0|transmitted|?|×|Delete|Edition|Presentation|Form|×|webService|?|×|webSite|?|No|Responsible|Party|found.|Add|Responsible|Party|Online|Resource|1|Add|OK|#|Name|Uri|0|ITIS|website|https://www.itis.gov|Edit|Delete|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|Series|Name|Issue|Page|Other|Details|1|Add|0|Delete|Graphic|1|Add|OK|0|itis_logo.jpg:|Edit|Delete|');
       var input = (0, _testHelpers.findAll)('form input, form textarea').mapBy('value').join('|');
@@ -9648,9 +9974,10 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/collection
           
       */
       {
-        "id": "GUJn3LmN",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\",\"profilePath\"],[[30,[36,0],null,null],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-taxonomy/collection/system\"]}",
-        "meta": {}
+        "id": "HJj3z64a",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"model\",\"profilePath\"],[[28,[37,1],null,null],\"foobar\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-taxonomy/collection/system\",\"hash\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Modifications|Basic|Information|Title|No|Alternate|Title|found.|Add|Alternate|Title|No|Date|found.|Add|Date|Edition|Presentation|Form|No|Responsible|Party|found.|Add|Responsible|Party|No|Online|Resource|found.|Add|Online|Resource|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|No|Identifier|found.|Add|Identifier|Series|Name|Issue|Page|No|Other|Details|found.|Add|Other|Detail|No|Graphic|found.|Add|Graphic|', 'block');
     });
@@ -9670,9 +9997,10 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/collection
         {{object/md-taxonomy/collection/system/preview model=model profilePath="foobar"}}
       */
       {
-        "id": "xKyqdQg3",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"profilePath\"],[[35,0],\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-taxonomy/collection/system/preview\"]}",
-        "meta": {}
+        "id": "9qa9ExEq",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"profilePath\"],[[33,1],\"foobar\"]]]]],[],false,[\"object/md-taxonomy/collection/system/preview\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       var input = (0, _testHelpers.findAll)('input, textarea').mapBy('value').join('|');
       assert.equal(input, "Integrated Taxonomic Information System (ITIS)|modifications", 'input values'); // Template block usage:
@@ -9686,9 +10014,10 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/collection
           
       */
       {
-        "id": "ZR5G6AQV",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"model\",\"profilePath\"],[[30,[36,0],null,null],\"foobar\"]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-taxonomy/collection/system/preview\"]}",
-        "meta": {}
+        "id": "RGmX4RCe",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"model\",\"profilePath\"],[[28,[37,1],null,null],\"foobar\"]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-taxonomy/collection/system/preview\",\"hash\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), "|");
     });
@@ -9708,9 +10037,10 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/collection
         {{object/md-taxonomy/collection/voucher profilePath="foobar" model=model}}
       */
       {
-        "id": "JAOOwNXN",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-taxonomy/collection/voucher\"]}",
-        "meta": {}
+        "id": "aFwb1OcB",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]]]]],[],false,[\"object/md-taxonomy/collection/voucher\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Specimen|Repository|Role|custodian|?|×|Contacts|');
       var input = (0, _testHelpers.findAll)('input, textarea').mapBy('value').join('|');
@@ -9725,9 +10055,10 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/collection
           
       */
       {
-        "id": "Qz9M18cu",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[30,[36,0],null,[[\"repository\"],[[30,[36,0],null,null]]]]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-taxonomy/collection/voucher\"]}",
-        "meta": {}
+        "id": "g6dINh7j",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[28,[37,1],null,[[\"repository\"],[[28,[37,1],null,null]]]]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-taxonomy/collection/voucher\",\"hash\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), "|Specimen|Repository|Role|Select|or|enter|a|role|Contacts|", 'block');
     });
@@ -9747,9 +10078,10 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/component-
         {{object/md-taxonomy model=model index=0 profilePath="foobar"}}
       */
       {
-        "id": "1ui33qDz",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"model\",\"index\",\"profilePath\"],[[35,0],0,\"foobar\"]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-taxonomy\"]}",
-        "meta": {}
+        "id": "iSvBij8y",
+        "block": "[[[1,[28,[35,0],null,[[\"model\",\"index\",\"profilePath\"],[[33,1],0,\"foobar\"]]]]],[],false,[\"object/md-taxonomy\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Collection|#0:|Integrated|Taxonomic|Information|System|(ITIS)|Edit|Collection|Delete|Collection|Kingdom|Fungi|(555705)|Kingdom|Kingdom|Animalia|(202423)|');
       await (0, _testHelpers.click)('li .icon');
@@ -9764,9 +10096,10 @@ define("mdeditor/tests/integration/pods/components/object/md-taxonomy/component-
           
       */
       {
-        "id": "o/8jaQTT",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,0],null,null,[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"object/md-taxonomy\"]}",
-        "meta": {}
+        "id": "UShxEaDI",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,null,[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-taxonomy\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Collection|#undefined|Edit|Collection|Delete|Collection|No|Classification|found.|', 'block');
     });
@@ -9825,9 +10158,10 @@ define("mdeditor/tests/integration/pods/components/object/md-time-period/compone
         {{object/md-time-period profilePath="foobar" model=model.firstObject}}
       */
       {
-        "id": "In5MpMVU",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0,[\"firstObject\"]]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-time-period\"]}",
-        "meta": {}
+        "id": "7iddEIzH",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1,[\"firstObject\"]]]]]]],[],false,[\"object/md-time-period\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Time|Period|Dates|Start|Date|End|Date|Pick|Fiscal|Year|Pick|a|Fiscal|Year|Identifier|Description|Time|Period|Names|2|Add|Time|Period|Name|0|Delete|1|Delete|Interval|Interval|Amount|Time|Unit|year|×|Duration|Years|Months|Days|Hours|Minutes|Seconds|');
       var input = (0, _testHelpers.findAll)('form input, form textarea').mapBy('value').join('|');
@@ -9837,9 +10171,10 @@ define("mdeditor/tests/integration/pods/components/object/md-time-period/compone
         {{object/md-time-period profilePath="foobar" model=model.lastObject}}
       */
       {
-        "id": "k0SB9ZHv",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0,[\"lastObject\"]]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-time-period\"]}",
-        "meta": {}
+        "id": "WcoPBt8b",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1,[\"lastObject\"]]]]]]],[],false,[\"object/md-time-period\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       var input1 = (0, _testHelpers.findAll)('form input, form textarea').mapBy('value').join('|');
       assert.equal(input1, "||identifier|description|periodName0|periodName1|||||||", 'geologic input values');
@@ -9854,9 +10189,10 @@ define("mdeditor/tests/integration/pods/components/object/md-time-period/compone
           
       */
       {
-        "id": "GS2JSMfy",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[30,[36,0],null,null]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-time-period\"]}",
-        "meta": {}
+        "id": "soAxBBL5",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[28,[37,1],null,null]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-time-period\",\"hash\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Time|Period|Dates|Start|Date|End|Date|Pick|Fiscal|Year|Pick|a|Fiscal|Year|Identifier|Description|No|Time|Period|Name|found.|Add|Time|Period|Name|Interval|Interval|Amount|Time|Unit|Choose|unit|of|time|Duration|Years|Months|Days|Hours|Minutes|Seconds|template|block|text|', 'block');
     });
@@ -9905,9 +10241,10 @@ define("mdeditor/tests/integration/pods/components/object/md-transfer/component-
         {{object/md-transfer profilePath="foobar" model=model}}
       */
       {
-        "id": "hnAaxrw2",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-transfer\"]}",
-        "meta": {}
+        "id": "S/DNIaVk",
+        "block": "[[[1,[28,[35,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[33,1]]]]]],[],false,[\"object/md-transfer\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Transfer|Size|(MB)|Distribution|units|Online|Option|2|Add|OK|#|Name|Uri|0|Not|Defined|http://adiwg.org|Edit|Delete|1|Not|Defined|http://adiwg.org/|Edit|Delete|Offline|Option|2|Add|OK|#|Title|0|title0|Edit|Delete|1|title1|Edit|Delete|Distribution|Formats|2|Add|#|Format|Name|Version|Compression|Method|URL|0|Delete|1|Delete|Transfer|Frequency|Years|Months|Days|Hours|Minutes|Seconds|');
       var input = (0, _testHelpers.findAll)('form input').mapBy('value').join('|');
@@ -9922,9 +10259,10 @@ define("mdeditor/tests/integration/pods/components/object/md-transfer/component-
           
       */
       {
-        "id": "Cy/DcM5a",
-        "block": "{\"symbols\":[],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"profilePath\",\"model\"],[\"foobar\",[30,[36,0],null,null]]],[[\"default\"],[{\"statements\":[[2,\"        template block text\\n\"]],\"parameters\":[]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"hash\",\"object/md-transfer\"]}",
-        "meta": {}
+        "id": "X3K95q25",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"profilePath\",\"model\"],[\"foobar\",[28,[37,1],null,null]]],[[\"default\"],[[[[1,\"        template block text\\n\"]],[]]]]],[1,\"    \"]],[],false,[\"object/md-transfer\",\"hash\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|Transfer|Size|(MB)|Distribution|units|No|Online|Option|found.|Add|Online|Option|No|Offline|Option|found.|Add|Offline|Option|No|Distribution|Format|found.|Add|Distribution|Format|Transfer|Frequency|Years|Months|Days|Hours|Minutes|Seconds|template|block|text|', 'block');
     });
@@ -9972,9 +10310,10 @@ define("mdeditor/tests/integration/pods/components/object/md-transfer/preview/co
         {{object/md-transfer/preview item=model}}
       */
       {
-        "id": "qfM7LT6+",
-        "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,1],null,[[\"item\"],[[35,0]]]]]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-transfer/preview\"]}",
-        "meta": {}
+        "id": "lMcTa4Bb",
+        "block": "[[[1,[28,[35,0],null,[[\"item\"],[[33,1]]]]]],[],false,[\"object/md-transfer/preview\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|9.9|yes(2)|yes(2)|yes(2)|'); // Template block usage:
 
@@ -9987,18 +10326,20 @@ define("mdeditor/tests/integration/pods/components/object/md-transfer/preview/co
           
       */
       {
-        "id": "dy9WMelG",
-        "block": "{\"symbols\":[\"t\"],\"statements\":[[2,\"\\n\"],[6,[37,1],null,[[\"isTable\",\"item\"],[false,[35,0]]],[[\"default\"],[{\"statements\":[[2,\"        transferSize: \"],[1,[32,1,[\"transferSize\"]]],[2,\"\\n\"]],\"parameters\":[1]}]]],[2,\"    \"]],\"hasEval\":false,\"upvars\":[\"model\",\"object/md-transfer/preview\"]}",
-        "meta": {}
+        "id": "f2mFvMHY",
+        "block": "[[[1,\"\\n\"],[6,[39,0],null,[[\"isTable\",\"item\"],[false,[33,1]]],[[\"default\"],[[[[1,\"        transferSize: \"],[1,[30,1,[\"transferSize\"]]],[1,\"\\n\"]],[1]]]]],[1,\"    \"]],[\"t\"],false,[\"object/md-transfer/preview\",\"model\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
       }));
       assert.equal(this.element.textContent.replace(/[\s\n]+/g, '|').trim(), '|transferSize:|9.9|');
     });
   });
 });
-define("mdeditor/tests/test-helper", ["mdeditor/app", "mdeditor/config/environment", "@ember/test-helpers", "ember-qunit"], function (_app, _environment, _testHelpers, _emberQunit) {
+define("mdeditor/tests/test-helper", ["mdeditor/app", "mdeditor/config/environment", "qunit", "@ember/test-helpers", "qunit-dom", "ember-qunit"], function (_app, _environment, QUnit, _testHelpers, _qunitDom, _emberQunit) {
   "use strict";
 
   (0, _testHelpers.setApplication)(_app.default.create(_environment.default.APP));
+  (0, _qunitDom.setup)(QUnit.assert);
   (0, _emberQunit.start)();
 });
 define("mdeditor/tests/unit/adapters/adapter-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
@@ -10806,31 +11147,6 @@ define("mdeditor/tests/unit/pods/import/route-test", ["qunit", "ember-qunit"], f
     (0, _qunit.test)('it exists', function (assert) {
       var route = this.owner.lookup('route:import');
       assert.ok(route);
-    });
-  });
-});
-define("mdeditor/tests/unit/pods/main/initializer-test-test", ["mdeditor/initializers/main", "qunit", "ember-qunit", "mdeditor/tests/unit/helpers/destroy-app"], function (_main, _qunit, _emberQunit, _destroyApp) {
-  "use strict";
-
-  (0, _qunit.module)('Unit | Initializer | main', function (hooks) {
-    (0, _emberQunit.setupTest)(hooks);
-    hooks.beforeEach(function () {
-      this.TestApplication = Ember.Application.extend();
-      this.TestApplication.initializer({
-        name: 'initializer under test',
-        initialize: _main.initialize
-      });
-      this.application = this.TestApplication.create({
-        autoboot: false
-      });
-    });
-    hooks.afterEach(function () {
-      (0, _destroyApp.default)(this.application);
-    }); // Replace this with your real tests.
-
-    (0, _qunit.test)('it works', async function (assert) {
-      await this.application.boot();
-      assert.ok(true);
     });
   });
 });

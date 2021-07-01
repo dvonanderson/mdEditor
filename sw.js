@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const VERSION = '1621887034956|0.23744474327754794';
+  const VERSION = '1625171420271|0.9474292853760315';
   self.CACHE_BUSTER = VERSION;
   self.addEventListener('install', function installEventListenerCallback(event) {
     return self.skipWaiting();
@@ -10,7 +10,7 @@
     return self.clients.claim();
   });
 
-  const FILES = ['assets/images/layers-2x.png', 'assets/images/layers.png', 'assets/images/marker-icon-2x.png', 'assets/images/marker-icon.png', 'assets/images/marker-shadow.png', 'assets/images/spritesheet-2x.png', 'assets/images/spritesheet.png', 'assets/images/spritesheet.svg', 'assets/mdeditor.css', 'assets/mdeditor.js', 'assets/mdeditor.map', 'assets/test-support.css', 'assets/test-support.js', 'assets/test-support.map', 'assets/tests.js', 'assets/tests.map', 'assets/vendor.css', 'assets/vendor.js', 'assets/vendor.map', 'assets/workers/worker_papaparse.js', 'assets/workers/worker_papaparse.map', 'fonts/fontawesome-webfont.eot', 'fonts/fontawesome-webfont.svg', 'fonts/fontawesome-webfont.ttf', 'fonts/fontawesome-webfont.woff', 'fonts/fontawesome-webfont.woff2', 'fonts/FontAwesome.otf', 'fonts/mdeditor.eot', 'fonts/mdeditor.svg', 'fonts/mdeditor.ttf', 'fonts/mdeditor.woff', 'favicon-128.png', 'favicon-16x16.png', 'favicon-196x196.png', 'favicon-32x32.png', 'favicon-96x96.png', 'favicon.ico', 'apple-touch-icon-144x144.png', 'apple-touch-icon-152x152.png', 'mstile-144x144.png'];
+  const FILES = ['assets/images/layers-2x.png', 'assets/images/layers.png', 'assets/images/marker-icon-2x.png', 'assets/images/marker-icon.png', 'assets/images/marker-shadow.png', 'assets/images/spritesheet-2x.png', 'assets/images/spritesheet.png', 'assets/images/spritesheet.svg', 'assets/mdeditor.css', 'assets/mdeditor.js', 'assets/mdeditor.map', 'assets/test-support.css', 'assets/test-support.js', 'assets/test-support.map', 'assets/tests.js', 'assets/tests.map', 'assets/vendor.css', 'assets/vendor.js', 'assets/vendor.map', 'assets/workers/worker_papaparse.js', 'assets/workers/worker_papaparse.map', 'fonts/mdeditor.eot', 'fonts/mdeditor.svg', 'fonts/mdeditor.ttf', 'fonts/mdeditor.woff', 'favicon-128.png', 'favicon-16x16.png', 'favicon-196x196.png', 'favicon-32x32.png', 'favicon-96x96.png', 'favicon.ico', 'apple-touch-icon-144x144.png', 'apple-touch-icon-152x152.png', 'mstile-144x144.png'];
   const VERSION$1 = '1';
   const REQUEST_MODE = 'cors';
 
@@ -163,7 +163,7 @@
   const INDEX_HTML_PATH = 'index.html';
   const INDEX_EXCLUDE_SCOPE = [];
   const INDEX_INCLUDE_SCOPE = [];
-  self.INDEX_FILE_HASH = '3129b07d8890dbe0ba9b783792485261';
+  self.INDEX_FILE_HASH = '73b937a94c3c2c374ee1faa2d5cfc857';
 
   const CACHE_KEY_PREFIX$2 = 'esw-index';
   const CACHE_NAME$2 = `${CACHE_KEY_PREFIX$2}-${VERSION$3}`;
